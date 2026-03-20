@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: SAM Template for Bedrock RAG Portfolio Project
+
+Globals:
+  Function:
+    Timeout: 30 
+    MemorySize: 512
+    Runtime: nodejs20.x 
+    Architectures:
+      - arm64 
+
+Resources:
+  BedrockRagFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./ 
+      Handler: lib/bedrock.handler 
+      Environment:
+        Variables:
+          AWS_REGION: us-east-1 
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - bedrock:InvokeModel
+                - bedrock:Converse
+              Resource: "*"
+
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        EntryPoints: 
+          - lib/bedrock.ts
