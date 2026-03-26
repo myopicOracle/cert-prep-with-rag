@@ -1,3 +1,10 @@
+'use client'
+
+import {
+    HomeIcon,
+    BoltIcon,
+    ClipboardDocumentIcon,
+} from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -5,14 +12,17 @@ const links = [
     {
         name: 'Progress',
         href: '/practice',
+        icon: HomeIcon,
     },
     {
-        name: 'Exams',
-        href: '/practice/exams',
+        name: 'Mock Exams',
+        href: '/practice/exam',
+        icon: ClipboardDocumentIcon,
     },
     {
         name: 'Flashcards',
         href: '/practice/flashcards',
+        icon: BoltIcon,
     },
 ]
 
@@ -21,6 +31,7 @@ export default function NavLinks() {
     return (
         <>
             {links.map((link) => {
+                const LinkIcon = link.icon
                 return (
                     <Link
                         key={link.name}
@@ -29,7 +40,10 @@ export default function NavLinks() {
                             pathname === link.href
                                 ? 'bg-sky-100 text-blue-600'
                                 : 'bg-gray-50'
-                        }`}></Link>
+                        }`}>
+                        <LinkIcon className="w-6" />
+                        <p className="hidden md:block">{link.name}</p>
+                    </Link>
                 )
             })}
         </>
