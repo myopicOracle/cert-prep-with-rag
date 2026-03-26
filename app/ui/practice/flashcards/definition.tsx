@@ -1,4 +1,4 @@
-export default function ProgressBar() {
+export default function Definition() {
     return (
         <div>
             <div></div>

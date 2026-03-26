@@ -1,4 +1,4 @@
-export default function ProgressBar() {
+export default function Scenario() {
     return (
         <div>
             <div></div>

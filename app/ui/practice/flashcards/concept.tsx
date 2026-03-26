@@ -1,4 +1,4 @@
-export default function ProgressBar() {
+export default function Concept() {
     return (
         <div>
             <div></div>

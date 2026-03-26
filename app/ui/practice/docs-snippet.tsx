@@ -1,4 +1,4 @@
-export default function ProgressBar() {
+export default function DocsSnippet() {
     return (
         <div>
             <div></div>
