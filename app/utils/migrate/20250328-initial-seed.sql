@@ -32,3 +32,11 @@ create table questions (
   wrong_explanation_3 text not null,
   created_at timestamptz default now()
 );
+
+create table services (
+  id uuid primary key default gen_random_uuid(),
+  name text unique not null,
+  overview text not null,
+  deep_dive text not null,
+  created_at timestamptz default now()
+);

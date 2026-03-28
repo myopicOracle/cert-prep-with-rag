@@ -1,6 +1,5 @@
 const questions = [
     {
-        exam_tag: 'DEA-C01',
         scenario:
             'A data engineer is tasked with storing infrequently accessed archival data that must be retrievable within minutes for compliance audits, while minimizing costs. The data needs to remain available for at least 7 years.',
         correct_answer: 'S3 Glacier Flexible Retrieval',
@@ -17,7 +16,6 @@ const questions = [
             'S3 Glacier Deep Archive is the lowest-cost option but requires up to 12 hours for retrieval, which exceeds the minutes requirement for audits.',
     },
     {
-        exam_tag: 'DEA-C01',
         scenario:
             'You need to automatically discover the schema and create metadata tables for semi-structured data files stored in Amazon S3 before running ETL transformations with AWS Glue.',
         correct_answer: 'AWS Glue Crawler',
@@ -34,7 +32,6 @@ const questions = [
             'DataBrew is a visual data-preparation tool for cleaning and profiling but does not automatically crawl S3 for schema inference and cataloging.',
     },
     {
-        exam_tag: 'DEA-C01',
         scenario:
             'A team needs a fully managed petabyte-scale data warehouse that supports standard SQL queries, columnar storage for fast analytics, and integration with BI tools like QuickSight while separating storage and compute costs.',
         correct_answer: 'Amazon Redshift',
