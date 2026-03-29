@@ -4,20 +4,53 @@ import Scenario from '@/app/ui/practice/exam/scenario'
 import Choice from '@/app/ui/practice/exam/choice'
 import Explanation from '@/app/ui/practice/exam/explanation'
 import Button from '@/app/ui/practice/button'
-import { questions } from '@/app/lib/placeholder-data'
+// import { questions } from '@/app/lib/placeholder-data' // NTD: moved up to parent, remove once UI mocking complete
 
-export default function Card() {
-    const questionID = 'Question 1' // NTD: make dynamic
+interface QuestionData {
+    // NTD: extract to types definitions file
+    id: string
+    task_statement_id: string | null
+    scenario: string
+    correct_answer: string
+    wrong_answer_1: string
+    wrong_answer_2: string
+    wrong_answer_3: string
+    correct_explanation: string
+    wrong_explanation_1: string
+    wrong_explanation_2: string
+    wrong_explanation_3: string
+    created_at: string
+}
 
-    const selectedQuestion = questions[0]
+interface QuestionProps {
+    // NTD: extract to types definitions file
+    count: number
+    question: QuestionData
+}
 
-    const questionText = selectedQuestion.scenario
+export default function Card({ count, question }: QuestionProps) {
+    const questionID = count
+
+    const questionText = question.scenario
     const choicesText = [
-        selectedQuestion.correct_answer,
-        selectedQuestion.wrong_answer_1,
-        selectedQuestion.wrong_answer_2,
-        selectedQuestion.wrong_answer_3,
+        question.correct_answer,
+        question.wrong_answer_1,
+        question.wrong_answer_2,
+        question.wrong_answer_3,
     ]
+
+    // // NTD: remove once UI mocking complete
+    // const questionID = 'Question 1' // NTD: make dynamic
+
+    // const selectedQuestion = questions[0]
+
+    // const questionText = selectedQuestion.scenario
+    // const choicesText = [
+    //     selectedQuestion.correct_answer,
+    //     selectedQuestion.wrong_answer_1,
+    //     selectedQuestion.wrong_answer_2,
+    //     selectedQuestion.wrong_answer_3,
+    // ]
 
     function handlePrevCard() {}
     function handleNextCard() {}
