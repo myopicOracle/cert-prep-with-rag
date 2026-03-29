@@ -3,7 +3,7 @@ import Card from '@/app/ui/practice/exam/card'
 import ProgressBar from '@/app/ui/practice/exam/progress-bar'
 
 export default async function Page() {
-    const examID = 'DEA-C01 - Exam 1' // NTD: make dynamic
+    const examID = 'DEA-C01 - Exam 1' // NTD: make dynamic (pull from questions table)
 
     return (
         <div className="w-full">

@@ -6,6 +6,7 @@
 - [x] (ui) finalize basic design of exam page ui components
 - [x] create table schemas for questions and services
 - [x] init tables with sql query editor, seed tables with api route
+- [x] scaffold page/route and update nav for Speed Run feature
 - [ ] write fetch data function and test Supabase connection
 - [ ] refactor page to map each card component from db rows pulled
 - [ ] implement URL params with shuffle logic as routes for cards
