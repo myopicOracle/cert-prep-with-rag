@@ -1,6 +1,7 @@
 import { lusitana } from '@/app/ui/fonts'
 import Card from '@/app/ui/practice/exam/card'
 import ProgressBar from '@/app/ui/practice/exam/progress-bar'
+import NavButtons from '@/app/ui/practice/exam/nav-buttons'
 import { fetchQuestions } from '@/app/lib/data'
 
 export default async function Page({
@@ -31,6 +32,8 @@ export default async function Page({
 
             {/* NTD: dynamically generate with map, index with URL params */}
             <Card id={currentID} question={currentQuestion} />
+
+            <NavButtons />
         </div>
     )
 }
