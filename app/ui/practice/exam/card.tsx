@@ -24,12 +24,12 @@ interface QuestionData {
 
 interface QuestionProps {
     // NTD: extract to types definitions file
-    count: number
+    id: number
     question: QuestionData
 }
 
-export default function Card({ count, question }: QuestionProps) {
-    const questionID = count
+export default function Card({ id, question }: QuestionProps) {
+    const questionID = id
 
     const questionText = question.scenario
     const choicesText = [
@@ -59,7 +59,7 @@ export default function Card({ count, question }: QuestionProps) {
         <div className="mt-6 rounded-lg border border-gray-200 bg-white p-8 m-12 shadow-sm min-h-64">
             <div>
                 <p className="mt-2 p-4 rounded-sm text-md font-bold text-gray-600 bg-blue-100">
-                    {questionID}
+                    Question {questionID + 1}
                 </p>
             </div>
             <div className="mt-4 mb-8 p-4">
