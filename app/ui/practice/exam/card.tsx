@@ -39,7 +39,7 @@ export default function Card({ id, question }: QuestionProps) {
         <div className="mt-6 rounded-lg border border-gray-200 bg-white p-8 m-12 shadow-sm min-h-64">
             <div>
                 <p className="mt-2 p-4 rounded-sm text-md font-bold text-gray-600 bg-blue-100">
-                    Question {questionID + 1}
+                    Question {questionID}
                 </p>
             </div>
             <div className="mt-4 mb-8 p-4">

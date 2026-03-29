@@ -18,7 +18,7 @@ export default async function Page({
 
     const currentID = Number(params?.id) || 1
     console.log('currentID: ', currentID)
-    const currentQuestion = questions[currentID]
+    const currentQuestion = questions[currentID - 1]
     console.log('currentQuestion: ', currentQuestion)
     const totalQuestions = questions.length
 
@@ -33,7 +33,7 @@ export default async function Page({
             {/* NTD: dynamically generate with map, index with URL params */}
             <Card id={currentID} question={currentQuestion} />
 
-            <NavButtons />
+            <NavButtons total={totalQuestions} />
         </div>
     )
 }
