@@ -30,7 +30,7 @@ export default async function Page({
 
             <ProgressBar />
 
-            {/* NTD: dynamically generate with map, index with URL params */}
+            {/* Now dynamically generated */}
             <Card id={currentID} question={currentQuestion} />
 
             <NavButtons total={totalQuestions} />

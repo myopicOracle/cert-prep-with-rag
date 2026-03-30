@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import Scenario from '@/app/ui/practice/exam/scenario'
 import Choice from '@/app/ui/practice/exam/choice'
 import Explanation from '@/app/ui/practice/exam/explanation'
@@ -25,6 +28,8 @@ interface QuestionProps {
 }
 
 export default function Card({ id, question }: QuestionProps) {
+    const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+
     const questionID = id
 
     const questionText = question.scenario
@@ -45,7 +50,14 @@ export default function Card({ id, question }: QuestionProps) {
             <div className="mt-4 mb-8 p-4">
                 <Scenario>{questionText}</Scenario>
                 {choicesText.map((choice, index) => {
-                    return <Choice key={index}>{choice}</Choice>
+                    return (
+                        <Choice
+                            key={index}
+                            selected={selectedIndex === index}
+                            onSelect={() => setSelectedIndex(index)}>
+                            {choice}
+                        </Choice>
+                    )
                 })}
                 {/* <Explanation /> */}
             </div>

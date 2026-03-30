@@ -1,17 +1,22 @@
-'use client'
-
 import Explanation from '@/app/ui/practice/exam/explanation'
 
 interface ChoiceProps {
     // NTD: extract to types definitions file
     children: React.ReactNode
+    selected: boolean
+    onSelect: () => void
 }
 
-export default function Choice({ children }: ChoiceProps) {
+export default function Choice({ children, selected, onSelect }: ChoiceProps) {
     return (
         <div
-            className="rounded-lg border border-gray-200 bg-white p-4 m-2 min-h-16"
-            onClick={() => console.log('Booom. Selected: ', children)}>
+            // prettier-ignore
+            className={`rounded-lg border p-4 m-2 min-h-16 cursor-pointer transition-colors 
+                ${selected 
+                    ? 'border-blue-400 bg-blue-50 font-medium' 
+                    : 'border-gray-200 bg-white'
+                }`}
+            onClick={onSelect}>
             {children}
             <Explanation />
         </div>
