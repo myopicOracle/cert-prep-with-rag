@@ -1,4 +1,5 @@
 import { lusitana } from '@/app/ui/fonts'
+import { shuffle } from 'lodash'
 import Card from '@/app/ui/practice/exam/card'
 import ProgressBar from '@/app/ui/practice/exam/progress-bar'
 import NavButtons from '@/app/ui/practice/exam/nav-buttons'
@@ -13,7 +14,11 @@ export default async function Page({
 }) {
     const params = await searchParams
 
-    const questions = await fetchQuestions()
+    const questionsRaw = await fetchQuestions()
+    console.log('questionsRaw: ', questionsRaw[0])
+    const questions = shuffle(questionsRaw)
+    console.log('questions: ', questions[0])
+
     console.log('Questions table returned: ', questions)
 
     const currentID = Number(params?.id) || 1
