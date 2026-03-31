@@ -1,5 +1,3 @@
-import Explanation from '@/app/ui/practice/exam/explanation'
-
 interface ChoiceProps {
     // NTD: extract to types definitions file
     children: React.ReactNode

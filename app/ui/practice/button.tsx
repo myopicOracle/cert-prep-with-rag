@@ -1,16 +1,19 @@
 interface ButtonProps {
     // NTD: extract to types definitions file
     name: string
-    condition: boolean
+    buttonStyle: string
+    isDisabled: boolean
     onClick: () => void
 }
 
-export default function Button({ name, condition, onClick }: ButtonProps) {
+export default function Button({ name, buttonStyle, isDisabled, onClick }: ButtonProps) {
     return (
-        <button
-            className="rounded-sm text-sm font-semibold px-8 py-3 bg-blue-100 shadow-md hover:bg-blue-300 focus:outline-none"
-            onClick={onClick}
-            disabled={condition}>
+        // prettier-ignore
+        <button 
+            className={buttonStyle} 
+            onClick={ onClick }
+            disabled={ isDisabled }
+        >
             {name}
         </button>
     )

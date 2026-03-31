@@ -5,6 +5,7 @@ import { shuffle } from 'lodash'
 import Scenario from '@/app/ui/practice/exam/scenario'
 import Choice from '@/app/ui/practice/exam/choice'
 import Explanation from '@/app/ui/practice/exam/explanation'
+import Button from '@/app/ui/practice/button'
 
 interface QuestionData {
     // NTD: extract to types definitions file
@@ -40,14 +41,10 @@ export default function Card({
     revealed,
     onReveal,
 }: QuestionProps) {
-    // * lifted to parent, changed to record lookup *
-    // const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
-    // const [reveal, setReveal] = useState<boolean>(false)
-
     const questionID = id
 
-    const questionText = question.scenario
-    const choicesText = useMemo(() => {
+    const scenario = question.scenario
+    const choices = useMemo(() => {
         const rawArray = [
             {
                 answer: question.correct_answer,
@@ -74,15 +71,15 @@ export default function Card({
     }, [question.id])
 
     return (
-        <div className="mt-6 rounded-lg border border-gray-200 bg-white p-8 m-12 shadow-sm min-h-64">
-            <div>
+        <div className="flex flex-col items-center mt-6 rounded-lg border border-gray-200 bg-white p-8 m-12 shadow-sm min-h-64">
+            <div className="w-full px-6 py-2">
                 <p className="mt-2 p-4 rounded-sm text-md font-bold text-gray-600 bg-blue-100">
                     Question {questionID}
                 </p>
             </div>
             <div className="mt-4 mb-8 p-4">
-                <Scenario>{questionText}</Scenario>
-                {choicesText.map((choice, index) => {
+                <Scenario>{scenario}</Scenario>
+                {choices.map((choice, index) => {
                     const isCorrect = choice.isCorrect
 
                     return (
@@ -102,6 +99,14 @@ export default function Card({
                         </Choice>
                     )
                 })}
+            </div>
+            <div>
+                <button
+                    onClick={onReveal}
+                    disabled={selectedIndex === null || revealed}
+                    className="rounded mb-4 px-4 py-2 bg-blue-500 text-white disabled:opacity-50">
+                    Check Answer
+                </button>
             </div>
         </div>
     )

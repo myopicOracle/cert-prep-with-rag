@@ -31,8 +31,18 @@ export default function NavButtons({ total }: NavButtonProps) {
 
     return (
         <div className="flex w-full items-center justify-between px-12">
-            <Button name="Prev" onClick={handlePrevCard} condition={current <= 1} />
-            <Button name="Next" onClick={handleNextCard} condition={current >= total} />
+            <Button
+                name="Prev"
+                buttonStyle={`"rounded-sm text-sm font-semibold px-8 py-3 bg-blue-100 shadow-md hover:bg-blue-300 focus:outline-none"`}
+                onClick={handlePrevCard}
+                isDisabled={current <= 1}
+            />
+            <Button
+                name="Next"
+                buttonStyle={`"rounded-sm text-sm font-semibold px-8 py-3 bg-blue-100 shadow-md hover:bg-blue-300 focus:outline-none"`}
+                onClick={handleNextCard}
+                isDisabled={current >= total}
+            />
         </div>
     )
 }
