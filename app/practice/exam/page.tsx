@@ -13,11 +13,11 @@ export default async function Page({
 }) {
     const params = await searchParams
 
-    const questionsRaw = await fetchQuestions()
-    console.log('Original first question: ', questionsRaw[0])
-    console.log('Original last question: ', questionsRaw[questionsRaw.length - 1])
+    const rawQuestions = await fetchQuestions()
+    console.log('Original first question: ', rawQuestions[0])
+    console.log('Original last question: ', rawQuestions[rawQuestions.length - 1])
 
-    const questions = shuffle(questionsRaw)
+    const questions = shuffle(rawQuestions)
     console.log('Shuffled first question: ', questions[0])
     console.log('Shuffled last question: ', questions[questions.length - 1])
 

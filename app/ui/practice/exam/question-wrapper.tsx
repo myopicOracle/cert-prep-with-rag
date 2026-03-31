@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Card from '@/app/ui/practice/exam/card'
 import NavButtons from '@/app/ui/practice/exam/nav-buttons'
 

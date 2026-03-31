@@ -3,11 +3,12 @@ import Explanation from '@/app/ui/practice/exam/explanation'
 interface ChoiceProps {
     // NTD: extract to types definitions file
     children: React.ReactNode
+    index: number
     selected: boolean
-    onSelect: () => void
+    onSelect: (index: number) => void
 }
 
-export default function Choice({ children, selected, onSelect }: ChoiceProps) {
+export default function Choice({ children, index, selected, onSelect }: ChoiceProps) {
     return (
         <div
             // prettier-ignore
@@ -16,7 +17,7 @@ export default function Choice({ children, selected, onSelect }: ChoiceProps) {
                     ? 'border-blue-400 bg-blue-50 font-medium' 
                     : 'border-gray-200 bg-white'
                 }`}
-            onClick={onSelect}>
+            onClick={() => onSelect(index)}>
             {children}
         </div>
     )

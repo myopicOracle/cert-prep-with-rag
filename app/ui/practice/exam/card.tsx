@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo } from 'react'
+import { shuffle } from 'lodash'
 import Scenario from '@/app/ui/practice/exam/scenario'
 import Choice from '@/app/ui/practice/exam/choice'
 import Explanation from '@/app/ui/practice/exam/explanation'
@@ -25,7 +26,7 @@ interface QuestionProps {
     // NTD: extract to types definitions file
     id: number
     question: QuestionData
-    selectedIndex: number
+    selectedIndex: number | null
     onSelect: (index: number) => void
     revealed: boolean
     onReveal: () => void
@@ -41,19 +42,36 @@ export default function Card({
 }: QuestionProps) {
     // * lifted to parent, changed to record lookup *
     // const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
-    // const [reveal, setReveal] = useState<boolean | null>(false)
+    // const [reveal, setReveal] = useState<boolean>(false)
 
     const questionID = id
 
     const questionText = question.scenario
-    const choicesText = [
-        { answer: question.correct_answer, explanation: question.correct_explanation },
-        { answer: question.wrong_answer_1, explanation: question.wrong_explanation_1 },
-        { answer: question.wrong_answer_2, explanation: question.wrong_explanation_2 },
-        { answer: question.wrong_answer_3, explanation: question.wrong_explanation_3 },
-    ]
-
-    const correctAnswer = choicesText[0].answer
+    const choicesText = useMemo(() => {
+        const rawArray = [
+            {
+                answer: question.correct_answer,
+                explanation: question.correct_explanation,
+                isCorrect: true,
+            },
+            {
+                answer: question.wrong_answer_1,
+                explanation: question.wrong_explanation_1,
+                isCorrect: false,
+            },
+            {
+                answer: question.wrong_answer_2,
+                explanation: question.wrong_explanation_2,
+                isCorrect: false,
+            },
+            {
+                answer: question.wrong_answer_3,
+                explanation: question.wrong_explanation_3,
+                isCorrect: false,
+            },
+        ]
+        return shuffle(rawArray)
+    }, [question.id])
 
     return (
         <div className="mt-6 rounded-lg border border-gray-200 bg-white p-8 m-12 shadow-sm min-h-64">
@@ -65,15 +83,16 @@ export default function Card({
             <div className="mt-4 mb-8 p-4">
                 <Scenario>{questionText}</Scenario>
                 {choicesText.map((choice, index) => {
-                    const isCorrect = choice.answer === correctAnswer
+                    const isCorrect = choice.isCorrect
 
                     return (
                         <Choice
                             key={index}
+                            index={index}
                             selected={selectedIndex === index}
-                            onSelect={() => setSelectedIndex(index)}>
+                            onSelect={onSelect}>
                             {choice.answer}
-                            {reveal ? (
+                            {revealed ? (
                                 <Explanation isCorrect={isCorrect}>
                                     {choice.explanation}
                                 </Explanation>
