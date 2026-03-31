@@ -1,8 +1,7 @@
 import { lusitana } from '@/app/ui/fonts'
 import { shuffle } from 'lodash'
-import Card from '@/app/ui/practice/exam/card'
 import ProgressBar from '@/app/ui/practice/exam/progress-bar'
-import NavButtons from '@/app/ui/practice/exam/nav-buttons'
+import QuestionWrapper from '@/app/ui/practice/exam/question-wrapper'
 import { fetchQuestions } from '@/app/lib/data'
 
 export default async function Page({
@@ -24,9 +23,6 @@ export default async function Page({
 
     const currentID = Number(params?.id) || 1
     console.log('currentID: ', currentID)
-    const currentQuestion = questions[currentID - 1]
-    console.log('currentQuestion: ', currentQuestion)
-    const totalQuestions = questions.length
 
     const examID = 'DEA-C01 - Exam 1' // NTD: make dynamic (pull from questions table)
 
@@ -36,10 +32,7 @@ export default async function Page({
 
             <ProgressBar />
 
-            {/* Now dynamically generated */}
-            <Card id={currentID} question={currentQuestion} />
-
-            <NavButtons total={totalQuestions} />
+            <QuestionWrapper questions={questions} currentID={currentID} />
         </div>
     )
 }
