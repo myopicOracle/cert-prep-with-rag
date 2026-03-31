@@ -18,7 +18,6 @@ export default function Choice({ children, selected, onSelect }: ChoiceProps) {
                 }`}
             onClick={onSelect}>
             {children}
-            <Explanation />
         </div>
     )
 }

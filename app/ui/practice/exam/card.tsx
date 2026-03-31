@@ -29,16 +29,19 @@ interface QuestionProps {
 
 export default function Card({ id, question }: QuestionProps) {
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+    const [reveal, setReveal] = useState<boolean | null>(false)
 
     const questionID = id
 
     const questionText = question.scenario
     const choicesText = [
-        question.correct_answer,
-        question.wrong_answer_1,
-        question.wrong_answer_2,
-        question.wrong_answer_3,
+        { answer: question.correct_answer, explanation: question.correct_explanation },
+        { answer: question.wrong_answer_1, explanation: question.wrong_explanation_1 },
+        { answer: question.wrong_answer_2, explanation: question.wrong_explanation_2 },
+        { answer: question.wrong_answer_3, explanation: question.wrong_explanation_3 },
     ]
+
+    const correctAnswer = choicesText[0].answer
 
     return (
         <div className="mt-6 rounded-lg border border-gray-200 bg-white p-8 m-12 shadow-sm min-h-64">
@@ -50,16 +53,24 @@ export default function Card({ id, question }: QuestionProps) {
             <div className="mt-4 mb-8 p-4">
                 <Scenario>{questionText}</Scenario>
                 {choicesText.map((choice, index) => {
+                    const isCorrect = choice.answer === correctAnswer
+
                     return (
                         <Choice
                             key={index}
                             selected={selectedIndex === index}
                             onSelect={() => setSelectedIndex(index)}>
-                            {choice}
+                            {choice.answer}
+                            {reveal ? (
+                                <Explanation isCorrect={isCorrect}>
+                                    {choice.explanation}
+                                </Explanation>
+                            ) : (
+                                ''
+                            )}
                         </Choice>
                     )
                 })}
-                {/* <Explanation /> */}
             </div>
         </div>
     )

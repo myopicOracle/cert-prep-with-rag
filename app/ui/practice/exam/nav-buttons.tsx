@@ -20,12 +20,12 @@ export default function NavButtons({ total }: NavButtonProps) {
     }
 
     function handlePrevCard() {
-        // NTD: function wrapper uncessary, left to make painfully obvious for now
+        // NTD: replace with inline anon function, left to make painfully obvious for now
         navigate(current - 1)
     }
 
     function handleNextCard() {
-        // NTD: function wrapper uncessary, left to make painfully obvious for now
+        // NTD: replace with inline anon function, left to make painfully obvious for now
         navigate(current + 1)
     }
 

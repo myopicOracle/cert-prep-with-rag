@@ -15,11 +15,12 @@ export default async function Page({
     const params = await searchParams
 
     const questionsRaw = await fetchQuestions()
-    console.log('questionsRaw: ', questionsRaw[0])
-    const questions = shuffle(questionsRaw)
-    console.log('questions: ', questions[0])
+    console.log('Original first question: ', questionsRaw[0])
+    console.log('Original last question: ', questionsRaw[questionsRaw.length - 1])
 
-    console.log('Questions table returned: ', questions)
+    const questions = shuffle(questionsRaw)
+    console.log('Shuffled first question: ', questions[0])
+    console.log('Shuffled last question: ', questions[questions.length - 1])
 
     const currentID = Number(params?.id) || 1
     console.log('currentID: ', currentID)
