@@ -26,6 +26,9 @@ interface WrapperProps {
 }
 
 export default function QuestionWrapper({ questions, currentID }: WrapperProps) {
+    const [selected, setSelected] = useState<Record<number, number | null>>({})
+    const [revealed, setRevealed] = useState<Record<number, boolean>>({})
+
     const currentQuestion = questions[currentID - 1]
     console.log('currentQuestion: ', currentQuestion)
 
@@ -33,7 +36,24 @@ export default function QuestionWrapper({ questions, currentID }: WrapperProps) 
 
     return (
         <div>
-            <Card id={currentID} question={currentQuestion} />
+            <Card
+                id={currentID}
+                question={currentQuestion}
+                selectedIndex={selected[currentID] ?? null}
+                onSelect={(index) =>
+                    setSelected((prev) => ({
+                        ...prev,
+                        [currentID]: index,
+                    }))
+                }
+                revealed={revealed[currentID] ?? false}
+                onReveal={() =>
+                    setRevealed((prev) => ({
+                        ...prev,
+                        [currentID]: true,
+                    }))
+                }
+            />
 
             <NavButtons total={totalQuestions} />
         </div>

@@ -25,11 +25,23 @@ interface QuestionProps {
     // NTD: extract to types definitions file
     id: number
     question: QuestionData
+    selectedIndex: number
+    onSelect: (index: number) => void
+    revealed: boolean
+    onReveal: () => void
 }
 
-export default function Card({ id, question }: QuestionProps) {
-    const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
-    const [reveal, setReveal] = useState<boolean | null>(false)
+export default function Card({
+    id,
+    question,
+    selectedIndex,
+    onSelect,
+    revealed,
+    onReveal,
+}: QuestionProps) {
+    // * lifted to parent, changed to record lookup *
+    // const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+    // const [reveal, setReveal] = useState<boolean | null>(false)
 
     const questionID = id
 
