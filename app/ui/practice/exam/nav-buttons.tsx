@@ -4,10 +4,12 @@ import Button from '@/app/ui/practice/button'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 
 interface NavButtonProps {
+    completed: number
     total: number
+    onComplete: (value: number) => void
 }
 
-export default function NavButtons({ total }: NavButtonProps) {
+export default function NavButtons({ completed, total, onComplete }: NavButtonProps) {
     const searchParams = useSearchParams()
     const pathname = usePathname()
     const { replace } = useRouter()
@@ -20,13 +22,14 @@ export default function NavButtons({ total }: NavButtonProps) {
     }
 
     function handlePrevCard() {
-        // NTD: replace with inline anon function, left to make painfully obvious for now
         navigate(current - 1)
     }
 
     function handleNextCard() {
-        // NTD: replace with inline anon function, left to make painfully obvious for now
         navigate(current + 1)
+        if (current > completed) {
+            onComplete(current)
+        }
     }
 
     return (

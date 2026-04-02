@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import ProgressBar from '@/app/ui/practice/exam/progress-bar'
 import Card from '@/app/ui/practice/exam/card'
 import NavButtons from '@/app/ui/practice/exam/nav-buttons'
 
@@ -29,6 +30,7 @@ interface WrapperProps {
 export default function QuestionWrapper({ questions, currentID }: WrapperProps) {
     const [selected, setSelected] = useState<Record<number, number | null>>({})
     const [revealed, setRevealed] = useState<Record<number, boolean>>({})
+    const [numberCompleted, setNumberCompleted] = useState<number>(0)
 
     const currentQuestion = questions[currentID - 1]
     console.log('currentQuestion: ', currentQuestion)
@@ -37,6 +39,8 @@ export default function QuestionWrapper({ questions, currentID }: WrapperProps) 
 
     return (
         <div>
+            <ProgressBar questionsCompleted={numberCompleted} totalQuestions={totalQuestions} />
+
             <Card
                 id={currentID}
                 question={currentQuestion}
@@ -56,7 +60,11 @@ export default function QuestionWrapper({ questions, currentID }: WrapperProps) 
                 }
             />
 
-            <NavButtons total={totalQuestions} />
+            <NavButtons
+                completed={numberCompleted}
+                total={totalQuestions}
+                onComplete={setNumberCompleted}
+            />
         </div>
     )
 }

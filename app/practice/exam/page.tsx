@@ -1,5 +1,4 @@
 import { lusitana } from '@/app/ui/fonts'
-import ProgressBar from '@/app/ui/practice/exam/progress-bar'
 import QuestionWrapper from '@/app/ui/practice/exam/question-wrapper'
 import { fetchQuestions } from '@/app/lib/data'
 
@@ -22,8 +21,6 @@ export default async function Page({
     return (
         <div className="w-full">
             <h1 className={`${lusitana.className} text-2xl`}>{examID}</h1>
-
-            <ProgressBar />
 
             <QuestionWrapper questions={questions} currentID={currentID} />
         </div>
