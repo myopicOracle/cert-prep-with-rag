@@ -1,7 +1,7 @@
 import { ClockIcon } from '@heroicons/react/24/outline'
 
 interface TimerProps {
-    timeInSeconds: number
+    timeInSeconds: number | null
 }
 
 export default function Timer({ timeInSeconds }: TimerProps) {
@@ -15,12 +15,12 @@ export default function Timer({ timeInSeconds }: TimerProps) {
     }
 
     return (
-        <div className="flex">
+        <div className="flex gap-2">
             <div>
                 <ClockIcon className="w-6" />
             </div>
             <div>
-                `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`
+                {pad(hours)}:{pad(minutes)}:{pad(seconds)}
             </div>
         </div>
     )
