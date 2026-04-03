@@ -1,9 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ProgressWrapper from '@/app/ui/practice/exam/progress-wrapper'
 import Card from '@/app/ui/practice/exam/card'
 import NavButtons from '@/app/ui/practice/exam/nav-buttons'
+import { examMetadata } from '@/app/lib/metadata'
 
 interface QuestionData {
     // NTD: extract to types definitions file
@@ -32,16 +33,28 @@ export default function ExamWrapper({ examCode, questions, currentID }: WrapperP
     const [selected, setSelected] = useState<Record<number, number | null>>({})
     const [revealed, setRevealed] = useState<Record<number, boolean>>({})
     const [numberCompleted, setNumberCompleted] = useState<number>(0)
+    const [timeRemaining, setTimeRemaining] = useState<number>(0)
 
     const currentQuestion = questions[currentID - 1]
     console.log('currentQuestion: ', currentQuestion)
 
     const totalQuestions = questions.length
 
+    useEffect(() => {
+        for (let i = 0; i < examMetadata.length; i++) {
+            if (examMetadata[i].exam_code === examCode) {
+                setTimeRemaining(examMetadata[i].duration * 60)
+                return
+            }
+        }
+        setTimeRemaining(215999) // display 59:59:59
+    }, [examCode])
+
     return (
         <div>
             <ProgressWrapper
-                examCode={examCode}
+                timeRemaining={timeRemaining}
+                setTimeRemaining={setTimeRemaining}
                 questionsCompleted={numberCompleted}
                 totalQuestions={totalQuestions}
             />
