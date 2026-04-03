@@ -16,13 +16,13 @@ export default async function Page({
     const currentID = Number(params?.id) || 1
     console.log('currentID: ', currentID)
 
-    const examID = 'DEA-C01 - Exam 1' // NTD: make dynamic (pull from questions table)
+    const examCode = 'DEA-C01' // NTD: make dynamic (pull from questions table)
 
     return (
         <div className="w-full">
-            <h1 className={`${lusitana.className} text-2xl`}>{examID}</h1>
+            <h1 className={`${lusitana.className} text-2xl`}>{examCode}</h1>
 
-            <ExamWrapper questions={questions} currentID={currentID} />
+            <ExamWrapper examCode={examCode} questions={questions} currentID={currentID} />
         </div>
     )
 }
