@@ -27,7 +27,7 @@ interface WrapperProps {
     currentID: number
 }
 
-export default function QuestionWrapper({ questions, currentID }: WrapperProps) {
+export default function ExamWrapper({ questions, currentID }: WrapperProps) {
     const [selected, setSelected] = useState<Record<number, number | null>>({})
     const [revealed, setRevealed] = useState<Record<number, boolean>>({})
     const [numberCompleted, setNumberCompleted] = useState<number>(0)

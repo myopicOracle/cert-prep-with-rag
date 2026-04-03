@@ -1,5 +1,5 @@
 import { lusitana } from '@/app/ui/fonts'
-import QuestionWrapper from '@/app/ui/practice/exam/question-wrapper'
+import ExamWrapper from '@/app/ui/practice/exam/exam-wrapper'
 import { fetchQuestions } from '@/app/lib/data'
 
 export default async function Page({
@@ -22,7 +22,7 @@ export default async function Page({
         <div className="w-full">
             <h1 className={`${lusitana.className} text-2xl`}>{examID}</h1>
 
-            <QuestionWrapper questions={questions} currentID={currentID} />
+            <ExamWrapper questions={questions} currentID={currentID} />
         </div>
     )
 }
