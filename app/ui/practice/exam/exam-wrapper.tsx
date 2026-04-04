@@ -32,6 +32,7 @@ interface WrapperProps {
 export default function ExamWrapper({ examCode, questions, currentID }: WrapperProps) {
     const [selected, setSelected] = useState<Record<number, number | null>>({})
     const [revealed, setRevealed] = useState<Record<number, boolean>>({})
+    const [flagged, setFlagged] = useState<Record<number, boolean>>({})
     const [numberCompleted, setNumberCompleted] = useState<number>(0)
     const [timeRemaining, setTimeRemaining] = useState<number>(0)
 
@@ -57,6 +58,13 @@ export default function ExamWrapper({ examCode, questions, currentID }: WrapperP
                 setTimeRemaining={setTimeRemaining}
                 questionsCompleted={numberCompleted}
                 totalQuestions={totalQuestions}
+                flagged={flagged[currentID] ?? false}
+                onFlag={() =>
+                    setFlagged((prev) => ({
+                        ...prev,
+                        [currentID]: !prev[currentID],
+                    }))
+                }
             />
 
             <Card

@@ -1,20 +1,19 @@
 'use client'
 
-import { useState } from 'react'
 import { FlagIcon as FlagIconOutline } from '@heroicons/react/24/outline'
 import { FlagIcon as FlagIconSolid } from '@heroicons/react/24/solid'
 
-export default function Flag() {
-    const [isFlagged, setIsFlagged] = useState<boolean>(false)
+interface FlagProps {
+    flagged: boolean
+    onFlag: () => void
+}
 
-    function handleClick() {
-        setIsFlagged(!isFlagged)
-    }
-
+export default function Flag({ flagged, onFlag }: FlagProps) {
     return (
+        // prettier-ignore
         <div>
-            <button onClick={handleClick} className="cursor-pointer">
-                {isFlagged ? (
+            <button onClick={onFlag} className="cursor-pointer">
+                {flagged ? (
                     <FlagIconSolid className="w-6" />
                 ) : (
                     <FlagIconOutline className="w-6" />
