@@ -10,7 +10,7 @@ export default function Button({ name, buttonStyle, isDisabled, onClick }: Butto
     return (
         // prettier-ignore
         <button 
-            className={buttonStyle} 
+            className={`${buttonStyle} cursor-pointer`} 
             onClick={ onClick }
             disabled={ isDisabled }
         >

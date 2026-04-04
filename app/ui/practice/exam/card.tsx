@@ -101,12 +101,14 @@ export default function Card({
                 })}
             </div>
             <div>
-                <button
+                <Button
+                    name="Check Answer"
+                    buttonStyle={
+                        'rounded mb-4 px-4 py-2 bg-blue-500 text-white disabled:opacity-50'
+                    }
+                    isDisabled={selectedIndex === null || revealed}
                     onClick={onReveal}
-                    disabled={selectedIndex === null || revealed}
-                    className="rounded mb-4 px-4 py-2 bg-blue-500 text-white disabled:opacity-50">
-                    Check Answer
-                </button>
+                />
             </div>
         </div>
     )
