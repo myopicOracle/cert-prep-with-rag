@@ -1,4 +1,5 @@
 import Timer from '@/app/ui/practice/exam/timer'
+import Flag from '@/app/ui/practice/flag'
 import ProgressBar from '@/app/ui/practice/exam/progress-bar'
 interface ProgressWrapperProps {
     timeRemaining: number
@@ -16,12 +17,13 @@ export default function ProgressWrapper({
     const progressPercentage = (questionsCompleted / totalQuestions) * 100
 
     return (
-        <div className="w-full flex flex-col">
-            <div className="self-end">
+        <div className="w-full flex flex-col mt-4">
+            <div className="flex justify-between">
                 <Timer timeInSeconds={timeRemaining} setTimeRemaining={setTimeRemaining} />
                 <div>
-                    Completed: {questionsCompleted} / {totalQuestions}
+                    Answered: {questionsCompleted} / {totalQuestions}
                 </div>
+                <Flag />
             </div>
             <ProgressBar progressPercentage={progressPercentage} />
         </div>
