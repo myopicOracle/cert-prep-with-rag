@@ -1,4 +1,7 @@
 {
     "editor.fontSize": 15,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "geminicodeassist.enableTelemetry": false,
+    "geminicodeassist.inlineSuggestions.enableAuto": false,
+    "geminicodeassist.inlineSuggestions.suggestionSpeed": "Slow"
 }

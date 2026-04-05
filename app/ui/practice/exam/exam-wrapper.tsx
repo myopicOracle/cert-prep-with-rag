@@ -20,6 +20,10 @@ interface QuestionData {
     wrong_explanation_2: string
     wrong_explanation_3: string
     created_at: string
+    answered: boolean
+    flagged: boolean
+    selectedIndex: number | null
+    answeredCorrectly: boolean | null
 }
 
 interface WrapperProps {
@@ -30,16 +34,23 @@ interface WrapperProps {
 }
 
 export default function ExamWrapper({ examCode, questions, currentID }: WrapperProps) {
-    const [selected, setSelected] = useState<Record<number, number | null>>({})
-    const [revealed, setRevealed] = useState<Record<number, boolean>>({})
-    const [flagged, setFlagged] = useState<Record<number, boolean>>({})
-    const [numberCompleted, setNumberCompleted] = useState<number>(0)
+    // const [selected, setSelected] = useState<Record<number, number | null>>({})
+    // const [revealed, setRevealed] = useState<Record<number, boolean>>({})
+    // const [flagged, setFlagged] = useState<Record<number, boolean>>({})
+    // const [numberCompleted, setNumberCompleted] = useState<number>(0)
+    const [statefulQuestions, setStatefulQuestions] = useState<QuestionData[]>(questions)
     const [timeRemaining, setTimeRemaining] = useState<number>(0)
 
     const currentQuestion = questions[currentID - 1]
     console.log('currentQuestion: ', currentQuestion)
-
     const totalQuestions = questions.length
+
+    const numberCompleted = statefulQuestions.filter(
+        (question) => question.answered === true,
+    ).length
+    const numberCorrect = statefulQuestions.filter(
+        (question) => question.answeredCorrectly === true,
+    ).length
 
     useEffect(() => {
         for (let i = 0; i < examMetadata.length; i++) {

@@ -11,18 +11,30 @@ export default async function Page({
 }) {
     const params = await searchParams
 
-    const questions = await fetchQuestions()
-
     const currentID = Number(params?.id) || 1
     console.log('currentID: ', currentID)
 
+    const rawQuestions = await fetchQuestions()
+
+    // Temporary state tracking - move into database once Auth is set up and user data persisted
+    const statefulQuestions = rawQuestions.map((question) => {
+        return {
+            ...question,
+            answered: false,
+            flagged: false,
+            selectedIndex: null,
+            answeredCorrectly: null,
+        }
+    })
+
     const examCode = 'DEA-C01' // NTD: make dynamic (pull from questions table)
+    // const examName = `${questions[0].exam_code} - ${questions[0].full_name}`
 
     return (
         <div className="w-full">
             <h1 className={`${lusitana.className} text-2xl`}>{examCode}</h1>
 
-            <ExamWrapper examCode={examCode} questions={questions} currentID={currentID} />
+            <ExamWrapper examCode={examCode} questions={statefulQuestions} currentID={currentID} />
         </div>
     )
 }

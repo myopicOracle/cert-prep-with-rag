@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import Button from '@/app/ui/practice/button'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 
@@ -46,14 +45,12 @@ export default function NavButtons({ completed, total, onComplete }: NavButtonPr
                 isDisabled={current <= 1}
             />
             {current >= total ? (
-                <Link href="/practice/exam/review">
-                    <Button
-                        name="Finish"
-                        buttonStyle="rounded-sm text-sm text-white font-semibold px-8 py-3 bg-blue-500 shadow-md hover:text-black hover:bg-blue-200 focus:outline-visible"
-                        onClick={handleFinish}
-                        isDisabled={false}
-                    />
-                </Link>
+                <Button
+                    name="Finish"
+                    buttonStyle="rounded-sm text-sm text-white font-semibold px-8 py-3 bg-blue-500 shadow-md hover:text-black hover:bg-blue-200 focus:outline-visible"
+                    onClick={handleFinish}
+                    isDisabled={false}
+                />
             ) : (
                 <Button
                     name="Next"
