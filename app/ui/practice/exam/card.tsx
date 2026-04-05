@@ -1,7 +1,5 @@
 'use client'
 
-import { useMemo } from 'react'
-import { shuffle } from 'lodash'
 import Scenario from '@/app/ui/practice/exam/scenario'
 import Choice from '@/app/ui/practice/exam/choice'
 import Explanation from '@/app/ui/practice/exam/explanation'
@@ -27,10 +25,17 @@ interface QuestionData {
     answeredCorrectly: boolean | null
 }
 
+interface Choice {
+    answer: string
+    explanation: string
+    isCorrect: boolean
+}
+
 interface QuestionProps {
     // NTD: extract to types definitions file
     id: number
     question: QuestionData
+    choices: Choice[]
     selectedAnswer: number | null
     onSelect: (index: number) => void
     isRevealed: boolean
@@ -40,6 +45,7 @@ interface QuestionProps {
 export default function Card({
     id,
     question,
+    choices,
     selectedAnswer,
     onSelect,
     isRevealed,
@@ -48,31 +54,6 @@ export default function Card({
     const questionID = id
 
     const scenario = question.scenario
-    const choices = useMemo(() => {
-        const rawArray = [
-            {
-                answer: question.correct_answer,
-                explanation: question.correct_explanation,
-                isCorrect: true,
-            },
-            {
-                answer: question.wrong_answer_1,
-                explanation: question.wrong_explanation_1,
-                isCorrect: false,
-            },
-            {
-                answer: question.wrong_answer_2,
-                explanation: question.wrong_explanation_2,
-                isCorrect: false,
-            },
-            {
-                answer: question.wrong_answer_3,
-                explanation: question.wrong_explanation_3,
-                isCorrect: false,
-            },
-        ]
-        return shuffle(rawArray)
-    }, [question.id])
 
     return (
         <div className="flex flex-col items-center mt-6 rounded-lg border border-gray-200 bg-white p-8 m-12 shadow-sm min-h-64">

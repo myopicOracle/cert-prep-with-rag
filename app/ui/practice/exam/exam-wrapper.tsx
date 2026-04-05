@@ -1,11 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
+import { shuffle } from 'lodash'
 import ProgressWrapper from '@/app/ui/practice/exam/progress-wrapper'
 import Card from '@/app/ui/practice/exam/card'
 import NavButtons from '@/app/ui/practice/exam/nav-buttons'
 import { examMetadata } from '@/app/lib/metadata'
-import { truncate } from 'fs/promises'
 
 interface QuestionData {
     // NTD: extract to types definitions file
@@ -39,15 +39,40 @@ export default function ExamWrapper({ examCode, questions, currentID }: WrapperP
     const [timeRemaining, setTimeRemaining] = useState<number>(0)
 
     const currentQuestion = statefulQuestions[currentID - 1]
-    console.log('currentQuestion: ', currentQuestion)
     const totalQuestions = statefulQuestions.length
-
     const numberCompleted = statefulQuestions.filter(
         (question) => question.isRevealed === true,
     ).length
     const numberCorrect = statefulQuestions.filter(
         (question) => question.answeredCorrectly === true,
     ).length
+
+    const shuffledChoices = useMemo(() => {
+        return questions.map((question) => {
+            return shuffle([
+                {
+                    answer: question.correct_answer,
+                    explanation: question.correct_explanation,
+                    isCorrect: true,
+                },
+                {
+                    answer: question.wrong_answer_1,
+                    explanation: question.wrong_explanation_1,
+                    isCorrect: false,
+                },
+                {
+                    answer: question.wrong_answer_2,
+                    explanation: question.wrong_explanation_2,
+                    isCorrect: false,
+                },
+                {
+                    answer: question.wrong_answer_3,
+                    explanation: question.wrong_explanation_3,
+                    isCorrect: false,
+                },
+            ])
+        })
+    }, [])
 
     useEffect(() => {
         for (let i = 0; i < examMetadata.length; i++) {
@@ -92,6 +117,7 @@ export default function ExamWrapper({ examCode, questions, currentID }: WrapperP
             <Card
                 id={currentID}
                 question={currentQuestion}
+                choices={shuffledChoices[currentID - 1]}
                 selectedAnswer={currentQuestion.selectedAnswer}
                 onSelect={handleSelect}
                 isRevealed={currentQuestion.isRevealed}
