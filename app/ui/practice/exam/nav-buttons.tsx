@@ -6,10 +6,9 @@ import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 interface NavButtonProps {
     completed: number
     total: number
-    onComplete: (value: number) => void
 }
 
-export default function NavButtons({ completed, total, onComplete }: NavButtonProps) {
+export default function NavButtons({ completed, total }: NavButtonProps) {
     const searchParams = useSearchParams()
     const pathname = usePathname()
     const { replace } = useRouter()
@@ -27,13 +26,10 @@ export default function NavButtons({ completed, total, onComplete }: NavButtonPr
 
     function handleNextCard() {
         navigate(current + 1)
-        if (current > completed) {
-            onComplete(current)
-        }
     }
 
     function handleFinish() {
-        onComplete(current)
+        // onComplete(current)
     }
 
     return (

@@ -35,10 +35,6 @@ interface WrapperProps {
 }
 
 export default function ExamWrapper({ examCode, questions, currentID }: WrapperProps) {
-    // const [selected, setSelected] = useState<Record<number, number | null>>({})
-    // const [isRevealed, setRevealed] = useState<Record<number, boolean>>({})
-    // const [isFlagged, setFlagged] = useState<Record<number, boolean>>({})
-    // const [numberCompleted, setNumberCompleted] = useState<number>(0)
     const [statefulQuestions, setStatefulQuestions] = useState<QuestionData[]>(questions)
     const [timeRemaining, setTimeRemaining] = useState<number>(0)
 
@@ -102,11 +98,7 @@ export default function ExamWrapper({ examCode, questions, currentID }: WrapperP
                 onReveal={handleReveal}
             />
 
-            <NavButtons
-                completed={numberCompleted}
-                total={totalQuestions}
-                onComplete={setNumberCompleted}
-            />
+            <NavButtons completed={numberCompleted} total={totalQuestions} />
         </div>
     )
 }
