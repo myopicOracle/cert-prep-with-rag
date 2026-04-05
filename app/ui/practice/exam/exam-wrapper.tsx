@@ -85,22 +85,46 @@ export default function ExamWrapper({ examCode, questions, currentID }: WrapperP
     }, [examCode])
 
     function handleSelect(index: number) {
-        const updated = [...statefulQuestions]
-        updated[currentID - 1].selectedAnswer = index
-        setStatefulQuestions(updated)
+        setStatefulQuestions((prev) => {
+            const updatedArray = [...prev]
+            const index = currentID - 1
+
+            updatedArray[index] = {
+                ...updatedArray[index],
+                selectedAnswer: index,
+            }
+
+            return updatedArray
+        })
     }
 
     function handleReveal(isCorrect: boolean) {
-        const updated = [...statefulQuestions]
-        updated[currentID - 1].isRevealed = true
-        updated[currentID - 1].answeredCorrectly = isCorrect
-        setStatefulQuestions(updated)
+        setStatefulQuestions((prev) => {
+            const updatedArray = [...prev]
+            const index = currentID - 1
+
+            updatedArray[index] = {
+                ...updatedArray[index],
+                isRevealed: true,
+                answeredCorrectly: isCorrect,
+            }
+
+            return updatedArray
+        })
     }
 
     function handleFlag() {
-        const updated = [...statefulQuestions]
-        updated[currentID - 1].isFlagged = !updated[currentID - 1].isFlagged
-        setStatefulQuestions(updated)
+        setStatefulQuestions((prev) => {
+            const updatedArray = [...prev]
+            const index = currentID - 1
+
+            updatedArray[index] = {
+                ...updatedArray[index],
+                isFlagged: !updatedArray[index].isFlagged,
+            }
+
+            return updatedArray
+        })
     }
 
     return (
