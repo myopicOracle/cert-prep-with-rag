@@ -17,12 +17,12 @@ export default async function Page({
     const rawQuestions = await fetchQuestions()
 
     // Temporary state tracking - move into database once Auth is set up and user data persisted
-    const statefulQuestions = rawQuestions.map((question) => {
+    const questions = rawQuestions.map((question) => {
         return {
             ...question,
-            answered: false,
-            flagged: false,
-            selectedIndex: null,
+            selectedAnswer: null,
+            isRevealed: false,
+            isFlagged: false,
             answeredCorrectly: null,
         }
     })
@@ -34,7 +34,7 @@ export default async function Page({
         <div className="w-full">
             <h1 className={`${lusitana.className} text-2xl`}>{examCode}</h1>
 
-            <ExamWrapper examCode={examCode} questions={statefulQuestions} currentID={currentID} />
+            <ExamWrapper examCode={examCode} questions={questions} currentID={currentID} />
         </div>
     )
 }

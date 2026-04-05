@@ -6,7 +6,7 @@ interface ProgressWrapperProps {
     setTimeRemaining: (setter: (prev: number) => number) => void
     questionsCompleted: number
     totalQuestions: number
-    flagged: boolean
+    isFlagged: boolean
     onFlag: () => void
 }
 
@@ -15,7 +15,7 @@ export default function ProgressWrapper({
     setTimeRemaining,
     questionsCompleted,
     totalQuestions,
-    flagged,
+    isFlagged,
     onFlag,
 }: ProgressWrapperProps) {
     const progressPercentage = (questionsCompleted / totalQuestions) * 100
@@ -27,7 +27,7 @@ export default function ProgressWrapper({
                 <div>
                     Answered: {questionsCompleted} / {totalQuestions}
                 </div>
-                <Flag flagged={flagged} onFlag={onFlag} />
+                <Flag isFlagged={isFlagged} onFlag={onFlag} />
             </div>
             <ProgressBar progressPercentage={progressPercentage} />
         </div>

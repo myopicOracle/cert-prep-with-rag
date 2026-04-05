@@ -21,24 +21,28 @@ interface QuestionData {
     wrong_explanation_2: string
     wrong_explanation_3: string
     created_at: string
+    isRevealed: boolean
+    isFlagged: boolean
+    selectedAnswer: number | null
+    answeredCorrectly: boolean | null
 }
 
 interface QuestionProps {
     // NTD: extract to types definitions file
     id: number
     question: QuestionData
-    selectedIndex: number | null
+    selectedAnswer: number | null
     onSelect: (index: number) => void
-    revealed: boolean
-    onReveal: () => void
+    isRevealed: boolean
+    onReveal: (isCorrect: boolean) => void
 }
 
 export default function Card({
     id,
     question,
-    selectedIndex,
+    selectedAnswer,
     onSelect,
-    revealed,
+    isRevealed,
     onReveal,
 }: QuestionProps) {
     const questionID = id
@@ -80,17 +84,15 @@ export default function Card({
             <div className="mt-4 mb-8 p-4">
                 <Scenario>{scenario}</Scenario>
                 {choices.map((choice, index) => {
-                    const isCorrect = choice.isCorrect
-
                     return (
                         <Choice
                             key={index}
                             index={index}
-                            selected={selectedIndex === index}
+                            selected={selectedAnswer === index}
                             onSelect={onSelect}>
                             {choice.answer}
-                            {revealed ? (
-                                <Explanation isCorrect={isCorrect}>
+                            {isRevealed ? (
+                                <Explanation isCorrect={choice.isCorrect}>
                                     {choice.explanation}
                                 </Explanation>
                             ) : (
@@ -106,8 +108,12 @@ export default function Card({
                     buttonStyle={
                         'rounded mb-4 px-4 py-2 bg-blue-500 text-white disabled:opacity-50'
                     }
-                    isDisabled={selectedIndex === null || revealed}
-                    onClick={onReveal}
+                    isDisabled={selectedAnswer === null || isRevealed}
+                    onClick={() => {
+                        if (selectedAnswer !== null) {
+                            onReveal(choices[selectedAnswer].isCorrect)
+                        }
+                    }}
                 />
             </div>
         </div>
