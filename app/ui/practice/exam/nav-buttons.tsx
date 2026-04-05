@@ -6,9 +6,10 @@ import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 interface NavButtonProps {
     completed: number
     total: number
+    onFinish: () => void
 }
 
-export default function NavButtons({ completed, total }: NavButtonProps) {
+export default function NavButtons({ completed, total, onFinish }: NavButtonProps) {
     const searchParams = useSearchParams()
     const pathname = usePathname()
     const { replace } = useRouter()
@@ -44,7 +45,7 @@ export default function NavButtons({ completed, total }: NavButtonProps) {
                 <Button
                     name="Finish"
                     buttonStyle="rounded-sm text-sm text-white font-semibold px-8 py-3 bg-blue-500 shadow-md hover:text-black hover:bg-blue-200 focus:outline-visible"
-                    onClick={handleFinish}
+                    onClick={onFinish}
                     isDisabled={false}
                 />
             ) : (

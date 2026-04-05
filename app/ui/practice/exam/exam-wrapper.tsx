@@ -5,6 +5,7 @@ import { shuffle } from 'lodash'
 import ProgressWrapper from '@/app/ui/practice/exam/progress-wrapper'
 import Card from '@/app/ui/practice/exam/card'
 import NavButtons from '@/app/ui/practice/exam/nav-buttons'
+import Review from '@/app/ui/practice/exam/review'
 import { examMetadata } from '@/app/lib/metadata'
 
 interface QuestionData {
@@ -37,8 +38,11 @@ interface WrapperProps {
 export default function ExamWrapper({ examCode, questions, currentID }: WrapperProps) {
     const [statefulQuestions, setStatefulQuestions] = useState<QuestionData[]>(questions)
     const [timeRemaining, setTimeRemaining] = useState<number>(0)
+    const [finishExam, setFinishExam] = useState<boolean>(false)
 
-    const currentQuestion = statefulQuestions[currentID - 1]
+    const currentIndex = currentID - 1
+    const currentQuestion = statefulQuestions[currentIndex]
+
     const totalQuestions = statefulQuestions.length
     const numberCompleted = statefulQuestions.filter(
         (question) => question.isRevealed === true,
@@ -87,10 +91,9 @@ export default function ExamWrapper({ examCode, questions, currentID }: WrapperP
     function handleSelect(index: number) {
         setStatefulQuestions((prev) => {
             const updatedArray = [...prev]
-            const index = currentID - 1
 
-            updatedArray[index] = {
-                ...updatedArray[index],
+            updatedArray[currentIndex] = {
+                ...updatedArray[currentIndex],
                 selectedAnswer: index,
             }
 
@@ -101,10 +104,9 @@ export default function ExamWrapper({ examCode, questions, currentID }: WrapperP
     function handleReveal(isCorrect: boolean) {
         setStatefulQuestions((prev) => {
             const updatedArray = [...prev]
-            const index = currentID - 1
 
-            updatedArray[index] = {
-                ...updatedArray[index],
+            updatedArray[currentIndex] = {
+                ...updatedArray[currentIndex],
                 isRevealed: true,
                 answeredCorrectly: isCorrect,
             }
@@ -116,39 +118,57 @@ export default function ExamWrapper({ examCode, questions, currentID }: WrapperP
     function handleFlag() {
         setStatefulQuestions((prev) => {
             const updatedArray = [...prev]
-            const index = currentID - 1
 
-            updatedArray[index] = {
-                ...updatedArray[index],
-                isFlagged: !updatedArray[index].isFlagged,
+            updatedArray[currentIndex] = {
+                ...updatedArray[currentIndex],
+                isFlagged: !updatedArray[currentIndex].isFlagged,
             }
 
             return updatedArray
         })
     }
 
+    function handleFinish() {
+        if (!currentQuestion.isRevealed && currentQuestion.selectedAnswer !== null) {
+            const isUserCorrect =
+                shuffledChoices[currentIndex][currentQuestion.selectedAnswer].isCorrect
+            handleReveal(isUserCorrect)
+        }
+        setFinishExam(true)
+    }
+
     return (
         <div>
-            <ProgressWrapper
-                timeRemaining={timeRemaining}
-                setTimeRemaining={setTimeRemaining}
-                questionsCompleted={numberCompleted}
-                totalQuestions={totalQuestions}
-                isFlagged={currentQuestion.isFlagged}
-                onFlag={handleFlag}
-            />
+            {!finishExam ? (
+                <>
+                    <ProgressWrapper
+                        timeRemaining={timeRemaining}
+                        setTimeRemaining={setTimeRemaining}
+                        questionsCompleted={numberCompleted}
+                        totalQuestions={totalQuestions}
+                        isFlagged={currentQuestion.isFlagged}
+                        onFlag={handleFlag}
+                    />
 
-            <Card
-                id={currentID}
-                question={currentQuestion}
-                choices={shuffledChoices[currentID - 1]}
-                selectedAnswer={currentQuestion.selectedAnswer}
-                onSelect={handleSelect}
-                isRevealed={currentQuestion.isRevealed}
-                onReveal={handleReveal}
-            />
+                    <Card
+                        id={currentID}
+                        question={currentQuestion}
+                        choices={shuffledChoices[currentIndex]}
+                        selectedAnswer={currentQuestion.selectedAnswer}
+                        onSelect={handleSelect}
+                        isRevealed={currentQuestion.isRevealed}
+                        onReveal={handleReveal}
+                    />
 
-            <NavButtons completed={numberCompleted} total={totalQuestions} />
+                    <NavButtons
+                        completed={numberCompleted}
+                        total={totalQuestions}
+                        onFinish={handleFinish}
+                    />
+                </>
+            ) : (
+                <Review />
+            )}
         </div>
     )
 }
