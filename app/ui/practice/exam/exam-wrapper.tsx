@@ -160,14 +160,15 @@ export default function ExamWrapper({ examCode, questions, currentID }: WrapperP
                         onReveal={handleReveal}
                     />
 
-                    <NavButtons
-                        completed={numberCompleted}
-                        total={totalQuestions}
-                        onFinish={handleFinish}
-                    />
+                    <NavButtons total={totalQuestions} onFinish={handleFinish} />
                 </>
             ) : (
-                <Review />
+                <Review
+                    questions={statefulQuestions}
+                    totalQuestions={totalQuestions}
+                    numberCompleted={numberCompleted}
+                    numberCorrect={numberCorrect}
+                />
             )}
         </div>
     )
