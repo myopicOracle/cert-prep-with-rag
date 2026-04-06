@@ -1,3 +1,7 @@
+import Link from 'next/link'
+import { FlagIcon as FlagIconOutline } from '@heroicons/react/24/outline'
+import { FlagIcon as FlagIconSolid } from '@heroicons/react/24/solid'
+
 interface QuestionData {
     // NTD: extract to types definitions file
     id: string
@@ -54,19 +58,39 @@ export default function Review({
                 </div>
             </div>
             <h2>Question Review</h2>
-            <div className="flex flex-col gap-2 my-4">
+            <div className="flex flex-col gap-4 my-4">
                 {questions.map((question, index) => {
                     return (
-                        <div className="flex gap-4 rounded-xl bg-blue-50">
-                            <div>Correct: {question.answeredCorrectly ? 'True' : 'False'}</div>
-                            <div>Question: {question.scenario}</div>
-                            <div>Skipped: {question.isRevealed ? 'False' : 'True'}</div>
-                            <div>Flagged: {question.isFlagged ? 'True' : 'False'}</div>
+                        <div
+                            className={`flex gap-6 p-4 rounded-xl ${
+                                question.answeredCorrectly ? 'bg-green-50' : 'bg-red-50'
+                            }`}>
                             <div>
-                                Selection:{' '}
-                                {question.selectedAnswer !== null
-                                    ? letterArray[question.selectedAnswer]
-                                    : 'N/A'}
+                                <strong>Question</strong>
+                                {'\n\n'} {index + 1}
+                            </div>
+                            <div>
+                                <strong>Scenario</strong>
+                                {'\n\n'} {question.scenario}
+                            </div>
+                            <div>
+                                <strong>Status</strong>{' '}
+                                {question.isRevealed ? 'Completed' : 'Skipped'}
+                            </div>
+                            <div>
+                                <strong>Flagged</strong>{' '}
+                                {question.isFlagged ? (
+                                    <FlagIconSolid className="w-5" />
+                                ) : (
+                                    <FlagIconOutline className="w-5" />
+                                )}
+                            </div>
+                            <div>
+                                <Link
+                                    href={`/practice/exam?id=${index + 1}`}
+                                    className="text-blue-600 underline hover:text-blue-800 transition-colors">
+                                    Review
+                                </Link>
                             </div>
                         </div>
                     )

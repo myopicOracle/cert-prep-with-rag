@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
 import { shuffle } from 'lodash'
+import { useState, useEffect, useMemo } from 'react'
+import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 import ProgressWrapper from '@/app/ui/practice/exam/progress-wrapper'
 import Card from '@/app/ui/practice/exam/card'
 import NavButtons from '@/app/ui/practice/exam/nav-buttons'
@@ -36,9 +37,13 @@ interface WrapperProps {
 }
 
 export default function ExamWrapper({ examCode, questions, currentID }: WrapperProps) {
-    const [statefulQuestions, setStatefulQuestions] = useState<QuestionData[]>(questions)
+    const [statefulQuestions, setStatefulQuestions] = useState<QuestionData[]>(() => questions)
     const [timeRemaining, setTimeRemaining] = useState<number>(0)
-    const [finishExam, setFinishExam] = useState<boolean>(false)
+
+    const searchParams = useSearchParams()
+    const isReviewMode = searchParams.get('view') === 'review'
+    const pathname = usePathname()
+    const { replace } = useRouter()
 
     const currentIndex = currentID - 1
     const currentQuestion = statefulQuestions[currentIndex]
@@ -134,12 +139,14 @@ export default function ExamWrapper({ examCode, questions, currentID }: WrapperP
                 shuffledChoices[currentIndex][currentQuestion.selectedAnswer].isCorrect
             handleReveal(isUserCorrect)
         }
-        setFinishExam(true)
+        const params = new URLSearchParams(searchParams)
+        params.set('view', 'review')
+        replace(`${pathname}? ${params.toString()}`)
     }
 
     return (
         <div>
-            {!finishExam ? (
+            {!isReviewMode ? (
                 <>
                     <ProgressWrapper
                         timeRemaining={timeRemaining}
