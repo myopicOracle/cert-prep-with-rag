@@ -2,12 +2,9 @@
 
 import Button from '@/app/ui/practice/button'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
+import { NavButtonsProps } from '@/app/types/components'
 
-interface NavButtonProps {
-    total: number
-}
-
-export default function NavButtons({ total }: NavButtonProps) {
+export default function NavButtons({ total, onFinish }: NavButtonsProps) {
     const searchParams = useSearchParams()
     const pathname = usePathname()
     const { replace } = useRouter()
@@ -20,19 +17,36 @@ export default function NavButtons({ total }: NavButtonProps) {
     }
 
     function handlePrevCard() {
-        // NTD: function wrapper uncessary, left to make painfully obvious for now
         navigate(current - 1)
     }
 
     function handleNextCard() {
-        // NTD: function wrapper uncessary, left to make painfully obvious for now
         navigate(current + 1)
     }
 
     return (
         <div className="flex w-full items-center justify-between px-12">
-            <Button name="Prev" onClick={handlePrevCard} condition={current <= 1} />
-            <Button name="Next" onClick={handleNextCard} condition={current >= total} />
+            <Button
+                name="Prev"
+                buttonStyle="rounded-sm text-sm font-semibold px-8 py-3 bg-blue-100 shadow-md hover:bg-blue-300 focus:outline-none"
+                onClick={handlePrevCard}
+                isDisabled={current <= 1}
+            />
+            {current >= total ? (
+                <Button
+                    name="Finish"
+                    buttonStyle="rounded-sm text-sm text-white font-semibold px-8 py-3 bg-blue-500 shadow-md hover:text-black hover:bg-blue-200 focus:outline-visible"
+                    onClick={onFinish}
+                    isDisabled={false}
+                />
+            ) : (
+                <Button
+                    name="Next"
+                    buttonStyle="rounded-sm text-sm font-semibold px-8 py-3 bg-blue-100 shadow-md hover:bg-blue-300 focus:outline-none"
+                    onClick={handleNextCard}
+                    isDisabled={current >= total}
+                />
+            )}
         </div>
     )
 }

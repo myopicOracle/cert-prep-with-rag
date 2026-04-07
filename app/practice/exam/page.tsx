@@ -1,7 +1,5 @@
 import { lusitana } from '@/app/ui/fonts'
-import Card from '@/app/ui/practice/exam/card'
-import ProgressBar from '@/app/ui/practice/exam/progress-bar'
-import NavButtons from '@/app/ui/practice/exam/nav-buttons'
+import ExamWrapper from '@/app/ui/practice/exam/exam-wrapper'
 import { fetchQuestions } from '@/app/lib/data'
 
 export default async function Page({
@@ -13,27 +11,30 @@ export default async function Page({
 }) {
     const params = await searchParams
 
-    const questions = await fetchQuestions()
-    console.log('Questions table returned: ', questions)
-
     const currentID = Number(params?.id) || 1
     console.log('currentID: ', currentID)
-    const currentQuestion = questions[currentID - 1]
-    console.log('currentQuestion: ', currentQuestion)
-    const totalQuestions = questions.length
 
-    const examID = 'DEA-C01 - Exam 1' // NTD: make dynamic (pull from questions table)
+    const rawQuestions = await fetchQuestions()
+
+    // Temporary state tracking - move into database once Auth is set up and user data persisted
+    const questions = rawQuestions.map((question) => {
+        return {
+            ...question,
+            selectedAnswer: null,
+            isRevealed: false,
+            isFlagged: false,
+            answeredCorrectly: null,
+        }
+    })
+
+    const examCode = 'DEA-C01' // NTD: make dynamic (pull from questions table)
+    // const examName = `${questions[0].exam_code} - ${questions[0].full_name}`
 
     return (
         <div className="w-full">
-            <h1 className={`${lusitana.className} text-2xl`}>{examID}</h1>
+            <h1 className={`${lusitana.className} text-3xl`}>{examCode}</h1>
 
-            <ProgressBar />
-
-            {/* NTD: dynamically generate with map, index with URL params */}
-            <Card id={currentID} question={currentQuestion} />
-
-            <NavButtons total={totalQuestions} />
+            <ExamWrapper examCode={examCode} questions={questions} currentID={currentID} />
         </div>
     )
 }

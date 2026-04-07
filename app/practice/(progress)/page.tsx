@@ -1,7 +1,7 @@
 import { lusitana } from '@/app/ui/fonts'
-import ProgressOverview from '@/app/ui/practice/progress-overview'
-import ExamStats from '@/app/ui/practice/exam-stats'
-import FlashcardsStats from '@/app/ui/practice/flashcards-stats'
+import ProgressOverview from '@/app/ui/practice/progress/progress-overview'
+import ExamStats from '@/app/ui/practice/progress/exam-stats'
+import FlashcardsStats from '@/app/ui/practice/progress/flashcards-stats'
 
 export default async function Page() {
     return (

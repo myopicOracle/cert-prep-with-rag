@@ -1,4 +1,10 @@
 {
     "editor.fontSize": 15,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "geminicodeassist.enableTelemetry": false,
+    "geminicodeassist.inlineSuggestions.enableAuto": false,
+    "geminicodeassist.inlineSuggestions.suggestionSpeed": "Slow",
+    "editor.inlineSuggest.experimental.suppressInlineSuggestions": "google.geminicodeassist",
+    "editor.inlineSuggest.enabled": false,
+    "geminicodeassist.chat.changeView": "Default diff view"
 }

@@ -10,7 +10,7 @@
 - [x] write fetch data function and test Supabase connection
 - [x] refactor page to map each card component from db rows pulled
 - [x] implement URL params with shuffle logic as routes for cards
-- [ ] implement Server Events to check answer and return explanation
+- [x] implement Server Events to check answer and return explanation
 - [ ] (ui) add timer, progress indicator, question flags, review page
 - [ ] (ui) enhance responsiveness, adjust page component sizing/layout
       <!-- - [ ] set up AWS Bedrock embedding/reponse endpoint  -->

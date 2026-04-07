@@ -9,11 +9,11 @@ export async function fetchQuestions() {
             throw error
         }
 
-        console.log('Data returned by DB call: ', data)
-        console.log('Return type: ', typeof data)
+        // console.log('Data returned by DB call: ', data)
+        // console.log('Return type: ', typeof data)
         return data
     } catch (error) {
-        console.log('Database ERROR: ', error)
+        // console.log('Database ERROR: ', error)
         throw new Error('Failed to fetch questions from database.')
     }
 }

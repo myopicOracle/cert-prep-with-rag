@@ -1,9 +1,15 @@
-export default function ProgressBar() {
+interface ProgressBarProps {
+    progressPercentage: number
+}
+
+export default function ProgressBar({ progressPercentage }: ProgressBarProps) {
     return (
-        <div className="mt-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
-            <p className="text-sm text-gray-600">
-                Placeholder for progress meter
-            </p>
+        // prettier-ignore
+        <div className="mt-4 p-4 rounded-full border border-gray-200 bg-white shadow-sm">
+            <div
+                className="rounded-full bg-blue-500 h-2"
+                style={ { width: `${progressPercentage}%` } }>    
+            </div>
         </div>
     )
 }
