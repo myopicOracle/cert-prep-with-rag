@@ -2,11 +2,7 @@
 
 import { FlagIcon as FlagIconOutline } from '@heroicons/react/24/outline'
 import { FlagIcon as FlagIconSolid } from '@heroicons/react/24/solid'
-
-interface FlagProps {
-    isFlagged: boolean
-    onFlag: () => void
-}
+import { FlagProps } from '@/app/types/components'
 
 export default function Flag({ isFlagged, onFlag }: FlagProps) {
     return (

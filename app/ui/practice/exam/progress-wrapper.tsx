@@ -1,14 +1,7 @@
 import Timer from '@/app/ui/practice/exam/timer'
 import Flag from '@/app/ui/practice/flag'
 import ProgressBar from '@/app/ui/practice/exam/progress-bar'
-interface ProgressWrapperProps {
-    timeRemaining: number
-    setTimeRemaining: (setter: (prev: number) => number) => void
-    questionsCompleted: number
-    totalQuestions: number
-    isFlagged: boolean
-    onFlag: () => void
-}
+import { ProgressWrapperProps } from '@/app/types/components'
 
 export default function ProgressWrapper({
     timeRemaining,

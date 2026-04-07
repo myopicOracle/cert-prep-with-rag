@@ -1,10 +1,6 @@
 import { useEffect } from 'react'
 import { ClockIcon } from '@heroicons/react/24/outline'
-
-interface TimerProps {
-    timeInSeconds: number
-    setTimeRemaining: (setter: (prev: number) => number) => void
-}
+import { TimerProps } from '@/app/types/components'
 
 export default function Timer({ timeInSeconds, setTimeRemaining }: TimerProps) {
     const hours = Math.floor(timeInSeconds / 3600)

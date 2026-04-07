@@ -1,10 +1,4 @@
-interface ButtonProps {
-    // NTD: extract to types definitions file
-    name: string
-    buttonStyle: string
-    isDisabled: boolean
-    onClick: () => void
-}
+import { ButtonProps } from '@/app/types/components'
 
 export default function Button({ name, buttonStyle, isDisabled, onClick }: ButtonProps) {
     return (

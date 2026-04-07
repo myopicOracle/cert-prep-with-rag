@@ -8,35 +8,10 @@ import Card from '@/app/ui/practice/exam/card'
 import NavButtons from '@/app/ui/practice/exam/nav-buttons'
 import Review from '@/app/ui/practice/exam/review'
 import { examMetadata } from '@/app/lib/metadata'
+import { ExamWrapperProps } from '@/app/types/components'
+import { QuestionData, AnswerChoice } from '@/app/types/exam'
 
-interface QuestionData {
-    // NTD: extract to types definitions file
-    id: string
-    task_statement_id: string | null
-    scenario: string
-    correct_answer: string
-    wrong_answer_1: string
-    wrong_answer_2: string
-    wrong_answer_3: string
-    correct_explanation: string
-    wrong_explanation_1: string
-    wrong_explanation_2: string
-    wrong_explanation_3: string
-    created_at: string
-    isRevealed: boolean
-    isFlagged: boolean
-    selectedAnswer: number | null
-    answeredCorrectly: boolean | null
-}
-
-interface WrapperProps {
-    // NTD: extract to types definitions file
-    examCode: string
-    questions: QuestionData[]
-    currentID: number
-}
-
-export default function ExamWrapper({ examCode, questions, currentID }: WrapperProps) {
+export default function ExamWrapper({ examCode, questions, currentID }: ExamWrapperProps) {
     const [statefulQuestions, setStatefulQuestions] = useState<QuestionData[]>(() => questions)
     const [timeRemaining, setTimeRemaining] = useState<number>(0)
 
@@ -58,7 +33,7 @@ export default function ExamWrapper({ examCode, questions, currentID }: WrapperP
 
     const shuffledChoices = useMemo(() => {
         return questions.map((question) => {
-            return shuffle([
+            return shuffle<AnswerChoice>([
                 {
                     answer: question.correct_answer,
                     explanation: question.correct_explanation,

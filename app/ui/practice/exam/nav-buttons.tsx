@@ -2,13 +2,9 @@
 
 import Button from '@/app/ui/practice/button'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
+import { NavButtonsProps } from '@/app/types/components'
 
-interface NavButtonProps {
-    total: number
-    onFinish: () => void
-}
-
-export default function NavButtons({ total, onFinish }: NavButtonProps) {
+export default function NavButtons({ total, onFinish }: NavButtonsProps) {
     const searchParams = useSearchParams()
     const pathname = usePathname()
     const { replace } = useRouter()

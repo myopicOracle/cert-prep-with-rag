@@ -4,43 +4,7 @@ import Scenario from '@/app/ui/practice/exam/scenario'
 import Choice from '@/app/ui/practice/exam/choice'
 import Explanation from '@/app/ui/practice/exam/explanation'
 import Button from '@/app/ui/practice/button'
-
-interface QuestionData {
-    // NTD: extract to types definitions file
-    id: string
-    task_statement_id: string | null
-    scenario: string
-    correct_answer: string
-    wrong_answer_1: string
-    wrong_answer_2: string
-    wrong_answer_3: string
-    correct_explanation: string
-    wrong_explanation_1: string
-    wrong_explanation_2: string
-    wrong_explanation_3: string
-    created_at: string
-    isRevealed: boolean
-    isFlagged: boolean
-    selectedAnswer: number | null
-    answeredCorrectly: boolean | null
-}
-
-interface Choice {
-    answer: string
-    explanation: string
-    isCorrect: boolean
-}
-
-interface QuestionProps {
-    // NTD: extract to types definitions file
-    id: number
-    question: QuestionData
-    choices: Choice[]
-    selectedAnswer: number | null
-    onSelect: (index: number) => void
-    isRevealed: boolean
-    onReveal: (isCorrect: boolean) => void
-}
+import { CardProps } from '@/app/types/components'
 
 export default function Card({
     id,
@@ -50,7 +14,7 @@ export default function Card({
     onSelect,
     isRevealed,
     onReveal,
-}: QuestionProps) {
+}: CardProps) {
     const questionID = id
 
     const scenario = question.scenario

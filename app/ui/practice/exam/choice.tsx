@@ -1,10 +1,4 @@
-interface ChoiceProps {
-    // NTD: extract to types definitions file
-    children: React.ReactNode
-    index: number
-    selected: boolean
-    onSelect: (index: number) => void
-}
+import { ChoiceProps } from '@/app/types/components'
 
 export default function Choice({ children, index, selected, onSelect }: ChoiceProps) {
     return (
