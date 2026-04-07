@@ -32,7 +32,7 @@ export default async function Page({
 
     return (
         <div className="w-full">
-            <h1 className={`${lusitana.className} text-2xl`}>{examCode}</h1>
+            <h1 className={`${lusitana.className} text-3xl`}>{examCode}</h1>
 
             <ExamWrapper examCode={examCode} questions={questions} currentID={currentID} />
         </div>
