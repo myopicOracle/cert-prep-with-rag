@@ -144,10 +144,10 @@ _Note: Running these covers your bases, but for a quick sanity check for model a
 
 **Task**
 
-- Create a reusable AWS Bedrock client with error handling to signal comm channels clear and credentials are all good.
-- Write a script to convert text to vector embeddings using Bedrock's InvokeModel API.
-- Write a function to pass user queries to Bedrock's Converse API, in this case the Haiku 4.5 FM.
-- Validate both functions work correctly before integrating into the larger application.
+- S2-2A. Create a reusable AWS Bedrock client with error handling to signal comm channels clear and credentials are all good.
+- S2-2B. Write a Converse call to Haiku and test it returns an LLM response via console.log using npx in terminal.
+- S2-2C. Write a Invoke call to Titan Embedding and test it returns the correct vector object via console.log using npx in terminal.
+- S2-2D. Package them into exports and drop into a simple test script for dry run.
 
 **Decision**
 
@@ -206,3 +206,120 @@ _Bedrock_
 - [Use a computer use tool to complete an Amazon Bedrock model response](https://docs.aws.amazon.com/bedrock/latest/userguide/computer-use.html)
 
 </details>
+
+<details>
+
+<summary>S2-2B: What the Converse call to Haiku returns.</summary>
+
+```ts
+async function testCall() {
+    const command = new ConverseCommand({
+        modelId: 'us.anthropic.claude-haiku-4-5-20251001-v1:0',
+        messages: [
+            {
+                role: 'user',
+                content: [{ text: 'What is Amazon SageMaker?' }],
+            },
+        ],
+    })
+
+    const responseObj = await client.send(command)
+    console.log('Full response obj:', JSON.stringify(responseObj, null, 2))
+    console.log('Response obj type:', typeof responseObj)
+
+    const responseText = responseObj.output.message.content[0].text
+    console.log('LLM response only: ', responseText)
+}
+```
+
+```zsh
+npx tsx app/lib/bedrock.ts
+Full response obj: {
+  "output": {
+    "message": {
+      "role": "assistant",
+      "content": [
+        {
+          "text": "# Amazon SageMaker\n\nAmazon SageMaker is a **fully managed machine learning service** provided by AWS that simplifies the process of building, training, and deploying machine learning models at scale.\n\n## Key Features\n\n### 1. **Data Preparation**\n- Built-in data labeling and annotation tools\n- Data preprocessing and feature engineering capabilities\n\n### 2. **Model Training**\n- Pre-built algorithms for common ML tasks\n- Support for custom frameworks (TensorFlow, PyTorch, Scikit-learn, etc.)\n- Distributed training across multiple instances\n- Automatic hyperparameter tuning\n\n### 3. **Model Deployment**\n- One-click model deployment to production\n- Auto-scaling capabilities\n- Real-time and batch inference endpoints\n\n### 4. **Development Tools**\n- **SageMaker Studio**: Integrated development environment (IDE) for ML\n- **Jupyter Notebooks**: Pre-configured notebooks\n- **Autopilot**: Automated ML (AutoML) for quick model creation\n\n### 5. **Additional Capabilities**\n- Model monitoring and drift detection\n- Feature Store for managing ML features\n- Experiment tracking\n- Integration with AWS services (S3, Lambda, etc.)\n\n## Common Use Cases\n\n- Predictive analytics\n- Recommendation engines\n- Image and text classification\n- Time series forecasting\n- Fraud detection\n\n## Benefits\n\n✓ Reduces time to market  \n✓ No infrastructure management required  \n✓ Cost-effective (pay-as-you-go pricing)  \n✓ Highly scalable  \n✓ Integrates seamlessly with AWS ecosystem\n\nSageMaker abstracts away much of the infrastructure complexity, allowing data scientists and developers to focus on building effective ML models."
+        }
+      ]
+    }
+  },
+  "stopReason": "end_turn",
+  "usage": {
+    "inputTokens": 15,
+    "outputTokens": 395,
+    "totalTokens": 410,
+    "cacheReadInputTokens": 0,
+    "cacheWriteInputTokens": 0
+  },
+  "metrics": {
+    "latencyMs": 3421
+  },
+  "$metadata": {
+    "httpStatusCode": 200,
+    "requestId": "23796579-806a-4d52-b29d-8b29ba9a4215",
+    "attempts": 1,
+    "totalRetryDelay": 0
+  }
+}
+Response obj type: object
+LLM response only:  # Amazon SageMaker
+
+Amazon SageMaker is a **fully managed machine learning service** provided by AWS that simplifies the process of building, training, and deploying machine learning models at scale.
+
+## Key Features
+
+### 1. **Data Preparation**
+
+- Built-in data labeling and annotation tools
+- Data preprocessing and feature engineering capabilities
+
+### 2. **Model Training**
+
+- Pre-built algorithms for common ML tasks
+- Support for custom frameworks (TensorFlow, PyTorch, Scikit-learn, etc.)
+- Distributed training across multiple instances
+- Automatic hyperparameter tuning
+
+### 3. **Model Deployment**
+
+- One-click model deployment to production
+- Auto-scaling capabilities
+- Real-time and batch inference endpoints
+
+### 4. **Development Tools**
+
+- **SageMaker Studio**: Integrated development environment (IDE) for ML
+- **Jupyter Notebooks**: Pre-configured notebooks
+- **Autopilot**: Automated ML (AutoML) for quick model creation
+
+### 5. **Additional Capabilities**
+
+- Model monitoring and drift detection
+- Feature Store for managing ML features
+- Experiment tracking
+- Integration with AWS services (S3, Lambda, etc.)
+
+## Common Use Cases
+
+- Predictive analytics
+- Recommendation engines
+- Image and text classification
+- Time series forecasting
+- Fraud detection
+
+## Benefits
+
+✓ Reduces time to market
+✓ No infrastructure management required
+✓ Cost-effective (pay-as-you-go pricing)
+✓ Highly scalable
+✓ Integrates seamlessly with AWS ecosystem
+
+SageMaker abstracts away much of the infrastructure complexity, allowing data scientists and developers to focus on building effective ML models.
+
+```
+
+</details>
+```

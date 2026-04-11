@@ -1,7 +1,4 @@
-import {
-    BedrockRuntimeClient,
-    ConverseCommand,
-} from '@aws-sdk/client-bedrock-runtime'
+import { BedrockRuntimeClient, ConverseCommand } from '@aws-sdk/client-bedrock-runtime'
 
 const client = new BedrockRuntimeClient({
     region: process.env.AWS_REGION!,
@@ -9,10 +6,10 @@ const client = new BedrockRuntimeClient({
 
 async function testCall() {
     const command = new ConverseCommand({
-        modelId: 'us.amazon.nova-lite-v1:0',
-        // modelId: 'us.anthropic.claude-haiku-4-5-20251001-v1:0',
-        // modelId: 'us.anthropic.claude-3-5-haiku-20241022-v1:0',
+        modelId: 'us.anthropic.claude-haiku-4-5-20251001-v1:0',
         // modelId: 'google.gemma-3-12b-it',
+        // modelId: 'us.amazon.nova-lite-v1:0',
+        // modelId: 'us.anthropic.claude-3-5-haiku-20241022-v1:0',
         messages: [
             {
                 role: 'user',
@@ -21,9 +18,12 @@ async function testCall() {
         ],
     })
 
-    const response = await client.send(command)
+    const responseObj = await client.send(command)
+    console.log('Full response obj:', JSON.stringify(responseObj, null, 2))
+    console.log('Response obj type:', typeof responseObj)
 
-    console.log(JSON.stringify(response, null, 2))
+    const responseText = responseObj.output.message.content[0].text
+    console.log('LLM response only: ', responseText)
 }
 
 testCall()
