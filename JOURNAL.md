@@ -139,3 +139,70 @@ aws bedrock list-foundation-models --region us-east-1 --by-provider anthropic --
 </details>
 
 _Note: Running these covers your bases, but for a quick sanity check for model access you can always open Playgrounds in Bedrock and try chatting with the models you want to invoke, along with the region/response mode you need._
+
+### [S2-2] Build and test Bedrock embedding and RAG invocation functions
+
+**Task**
+
+- Create a reusable AWS Bedrock client with error handling to signal comm channels clear and credentials are all good.
+- Write a script to convert text to vector embeddings using Bedrock's InvokeModel API.
+- Write a function to pass user queries to Bedrock's Converse API, in this case the Haiku 4.5 FM.
+- Validate both functions work correctly before integrating into the larger application.
+
+**Decision**
+
+Bedrock uses two main endpoint families: Mantle and Runtime.
+
+Mantle is the newer engine for OpenAI-compatibility. It's also the one every LLM will recommend because AWS Docs recommends it. Presumably because OpenAI is the most popular inference framework, and Mantle is to OpenAI what the Aurora/RDS marketing push was to Oracle's dominance in DBs. _wink wink_
+
+But since I don't have any legacy OpenAI code to port over, and my goal is to build as much of this on AWS as possible, going with the Runtime engine would be a better choice since it's AWS-native and allows me to learn an inference framework I haven't used before.
+
+The basic breakdown for both is as follows.
+
+_Mantle_
+
+- Distributed inference engine designed specifically for OpenAI-compatible large-scale model serving. Use the OpenAI SDK to call Amazon Bedrock models by simply changing the base_url.
+- Primary APIs: `Chat Completions`, `Responses`
+- Endpoint Format: `bedrock-mantle.{region}.api.aws`
+- Best For: Migrating existing OpenAI-based applications to AWS with minimal code changes or using external tools that expect an OpenAI API format.
+
+_Bedrock_
+
+- The AWS-native, serverless API for invoking models within the AWS ecosystem. Also the default way to use Amazon Bedrock via AWS SDKs or AWS CLI.
+- Primary APIs: `InvokeModel`, `Converse`
+- Endpoint Format: `bedrock-runtime.{region}.amazonaws.com`
+- Best For: Applications built natively on AWS using IAM roles and AWS SDKs, especially those requiring complex features like Guardrails and Agents.
+
+[Ref](https://docs.aws.amazon.com/bedrock/latest/userguide/endpoints.html)
+
+<details>
+
+<summary>Links for further reading.</summary>
+
+[APIs supported by Amazon Bedrock:](https://docs.aws.amazon.com/bedrock/latest/userguide/apis.html)
+
+- [Invoke API](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-invoke.html)
+- [Converse API](https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html)
+- [Responses API](https://docs.aws.amazon.com/bedrock/latest/userguide/bedrock-mantle.html#bedrock-mantle-responses) / [OpenAI Docs](https://platform.openai.com/docs/api-reference/responses)
+- [Chat Completions API](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-chat-completions.html)
+
+[Supported foundation models in Amazon Bedrock:](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html)
+
+- [List Available Models API](https://docs.aws.amazon.com/bedrock/latest/userguide/bedrock-mantle.html#bedrock-mantle-models)
+
+[Inference:](https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html)
+
+- [Learn about use cases for different model inference methods](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-methods.html)
+- [How inference works in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-how.html)
+- [Influence response generation with inference parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-parameters.html)
+- [Supported Regions and models for running model inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-supported.html)
+- [Prerequisites for running model inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-prereq.html)
+- [Generate responses in the console using playgrounds](https://docs.aws.amazon.com/bedrock/latest/userguide/playgrounds.html)
+- [Enhance model responses with model reasoning](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-reasoning.html)
+- [Optimize model inference for latency](https://docs.aws.amazon.com/bedrock/latest/userguide/latency-optimized-inference.html)
+- [Generate responses using OpenAI APIs](https://docs.aws.amazon.com/bedrock/latest/userguide/bedrock-mantle.html)
+- [Submit prompts and generate responses using the API](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-api.html)
+- [Get validated JSON results from models](https://docs.aws.amazon.com/bedrock/latest/userguide/structured-output.html)
+- [Use a computer use tool to complete an Amazon Bedrock model response](https://docs.aws.amazon.com/bedrock/latest/userguide/computer-use.html)
+
+</details>
