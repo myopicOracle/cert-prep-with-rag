@@ -1,6 +1,6 @@
 # Journal: Project CloudIQ
 
-> Documents hurdles, inflection points, useful notes, and relevant minutiae.
+_Documents hurdles, inflection points, useful notes, and relevant minutiae._
 
 ## Sprint 2: RAG Pipeline
 
@@ -68,9 +68,7 @@ https://docs.aws.amazon.com/bedrock/latest/userguide/quotas-increase.html
 
 **Tool Use**
 
-Jan 29, 2026: "Amazon Bedrock now supports server-side tools in the Responses API using OpenAI API-compatible service endpoints. Bedrock already supports client-side tool use with the Converse, Chat Completions, and Responses APIs. Now, with the launch of server-side tool use for Responses API, Amazon Bedrock calls the tools directly without going through a client, enabling your AI applications to perform real-time, multi-step actions such as searching the web, executing code, and updating databases within the organizational, governance, compliance, and security boundaries of your AWS accounts. You can either submit your own custom Lambda function to run custom tools or use AWS-provided tools, such as notes and tasks."
-
-https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html
+Jan 29, 2026: "Amazon Bedrock now supports server-side tools in the Responses API using OpenAI API-compatible service endpoints. Bedrock already supports client-side tool use with the Converse, Chat Completions, and Responses APIs. Now, with the launch of server-side tool use for Responses API, Amazon Bedrock calls the tools directly without going through a client, enabling your AI applications to perform real-time, multi-step actions such as searching the web, executing code, and updating databases within the organizational, governance, compliance, and security boundaries of your AWS accounts. You can either submit your own custom Lambda function to run custom tools or use AWS-provided tools, such as notes and tasks." - [Ref](https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use.html)
 
 </details>
 
@@ -138,9 +136,11 @@ aws bedrock list-foundation-models --region us-east-1 --by-provider anthropic --
 
 </details>
 
-_Note: Running these covers your bases, but for a quick sanity check for model access you can always open Playgrounds in Bedrock and try chatting with the models you want to invoke, along with the region/response mode you need._
+<br />
 
-### [S2-2] Build and test Bedrock embedding and RAG invocation functions
+> _Note: For a quick sanity check for model access you can always open Playgrounds in Bedrock and try chatting with the models you want to invoke, along with testing access with the region/response mode you need._
+
+### [S2-2] Bedrock Embedding and Chat Endpoints
 
 **Task**
 
@@ -151,7 +151,49 @@ _Note: Running these covers your bases, but for a quick sanity check for model a
 
 **Takeaways**
 
-I initially assumed that these [endpoint interfaces](https://docs.aws.amazon.com/bedrock/latest/userguide/endpoints.html) have a uniform set of required parameters, with different optional parameters based on model. However different [foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html) can have slightly different param requirements. To that end, consulting the [parameters and response fields](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html) for various FM's is quite helpful.
+I initially assumed that all Bedrock Runtime engine [endpoints](https://docs.aws.amazon.com/bedrock/latest/userguide/endpoints.html) have a uniform set of required parameters. However the uniform interface is only true of the `Converse API`. For the older `Invoke API`, where you're essentially sending raw JSON, different [foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html) can have slightly different param requirements. To that end, consulting the [parameters and response fields](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html) for various FM's is quite helpful.
+
+_Amazon Titan Text Embeddings v2_
+
+Rolled out in mid 2024, [Titan Text Embeddings v2](https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-titan-text-embeddings-v2.html) is the most advanced of AWS's embedding models, outperforming Titan G1 at 20% of the cost.
+
+One notable departure from Titan G1 and other text embedding models like OpenAI's, is the dimensionality. Whereas G1 and OpenAI's text embedding models typically use 1536, Titan Text Embeddings v2 uses 1024, 512, or 256.
+
+512 is said to be [99% as accurate](https://aws.amazon.com/blogs/aws/amazon-titan-text-v2-now-available-in-amazon-bedrock-optimized-for-improving-rag/), but I opted for 1536 to maximize accuracy.
+
+_Converse API Endpoint_
+
+Unlike OpenAI's ChatCompletions endpoint, Bedrock's Converse endpoint has a more complex nested structure when passing in messages. It uses an array of content blocks because Bedrock supports multimodal inputs, like:
+
+```ts
+content: [
+    { text: 'What is in this image?' },
+    { image: { format: 'png', source: { bytes: imageData } } },
+    { text: 'Please describe it in detail.' },
+]
+```
+
+So even if you're only passing text inputs, you'll need an array of objects:
+
+```ts
+const messages = [
+    {
+        role: 'user',
+        content: [{ text: 'What is Amazon SageMaker? Explain in under 50 words.' }],
+    },
+]
+```
+
+...instead of a string like with OpenAI ChatCompletions:
+
+```ts
+const messages = [
+    {
+        role: 'user',
+        content: 'What is Amazon SageMaker? Explain in under 50 words.',
+    },
+]
+```
 
 **Decision**
 
@@ -179,16 +221,6 @@ _Bedrock_
 
 [Ref](https://docs.aws.amazon.com/bedrock/latest/userguide/endpoints.html)
 
-**Hurdles**
-
-_Amazon Titan Text Embeddings v2_
-
-Rolled out in mid 2024, Titan Text Embeddings v2 is the most advanced of AWS's embedding models, outperforming Titan G1 at 20% of the cost.
-
-One notable departure from Titan G1 and other text embedding models like OpenAI's, is the dimensionality. Whereas G1 and OpenAI's text embedding models typically use 1536, Titan Text Embeddings v2 uses 1024, 512, or 256.
-
-512 is supposedly 99% as accurate, but I opted for 1536 to maximize accuracy.
-
 <details>
 
 <summary>S2-2B: What the Converse call to Haiku returns.</summary>
@@ -210,7 +242,7 @@ async function testCall() {
     console.log('Response obj type:', typeof responseObj)
 
     const responseText = responseObj.output.message.content[0].text
-    console.log('LLM response only: ', responseText)
+    console.log('LLM response only:', responseText)
 }
 ```
 
@@ -328,8 +360,8 @@ async function testEmbed() {
     console.log('Response obj type:', typeof response)
 
     const responseBody = JSON.parse(new TextDecoder().decode(response.body))
-    console.log('Decoded response body: ', JSON.stringify(responseBody, null, 2))
-    console.log('Embedding length: ', responseBody.embedding.length)
+    console.log('Decoded response body:', JSON.stringify(responseBody, null, 2))
+    console.log('Embedding length:', responseBody.embedding.length)
 }
 ```
 
@@ -564,3 +596,5 @@ _Last updated: Sun Apr 12 14:44:33 +08 2026_
 </details>
 
 <br />
+
+### [S2-3] Create Supabase Vector Table
