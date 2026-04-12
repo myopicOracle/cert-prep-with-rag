@@ -5,7 +5,7 @@
  * Replace <REGION> with your permissioned region, i.e. 'us-east-1'
  *
  * Full list: `app/models/model-list.md`
- * s
+ *
  * Cron job: 'npm run update:models'
  */
 
@@ -29,7 +29,7 @@ const models = {
     embedding: 'amazon.titan-embed-text-v2:0',
 }
 
-async function testConverse() {
+async function testChat() {
     const command = new ConverseCommand({
         modelId: models.fast,
         // modelId: models.general,
@@ -41,15 +41,36 @@ async function testConverse() {
         ],
     })
 
-    const responseObj = await client.send(command)
-    console.log('Full response obj:', JSON.stringify(responseObj, null, 2))
-    console.log('Response obj type:', typeof responseObj)
+    const response = await client.send(command)
+    console.log('Full response obj:', JSON.stringify(response, null, 2))
+    console.log('Response obj type:', typeof response)
 
-    const responseText = responseObj.output.message.content[0].text
+    const responseText = response.output.message.content[0].text
     console.log('LLM response only: ', responseText)
 }
 
-async function testInvoke() {}
+async function testEmbed() {
+    const command = new InvokeModelCommand({
+        modelId: models.embedding,
+        contentType: 'application/json',
+        accept: 'application/json',
+        body: JSON.stringify({
+            inputText:
+                'Amazon SageMaker is often used as an umbrella term encompassing SageMaker Studio, Notebooks, Jumpstart, Canvas, and many more AWS ML services. It is designed for Data Scientists and advanced customization and integration, distinct from AWS Bedrock, which abstracts away a degree of technical complexity.',
+            dimensions: 1024,
+            normalize: true,
+        }),
+    })
 
-testConverse()
-testInvoke()
+    const response = await client.send(command)
+    console.log('Full response obj:', JSON.stringify(response, null, 2))
+    console.log('Response obj type:', typeof response)
+
+    // decode the Uint8Array
+    const responseBody = JSON.parse(new TextDecoder().decode(response.body))
+    console.log('Decoded response body: ', JSON.stringify(responseBody, null, 2))
+    console.log('Embedding length: ', responseBody.embedding.length)
+}
+
+// testChat()
+testEmbed()

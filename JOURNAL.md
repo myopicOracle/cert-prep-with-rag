@@ -149,6 +149,10 @@ _Note: Running these covers your bases, but for a quick sanity check for model a
 - S2-2C. Write a Invoke call to Titan Embedding and test it returns the correct vector object via console.log using npx in terminal.
 - S2-2D. Package them into exports and drop into a simple test script for dry run.
 
+**Takeaways**
+
+I initially assumed that these [endpoint interfaces](https://docs.aws.amazon.com/bedrock/latest/userguide/endpoints.html) have a uniform set of required parameters, with different optional parameters based on model. However different [foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html) can have slightly different param requirements. To that end, consulting the [parameters and response fields](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html) for various FM's is quite helpful.
+
 **Decision**
 
 Bedrock uses two main endpoint families: Mantle and Runtime.
@@ -175,37 +179,15 @@ _Bedrock_
 
 [Ref](https://docs.aws.amazon.com/bedrock/latest/userguide/endpoints.html)
 
-<details>
+**Hurdles**
 
-<summary>Links for further reading.</summary>
+_Amazon Titan Text Embeddings v2_
 
-[APIs supported by Amazon Bedrock:](https://docs.aws.amazon.com/bedrock/latest/userguide/apis.html)
+Rolled out in mid 2024, Titan Text Embeddings v2 is the most advanced of AWS's embedding models, outperforming Titan G1 at 20% of the cost.
 
-- [Invoke API](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-invoke.html)
-- [Converse API](https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html)
-- [Responses API](https://docs.aws.amazon.com/bedrock/latest/userguide/bedrock-mantle.html#bedrock-mantle-responses) / [OpenAI Docs](https://platform.openai.com/docs/api-reference/responses)
-- [Chat Completions API](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-chat-completions.html)
+One notable departure from Titan G1 and other text embedding models like OpenAI's, is the dimensionality. Whereas G1 and OpenAI's text embedding models typically use 1536, Titan Text Embeddings v2 uses 1024, 512, or 256.
 
-[Supported foundation models in Amazon Bedrock:](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html)
-
-- [List Available Models API](https://docs.aws.amazon.com/bedrock/latest/userguide/bedrock-mantle.html#bedrock-mantle-models)
-
-[Inference:](https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html)
-
-- [Learn about use cases for different model inference methods](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-methods.html)
-- [How inference works in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-how.html)
-- [Influence response generation with inference parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-parameters.html)
-- [Supported Regions and models for running model inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-supported.html)
-- [Prerequisites for running model inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-prereq.html)
-- [Generate responses in the console using playgrounds](https://docs.aws.amazon.com/bedrock/latest/userguide/playgrounds.html)
-- [Enhance model responses with model reasoning](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-reasoning.html)
-- [Optimize model inference for latency](https://docs.aws.amazon.com/bedrock/latest/userguide/latency-optimized-inference.html)
-- [Generate responses using OpenAI APIs](https://docs.aws.amazon.com/bedrock/latest/userguide/bedrock-mantle.html)
-- [Submit prompts and generate responses using the API](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-api.html)
-- [Get validated JSON results from models](https://docs.aws.amazon.com/bedrock/latest/userguide/structured-output.html)
-- [Use a computer use tool to complete an Amazon Bedrock model response](https://docs.aws.amazon.com/bedrock/latest/userguide/computer-use.html)
-
-</details>
+512 is supposedly 99% as accurate, but I opted for 1536 to maximize accuracy.
 
 <details>
 
@@ -319,6 +301,95 @@ Amazon SageMaker is a **fully managed machine learning service** provided by AWS
 
 SageMaker abstracts away much of the infrastructure complexity, allowing data scientists and developers to focus on building effective ML models.
 
+```
+
+</details>
+
+<details>
+
+<summary>S2-2C: What the Invoke call to Titan v2 returns.</summary>
+
+```ts
+async function testEmbed() {
+    const command = new InvokeModelCommand({
+        modelId: models.embedding,
+        contentType: 'application/json',
+        accept: 'application/json',
+        body: JSON.stringify({
+            inputText:
+                'Amazon SageMaker is often used as an umbrella term encompassing SageMaker Studio, Notebooks, Jumpstart, Canvas, and many more AWS ML services. It is designed for Data Scientists and advanced customization and integration, distinct from AWS Bedrock, which abstracts away a degree of technical complexity.',
+            dimensions: 1536,
+            normalize: true,
+        }),
+    })
+
+    const response = await client.send(command)
+    console.log('Full response obj:', JSON.stringify(response, null, 2))
+    console.log('Response obj type:', typeof response)
+
+    const responseBody = JSON.parse(new TextDecoder().decode(response.body))
+    console.log('Decoded response body: ', JSON.stringify(responseBody, null, 2))
+    console.log('Embedding length: ', responseBody.embedding.length)
+}
+```
+
+```zsh
+Full response obj: {
+  "body": {
+    "0": 123,
+    "1": 34,
+    "2": 101,
+    "3": 109,
+    "4": 98,
+    "5": 101,
+    ...
+    "43380": 34,
+    "43381": 58,
+    "43382": 54,
+    "43383": 48,
+    "43384": 125
+  },
+  "contentType": "application/json",
+  "$metadata": {
+    "httpStatusCode": 200,
+    "requestId": "936fa6f2-d446-4182-afbc-0fa7d7072fc4",
+    "attempts": 1,
+    "totalRetryDelay": 0
+  }
+}
+Response obj type: object
+Decoded response body:  {
+  "embedding": [
+    -0.028260385617613792,
+    0.03717189282178879,
+    0.015473923645913601,
+    -0.04804736748337746,
+    0.019862258806824684,
+    ...
+    -0.006886443123221397,
+    0.05528973415493965,
+    -0.039914652705192566,
+    -0.034210093319416046,
+    -0.028344329446554184
+  ],
+  "embeddingsByType": {
+    "float": [
+      -0.028260385617613792,
+      0.03717189282178879,
+      0.015473923645913601,
+      -0.04804736748337746,
+      0.019862258806824684,
+      ...
+      -0.006886443123221397,
+      0.05528973415493965,
+      -0.039914652705192566,
+      -0.034210093319416046,
+      -0.028344329446554184
+    ]
+  },
+  "inputTextTokenCount": 60
+}
+Embedding length:  1024
 ```
 
 </details>
@@ -459,3 +530,37 @@ _Last updated: Sun Apr 12 14:44:33 +08 2026_
 | Z.AI         | GLM 4.7                             | zai.glm-4.7                                   | TEXT                       | TEXT         | True   | ON_DEMAND                    | ACTIVE |
 
 </details>
+
+<details>
+
+<summary>Links for further reading.</summary>
+
+[APIs supported by Amazon Bedrock:](https://docs.aws.amazon.com/bedrock/latest/userguide/apis.html)
+
+- [Invoke API](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-invoke.html)
+- [Converse API](https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html)
+- [Responses API](https://docs.aws.amazon.com/bedrock/latest/userguide/bedrock-mantle.html#bedrock-mantle-responses) / [OpenAI Docs](https://platform.openai.com/docs/api-reference/responses)
+- [Chat Completions API](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-chat-completions.html)
+
+[Supported foundation models in Amazon Bedrock:](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html)
+
+- [List Available Models API](https://docs.aws.amazon.com/bedrock/latest/userguide/bedrock-mantle.html#bedrock-mantle-models)
+
+[Inference:](https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html)
+
+- [Learn about use cases for different model inference methods](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-methods.html)
+- [How inference works in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-how.html)
+- [Influence response generation with inference parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-parameters.html)
+- [Supported Regions and models for running model inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-supported.html)
+- [Prerequisites for running model inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-prereq.html)
+- [Generate responses in the console using playgrounds](https://docs.aws.amazon.com/bedrock/latest/userguide/playgrounds.html)
+- [Enhance model responses with model reasoning](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-reasoning.html)
+- [Optimize model inference for latency](https://docs.aws.amazon.com/bedrock/latest/userguide/latency-optimized-inference.html)
+- [Generate responses using OpenAI APIs](https://docs.aws.amazon.com/bedrock/latest/userguide/bedrock-mantle.html)
+- [Submit prompts and generate responses using the API](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-api.html)
+- [Get validated JSON results from models](https://docs.aws.amazon.com/bedrock/latest/userguide/structured-output.html)
+- [Use a computer use tool to complete an Amazon Bedrock model response](https://docs.aws.amazon.com/bedrock/latest/userguide/computer-use.html)
+
+</details>
+
+<br />
