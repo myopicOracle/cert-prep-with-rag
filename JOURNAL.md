@@ -601,13 +601,15 @@ _Last updated: Sun Apr 12 14:44:33 +08 2026_
 
 _You can find virtually everything you need to know for the Supabase vector table setup [here](https://supabase.com/docs/guides/ai/vector-columns)._
 
+_To dive deeper on indexing specifically, see [this](https://github.com/pgvector/pgvector#indexing)._
+
 **Distance Metrics: Cosine, Euclidean, Inner Product**
 
 pgvector support 3 distance metrics:
 
-- Cosine Similarity | `vector_cosine_ops` | distance operator: `<=>`
-- Euclidean Distance (L2) | `vector_l2_ops` | distance operator: `<->`
-- Inner Product | `vector_ip_ops` | distance operator: `<#>`
+- Cosine Similarity | operator: `<=>` | op class: `vector_cosine_ops`
+- Euclidean Distance (L2) | operator: `<->` | op class: `vector_l2_ops`
+- Inner Product | operator: `<#>` | op class: `vector_ip_ops`
 
 Why cosine similarity?
 
@@ -616,10 +618,12 @@ Why cosine similarity?
 
 **Index Types: HNSW vs IVFFlat**
 
-pgvector supports 2 ANN index types:
+pgvector supports 2 ANN (approximate nearest neighbor) index types:
 
-- HNSW (Hierarchical Navigable Small World) | Graph-based | Faster queries
-- IVFFlat (Inverted File with Flat compression) | Clustering-based | Faster to build
+- [HNSW](https://supabase.com/docs/guides/ai/vector-indexes/hnsw-indexes) (Hierarchical Navigable Small World) | Graph-based | Faster queries
+- [IVFFlat](https://supabase.com/docs/guides/ai/vector-indexes/ivf-indexes) (Inverted File with Flat compression) | Clustering-based | Faster to build
+
+_Note: Do not confuse HNSW with NSFW, that's an entirely different index search._
 
 Why HNSW for RAG?
 
@@ -715,3 +719,66 @@ CREATE TABLE documents (
 </details>
 
 <br />
+
+**Create HNSW Index**
+
+The HNSW indexing algorithm should be leveraged to significantly speed up queries. Since it's graph-based, you can narrow the scope before running the search, kind of like how partition filtering and pushdown predicates work to reduce data movement and in-mem processing prior running the computationally-expensive analysis.
+
+The canonical way to do so according to [Supabase docs](https://supabase.com/docs/guides/ai/vector-indexes/hnsw-indexes#cosine-distance--vectorcosineops-) is:
+
+```sql
+create index on items using hnsw (column_name vector_cosine_ops);
+```
+
+You can further specify the `m` and `ef_construction` parameters, which tweak recall (more memory used) and accuracy (slower build time), but I think you would really need to know what you're doing here to justify changing the defaults.
+
+```sql
+CREATE INDEX ON documents USING hnsw (embedding vector_cosine_ops)
+WITH (m = 16, ef_construction = 64);
+```
+
+Note that `m = 16` and `ef_construction = 64` are the values it will default to, so you could omit the second statement entirely and achieve the same result.
+
+**Verify HNSW Index Creation**
+
+After running the index creation command, you can confirm the index exists by running:
+
+```sql
+SELECT indexname, indexdef FROM pg_indexes WHERE tablename = 'documents';
+```
+
+You should see a response matching the distance metric (`vector_cosine_ops`), table name (`documents`), and vector column name (`embedding`) you defined in your `CREATE INDEX` statement:
+
+```json
+[
+    {
+        "indexname": "documents_pkey",
+        "indexdef": "CREATE UNIQUE INDEX documents_pkey ON public.documents USING btree (id)"
+    },
+    {
+        "indexname": "documents_embedding_idx",
+        "indexdef": "CREATE INDEX documents_embedding_idx ON public.documents USING hnsw (embedding vector_cosine_ops) WITH (m='16', ef_construction='64')"
+    }
+]
+```
+
+**Test Similarity Search Query**
+
+Before running off to complete the `supabase.rpc()` function so you can query your vector table from within the application code, it's a good idea to run a one-off test using dummy data:
+
+```sql
+SELECT id, content, 1 - (embedding <=> array_fill(0.0, ARRAY[1024])::vector(1024)) AS similarity
+FROM documents
+ORDER BY embedding <=> array_fill(0.0, ARRAY[1024])::vector(1024)
+LIMIT 5;
+```
+
+It should return `Success. No rows returned`, but make sure to click the 'Explain' tab in SQL Editor and confirm the query used `Index Scan` and not `Seq Scan`, the latter of which means that a full sequential scan was run, and your index was ignored.
+
+Expected behavior:
+
+```md
+Limit (cost=4.41..4.62 rows=5 width=64) (actual time=0.035..0.036 rows=0 loops=1)
+-> Index Scan using documents_embedding_idx on documents (cost=4.41..25.45 rows=490 width=64) (actual time=0.034..0.035 rows=0 loops=1)
+...
+```
