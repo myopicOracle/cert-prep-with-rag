@@ -598,3 +598,77 @@ _Last updated: Sun Apr 12 14:44:33 +08 2026_
 <br />
 
 ### [S2-3] Create Supabase Vector Table
+
+**Distance Metrics: Cosine, Euclidean, Inner Product**
+
+pgvector support 3 distance metrics:
+
+- Cosine Similarity | `vector_cosine_ops` | distance operator: `<=>`
+- Euclidean Distance (L2) | `vector_l2_ops` | distance operator: `<->`
+- Inner Product | `vector_ip_ops` | distance operator: `<#>`
+
+Why cosine similarity?
+
+- Titan Embeddings v2 uses normalize: true (unit vectors).
+- Industry standard for semantic search.
+
+**Index Types: HNSW vs IVFFlat**
+
+pgvector supports 2 ANN index types:
+
+- HNSW (Hierarchical Navigable Small World) | Graph-based | Faster queries
+- IVFFlat (Inverted File with Flat compression) | Clustering-based | Faster to build
+
+Why HNSW for RAG?
+
+- Works well out-of-the-box with no tuning
+- I'm expecting thousands of documents, not millions
+- Query speed is more important to me than build time
+
+**Vector Dimensions**
+
+Must match what's returned by the embedding function:
+
+- My `getEmbedding()` function invokes Titan Text Embeddings v2 with a dimension parameter of 1024
+- As such, the dimension value for pgvector must be set to `vector(1024)`
+
+**Supabase pgvector**
+
+Extensions must be explicitly enabled per database (extensions are database-scoped). This can be done in two ways:
+
+- Programmatically using SQL query `CREATE EXTENSION IF NOT EXISTS vector;`
+- Via the Supabase Extension Management - Dashboard > Database > Extensions > search "vector" > click "Enable"
+
+You can verify it's enabled by running this in the SQL Editor:
+
+```sql
+SELECT * FROM pg_extension WHERE extname = 'vector';
+SELECT '[1,2,3]'::vector(3);
+```
+
+If successful, the first statement (extension check) returns something like:
+
+```json
+[
+    {
+        "oid": 26575,
+        "extname": "vector",
+        "extowner": 10,
+        "extnamespace": 16392,
+        "extrelocatable": true,
+        "extversion": "0.8.0",
+        "extconfig": null,
+        "extcondition": null
+    }
+]
+```
+
+The second (vector type test) should return:
+
+```json
+[
+    {
+        "vector": "[1,2,3]"
+    }
+]
+```
