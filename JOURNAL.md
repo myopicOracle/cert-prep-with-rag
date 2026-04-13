@@ -599,6 +599,8 @@ _Last updated: Sun Apr 12 14:44:33 +08 2026_
 
 ### [S2-3] Create Supabase Vector Table
 
+_You can find virtually everything you need to know for the Supabase vector table setup [here](https://supabase.com/docs/guides/ai/vector-columns)._
+
 **Distance Metrics: Cosine, Euclidean, Inner Product**
 
 pgvector support 3 distance metrics:
@@ -634,12 +636,12 @@ Must match what's returned by the embedding function:
 
 **Supabase pgvector**
 
-Extensions must be explicitly enabled per database (extensions are database-scoped). This can be done in two ways:
+Extensions must be [explicitly enabled](https://supabase.com/docs/guides/ai/vector-columns#enable-the-extension) per database (extensions are database-scoped). This can be done in two ways:
 
 - Programmatically using SQL query `CREATE EXTENSION IF NOT EXISTS vector;`
 - Via the Supabase Extension Management - Dashboard > Database > Extensions > search "vector" > click "Enable"
 
-You can verify it's enabled by running this in the SQL Editor:
+You can verify it's enabled by running this in the [SQL Editor](https://supabase.com/docs/guides/database/overview#the-sql-editor):
 
 ```sql
 SELECT * FROM pg_extension WHERE extname = 'vector';
@@ -672,3 +674,44 @@ The second (vector type test) should return:
     }
 ]
 ```
+
+**Schema Design**
+
+Now that the `vector` data type has been made available, the vector table can be created. The [Supabase example](https://supabase.com/docs/guides/ai/vector-columns#create-a-table-to-store-vectors) is intentionally barebones, but I needed a couple more columns.
+
+1. `service_id`
+
+- I expect a majority of user questions to be clarifying features and patterns for specific AWS Services, rather than based on role or task.
+- This would allow me to filter `match_documents` queries to only search chunks from the relevant service
+
+2. `source_url`
+
+- AWS Docs are neatly packaged into PDFs by service name, so this seems like a natural partition to filter on.
+- AWS Services aren't always neatly siloed, which means descriptions for one service can appear in various forms across multiple types of documentation. As such, being able to select the most appropriate version is vital.
+
+3. `created_at`
+
+- The point of building this RAG pipeline is to keep context fresh, and AWS has been making a lot of changes to shift, regroup, or rebrand services, especially in the AI/ML domain. This would allow me to perform selective batch updates.
+
+**Creating the Table**
+
+```sql
+CREATE TABLE documents (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    content TEXT NOT NULL,
+    embedding vector(1024) NOT NULL,
+    source_url TEXT,
+    service_id UUID REFERENCES services(id),
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+```
+
+<details>
+
+<summary>Schema now looks like:</summary>
+
+![Schema Snapshot](docs/20260413-schema-snapshot.png)
+
+</details>
+
+<br />

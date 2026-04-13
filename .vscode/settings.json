@@ -6,5 +6,7 @@
     "geminicodeassist.inlineSuggestions.suggestionSpeed": "Slow",
     "editor.inlineSuggest.experimental.suppressInlineSuggestions": "google.geminicodeassist",
     "editor.inlineSuggest.enabled": false,
-    "geminicodeassist.chat.changeView": "Default diff view"
+    "geminicodeassist.chat.changeView": "Default diff view",
+    "claudeCode.respectGitIgnore": false,
+    "claudeCode.preferredLocation": "panel"
 }
