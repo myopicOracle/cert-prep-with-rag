@@ -782,3 +782,69 @@ Limit (cost=4.41..4.62 rows=5 width=64) (actual time=0.035..0.036 rows=0 loops=1
 -> Index Scan using documents_embedding_idx on documents (cost=4.41..25.45 rows=490 width=64) (actual time=0.034..0.035 rows=0 loops=1)
 ...
 ```
+
+**Create RPC Function**
+
+I'll let Supabase explain this one:
+
+> _Supabase client libraries like supabase-js connect to your Postgres instance via PostgREST. PostgREST does not currently support pgvector similarity operators, so we'll need to wrap our query in a Postgres function and call it via the rpc() method:_
+
+```sql
+create or replace function match_documents (
+  query_embedding extensions.vector(384),
+  match_threshold float,
+  match_count int
+)
+returns table (
+  id bigint,
+  title text,
+  body text,
+  similarity float
+)
+language sql stable
+as $$
+  select
+    documents.id,
+    documents.title,
+    documents.body,
+    1 - (documents.embedding <=> query_embedding) as similarity
+  from documents
+  where 1 - (documents.embedding <=> query_embedding) > match_threshold
+  order by (documents.embedding <=> query_embedding) asc
+  limit match_count;
+$$;
+```
+
+> _To execute the function from your client library, call rpc() with the name of your Postgres function:_
+
+```js
+const { data: documents } = await supabaseClient.rpc('match_documents', {
+    query_embedding: embedding, // Pass the embedding you want to compare
+    match_threshold: 0.78, // Choose an appropriate threshold for your data
+    match_count: 10, // Choose the number of matches
+})
+```
+
+[Source](https://supabase.com/docs/guides/ai/vector-columns#querying-a-vector--embedding)
+
+Note: Make sure to run the `match_documents` SQL function in the Supabase SQL Editor so that it exists in your database. Otherwise your RPC function has nothing to call.
+
+If no error the result should be `Success. No rows returned`.
+
+You can check that the function exists by following this path `Dashboard > Database > Functions`.
+
+If you click the ellipses on the function card, you can navigate to `Client API docs`, which will give you the exact code you need to call the function.
+
+In my case:
+
+<!-- prettier-ignore -->
+```js
+let { data, error } = await supabase
+  .rpc('match_documents', {
+    match_count, 
+    match_threshold, 
+    query_embedding
+  })
+if (error) console.error(error)
+else console.log(data)
+```
