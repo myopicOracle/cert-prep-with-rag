@@ -19,7 +19,7 @@
 
 - [x] set up Bedrock client with Titan Embeddings and Haiku 4.5, completes #3
 - [x] build and test Bedrock embedding and converse invocation functions, completes #26
-- [ ] create Supabase db with pgvector column and HNSW index, completes #4
+- [x] create Supabase db with pgvector column and HNSW index, completes #4
 - [ ] scripts/ingest.ts: write and test PDF parse + chunking script, completes #5
 - [ ] extend ingest script to generate and store Titan embeddings, completes #6
 - [ ] write and test Supabase vector table insert function, completes #7

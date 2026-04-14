@@ -848,3 +848,42 @@ let { data, error } = await supabase
 if (error) console.error(error)
 else console.log(data)
 ```
+
+### [S2-3] Extraction Pipeline: PDF -> Markdown -> Langchain
+
+**Hurdles**
+
+This step took much longer than anticipated. Having never really thought about how PDFs work, I was surprised to see how hard it is to reliably extract data from them.
+
+Going into this, I thought it was simply a matter of using the `pdf-parse` library to extract and convert the binary data in the PDF to raw text, stripping out the headers, page breaks, and unwanted formatting with regex, then feeding that into LangChain's `RecursiveCharacterTextSplitter` module.
+
+But there's actually a whole body of knowledge surrounding this very specific workflow. At some point I just had to force-eject from the rabbit-hole and move on with what I needed for this project.
+
+**Decision: Plain Text vs Markdown**
+
+Markdown.
+
+Something I'd never considered, since most of the AI Engineering / RAG tutorials I've come across focus on parsing and storing plain text. Some include a `title` column in the vector table, but that's about it.
+
+It wasn't until I stumbled across [this article](https://onlyoneaman.medium.com/i-tested-7-python-pdf-extractors-so-you-dont-have-to-2025-edition-c88013922257), that I found out you can (and should) preserve the data hierarchy in order to create more meaningful semantic relationships between documents in your vector db.
+
+The author explains this much more eloquently:
+
+> _"...parsers are able to generate a markdown representation of the content. This is important for RAG because a lot of contextual information is communicated in things like headings, images, graphs, and formatting. We want to preserve this information so the LLM can better determine how to “think” about the information provided in a given piece of content."_ - [Aman Kumar](https://github.com/onlyoneaman)
+
+This shift from plain text to markdown is particularly relevant to this project because AWS documentation communicates critical relationships through hierarchy. A "Service Limit" for S3 is contextually distinct from one for EC2 only if the parent headers are preserved.
+
+Critically, markdown allows for:
+
+- Semantic Splitting: Using `MarkdownHeaderTextSplitter` to break chunks at logical section boundaries.
+- Context Inheritance: Prepending header "breadcrumbs" like `S3 > Security > Encryption` to the text before embedding
+
+**Decision: Docling vs Marker**
+
+I didn't end up going with the tools mentioned in that article however. Primarily becuase I didn't want to shell out for another API when I'm already juggling so many of them, alongside monthly donations to charitable causes like OpenAI and Anthropic.
+
+That left me with open source tools like [Docling](https://github.com/docling-project/docling) and [Marker](https://github.com/datalab-to/marker).
+
+Both of these are AI-powered, and Marker was considered for its speed and vision-based approach, which is good for clean, prose-heavy documents. AWS Documentation however, can sometimes get quite messy.
+
+Docling focuses on providing 'structural fidelity', meaning it would handle AWS’s technical tables and "Note/Warning" callouts with higher precision. For a portfolio piece where accuracy in technical Q&A is differentiator, Docling’s layout-aware engine outweighed Marker’s speed advantage.
