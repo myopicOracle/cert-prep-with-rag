@@ -40,6 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# python
+.venv/
+__pycache__/
+data/raw_pdfs/
+
 # dev 
-/dev
-/pdfs
+/dev/

@@ -136,7 +136,7 @@ aws bedrock list-foundation-models --region us-east-1 --by-provider anthropic --
 
 </details>
 
-<br />
+<br>
 
 > _Note: For a quick sanity check for model access you can always open Playgrounds in Bedrock and try chatting with the models you want to invoke, along with testing access with the region/response mode you need._
 
@@ -595,7 +595,7 @@ _Last updated: Sun Apr 12 14:44:33 +08 2026_
 
 </details>
 
-<br />
+<br>
 
 ### [S2-3] Create Supabase Vector Table
 
@@ -718,7 +718,7 @@ CREATE TABLE documents (
 
 </details>
 
-<br />
+<br>
 
 **Create HNSW Index**
 
@@ -853,7 +853,7 @@ else console.log(data)
 
 **Hurdles**
 
-This step took much longer than anticipated. Having never really thought about how PDFs work, I was surprised to see how hard it is to reliably extract data from them.
+This step took much longer than anticipated. Having never really thought about how PDFs work, I was surprised to learn how hard it is to reliably extract data from them.
 
 Going into this, I thought it was simply a matter of using the `pdf-parse` library to extract and convert the binary data in the PDF to raw text, stripping out the headers, page breaks, and unwanted formatting with regex, then feeding that into LangChain's `RecursiveCharacterTextSplitter` module.
 
@@ -887,3 +887,22 @@ That left me with open source tools like [Docling](https://github.com/docling-pr
 Both of these are AI-powered, and Marker was considered for its speed and vision-based approach, which is good for clean, prose-heavy documents. AWS Documentation however, can sometimes get quite messy.
 
 Docling focuses on providing 'structural fidelity', meaning it would handle AWS’s technical tables and "Note/Warning" callouts with higher precision. For a portfolio piece where accuracy in technical Q&A is differentiator, Docling’s layout-aware engine outweighed Marker’s speed advantage.
+
+**Docling Setup**
+
+Pretty straightforward, although the installation takes a _very_ long time due to the ML models it uses under the hood for layout analysis and enhanced recognition.
+
+```zsh
+# isolate Python environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# install Docling
+echo "docling" > requirements.txt
+pip install -r requirements.txt
+
+# verify installation
+echo "import docling" > scripts/extract_docs.py
+echo "print('Success')" >> scripts/extract_docs.py
+python3 scripts/extract_docs.py
+```
