@@ -1,13 +1,11 @@
+from pathlib import Path
 from docling.document_converter import DocumentConverter
 
-pdf_path = "docs/sample-pdfs/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
+pdf_path = Path("docs/sample-pdfs/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf")
+output_dir = Path("data/markdown")
 
-pdf_file_name = pdf_path.split("/")[-1]
-markdown_file_name = pdf_file_name.replace(".pdf", ".md")
-
-markdown_prefix = "data/markdown/"
-markdown_path = markdown_prefix + markdown_file_name
-# print(markdown_path)
+markdown_file_name = f"{pdf_path.stem}.md"
+markdown_path = output_dir / markdown_file_name
 
 print("Spinning up PDF extraction engine")
 converter = DocumentConverter()

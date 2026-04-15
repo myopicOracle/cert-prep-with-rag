@@ -906,3 +906,97 @@ echo "import docling" > scripts/extract_docs.py
 echo "print('Success')" >> scripts/extract_docs.py
 python3 scripts/extract_docs.py
 ```
+
+**PDF Extraction Script**
+
+For this workflow, there's really only 3 lines you need from the Docling API:
+
+```python
+from docling.document_converter import DocumentConverter
+
+converter = DocumentConverter()
+result = converter.convert("path/to/document.pdf")
+markdown = result.document.export_to_markdown()
+```
+
+Instantiating `DocumentConverter` downloads layout analysis ML models and saves model weights to memory. Subsequent calls to the `.convert()` method will be substantially faster than the first.
+
+Because Docling extracts the PDF contents into its own internal rich object format, the `export_to_X` method is needed to produce a useable file.
+
+My project calls for Markdown, but Docling also supports [several other output formats](https://docling-project.github.io/docling/usage/supported_formats/#supported-output-formats), including HTML, JSON, and YAML.
+
+**Add `metadata` to Vector Table**
+
+In order to enumerate this data hierarchy, the vector table I created earlier needed a `metada` column. This retroactive addition can be made with:
+
+```sql
+ALTER TABLE documents ADD COLUMN metadata JSONB;
+```
+
+<br>
+
+<details>
+
+<summary>Updated `documents` table schema</summary>
+
+```sql
+create table public.documents (
+  id uuid not null default gen_random_uuid (),
+  content text not null,
+  embedding extensions.vector not null,
+  source_url text null,
+  service_id uuid null,
+  created_at timestamp with time zone null default now(),
+  metadata jsonb null,
+  constraint documents_pkey primary key (id),
+  constraint documents_service_id_fkey foreign KEY (service_id) references services (id)
+) TABLESPACE pg_default;
+
+create index IF not exists documents_embedding_idx on public.documents using hnsw (embedding extensions.vector_cosine_ops)
+with
+  (m = '16', ef_construction = '64') TABLESPACE pg_default;
+```
+
+</details>
+
+<br>
+
+**Update RPC Function**
+
+Since the LLM needs to see the metadata along with the text chunks, the RPC function also needs to be updated. Because Postgres does not allow the `CREATE OR REPLACE` command to update functions with different signature and return type, the old function needs to be dropped before updating.
+
+<br>
+
+<details>
+
+<summary>Run this in SQL Editor</summary>
+
+```sql
+DROP FUNCTION match_documents(vector, double precision, integer);
+
+CREATE OR REPLACE FUNCTION match_documents(
+    query_embedding  vector(1024),
+    match_threshold  float,
+    match_count      int
+)
+RETURNS TABLE (
+    id          uuid,
+    content     text,
+    source_url  text,
+    service_id  uuid,
+    metadata    jsonb,
+    similarity  float
+)
+LANGUAGE sql STABLE AS $$
+    SELECT id, content, source_url, service_id, metadata,
+           1 - (embedding <=> query_embedding) AS similarity
+    FROM documents
+    WHERE 1 - (embedding <=> query_embedding) > match_threshold
+    ORDER BY embedding <=> query_embedding
+    LIMIT match_count;
+$$;
+```
+
+</details>
+
+<br>
