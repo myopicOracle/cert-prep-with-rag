@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "update:models": "./scripts/update-models.sh"
+    "update:models": "./scripts/update-models.sh",
+    "docs:extract": ".venv/bin/python scripts/extract_docs.py"
   },
   "dependencies": {
     "@aws-sdk/client-bedrock-runtime": "^3.1011.0",
