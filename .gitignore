@@ -45,5 +45,8 @@ next-env.d.ts
 __pycache__/
 data/raw_pdfs/
 
-# dev 
-/!dev/
+# dev
+/\!dev/
+
+# local claude (not for public repo)
+.claude/
