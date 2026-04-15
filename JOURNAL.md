@@ -851,13 +851,44 @@ else console.log(data)
 
 ### [S2-3] Extraction Pipeline: PDF -> Markdown -> Langchain
 
-**Hurdles**
-
 This step took much longer than anticipated. Having never really thought about how PDFs work, I was surprised to learn how hard it is to reliably extract data from them.
 
-Going into this, I thought it was simply a matter of using the `pdf-parse` library to extract and convert the binary data in the PDF to raw text, stripping out the headers, page breaks, and unwanted formatting with regex, then feeding that into LangChain's `RecursiveCharacterTextSplitter` module.
+**Hurdles: Heading Detection**
 
-But there's actually a whole body of knowledge surrounding this very specific workflow. At some point I just had to force-eject from the rabbit-hole and move on with what I needed for this project.
+I initially chose Docling for its 'structural fidelity'. Because of this, I was surprised to find that Docling struggles with something as seemingly basic as recognizing heading hiearchy. This is a whole other can of worms to do with the PDF binary to text conversion and inconsistency of tag usage. Basically, there are as many different ways to set up a PDF as there are people who make them.
+
+For Docling specifically, the issue lies in the conversion from it's internal intermediary object (type: `<class 'docling.datamodel.document.ConversionResult'>`). This is a known issue to the IBM maintainers, and based on the heated exchanges on this long-running [issue thread](https://github.com/docling-project/docling/issues/529?issue=docling-project%7Cdocling%7C287) in Docling's [GitHub repo](https://github.com/docling-project/docling), a frustration shared by many.
+
+For my use case specifically, I found that Docling was unable to pick up on the `section_headers` for AWS Docs PDFs. This was true for small Exam Guide PDFs as well as large multi-hundred page Service Guides.
+
+When I inspected the intermediate result object:
+
+```py
+for item in raw_text.document.texts:
+    if getattr(item, "label", None) == "section_header":
+        print(f"Level: {getattr(item, 'level', 'N/A')} | Text: {item.text[:60]}")
+```
+
+I found that it was returning the same level for all section headers:
+
+```zsh
+Level: 1 | Text: Scenario 1 - Connect to instances without VPC BPA turned on
+Level: 1 | Text: 1.1 Connect to instances
+Level: 1 | Text: AWS Management Console
+Level: 1 | Text: AWS CLI
+Level: 1 | Text: Scenario 2 - Turn on VPC BPA in Bidirectional mode
+Level: 1 | Text: 2.1 Enable VPC BPA bidirectional mode
+Level: 1 | Text: AWS Management Console
+Level: 1 | Text: AWS CLI
+```
+
+I tried the most promising fix, a 'post-processing' [package](https://github.com/krrome/docling-hierarchical-pdf) created by [a community member](https://github.com/krrome). It successfully picked up a second level on a 20-page exam guide, but crashed a few minutes into a 700-page PDF. I later found out that it works by iterating through every item in the Table of Contents and trying to match it to extracted content using bounding box coordinates.
+
+The TOC on that 700-page PDF had over 300 items. You do the match.
+
+And 700 pages is small potatoes for AWS Docs. This approach would never work for the AWS S3 or AWS Glue user guide.
+
+_Other tools to try:_ [Kreuzberg](https://github.com/opendatalab/PDF-Extract-Kit), [langextract](https://github.com/google/langextract), [PDF Extract Kit](https://github.com/opendatalab/PDF-Extract-Kit)
 
 **Decision: Plain Text vs Markdown**
 
