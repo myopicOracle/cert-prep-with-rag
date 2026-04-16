@@ -929,9 +929,9 @@ echo "docling" > requirements.txt
 pip install -r requirements.txt
 
 # verify installation
-echo "import docling" > scripts/extract_docs.py
-echo "print('Success')" >> scripts/extract_docs.py
-python3 scripts/extract_docs.py
+echo "import docling" > scripts/extract.py
+echo "print('Success')" >> scripts/extract.py
+python3 scripts/extract.py
 ```
 
 **PDF Extraction Script**
