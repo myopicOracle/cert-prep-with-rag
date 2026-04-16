@@ -103,11 +103,11 @@ def main():
 
     document_chunks = data_to_embed(raw_chunks)
 
-    # save shaped chunk objects to preview
-    with open("data/chunks-preview.json", "w", encoding="utf-8") as f:
+    # save shaped chunk objects
+    with open("data/without-embeddings.json", "w", encoding="utf-8") as f:
         json.dump(document_chunks, f, indent=2)
 
-    print("\nSaved data/chunks-preview.json")
+    print("\nSaved data/without-embeddings.json")
 
 
 if __name__ == "__main__":
