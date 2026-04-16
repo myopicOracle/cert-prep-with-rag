@@ -872,19 +872,15 @@ for item in raw_text.document.texts:
 I found that it was returning the same level for all section headers:
 
 ```zsh
-Level: 1 | Text: Scenario 1 - Connect to instances without VPC BPA turned on
-Level: 1 | Text: 1.1 Connect to instances
-Level: 1 | Text: AWS Management Console
-Level: 1 | Text: AWS CLI
 Level: 1 | Text: Scenario 2 - Turn on VPC BPA in Bidirectional mode
 Level: 1 | Text: 2.1 Enable VPC BPA bidirectional mode
 Level: 1 | Text: AWS Management Console
 Level: 1 | Text: AWS CLI
 ```
 
-I tried the most promising fix, a 'post-processing' [package](https://github.com/krrome/docling-hierarchical-pdf) created by [a community member](https://github.com/krrome). It successfully picked up a second level on a 20-page exam guide, but crashed a few minutes into a 700-page PDF. I later found out that it works by iterating through every item in the Table of Contents and trying to match it to extracted content using bounding box coordinates.
+I tried the most promising fix, a 'post-processing' [package](https://github.com/krrome/docling-hierarchical-pdf) created by [a community member](https://github.com/krrome). It successfully picked up a second level on a 20-page exam guide, but crashed a few minutes into a 700-page PDF.
 
-The TOC on that 700-page PDF had over 300 items. You do the match.
+I later found out that it works by iterating through every item in the Table of Contents and trying to match it to extracted content using bounding box coordinates. The TOC on that 700-page PDF had over 300 items. You do the math.
 
 And 700 pages is small potatoes for AWS Docs. This approach would never work for the AWS S3 or AWS Glue user guide.
 
