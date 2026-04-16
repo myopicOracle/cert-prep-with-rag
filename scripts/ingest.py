@@ -1,10 +1,10 @@
-from langchain_text_splitters import MarkdownHeaderTextSplitter
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_text_splitters import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
 
-file_name = "vpc_ug.md"
+# file_name = "vpc_ug.md"
+file_name = "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
 file_path = f"data/markdown/{file_name}"
 
-with open(file_name, 'r', encoding='utf-8') as my_file:
+with open(file_path, "r", encoding="utf-8") as my_file:
     content = my_file.read()
 
 test_snippet = content[:2000]
@@ -27,9 +27,7 @@ print(f"type(md_header_splits[0]): {type(md_header_splits[0])}\n")
 
 chunk_size = 500
 chunk_overlap = 50
-text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=chunk_size, chunk_overlap=chunk_overlap
-)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
 
 splits = text_splitter.split_documents(md_header_splits)
 
