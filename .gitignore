@@ -44,10 +44,8 @@ next-env.d.ts
 .venv/
 __pycache__/
 data/raw_pdfs/
+data/markdown/versions/
 data/chunks-preview.json
 
 # dev
 /\!dev/
-
-# local claude (not for public repo)
-.claude/
