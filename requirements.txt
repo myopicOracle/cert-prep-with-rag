@@ -2,3 +2,6 @@
 # docling-hierarchical-pdf
 marker-pdf
 langchain-text-splitters
+boto3
+python-dotenv
+supabase
