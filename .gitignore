@@ -43,9 +43,11 @@ next-env.d.ts
 # python
 .venv/
 __pycache__/
-data/raw_pdfs/
-data/markdown/versions/
-data/chunks-preview.json
+
+# data
+data/pdfs/
+data/markdown/
+data/chunks/
 
 # dev
 /\!dev/
