@@ -1,9 +1,12 @@
 import json
 
 from langchain_text_splitters import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
+from registry import manifest
 
-# file_name = "vpc_ug.md"
-file_name = "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+file_name = "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide"
+input_path = manifest[file_name]["markdown_path"]
+output_path = "data/without-embeddings.json"
+source_url = manifest[file_name]["source_url"]
 
 
 # chunk by heading and associate metadata
@@ -54,7 +57,6 @@ def enrich_content(page_content, metadata):
 
 # shape data for embedding model (schema: `docs/db-schema/20260415-schema-snapshot.sql`)
 def data_to_embed(raw_chunks):
-    source_url = file_name
     document_chunks = []
 
     for split in raw_chunks:
@@ -82,9 +84,7 @@ def data_to_embed(raw_chunks):
 
 
 def main():
-    file_path = f"data/markdown/{file_name}"
-
-    with open(file_path, "r", encoding="utf-8") as my_file:
+    with open(input_path, "r", encoding="utf-8") as my_file:
         content = my_file.read()
 
     markdown_document = content
@@ -97,17 +97,13 @@ def main():
     for split in raw_chunks:
         split.page_content = enrich_content(split.page_content, split.metadata)
 
-    # for index, split in enumerate(splits[:5]):
-    #     print(f"\nEnriched Chunk {index + 1}:")
-    #     print(split.page_content[:250])
-
     document_chunks = data_to_embed(raw_chunks)
 
     # save shaped chunk objects
-    with open("data/without-embeddings.json", "w", encoding="utf-8") as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(document_chunks, f, indent=2)
 
-    print("\nSaved data/without-embeddings.json")
+    print(f"\nSaved {output_path}")
 
 
 if __name__ == "__main__":

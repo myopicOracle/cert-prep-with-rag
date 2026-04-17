@@ -11,6 +11,9 @@ bedrock = boto3.client(
     region_name=os.getenv("AWS_REGION"),
 )
 
+input_path = "data/without-embeddings.json"
+output_path = "data/with-embeddings.json"
+
 
 def get_embedding(raw_text):
     response = bedrock.invoke_model(
@@ -33,7 +36,7 @@ def get_embedding(raw_text):
 
 
 def main():
-    with open("data/chunks-preview.json", "r", encoding="utf-8") as my_file:
+    with open(input_path, "r", encoding="utf-8") as my_file:
         document_chunks = json.load(my_file)
 
     counter = 0
@@ -49,7 +52,7 @@ def main():
             print("." * progress)
 
     # save documents with embeddings added
-    with open("data/with-embeddings.json", "w", encoding="utf-8") as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(document_chunks, f, indent=2)
 
     print("\nSaved data/with-embeddings.json")
