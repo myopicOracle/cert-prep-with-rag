@@ -21,8 +21,8 @@
 - [x] build and test Bedrock embedding and converse invocation functions, completes #26
 - [x] create Supabase db with pgvector column and HNSW index, completes #4
 - [x] scripts/ingest.ts: write and test PDF parse + chunking script, completes #5
-- [ ] extend ingest script to generate and store Titan embeddings, completes #6
-- [ ] write and test Supabase vector table insert function, completes #7
+- [x] extend ingest script to generate and store Titan embeddings, completes #6
+- [x] write and test Supabase vector table insert function, completes #7
 - [ ] lib/rag.ts: embed query, run similarity search, return Bedrock response, completes #8
 - [ ] ingest exam guides and AWS whitepapers into docs table, completes #25
 - [ ] optimize system prompts and tweak RAG params (size, threshold, window), completes #9

@@ -5,27 +5,45 @@ from dotenv import load_dotenv
 from supabase import create_client
 
 load_dotenv(".env.local")
+input_path = "data/with-embeddings.json"
 
 supabase = create_client(
     os.getenv("NEXT_PUBLIC_SUPABASE_URL"),
     os.getenv("SUPABASE_SERVICE_ROLE_KEY"),
 )
 
-input_path = "data/with-embeddings.json"
 
-print("Loading documents...\n")
-with open(input_path, "r", encoding="utf-8") as my_file:
-    documents = json.load(my_file)
-    print("Load success.")
-    print(f"Number of documents: {len(documents)}")
-    print(f"Embedding size: {len(documents[0]['embedding'])}\n")
+def ingest_documents():
+    print("Ingesting documents...\n")
 
-single_row = {
-    "content": documents[0]["content"],
-    "metadata": documents[0]["metadata"],
-    "source_url": documents[0]["source_url"],
-    "embedding": documents[0]["embedding"],
-}
+    with open(input_path, "r", encoding="utf-8") as my_file:
+        documents = json.load(my_file)
+        print(f"Ingested {len(documents)} documents.\n")
 
-result = supabase.table("documents").insert(single_row).execute()
-print(f"Result of Supabase inser: {result}\n")
+    return documents
+
+
+def insert_documents(documents):
+    count = 0
+    for row in documents:
+        data = {
+            "content": row["content"],
+            "metadata": row["metadata"],
+            "source_url": row["source_url"],
+            "embedding": row["embedding"],
+        }
+
+        supabase.table("documents").insert(data).execute()
+        count += 1
+
+        print("Supabase operation success.")
+        print(f"Inserted {count} documents.\n")
+
+
+def main():
+    documents = ingest_documents()
+    insert_documents(documents)
+
+
+if __name__ == "__main__":
+    main()
