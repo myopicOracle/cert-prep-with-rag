@@ -12,7 +12,7 @@ export default async function Page({
     const params = await searchParams
 
     const currentID = Number(params?.id) || 1
-    console.log('currentID: ', currentID)
+    console.log('currentID:', currentID)
 
     const rawQuestions = await fetchQuestions()
 

@@ -6,13 +6,20 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "update:models": "./scripts/update-models.sh",
+    "docs:extract": ".venv/bin/python scripts/etl/extract.py",
+    "docs:transform": ".venv/bin/python scripts/etl/transform.py",
+    "docs:embed": ".venv/bin/python scripts/etl/embed.py",
+    "docs:load": ".venv/bin/python scripts/etl/load.py"
   },
   "dependencies": {
     "@aws-sdk/client-bedrock-runtime": "^3.1011.0",
     "@heroicons/react": "^2.2.0",
+    "@langchain/textsplitters": "^1.0.1",
     "@supabase/ssr": "^0.9.0",
     "@supabase/supabase-js": "^2.100.1",
+    "langchain": "^1.3.3",
     "lodash": "^4.17.23",
     "next": "16.1.7",
     "react": "19.2.3",
