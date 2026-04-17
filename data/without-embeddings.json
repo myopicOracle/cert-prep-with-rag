@@ -7,7 +7,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Introduction: - Choose deployment infrastructure and endpoints, provision compute resources, and configure auto scaling based on requirements.\n- Set up continuous integration and continuous delivery (CI/CD) pipelines to automate orchestration of ML workflows.\n- Monitor models, data, and infrastructure to detect issues.\n- Secure ML systems and resources through access controls, compliance features, and best practices.",
@@ -17,7 +17,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Target candidate description: The target candidate should have at least 1 year of experience using Amazon SageMaker and other AWS services for ML engineering. The target candidate also should have at least 1 year of experience in a related role such as a backend software developer, DevOps developer, data engineer, or data scientist.",
@@ -27,7 +27,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Target candidate description > Recommended general IT knowledge: The target candidate should have the following general IT knowledge:  \n- Basic understanding of common ML algorithms and their use cases\n- Data engineering fundamentals, including knowledge of common data formats, ingestion, and transformation to work with ML data pipelines\n- Knowledge of querying and transforming data  \n- Knowledge of software engineering best practices for modular, reusable code development, deployment, and debugging",
@@ -37,7 +37,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Target candidate description > Recommended general IT knowledge: - Familiarity with provisioning and monitoring cloud and on-premises ML resources\n- Experience with CI/CD pipelines and infrastructure as code (IaC)\n- Experience with code repositories for version control and CI/CD pipelines",
@@ -47,7 +47,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Target candidate description > Recommended general IT knowledge > Recommended AWS knowledge: The target candidate should have the following AWS knowledge:  \n- Knowledge of SageMaker capabilities and algorithms for model building and deployment\n- Knowledge of AWS data storage and processing services for preparing data for modeling\n- Familiarity with deploying applications and infrastructure on AWS\n- Knowledge of monitoring tools for logging and troubleshooting ML systems\n- Knowledge of AWS services for the automation and orchestration of CI/CD pipelines",
@@ -57,7 +57,7 @@
       "h3": null,
       "h4": "Recommended AWS knowledge"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Target candidate description > Recommended general IT knowledge > Recommended AWS knowledge: - Understanding of AWS security best practices for identity and access management, encryption, and data protection",
@@ -67,7 +67,7 @@
       "h3": null,
       "h4": "Recommended AWS knowledge"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Target candidate description > Recommended general IT knowledge > Job tasks that are out of scope for the target candidate: The following list contains job tasks that the target candidate is not expected to be able to perform. This list is non-exhaustive. These tasks are out of scope for the exam:  \n- Designing and architecting full end-to-end ML solutions\n- Setting up best practices and guiding ML strategies\n- Handling integration with a wide array of services or new tools and technologies\n- Working deeply in two or more ML domains (for example, natural language processing [NLP], computer vision)",
@@ -77,7 +77,7 @@
       "h3": null,
       "h4": "Job tasks that are out of scope for the target candidate"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Target candidate description > Recommended general IT knowledge > Job tasks that are out of scope for the target candidate: - Quantizing models and analyzing the impact on accuracy  \nRefer to the Appendix for a list of in-scope AWS services and features and a list of out-of-scope AWS services and features.",
@@ -87,7 +87,7 @@
       "h3": null,
       "h4": "Job tasks that are out of scope for the target candidate"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Question types: The exam contains one or more of the following question types:  \n- Multiple choice: Has one correct response and three incorrect responses (distractors).\n- Multiple response: Has two or more correct responses out of five or more response options. You must select all the correct responses to receive credit for the question.",
@@ -97,7 +97,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Question types: - Ordering: Has a list of 3\u20135 responses to complete a specified task. You must select the correct responses and place the responses in the correct order to receive credit for the question.\n- Matching: Has a list of responses to match with a list of 3\u20137 prompts. You must match all the pairs correctly to receive credit for the question.",
@@ -107,7 +107,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Question types: - Case study: Has one scenario with two or more questions about the scenario. The scenario is the same for each question in the case study. Each question in the case study will be evaluated separately. You will receive credit for each question that you answer correctly in the case study.  \nUnanswered questions on the exam are scored as incorrect. There is no penalty for guessing. The exam includes 50 questions that affect your score.1",
@@ -117,7 +117,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Question types > Unscored content: The exam includes 15 unscored questions that do not affect your score. AWS collects information about performance on these unscored questions to evaluate these questions for future use as scored questions. These unscored questions are not identified on the exam.  \n<sup>1</sup> Does not apply to the beta version of the exam. You can find more information about beta exams in general on the AWS Certification website.",
@@ -127,7 +127,7 @@
       "h3": null,
       "h4": "Unscored content"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Exam results: The AWS Certified Machine Learning Engineer - Associate (MLA-C01) exam has a pass or fail designation. The exam is scored against a minimum standard established by AWS professionals who follow certification industry best practices and guidelines.",
@@ -137,7 +137,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Exam results: Your results for the exam are reported as a scaled score of 100\u20131,000. The minimum passing score is 720. Your score shows how you performed on the exam as a whole and whether you passed. Scaled scoring models help equate scores across multiple exam forms that might have slightly different difficulty levels.",
@@ -147,7 +147,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Exam results: Your score report could contain a table of classifications of your performance at each section level. The exam uses a compensatory scoring model, which means that you do not need to achieve a passing score in each section. You need to pass only the overall exam.",
@@ -157,7 +157,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Exam results: Each section of the exam has a specific weighting, so some sections have more questions than other sections have. The table of classifications contains general information that highlights your strengths and weaknesses. Use caution when you interpret section-level feedback.",
@@ -167,7 +167,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Exam results > Content outline: This exam guide includes weightings, content domains, and task statements for the exam. This guide does not provide a comprehensive list of the content on the exam. However, additional context for each task statement is available to help you prepare for the exam.  \nThe exam has the following content domains and weightings:  \n- Domain 1: Data Preparation for Machine Learning (ML) (28% of scored content)\n- Domain 2: ML Model Development (26% of scored content)",
@@ -177,7 +177,7 @@
       "h3": null,
       "h4": "Content outline"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Exam results > Content outline: - Domain 3: Deployment and Orchestration of ML Workflows (22% of scored content)\n- Domain 4: ML Solution Monitoring, Maintenance, and Security (24% of scored content)",
@@ -187,7 +187,7 @@
       "h3": null,
       "h4": "Content outline"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Domain 1: Data Preparation for Machine Learning (ML): Task Statement 1.1: Ingest and store data.",
@@ -197,7 +197,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Domain 1: Data Preparation for Machine Learning (ML) > Knowledge of:: - Data formats and ingestion mechanisms (for example, validated and non-validated formats, Apache Parquet, JSON, CSV, Apache ORC, Apache Avro, RecordIO)\n- How to use the core AWS data sources (for example, Amazon S3, Amazon Elastic File System [Amazon EFS], Amazon FSx for NetApp ONTAP)\n- How to use AWS streaming data sources to ingest data (for example, Amazon Kinesis, Apache Flink, Apache Kafka)\n- AWS storage options, including use cases and tradeoffs",
@@ -207,7 +207,7 @@
       "h3": "Knowledge of:",
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Domain 1: Data Preparation for Machine Learning (ML) > Knowledge of: > Skills in:: - Extracting data from storage (for example, Amazon S3, Amazon Elastic Block Store [Amazon EBS], Amazon EFS, Amazon RDS, Amazon DynamoDB) by using relevant AWS service options (for example, Amazon S3 Transfer Acceleration, Amazon EBS Provisioned IOPS)\n- Choosing appropriate data formats (for example, Parquet, JSON, CSV, ORC) based on data access patterns\n- Ingesting data into Amazon SageMaker Data Wrangler and SageMaker Feature Store",
@@ -217,7 +217,7 @@
       "h3": "Knowledge of:",
       "h4": "Skills in:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Domain 1: Data Preparation for Machine Learning (ML) > Knowledge of: > Skills in:: - Merging data from multiple sources (for example, by using programming techniques, AWS Glue, Apache Spark)\n- Troubleshooting and debugging data ingestion and storage issues that involve capacity and scalability\n- Making initial storage decisions based on cost, performance, and data structure  \nTask Statement 1.2: Transform data and perform feature engineering.",
@@ -227,7 +227,7 @@
       "h3": "Knowledge of:",
       "h4": "Skills in:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of:: - Data cleaning and transformation techniques (for example, detecting and treating outliers, imputing missing data, combining, deduplication)\n- Feature engineering techniques (for example, data scaling and standardization, feature splitting, binning, log transformation, normalization)\n- Encoding techniques (for example, one-hot encoding, binary encoding, label encoding, tokenization)",
@@ -237,7 +237,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of:: - Tools to explore, visualize, or transform data and features (for example, SageMaker Data Wrangler, AWS Glue, AWS Glue DataBrew)\n- Services that transform streaming data (for example, AWS Lambda, Spark)\n- Data annotation and labeling services that create high-quality labeled datasets",
@@ -247,7 +247,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Skills in:: - Transforming data by using AWS tools (for example, AWS Glue, AWS Glue DataBrew, Spark running on Amazon EMR, SageMaker Data Wrangler)\n- Creating and managing features by using AWS tools (for example, SageMaker Feature Store)\n- Validating and labeling data by using AWS services (for example, SageMaker Ground Truth, Amazon Mechanical Turk)  \nTask Statement 1.3: Ensure data integrity and prepare data for modeling.",
@@ -257,7 +257,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Skills in: > Knowledge of:: - Pre-training bias metrics for numeric, text, and image data (for example, class imbalance [CI], difference in proportions of labels [DPL])\n- Strategies to address CI in numeric, text, and image datasets (for example, synthetic data generation, resampling)\n- Techniques to encrypt data\n- Data classification, anonymization, and masking\n- Implications of compliance requirements (for example, personally identifiable information [PII], protected health information [PHI], data residency)",
@@ -267,7 +267,7 @@
       "h3": null,
       "h4": "Knowledge of:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Skills in: > Knowledge of:: - Validating data quality (for example, by using AWS Glue DataBrew and AWS Glue Data Quality)\n- Identifying and mitigating sources of bias in data (for example, selection bias, measurement bias) by using AWS tools (for example, SageMaker Clarify)\n- Preparing data to reduce prediction bias (for example, by using dataset splitting, shuffling, and augmentation)\n- Configuring data to load into the model training resource (for example, Amazon EFS, Amazon FSx)",
@@ -277,7 +277,7 @@
       "h3": null,
       "h4": "Knowledge of:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Domain 2: ML Model Development: Task Statement 2.1: Choose a modeling approach.",
@@ -287,7 +287,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of:: - Capabilities and appropriate uses of ML algorithms to solve business problems\n- How to use AWS artificial intelligence (AI) services (for example, Amazon Translate, Amazon Transcribe, Amazon Rekognition, Amazon Bedrock) to solve specific business problems\n- How to consider interpretability during model selection or algorithm selection\n- SageMaker built-in algorithms and when to apply them",
@@ -297,7 +297,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of: > Skills in:: - Assessing available data and problem complexity to determine the feasibility of an ML solution\n- Comparing and selecting appropriate ML models or algorithms to solve specific problems\n- Choosing built-in algorithms, foundation models, and solution templates (for example, in SageMaker JumpStart and Amazon Bedrock)\n- Selecting models or algorithms based on costs\n- Selecting AI services to solve common business needs",
@@ -307,7 +307,7 @@
       "h3": null,
       "h4": "Skills in:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of:: - Elements in the training process (for example, epoch, steps, batch size)\n- Methods to reduce model training time (for example, early stopping, distributed training)\n- Factors that influence model size\n- Methods to improve model performance\n- Benefits of regularization techniques (for example, dropout, weight decay, L1 and L2)\n- Hyperparameter tuning techniques (for example, random search, Bayesian optimization)",
@@ -317,7 +317,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of:: - Model hyperparameters and their effects on model performance (for example, number of trees in a tree-based model, number of layers in a neural network)\n- Methods to integrate models that were built outside SageMaker into SageMaker",
@@ -327,7 +327,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of: > Skills in:: - Using SageMaker built-in algorithms and common ML libraries to develop ML models\n- Using SageMaker script mode with SageMaker supported frameworks to train models (for example, TensorFlow, PyTorch)\n- Using custom datasets to fine-tune pre-trained models (for example, Amazon Bedrock, SageMaker JumpStart)\n- Performing hyperparameter tuning (for example, by using SageMaker automatic model tuning [AMT])\n- Integrating automated hyperparameter optimization capabilities",
@@ -337,7 +337,7 @@
       "h3": null,
       "h4": "Skills in:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of: > Skills in:: - Preventing model overfitting, underfitting, and catastrophic forgetting (for example, by using regularization techniques, feature selection)\n- Combining multiple training models to improve performance (for example, ensembling, stacking, boosting)\n- Reducing model size (for example, by altering data types, pruning, updating feature selection, compression)\n- Managing model versions for repeatability and audits (for example, by using the SageMaker Model Registry)",
@@ -347,7 +347,7 @@
       "h3": null,
       "h4": "Skills in:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of: > Skills in:: Task Statement 2.3: Analyze model performance.",
@@ -357,7 +357,7 @@
       "h3": null,
       "h4": "Skills in:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of:: - Model evaluation techniques and metrics (for example, confusion matrix, heat maps, F1 score, accuracy, precision, recall, Root Mean Square Error [RMSE], receiver operating characteristic [ROC], Area Under the ROC Curve [AUC])\n- Methods to create performance baselines\n- Methods to identify model overfitting and underfitting\n- Metrics available in SageMaker Clarify to gain insights into ML training data and models\n- Convergence issues",
@@ -367,7 +367,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Skills in:: - Selecting and interpreting evaluation metrics and detecting model bias\n- Assessing tradeoffs between model performance, training time, and cost\n- Performing reproducible experiments by using AWS services\n- Comparing the performance of a shadow variant to the performance of a production variant\n- Using SageMaker Clarify to interpret model outputs\n- Using SageMaker Model Debugger to debug model convergence",
@@ -377,7 +377,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Domain 3: Deployment and Orchestration of ML Workflows: Task Statement 3.1: Select deployment infrastructure based on existing architecture and requirements.",
@@ -387,7 +387,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Domain 3: Deployment and Orchestration of ML Workflows > Knowledge of:: - Deployment best practices (for example, versioning, rollback strategies)\n- AWS deployment services (for example, SageMaker)\n- Methods to serve ML models in real time and in batches\n- How to provision compute resources in production environments and test environments (for example, CPU, GPU)\n- Model and endpoint requirements for deployment endpoints (for example, serverless endpoints, real-time endpoints, asynchronous endpoints, batch inference)",
@@ -397,7 +397,7 @@
       "h3": null,
       "h4": "Knowledge of:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Domain 3: Deployment and Orchestration of ML Workflows > Knowledge of:: - How to choose appropriate containers (for example, provided or customized)\n- Methods to optimize models on edge devices (for example, SageMaker Neo)  \n- Evaluating performance, cost, and latency tradeoffs\n- Choosing the appropriate compute environment for training and inference based on requirements (for example, GPU or CPU specifications, processor family, networking bandwidth)\n- Selecting the correct deployment orchestrator (for example, Apache Airflow, SageMaker Pipelines)",
@@ -407,7 +407,7 @@
       "h3": null,
       "h4": "Knowledge of:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Domain 3: Deployment and Orchestration of ML Workflows > Knowledge of:: - Selecting multi-model or multi-container deployments\n- Selecting the correct deployment target (for example, SageMaker endpoints, Kubernetes, Amazon Elastic Container Service [Amazon ECS], Amazon Elastic Kubernetes Service [Amazon EKS], Lambda)\n- Choosing model deployment strategies (for example, real time, batch)  \nTask Statement 3.2: Create and script infrastructure based on existing architecture and requirements.",
@@ -417,7 +417,7 @@
       "h3": null,
       "h4": "Knowledge of:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of:: - Difference between on-demand and provisioned resources\n- How to compare scaling policies\n- Tradeoffs and use cases of infrastructure as code (IaC) options (for example, AWS CloudFormation, AWS Cloud Development Kit [AWS CDK])\n- Containerization concepts and AWS container services\n- How to use SageMaker endpoint auto scaling policies to meet scalability requirements (for example, based on demand, time)",
@@ -427,7 +427,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of:: - Applying best practices to enable maintainable, scalable, and cost-effective ML solutions (for example, automatic scaling on SageMaker endpoints, dynamically adding Spot Instances, by using Amazon EC2 instances, by using Lambda behind the endpoints)\n- Automating the provisioning of compute resources, including communication between stacks (for example, by using CloudFormation, AWS CDK)",
@@ -437,7 +437,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of:: - Building and maintaining containers (for example, Amazon Elastic Container Registry [Amazon ECR], Amazon EKS, Amazon ECS, by using bring your own container [BYOC] with SageMaker)\n- Configuring SageMaker endpoints within the VPC network\n- Deploying and hosting models by using the SageMaker SDK\n- Choosing specific metrics for auto scaling (for example, model latency, CPU utilization, invocations per instance)",
@@ -447,7 +447,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of:: Task Statement 3.3: Use automated orchestration tools to set up continuous integration and continuous delivery (CI/CD) pipelines.",
@@ -457,7 +457,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of: > Knowledge of:: - Capabilities and quotas for AWS CodePipeline, AWS CodeBuild, and AWS CodeDeploy\n- Automation and integration of data ingestion with orchestration services\n- Version control systems and basic usage (for example, Git)\n- CI/CD principles and how they fit into ML workflows\n- Deployment strategies and rollback actions (for example, blue/green, canary, linear)\n- How code repositories and pipelines work together",
@@ -467,7 +467,7 @@
       "h3": "Knowledge of:",
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of: > Knowledge of:: - Configuring and troubleshooting CodeBuild, CodeDeploy, and CodePipeline, including stages\n- Applying continuous deployment flow structures to invoke pipelines (for example, Gitflow, GitHub Flow)\n- Using AWS services to automate orchestration (for example, to deploy ML models, automate model building)\n- Configuring training and inference jobs (for example, by using Amazon EventBridge rules, SageMaker Pipelines, CodePipeline)",
@@ -477,7 +477,7 @@
       "h3": "Knowledge of:",
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of: > Knowledge of:: - Creating automated tests in CI/CD pipelines (for example, integration tests, unit tests, end-to-end tests)\n- Building and integrating mechanisms to retrain models",
@@ -487,7 +487,7 @@
       "h3": "Knowledge of:",
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Domain 4: ML Solution Monitoring, Maintenance, and Security: Task Statement 4.1: Monitor model inference.",
@@ -497,7 +497,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of:: - Drift in ML models\n- Techniques to monitor data quality and model performance\n- Design principles for ML lenses relevant to monitoring",
@@ -507,7 +507,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Skills in:: - Monitoring models in production (for example, by using SageMaker Model Monitor)\n- Monitoring workflows to detect anomalies or errors in data processing or model inference\n- Detecting changes in the distribution of data that can affect model performance (for example, by using SageMaker Clarify)\n- Monitoring model performance in production by using A/B testing  \nTask Statement 4.2: Monitor and optimize infrastructure and costs.",
@@ -517,7 +517,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of:: - Key performance metrics for ML infrastructure (for example, utilization, throughput, availability, scalability, fault tolerance)\n- Monitoring and observability tools to troubleshoot latency and performance issues (for example, AWS X-Ray, Amazon CloudWatch Lambda Insights, Amazon CloudWatch Logs Insights)\n- How to use AWS CloudTrail to log, monitor, and invoke re-training activities",
@@ -527,7 +527,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of:: - Differences between instance types and how they affect performance (for example, memory optimized, compute optimized, general purpose, inference optimized)\n- Capabilities of cost analysis tools (for example, AWS Cost Explorer, AWS Billing and Cost Management, AWS Trusted Advisor)\n- Cost tracking and allocation techniques (for example, resource tagging)",
@@ -537,7 +537,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Skills in:: - Configuring and using tools to troubleshoot and analyze resources (for example, CloudWatch Logs, CloudWatch alarms)\n- Creating CloudTrail trails\n- Setting up dashboards to monitor performance metrics (for example, by using Amazon QuickSight, CloudWatch dashboards)\n- Monitoring infrastructure (for example, by using EventBridge events)\n- Rightsizing instance families and sizes (for example, by using SageMaker Inference Recommender and AWS Compute Optimizer)",
@@ -547,7 +547,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Skills in:: - Monitoring and resolving latency and scaling issues\n- Preparing infrastructure for cost monitoring (for example, by applying a tagging strategy)\n- Troubleshooting capacity concerns that involve cost and performance (for example, provisioned concurrency, service quotas, auto scaling)\n- Optimizing costs and setting cost quotas by using appropriate cost management tools (for example, AWS Cost Explorer, AWS Trusted Advisor, AWS Budgets)",
@@ -557,7 +557,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Skills in:: - Optimizing infrastructure costs by selecting purchasing options (for example, Spot Instances, On-Demand Instances, Reserved Instances, SageMaker Savings Plans)",
@@ -567,7 +567,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of:: - IAM roles, policies, and groups that control access to AWS services (for example, AWS Identity and Access Management [IAM], bucket policies, SageMaker Role Manager)\n- SageMaker security and compliance features\n- Controls for network access to ML resources\n- Security best practices for CI/CD pipelines",
@@ -577,7 +577,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Exam content > Knowledge of: > Skills in:: - Configuring least privilege access to ML artifacts\n- Configuring IAM policies and roles for users and applications that interact with ML systems\n- Monitoring, auditing, and logging ML systems to ensure continued security and compliance\n- Troubleshooting and debugging security issues\n- Building VPCs, subnets, and security groups to securely isolate ML systems",
@@ -587,7 +587,7 @@
       "h3": "Skills in:",
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > In-scope AWS services and features: The following list contains AWS services and features that are in scope for the exam. This list is non-exhaustive and is subject to change. AWS offerings appear in categories that align with the offerings' primary functions:",
@@ -597,7 +597,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > In-scope AWS services and features > Analytics:: - Amazon Athena\n- Amazon Data Firehose\n- Amazon EMR\n- AWS Glue\n- AWS Glue DataBrew\n- AWS Glue Data Quality\n- Amazon Kinesis\n- AWS Lake Formation\n- Amazon Managed Service for Apache Flink\n- Amazon OpenSearch Service\n- Amazon QuickSight\n- Amazon Redshift",
@@ -607,7 +607,7 @@
       "h3": null,
       "h4": "Analytics:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Application Integration:: - Amazon EventBridge\n- Amazon Managed Workflows for Apache Airflow (Amazon MWAA)\n- Amazon Simple Notification Service (Amazon SNS)\n- Amazon Simple Queue Service (Amazon SQS)\n- AWS Step Functions",
@@ -617,7 +617,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Application Integration: > Cloud Financial Management:: - AWS Billing and Cost Management\n- AWS Budgets\n- AWS Cost Explorer",
@@ -627,7 +627,7 @@
       "h3": null,
       "h4": "Cloud Financial Management:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Compute:: - AWS Batch\n- Amazon EC2\n- AWS Lambda\n- AWS Serverless Application Repository",
@@ -637,7 +637,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Containers:: - Amazon Elastic Container Registry (Amazon ECR)\n- Amazon Elastic Container Service (Amazon ECS)\n- Amazon Elastic Kubernetes Service (Amazon EKS)",
@@ -647,7 +647,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Database:: - Amazon DocumentDB (with MongoDB compatibility)\n- Amazon DynamoDB\n- Amazon ElastiCache\n- Amazon Neptune\n- Amazon RDS",
@@ -657,7 +657,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Database: > Developer Tools:: - AWS Cloud Development Kit (AWS CDK)\n- AWS CodeArtifact\n- AWS CodeBuild\n- AWS CodeDeploy\n- AWS CodePipeline\n- AWS X-Ray",
@@ -667,7 +667,7 @@
       "h3": null,
       "h4": "Developer Tools:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Machine Learning:: - Amazon Augmented AI (Amazon A2I)\n- Amazon Bedrock\n- Amazon CodeGuru\n- Amazon Comprehend\n- Amazon Comprehend Medical\n- Amazon DevOps Guru\n- Amazon Fraud Detector\n- AWS HealthLake\n- Amazon Kendra\n- Amazon Lex\n- Amazon Lookout for Equipment\n- Amazon Lookout for Metrics\n- Amazon Lookout for Vision\n- Amazon Mechanical Turk\n- Amazon Personalize\n- Amazon Polly\n- Amazon Q\n- Amazon Rekognition\n- Amazon SageMaker\n- Amazon Textract\n- Amazon Transcribe\n- Amazon Translate",
@@ -677,7 +677,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Management and Governance:: - AWS Auto Scaling\n- AWS Chatbot\n- AWS CloudFormation\n- AWS CloudTrail\n- Amazon CloudWatch\n- Amazon CloudWatch Logs\n- AWS Compute Optimizer\n- AWS Config\n- AWS Organizations\n- AWS Service Catalog\n- AWS Systems Manager\n- AWS Trusted Advisor",
@@ -687,7 +687,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Management and Governance: > Media:: Amazon Kinesis Video Streams",
@@ -697,7 +697,7 @@
       "h3": null,
       "h4": "Media:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Migration and Transfer:: AWS DataSync",
@@ -707,7 +707,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Migration and Transfer: > Networking and Content Delivery:: - Amazon API Gateway\n- Amazon CloudFront\n- AWS Direct Connect\n- Amazon VPC",
@@ -717,7 +717,7 @@
       "h3": null,
       "h4": "Networking and Content Delivery:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Migration and Transfer: > Security, Identity, and Compliance:: - AWS Identity and Access Management (IAM)\n- AWS Key Management Service (AWS KMS)\n- Amazon Macie\n- AWS Secrets Manager",
@@ -727,7 +727,7 @@
       "h3": null,
       "h4": "Security, Identity, and Compliance:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Storage:: - Amazon Elastic Block Store (Amazon EBS)\n- Amazon Elastic File System (Amazon EFS)\n- Amazon FSx\n- Amazon S3\n- Amazon S3 Glacier\n- AWS Storage Gateway",
@@ -737,7 +737,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Storage: > Out-of-scope AWS services and features: The following list contains AWS services and features that are out of scope for the exam. This list is non-exhaustive and is subject to change. AWS offerings that are entirely unrelated to the target job roles for the exam are excluded from this list:",
@@ -747,7 +747,7 @@
       "h3": "Out-of-scope AWS services and features",
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Storage: > Out-of-scope AWS services and features > Analytics:: - AWS Clean Rooms\n- Amazon DataZone\n- Amazon FinSpace",
@@ -757,7 +757,7 @@
       "h3": "Out-of-scope AWS services and features",
       "h4": "Analytics:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Storage: > Out-of-scope AWS services and features > Application Integration:: - Amazon AppFlow\n- Amazon MQ\n- Amazon Simple Workflow Service (Amazon SWF)",
@@ -767,7 +767,7 @@
       "h3": "Out-of-scope AWS services and features",
       "h4": "Application Integration:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Storage: > Out-of-scope AWS services and features > Business Applications:: - Amazon Chime\n- Amazon Connect\n- Amazon Honeycode\n- Amazon Pinpoint\n- Amazon Simple Email Service (Amazon SES)\n- AWS Supply Chain\n- AWS Wickr\n- Amazon WorkDocs\n- Amazon WorkMail",
@@ -777,7 +777,7 @@
       "h3": "Out-of-scope AWS services and features",
       "h4": "Business Applications:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Cloud Financial Management:: AWS Application Cost Profiler",
@@ -787,7 +787,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Compute:: - AWS App Runner\n- AWS Elastic Beanstalk\n- Amazon Lightsail\n- AWS Outposts",
@@ -797,7 +797,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Containers:: Red Hat OpenShift Service on AWS (ROSA)",
@@ -807,7 +807,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Containers: > Customer Enablement:: - AWS Activate for startups\n- AWS IQ\n- AWS re:Post Private",
@@ -817,7 +817,7 @@
       "h3": null,
       "h4": "Customer Enablement:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Developer Tools:: - AWS Application Composer\n- AWS CloudShell\n- Amazon CodeCatalyst\n- AWS Fault Injection Service",
@@ -827,7 +827,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Developer Tools: > End User Computing:: - Amazon AppStream 2.0\n- Amazon WorkSpaces\n- Amazon WorkSpaces Secure Browser\n- Amazon WorkSpaces Thin Client",
@@ -837,7 +837,7 @@
       "h3": null,
       "h4": "End User Computing:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Frontend Web and Mobile:: - AWS Amplify\n- AWS AppSync\n- AWS Device Farm\n- Amazon Location Service",
@@ -847,7 +847,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Internet of Things (IoT):: - FreeRTOS\n- AWS IoT 1-Click\n- AWS IoT Core\n- AWS IoT Device Defender\n- AWS IoT Device Management\n- AWS IoT Events\n- AWS IoT FleetWise\n- AWS IoT Greengrass\n- AWS IoT RoboRunner\n- AWS IoT SiteWise\n- AWS IoT TwinMaker",
@@ -857,7 +857,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Machine Learning:: - AWS DeepRacer\n- AWS HealthImaging\n- AWS HealthOmics\n- Amazon Monitron\n- AWS Panorama",
@@ -867,7 +867,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Machine Learning: > Management and Governance:: - AWS AppConfig\n- AWS Control Tower\n- AWS Launch Wizard\n- AWS License Manager\n- Amazon Managed Grafana\n- AWS Proton\n- AWS Resilience Hub\n- AWS Resource Explorer\n- AWS Telco Network Builder\n- AWS User Notifications",
@@ -877,7 +877,7 @@
       "h3": null,
       "h4": "Management and Governance:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Machine Learning: > Media:: - Amazon Elastic Transcoder\n- AWS Elemental Appliances and Software\n- AWS Elemental MediaConnect\n- AWS Elemental MediaConvert\n- AWS Elemental MediaLive\n- AWS Elemental MediaPackage\n- AWS Elemental MediaStore\n- AWS Elemental MediaTailor\n- Amazon Interactive Video Service (Amazon IVS)\n- Amazon Nimble Studio",
@@ -887,7 +887,7 @@
       "h3": null,
       "h4": "Media:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Migration and Transfer:: - AWS Application Discovery Service\n- AWS Application Migration Service\n- AWS Mainframe Modernization\n- AWS Migration Hub",
@@ -897,7 +897,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Migration and Transfer: > Network and Content Delivery:: - AWS App Mesh\n- AWS Cloud Map\n- AWS Global Accelerator\n- AWS Private 5G\n- Amazon Route 53\n- Amazon Route 53 Application Recovery Controller\n- Amazon VPC IP Address Manager",
@@ -907,7 +907,7 @@
       "h3": null,
       "h4": "Network and Content Delivery:"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Security, Identity, and Compliance:: - AWS Artifact\n- AWS Audit Manager\n- AWS Certificate Manager (ACM)\n- AWS CloudHSM\n- Amazon Cognito\n- Amazon Detective\n- AWS Directory Service\n- AWS Firewall Manager\n- Amazon GuardDuty\n- Amazon Inspector\n- AWS Payment Cryptography\n- AWS Private Certificate Authority\n- AWS Resource Access Manager (AWS RAM)\n- AWS Security Hub\n- AWS Shield\n- AWS Signer\n- Amazon Verified Permissions\n- AWS WAF",
@@ -917,7 +917,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Storage:: AWS Elastic Disaster Recovery",
@@ -927,7 +927,7 @@
       "h3": null,
       "h4": null
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   },
   {
     "content": "Appendix > Storage: > Survey: How useful was this exam guide? Let us know by taking our survey.",
@@ -937,6 +937,6 @@
       "h3": null,
       "h4": "Survey"
     },
-    "source_url": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md"
+    "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
   }
 ]
