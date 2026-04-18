@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "dev:rag": "npx tsx --env-file=.env.local app/lib/rag.ts",
     "update:models": "./scripts/update-models.sh",
     "docs:extract": ".venv/bin/python scripts/etl/extract.py",
     "docs:transform": ".venv/bin/python scripts/etl/transform.py",

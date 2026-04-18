@@ -11,8 +11,6 @@ export async function getMatchedDocuments(embedding: number[]) {
 
     if (error) {
         console.error(error)
-    } else {
-        console.log(data)
     }
 
     return data
