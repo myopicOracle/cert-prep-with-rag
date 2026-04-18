@@ -1,8 +1,7 @@
 import { getMatchedDocuments } from '@/app/lib/supabase'
-import { getEmbedding } from '@/app/lib/bedrock'
+import { getEmbedding, getChatResponse } from '@/app/lib/bedrock'
 
-async function getMatches() {
-    const query = 'What are the in-scope AWS services and features?'
+async function getMatches(query: string) {
     console.log(`User asked: "${query}"`)
 
     console.log(`\nTurning user query into vectors...`)
@@ -29,12 +28,49 @@ function formatAsContext(matches: any[]) {
     }
 }
 
-async function main() {
-    const matches = await getMatches()
-    console.log('\nContext for LLM:\n\n', formatAsContext(matches))
+export async function getRagResponse(query: string) {
+    const matches = await getMatches(query)
+    const context = formatAsContext(matches)
+    // console.log('\nContext provided to LLM:\n\n', context)
+
+    const systemPrompt =
+        "You are an AWS certification exam prep assistant. Answer questions using only the provided context from AWS documentation. If the context doesn't contain enough information to answer, say so. Always cite which source or sources your answer is drawn from."
+
+    const messages = [
+        {
+            role: 'user',
+            content: [{ text: `Question: ${query}\n\nContext: ${context}` }],
+        },
+    ]
+
+    const response = await getChatResponse(messages, systemPrompt)
+    console.log('\nLLM Response: ', response)
+
+    if (response) {
+        messages.push({
+            role: 'assistant',
+            content: [{ text: response }],
+        })
+    }
+
+    const chatHistory =
+        // prettier-ignore
+        messages
+            .map((message, index) => { 
+                const role = message.role
+                const text = message.content[0].text
+
+                return `Message ${index+1} [${role}]: ${text}`
+            })
+            .join("\n\n---\n\n")
+
+    // console.log(chatHistory)
+
+    return response
 }
 
-main()
+const query = 'What are the in-scope AWS services and features?'
+getRagResponse(query)
 
 // User asked: "What are the in-scope AWS services and features?"
 
@@ -44,15 +80,19 @@ main()
 
 // 5 matches found.
 
-// Context for LLM:
+// LLM Response:  # In-Scope AWS Services and Features
 
-//  Source [1]: Appendix > In-scope AWS services and features: The following list contains AWS services and features that are in scope for the exam. This list is non-exhaustive and is subject to change. AWS offerings appear in categories that align with the offerings' primary functions:
+// Based on the provided context, I can share the following information:
 
-// (Confidence Score: 80%)
+// ## What We Know
 
-// ---
+// The exam includes **in-scope AWS services and features** that are organized by category according to their primary functions. However, the context provided is incomplete.
 
-// Source [2]: Appendix > In-scope AWS services and features > Analytics:: - Amazon Athena
+// ## Specific Example: Analytics Services
+
+// From **Source [2]**, the Analytics category includes these in-scope services:
+
+// - Amazon Athena
 // - Amazon Data Firehose
 // - Amazon EMR
 // - AWS Glue
@@ -65,25 +105,12 @@ main()
 // - Amazon QuickSight
 // - Amazon Redshift
 
-// (Confidence Score: 63%)
+// ## Important Notes
 
-// ---
+// According to **Source [1]**, this list is:
+// - **Non-exhaustive** - meaning there are more services included beyond what's listed
+// - **Subject to change** - the list may be updated
 
-// Source [3]: Appendix > Storage: > Out-of-scope AWS services and features: The following list contains AWS services and features that are out of scope for the exam. This list is non-exhaustive and is subject to change. AWS offerings that are entirely unrelated to the target job roles for the exam are excluded from this list:
+// ## Limitation
 
-// (Confidence Score: 59%)
-
-// ---
-
-// Source [4]: Appendix > Storage: > Out-of-scope AWS services and features > Application Integration:: - Amazon AppFlow
-// - Amazon MQ
-// - Amazon Simple Workflow Service (Amazon SWF)
-
-// (Confidence Score: 54%)
-
-// ---
-
-// Source [5]: Target candidate description > Recommended general IT knowledge > Job tasks that are out of scope for the target candidate: - Quantizing models and analyzing the impact on accuracy
-// Refer to the Appendix for a list of in-scope AWS services and features and a list of out-of-scope AWS services and features.
-
-// (Confidence Score: 54%)
+// The provided context does not contain the complete list of all in-scope services across all categories. To get the full comprehensive list of in-scope AWS services and features for your specific exam, you would need to refer to the complete Appendix section of the official AWS certification exam guide.
