@@ -67,5 +67,5 @@ export async function getEmbedding(inputText: string) {
     // console.log('Decoded response body:', JSON.stringify(responseBody, null, 2))
     // console.log('Embedding length:', responseBody.embedding.length)
 
-    return responseBody
+    return responseBody.embedding
 }
