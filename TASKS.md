@@ -24,6 +24,6 @@
 - [x] extend ingest script to generate and store Titan embeddings, completes #6
 - [x] write and test Supabase vector table insert function, completes #7
 - [x] lib/rag.ts: embed query, run similarity search, return Bedrock response, completes #8
+- [x] optimize system prompts and tweak RAG params (size, threshold, window), completes #9
+- [x] app/api/ask/route.ts: API endpoint for full RAG chain user query, completes #10
 - [ ] ingest exam guides and AWS whitepapers into docs table, completes #25
-- [ ] optimize system prompts and tweak RAG params (size, threshold, window), completes #9
-- [ ] app/api/ask/route.ts: API endpoint for full RAG chain user query, completes #10
