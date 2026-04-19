@@ -7,12 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "dev:rag": "npx tsx --env-file=.env.local app/lib/rag.ts",
-    "update:models": "./scripts/update-models.sh",
     "docs:extract": ".venv/bin/python scripts/etl/extract.py",
     "docs:transform": ".venv/bin/python scripts/etl/transform.py",
     "docs:embed": ".venv/bin/python scripts/etl/embed.py",
-    "docs:load": ".venv/bin/python scripts/etl/load.py"
+    "docs:load": ".venv/bin/python scripts/etl/load.py",
+    "update:models": "./scripts/update-models.sh",
+    "dev:rag": "npx tsx --env-file=.env.local app/lib/rag.ts",
+    "dev:ask": "curl -X POST http://localhost:3000/api/ask -H \"Content-Type: application/json\" -d '{\"query\": \"What services are in scope?\"}'"
   },
   "dependencies": {
     "@aws-sdk/client-bedrock-runtime": "^3.1011.0",
