@@ -1,6 +1,7 @@
 # docling
 # docling-hierarchical-pdf
 marker-pdf
+pypdf
 langchain-text-splitters
 boto3
 python-dotenv
