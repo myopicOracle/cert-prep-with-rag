@@ -9,6 +9,12 @@ import tempfile
 from datetime import datetime
 from pathlib import Path
 
+# # manually select file to process
+# file_to_extract = "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf" # 23 pages (~10 sec)
+# file_to_extract = "wellarchitected-machine-learning-lens.pdf"  # 370 pages (~15 min)
+# file_to_extract = "vpc-ug.pdf"  # 699 pages (~30 min)
+file_to_extract = "s3-userguide.pdf"  # 3,556 pages (~4 hours)
+
 # chunk to reset state for surya sequence length index
 CHUNK_SIZE = 100
 TOP_TOC_SCAN_LIMIT = 200
@@ -140,12 +146,6 @@ def clean_markdown(markdown_text):
     markdown_text = re.sub(r"\n{3,}", "\n\n", markdown_text)
 
     return markdown_text.strip() + "\n"
-
-
-# manually select file to process
-# file_to_extract = "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf" # 20 pages
-# file_to_extract = "vpc-ug.pdf" # 700 pages
-file_to_extract = "wellarchitected-machine-learning-lens.pdf"  # 370 pages
 
 
 # prevent child processes re-running script

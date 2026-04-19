@@ -1,6 +1,6 @@
 # Journal: Project CloudIQ
 
-_Documents hurdles, inflection points, useful notes, and relevant minutiae._
+_Documents , inflection points, useful notes, and relevant minutiae._
 
 ## Sprint 2: RAG Pipeline
 
@@ -17,7 +17,7 @@ Installing the AWS Serverless Application Model (SAM) was recommended for testin
 
 That being said, installing the AWS CLI makes your life easier (although you could go the Cloudshell route or just click around in the Management Console), and the AWS SDK is necessary for making API calls, similar to the OpenAI SDK or Vercel AI SDK.
 
-**Hurdles**
+**Challenges**
 
 I heard about issues with accessing Anthropic's models on Bedrock, so I submitted a usage report to Anthropic for Claude Haiku 4.5 about a week prior to starting Sprint 1. But what ended up blocking me for almost 2 weeks was Bedrock's default service quotas.
 
@@ -442,7 +442,7 @@ else console.log(data)
 
 This step took much longer than anticipated. Having never really thought about how PDFs work, I was surprised to learn how hard it is to reliably extract data from them.
 
-**Hurdles: Heading Detection**
+**Challenges: Heading Detection**
 
 I initially chose Docling for its 'structural fidelity'. Because of this, I was surprised to find that Docling struggles with something as seemingly basic as recognizing heading hiearchy. This is a whole other can of worms to do with the PDF binary to text conversion and inconsistency of tag usage. Basically, there are as many different ways to set up a PDF as there are people who make them.
 
@@ -533,3 +533,49 @@ Critically, markdown allows for:
 
 - Semantic Splitting: Using `MarkdownHeaderTextSplitter` to break chunks at logical section boundaries.
 - Context Inheritance: Prepending header "breadcrumbs" like `S3 > Security > Encryption` to the text before embedding
+
+### [S2-8] Ingest Large AWS Service Docs and White Papers
+
+While a high-quality markdown artifact is a critical precursor, the objective difficulty and myriad solutions available to solve the challenge that is reliably parsing PDFs, means that spending additional time on this particular step presents diminishing returns with respect to the value prop of the Cloud.IQ project.
+
+I will outline below the remaining challenges and considerations for enhancements as time permits.
+
+**Challenges**
+
+Several issues exist with the current PDF to Markdown extraction pipeline.
+
+_Headings_:
+
+- Marker is better than Docling at heading recognition, but still struggles to differentiate between levels.
+- Marker is OCR-based, and AWS Docs in PDF can be inconsistant with font sizing for headings.
+
+*Artifact*s:
+
+- Continues to output artifacts that are difficult to remove entirely or without damaging other text.
+- The database is expected to store a variety of docs, including exam guides, white papers, user guides, service refences, etc.
+- Each doc type has notable differences in structure and common artifacts.
+- Using a regex-based approach to cleaning artifacts with inconsistent patterns across these doc types is challenging.
+
+**Future Enhancements**
+
+_The Case for HTML to Markdown_:
+
+- AWS publishes most docs as HTML at docs.aws.amazon.com.
+- HTML has reliable semantic heading tags that don't depend on font-size inference.
+- Scraping HTML may be more reliable and reduce manual clean-up before ingest.
+
+_The LLM Solution_:
+
+- Process overlapping chunks through an LLM to maintain structural hierarchy iteratively.
+- Pass current hierarchy state between chunks to prevent context loss.
+- Use strict system instructions to fix headers without altering body text.
+
+**AI Use Disclaimer**
+
+I wrote the initial, simple regex logic to clean Markdown files output during the PDF extraction process. However my patterns would often fail to capture variations across different AWS Docs types. After further debugging, it turned out that a much more sophisticated series of transformations was required.
+
+At this point I leaned on LLM's substantially to debug that persistent artifacts that were left by my PDF extraction workflow. In paricular, I wanted to flag that the changes in commit `a1f44d26` were written almost entirely by a coding agent. This is a departure from the remainder of my project up to this point, where I had system prompts that purposefully restricted direct edits and instructed assistants to use _Socratic_ dialogue.
+
+LLMs proved to be very effective at identifying opaque regex edge cases, and inconsistent behavior across `pypdf` and `fitz` that would cause the run to crash. In addition, the larger AWS Docs like the S3 User Guide, had well over 3,000 pages, which translates to a little over 100,000 lines of markdown. This corpus was too large to manually inspect.
+
+I'm noting it explicitly because this portfolio is meant to reflect my actual skill level, or very close to my skill level, and not implementing any code I did not understand.
