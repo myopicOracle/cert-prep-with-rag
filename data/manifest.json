@@ -1,9 +1,34 @@
 {
     "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide": {
+        "page_count": 23,
         "pdf_name": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
         "pdf_path": "data/pdfs/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf",
         "markdown_name": "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md",
         "markdown_path": "data/markdown/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.md",
         "source_url": "https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf"
+    },
+    "wellarchitected-machine-learning-lens": {
+        "page_count": 370,
+        "pdf_name": "wellarchitected-machine-learning-lens.pdf",
+        "pdf_path": "data/pdfs/wellarchitected-machine-learning-lens.pdf",
+        "markdown_name": "wellarchitected-machine-learning-lens.md",
+        "markdown_path": "data/markdown/wellarchitected-machine-learning-lens.md",
+        "source_url": "https://docs.aws.amazon.com/pdfs/wellarchitected/latest/machine-learning-lens/wellarchitected-machine-learning-lens.pdf"
+    },
+    "vpc-ug": {
+        "page_count": 697,
+        "pdf_name": "vpc-ug.pdf",
+        "pdf_path": "data/pdfs/vpc-ug.pdf",
+        "markdown_name": "vpc-ug.md",
+        "markdown_path": "data/markdown/vpc-ug.md",
+        "source_url": "https://docs.aws.amazon.com/pdfs/vpc/latest/userguide/vpc-ug.pdf"
+    },
+    "s3-userguide": {
+        "page_count": 3556,
+        "pdf_name": "s3-userguide.pdf",
+        "pdf_path": "data/pdfs/s3-userguide.pdf",
+        "markdown_name": "s3-userguide.md",
+        "markdown_path": "data/markdown/s3-userguide.md",
+        "source_url": "https://docs.aws.amazon.com/pdfs/AmazonS3/latest/userguide/s3-userguide.pdf"
     }
 }

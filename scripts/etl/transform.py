@@ -3,7 +3,10 @@ import json
 from langchain_text_splitters import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
 from registry import manifest
 
+# manual select - NTD: refactor so not hardcoded
 file_name = "AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide"
+
+# path vars
 input_path = manifest[file_name]["markdown_path"]
 output_path = "data/chunks/without-embeddings.json"
 source_url = manifest[file_name]["source_url"]

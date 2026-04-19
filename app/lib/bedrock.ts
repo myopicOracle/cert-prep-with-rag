@@ -29,11 +29,15 @@ const models = {
     embedding: 'amazon.titan-embed-text-v2:0',
 }
 
-export async function getChatResponse(messages: any) {
+export async function getChatResponse(messages: any, systemPrompt?: string) {
+    const system = systemPrompt ? [{ text: systemPrompt }] : undefined
+
     const command = new ConverseCommand({
-        modelId: models.fast,
-        // modelId: models.general,
+        // modelId: models.fast,
+        modelId: models.general,
+        // modelId: models.pro,
         messages,
+        system,
     })
 
     const response = await client.send(command)
@@ -67,5 +71,5 @@ export async function getEmbedding(inputText: string) {
     // console.log('Decoded response body:', JSON.stringify(responseBody, null, 2))
     // console.log('Embedding length:', responseBody.embedding.length)
 
-    return responseBody
+    return responseBody.embedding
 }
