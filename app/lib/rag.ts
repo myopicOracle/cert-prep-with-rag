@@ -11,6 +11,7 @@ async function getMatches(query: string) {
     const matchedDocuments = await getMatchedDocuments(embedding)
 
     console.log(`\n${matchedDocuments.length} matches found.`)
+    // console.log(matchedDocuments)
 
     return matchedDocuments
 }
@@ -33,8 +34,21 @@ export async function getRagResponse(query: string) {
     const context = formatAsContext(matches)
     // console.log('\nContext provided to LLM:\n\n', context)
 
-    const systemPrompt =
-        "You are an AWS certification exam prep assistant. Answer questions using only the provided context from AWS documentation. If the context doesn't contain enough information to answer, say so. Always cite which source or sources your answer is drawn from."
+    const rolePreamble = `You are an AWS certification exam prep assistant.`
+    const metadataPreamble = `Each source in the context begins with a breadcrumb path (e.g. 'Section > Subsection: content'). Use this breadcrumb to understand the context of each source.`
+    const taskStatement = `Answer questions using only the provided context from AWS documentation.`
+    const formatCondition = `Be concise and direct. Avoid unnecessary headers or filler.`
+    const guardrailCondition = `If the context doesn't contain enough information to answer, say so.`
+    const transparencyCondition = `Always cite which source or sources your answer is drawn from.`
+
+    const systemPrompt = [
+        rolePreamble,
+        metadataPreamble,
+        taskStatement,
+        formatCondition,
+        guardrailCondition,
+        transparencyCondition,
+    ].join(' ')
 
     const messages = [
         {
@@ -56,7 +70,7 @@ export async function getRagResponse(query: string) {
     const chatHistory =
         // prettier-ignore
         messages
-            .map((message, index) => { 
+            .map((message, index) => {
                 const role = message.role
                 const text = message.content[0].text
 
