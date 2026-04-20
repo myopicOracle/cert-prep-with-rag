@@ -56,11 +56,7 @@ function buildCitations(matches: any[]) {
     })
 }
 
-export async function getRagResponse(query: string) {
-    const matches = await getMatches(query)
-    const context = formatAsContext(matches)
-    const citations = buildCitations(matches)
-
+function buildSystemPrompt() {
     const rolePreamble = `You are an AWS certification exam prep assistant.`
     const metadataPreamble = `Each source in the context begins with a breadcrumb path (e.g. 'Section > Subsection: content'). Use this breadcrumb to understand the context of each source.`
     const taskStatement = `Answer questions using only the provided context from AWS documentation.`
@@ -68,7 +64,7 @@ export async function getRagResponse(query: string) {
     const guardrailCondition = `If the context doesn't contain enough information to answer, say so.`
     const transparencyCondition = `Always cite which source or sources your answer is drawn from.`
 
-    const systemPrompt = [
+    return [
         rolePreamble,
         metadataPreamble,
         taskStatement,
@@ -76,6 +72,27 @@ export async function getRagResponse(query: string) {
         guardrailCondition,
         transparencyCondition,
     ].join(' ')
+}
+
+function formatChatHistory(messages: any[]) {
+    return messages
+        .map((message, index) => {
+            const role = message.role
+            const text = message.content[0].text
+
+            return `Message ${index + 1} [${role}]: ${text}`
+        })
+        .join('\n\n---\n\n')
+
+    // console.log(chatHistory)
+}
+
+export async function getRagResponse(query: string) {
+    const matches = await getMatches(query)
+    const context = formatAsContext(matches)
+    const citations = buildCitations(matches)
+
+    const systemPrompt = buildSystemPrompt()
 
     const messages = [
         {
@@ -85,7 +102,6 @@ export async function getRagResponse(query: string) {
     ]
 
     const response = await getChatResponse(messages, systemPrompt)
-    // console.log('\nLLM Response: ', response)
 
     if (response) {
         messages.push({
@@ -94,30 +110,14 @@ export async function getRagResponse(query: string) {
         })
     }
 
-    const chatHistory =
-        // prettier-ignore
-        messages
-            .map((message, index) => {
-                const role = message.role
-                const text = message.content[0].text
-
-                return `Message ${index+1} [${role}]: ${text}`
-            })
-            .join("\n\n---\n\n")
-
-    // console.log(chatHistory)
-
-    console.log('response---', response)
-    console.log('citations---', citations)
+    console.log('\nLLM Response: ', response)
+    console.log('\nCitations: ', citations)
 
     return {
         assistantResponse: response,
         citations: citations,
     }
 }
-
-const query = 'What are the in-scope AWS services and features?'
-getRagResponse(query)
 
 // User asked: "What are the in-scope AWS services and features?"
 
