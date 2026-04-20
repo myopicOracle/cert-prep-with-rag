@@ -1,6 +1,11 @@
 import { getMatchedDocuments } from '@/app/lib/supabase'
 import { getEmbedding, getChatResponse } from '@/app/lib/bedrock'
 
+type Citation = {
+    sourceURL: string
+    breadcrumb: string
+}
+
 async function getMatches(query: string) {
     console.log(`User asked: "${query}"`)
 
@@ -29,10 +34,32 @@ function formatAsContext(matches: any[]) {
     }
 }
 
+function buildCitations(matches: any[]) {
+    return matches.map((match) => {
+        const headings = [
+            match.metadata?.h1,
+            match.metadata?.h2,
+            match.metadata?.h3,
+            match.metadata?.h4,
+        ]
+
+        const filteredHeadings = headings.filter(
+            (heading) => heading !== null && heading !== undefined,
+        )
+
+        const breadcrumb = filteredHeadings.join(' > ')
+
+        return {
+            sourceURL: match.source_url,
+            breadcrumb: breadcrumb,
+        }
+    })
+}
+
 export async function getRagResponse(query: string) {
     const matches = await getMatches(query)
     const context = formatAsContext(matches)
-    // console.log('\nContext provided to LLM:\n\n', context)
+    const citations = buildCitations(matches)
 
     const rolePreamble = `You are an AWS certification exam prep assistant.`
     const metadataPreamble = `Each source in the context begins with a breadcrumb path (e.g. 'Section > Subsection: content'). Use this breadcrumb to understand the context of each source.`
@@ -58,7 +85,7 @@ export async function getRagResponse(query: string) {
     ]
 
     const response = await getChatResponse(messages, systemPrompt)
-    console.log('\nLLM Response: ', response)
+    // console.log('\nLLM Response: ', response)
 
     if (response) {
         messages.push({
@@ -80,7 +107,13 @@ export async function getRagResponse(query: string) {
 
     // console.log(chatHistory)
 
-    return response
+    console.log('response---', response)
+    console.log('citations---', citations)
+
+    return {
+        assistantResponse: response,
+        citations: citations,
+    }
 }
 
 const query = 'What are the in-scope AWS services and features?'
@@ -92,39 +125,68 @@ getRagResponse(query)
 
 // Searching database for matches...
 
-// 5 matches found.
+// 10 matches found.
 
-// LLM Response:  # In-Scope AWS Services and Features
+// response--- # In-Scope AWS Services and Features for MLA-C01
 
-// Based on the provided context, I can share the following information:
+// The in-scope services for the AWS Certified Machine Learning Engineer - Associate (MLA-C01) exam are organized by category:
 
-// ## What We Know
+// **Analytics** [Source 2]:
+// Amazon Athena, Amazon Data Firehose, Amazon EMR, AWS Glue, AWS Glue DataBrew, AWS Glue Data Quality, Amazon Kinesis, AWS Lake Formation, Amazon Managed Service for Apache Flink, Amazon OpenSearch Service, Amazon QuickSight, Amazon Redshift
 
-// The exam includes **in-scope AWS services and features** that are organized by category according to their primary functions. However, the context provided is incomplete.
+// **Compute** [Source 4]:
+// AWS Batch, Amazon EC2, AWS Lambda, AWS Serverless Application Repository
 
-// ## Specific Example: Analytics Services
+// **Storage** [Source 8]:
+// Amazon EBS, Amazon EFS, Amazon FSx, Amazon S3, Amazon S3 Glacier, AWS Storage Gateway
 
-// From **Source [2]**, the Analytics category includes these in-scope services:
+// **Application Integration** [Source 6]:
+// Amazon EventBridge, Amazon MWAA, Amazon SNS, Amazon SQS, AWS Step Functions
 
-// - Amazon Athena
-// - Amazon Data Firehose
-// - Amazon EMR
-// - AWS Glue
-// - AWS Glue DataBrew
-// - AWS Glue Data Quality
-// - Amazon Kinesis
-// - AWS Lake Formation
-// - Amazon Managed Service for Apache Flink
-// - Amazon OpenSearch Service
-// - Amazon QuickSight
-// - Amazon Redshift
+// **Management and Governance** [Source 3]:
+// AWS Auto Scaling, AWS Chatbot, AWS CloudFormation, AWS CloudTrail, Amazon CloudWatch, Amazon CloudWatch Logs, AWS Compute Optimizer, AWS Config, AWS Organizations, AWS Service Catalog, AWS Systems Manager, AWS Trusted Advisor
 
-// ## Important Notes
+// **Note:** This list is non-exhaustive and subject to change [Source 1].
 
-// According to **Source [1]**, this list is:
-// - **Non-exhaustive** - meaning there are more services included beyond what's listed
-// - **Subject to change** - the list may be updated
-
-// ## Limitation
-
-// The provided context does not contain the complete list of all in-scope services across all categories. To get the full comprehensive list of in-scope AWS services and features for your specific exam, you would need to refer to the complete Appendix section of the official AWS certification exam guide.
+// citations--- [
+//   {
+//     sourceURL: 'https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf',
+//     breadcrumb: 'AWS Certified Machine Learning Engineer - Associate (MLA-C01) Exam Guide > Appendix: In-scope AWS services and features'
+//   },
+//   {
+//     sourceURL: 'https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf',
+//     breadcrumb: 'AWS Certified Machine Learning Engineer - Associate (MLA-C01) Exam Guide > Appendix: In-scope AWS services and features > Analytics:'
+//   },
+//   {
+//     sourceURL: 'https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf',
+//     breadcrumb: 'AWS Certified Machine Learning Engineer - Associate (MLA-C01) Exam Guide > Appendix: In-scope AWS services and features > Management and Governance:'
+//   },
+//   {
+//     sourceURL: 'https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf',
+//     breadcrumb: 'AWS Certified Machine Learning Engineer - Associate (MLA-C01) Exam Guide > Appendix: In-scope AWS services and features > Compute:'
+//   },
+//   {
+//     sourceURL: 'https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf',
+//     breadcrumb: 'AWS Certified Machine Learning Engineer - Associate (MLA-C01) Exam Guide > Appendix: Out-of-scope AWS services and features > Frontend Web and Mobile:'
+//   },
+//   {
+//     sourceURL: 'https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf',
+//     breadcrumb: 'AWS Certified Machine Learning Engineer - Associate (MLA-C01) Exam Guide > Appendix: In-scope AWS services and features > Application Integration:'
+//   },
+//   {
+//     sourceURL: 'https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf',
+//     breadcrumb: 'AWS Certified Machine Learning Engineer - Associate (MLA-C01) Exam Guide > Appendix: Out-of-scope AWS services and features > Network and Content Delivery:'
+//   },
+//   {
+//     sourceURL: 'https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf',
+//     breadcrumb: 'AWS Certified Machine Learning Engineer - Associate (MLA-C01) Exam Guide > Appendix: In-scope AWS services and features > Storage:'
+//   },
+//   {
+//     sourceURL: 'https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf',
+//     breadcrumb: 'AWS Certified Machine Learning Engineer - Associate (MLA-C01) Exam Guide > Appendix: Out-of-scope AWS services and features > Management and Governance:'
+//   },
+//   {
+//     sourceURL: 'https://d1.awsstatic.com/training-and-certification/docs-machine-learning-engineer-associate/AWS-Certified-Machine-Learning-Engineer-Associate_Exam-Guide.pdf',
+//     breadcrumb: 'AWS Certified Machine Learning Engineer - Associate (MLA-C01) Exam Guide > Appendix: Out-of-scope AWS services and features'
+//   }
+// ]
