@@ -30,8 +30,8 @@
 
 ## Sprint 3: Study Mode & Chat UI
 
-- [ ] lib/rag.ts: extend getRagResponse to return citations alongside answer, closes #32
-- [ ] app/api/ask/route.ts: expose citations in response body, closes #33
+- [x] lib/rag.ts: extend getRagResponse to return citations alongside answer, closes #32
+- [x] app/api/ask/route.ts: expose citations in response body, closes #33
 - [ ] app/study/page.tsx: create study route and client component skeleton, closes #34
 - [ ] build static ChatInput component with textarea and submit button, closes #11
 - [ ] wire ChatInput to /api/ask and render raw response below input, closes #14
