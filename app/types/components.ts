@@ -1,5 +1,9 @@
 import { QuestionData, AnswerChoice } from './exam'
 
+export interface ChatInputProps {
+    onSubmit: (text: string) => void
+}
+
 export interface ExamWrapperProps {
     examCode: string
     questions: QuestionData[]
