@@ -1,12 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import { ChatInputProps } from '@/app/types/components'
 
-export default function ChatInput() {
+export default function ChatInput({ onSubmit }: ChatInputProps) {
     const [input, setInput] = useState('')
 
     function handleInput(e: any) {
         setInput(e.target.value)
+        // console.log('User typed: ', input)
     }
 
     function submitInput() {
@@ -14,7 +16,8 @@ export default function ChatInput() {
         if (cleanInput === '') {
             return
         }
-        console.log('Submitted user query: ', cleanInput)
+        onSubmit(cleanInput)
+        // console.log('Submitted user query: ', cleanInput)
         setInput('')
     }
 
@@ -32,7 +35,6 @@ export default function ChatInput() {
 
     return (
         <div>
-            <p>You asked: {input}</p>
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                 <textarea
                     value={input}
@@ -41,7 +43,12 @@ export default function ChatInput() {
                     placeholder="Ask a question about AWS..."
                     rows={3}
                 />
-                <button type="submit">Ask</button>
+                <button
+                    type="submit"
+                    disabled={input.trim() === ''}
+                    className="mt-2 rounded-sm text-lg text-white font-semibold px-8 py-3 bg-blue-500 shadow-md hover:bg-blue-400 focus:outline-none cursor-pointer disabled:cursor-not-allowed disabled:opacity-50">
+                    Ask
+                </button>
             </form>
         </div>
     )
