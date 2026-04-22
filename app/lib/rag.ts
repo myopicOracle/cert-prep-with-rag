@@ -119,6 +119,8 @@ export async function getRagResponse(query: string) {
     }
 }
 
+// getRagResponse('What are the in-scope AWS services and features?')
+
 // User asked: "What are the in-scope AWS services and features?"
 
 // Turning user query into vectors...

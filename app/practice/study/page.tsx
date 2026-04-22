@@ -7,9 +7,26 @@ import ChatInput from '@/app/ui/practice/study/chat-input'
 export default function Page() {
     const [assistantResponse, setAssistantResponse] = useState<string | null>(null)
 
-    function fetchResponse(query: string) {
-        console.log('Page Component - query: ')
-        setAssistantResponse(query)
+    async function fetchResponse(userInput: string) {
+        const response = await fetch('/api/ask', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ query: userInput }),
+        })
+
+        const data = await response.json()
+        // console.log('Response body: ', data)
+
+        const responseText = data.assistantResponse
+        const citationText = data.citations
+            .map((citation: any, index: number) => {
+                const link = citation.sourceURL
+                const provenence = citation.breadcrumb
+                return `[${index + 1}](${link}) ${provenence}`
+            })
+            .join('\n')
+
+        setAssistantResponse(`\n${responseText}\n\n---\n\n${citationText}\n`)
     }
 
     return (

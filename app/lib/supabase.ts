@@ -5,7 +5,7 @@ export async function getMatchedDocuments(embedding: number[]) {
 
     const { data, error } = await supabase.rpc('match_documents', {
         query_embedding: embedding,
-        match_threshold: 0.45,
+        match_threshold: 0.3,
         match_count: 10,
     })
 
