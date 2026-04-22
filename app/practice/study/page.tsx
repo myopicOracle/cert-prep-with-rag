@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import ReactMarkdown from 'react-markdown'
 import { lusitana } from '@/app/ui/fonts'
 import ChatInput from '@/app/ui/practice/study/chat-input'
 
@@ -22,11 +23,11 @@ export default function Page() {
             .map((citation: any, index: number) => {
                 const link = citation.sourceURL
                 const provenence = citation.breadcrumb
-                return `[${index + 1}](${link}) ${provenence}`
+                return `${index + 1}. [${provenence}](${link})`
             })
             .join('\n')
 
-        setAssistantResponse(`\n${responseText}\n\n---\n\n${citationText}\n`)
+        setAssistantResponse(`\n\n${responseText}\n\n---\n\n${citationText}\n\n`)
     }
 
     return (
@@ -34,7 +35,11 @@ export default function Page() {
             <h1 className={`${lusitana.className} text-2xl`}>Study Mode</h1>
             <p className="mt-2 text-gray-500">Get answers from real AWS documentation.</p>
             <div className="mt-4">
-                {assistantResponse}
+                {assistantResponse && (
+                    <div className="prose prose-sm mb-4">
+                        <ReactMarkdown>{assistantResponse}</ReactMarkdown>
+                    </div>
+                )}
                 <ChatInput onSubmit={fetchResponse} />
             </div>
         </div>

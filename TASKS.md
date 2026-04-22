@@ -34,7 +34,7 @@
 - [x] app/api/ask/route.ts: expose citations in response body, closes #33
 - [x] app/study/page.tsx: create study route and client component skeleton, closes #34
 - [x] build static ChatInput component with textarea and submit button, closes #11
-- [ ] wire ChatInput to /api/ask and render raw response below input, closes #14
+- [x] wire ChatInput to /api/ask and render raw response below input, closes #14
 - [ ] extract ChatMessage component accepting role and content props, closes #35
 - [ ] add conversation history state and render scrollable message thread, closes #36
 - [ ] render source citations and breadcrumbs beneath assistant messages, closes #37
