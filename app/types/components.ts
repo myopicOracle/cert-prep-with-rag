@@ -1,5 +1,10 @@
 import { QuestionData, AnswerChoice } from './exam'
 
+export interface ChatMessageProps {
+    role: 'user' | 'assistant'
+    content: string | null
+}
+
 export interface ChatInputProps {
     onSubmit: (text: string) => void
 }

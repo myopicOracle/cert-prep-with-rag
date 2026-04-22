@@ -1,9 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import ReactMarkdown from 'react-markdown'
 import { lusitana } from '@/app/ui/fonts'
+import ReactMarkdown from 'react-markdown'
 import ChatInput from '@/app/ui/practice/study/chat-input'
+import ChatMessage from '@/app/ui/practice/study/chat-message'
 
 export default function Page() {
     const [assistantResponse, setAssistantResponse] = useState<string | null>(null)
@@ -35,11 +36,7 @@ export default function Page() {
             <h1 className={`${lusitana.className} text-2xl`}>Study Mode</h1>
             <p className="mt-2 text-gray-500">Get answers from real AWS documentation.</p>
             <div className="mt-4">
-                {assistantResponse && (
-                    <div className="prose prose-sm mb-4">
-                        <ReactMarkdown>{assistantResponse}</ReactMarkdown>
-                    </div>
-                )}
+                <ChatMessage role={'assistant'} content={assistantResponse} />
                 <ChatInput onSubmit={fetchResponse} />
             </div>
         </div>
