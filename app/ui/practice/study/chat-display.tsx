@@ -10,6 +10,7 @@ export default function ChatDisplay({ chatHistory }: ChatDisplayProps) {
                         key={index}
                         role={message.role}
                         content={message.content}
+                        citations={message.citations}
                     />
                 )
             })}

@@ -2,10 +2,9 @@
 
 import { useState } from 'react'
 import { lusitana } from '@/app/ui/fonts'
+import { ChatMessageProps } from '@/app/types/components'
 import ChatInput from '@/app/ui/practice/study/chat-input'
 import ChatDisplay from '@/app/ui/practice/study/chat-display'
-import ChatMessage from '@/app/ui/practice/study/chat-message'
-import { ChatMessageProps } from '@/app/types/components'
 
 export default function Page() {
     const [chatHistory, setChatHistory] = useState<ChatMessageProps[]>([])
@@ -33,18 +32,10 @@ export default function Page() {
         const data = await response.json()
         // console.log('Response body: ', data)
 
-        const responseText = data.assistantResponse
-        const citationText = data.citations
-            .map((citation: any, index: number) => {
-                const link = citation.sourceURL
-                const provenence = citation.breadcrumb
-                return `${index + 1}. [${provenence}](${link})`
-            })
-            .join('\n')
-
         const assistantResponse: ChatMessageProps = {
             role: 'assistant',
-            content: `\n\n${responseText}\n\n---\n\n${citationText}\n\n`,
+            content: data.assistantResponse,
+            citations: data.citations,
         }
         pushMessage(assistantResponse)
     }
