@@ -16,6 +16,7 @@ export interface ChatDisplayProps {
 }
 
 export interface ChatInputProps {
+    isLoading: boolean
     onSubmit: (text: string) => void
 }
 

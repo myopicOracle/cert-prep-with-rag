@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { ChatInputProps } from '@/app/types/components'
 
-export default function ChatInput({ onSubmit }: ChatInputProps) {
+export default function ChatInput({ isLoading, onSubmit }: ChatInputProps) {
     const [input, setInput] = useState('')
 
     function handleInput(e: any) {
@@ -41,13 +41,14 @@ export default function ChatInput({ onSubmit }: ChatInputProps) {
                     onChange={handleInput}
                     onKeyDown={handleKeyDown}
                     placeholder="Ask a question about AWS..."
+                    disabled={isLoading}
                     rows={3}
                 />
                 <button
                     type="submit"
-                    disabled={input.trim() === ''}
+                    disabled={input.trim() === '' || isLoading}
                     className="mt-2 rounded-sm text-lg text-white font-semibold px-8 py-3 bg-blue-500 shadow-md hover:bg-blue-400 focus:outline-none cursor-pointer disabled:cursor-not-allowed disabled:opacity-50">
-                    Ask
+                    {isLoading ? 'Noodling...' : 'Ask'}
                 </button>
             </form>
         </div>
