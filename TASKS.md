@@ -38,5 +38,5 @@
 - [x] extract ChatMessage component accepting role and content props, closes #35
 - [x] add conversation history state and render scrollable message thread, closes #36
 - [x] render source citations and breadcrumbs beneath assistant messages, closes #37
-- [ ] add loading state, submit-disable, and error handling to chat flow, closes #38
+- [x] add loading state, submit-disable, and error handling to chat flow, closes #38
 - [ ] enhance styling and layout, implement improved responsiveness, closes #39

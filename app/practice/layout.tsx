@@ -1,4 +1,5 @@
 import SideNav from '@/app/ui/practice/sidenav'
+import { Toaster } from 'sonner'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (
@@ -9,6 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div className="grow p-6 md:overflow-y-auto md:p-12">
                 {children}
             </div>
+            <Toaster richColors />
         </div>
     )
 }

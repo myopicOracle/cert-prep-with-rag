@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { toast } from 'sonner'
 import { lusitana } from '@/app/ui/fonts'
 import { ChatMessageProps } from '@/app/types/components'
 import ChatInput from '@/app/ui/practice/study/chat-input'
@@ -9,7 +10,6 @@ import ChatDisplay from '@/app/ui/practice/study/chat-display'
 export default function Page() {
     const [chatHistory, setChatHistory] = useState<ChatMessageProps[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    const [error, setError] = useState<string | null>(null)
 
     function pushMessage(message: ChatMessageProps) {
         setChatHistory((prev) => [
@@ -20,7 +20,6 @@ export default function Page() {
 
     async function fetchResponse(userInput: string) {
         setIsLoading(true)
-        setError(null)
 
         const userQuery: ChatMessageProps = {
             role: 'user',
@@ -29,6 +28,9 @@ export default function Page() {
         pushMessage(userQuery)
 
         try {
+            // throw new Error('RATE_LIMIT')
+            // throw new Error('SERVER_ERROR')
+
             const response = await fetch('/api/ask', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -56,11 +58,11 @@ export default function Page() {
             const message = (e as Error).message
 
             if (message === 'RATE_LIMIT') {
-                setError(
-                    "You're sending too many messages. Please wait and try again.",
+                toast.warning(
+                    "You're sending too many messages. Please wait and try again later.",
                 )
             } else {
-                setError(
+                toast.error(
                     "We're having trouble reaching the server. Please try again in a few seconds.",
                 )
             }
@@ -76,11 +78,6 @@ export default function Page() {
                 Get answers from real AWS documentation.
             </p>
             <div className="mt-4">
-                {error && (
-                    <div className="mb-4 rounded-md border border-red-400 bg-red-50 p-4 text-sm text-red-700">
-                        {error}
-                    </div>
-                )}
                 <ChatDisplay chatHistory={chatHistory} />
                 <ChatInput isLoading={isLoading} onSubmit={fetchResponse} />
             </div>
