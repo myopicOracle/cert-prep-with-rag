@@ -2,17 +2,13 @@ import ReactMarkdown from 'react-markdown'
 import { ChatMessageProps } from '@/app/types/components'
 
 export default function ChatMessage({ role, content }: ChatMessageProps) {
+    const userStyle = 'self-start bg-blue-300'
+    const assistantStyle = 'self-end bg-gray-300'
+    const sharedStyle = 'w-full max-w-[66%] m-2 p-4 rounded-lg prose prose-sm'
+
     return (
-        <div className="flex mb-4">
-            {role === 'user' ? (
-                <div className="max-w-[66%] rounded-lg bg-blue-300 prose prose-sm">
-                    <ReactMarkdown>{content}</ReactMarkdown>
-                </div>
-            ) : (
-                <div className="mr-auto max-w-[66%] rounded-lg bg-gray-300 prose prose-sm">
-                    <ReactMarkdown>{content}</ReactMarkdown>
-                </div>
-            )}
+        <div className={`${role === 'user' ? userStyle : assistantStyle} ${sharedStyle}`}>
+            <ReactMarkdown>{content}</ReactMarkdown>
         </div>
     )
 }
