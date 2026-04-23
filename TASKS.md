@@ -36,7 +36,7 @@
 - [x] build static ChatInput component with textarea and submit button, closes #11
 - [x] wire ChatInput to /api/ask and render raw response below input, closes #14
 - [x] extract ChatMessage component accepting role and content props, closes #35
-- [ ] add conversation history state and render scrollable message thread, closes #36
+- [x] add conversation history state and render scrollable message thread, closes #36
 - [ ] render source citations and breadcrumbs beneath assistant messages, closes #37
 - [ ] add loading state, submit-disable, and error handling to chat flow, closes #38
 - [ ] enhance styling and layout, implement improved responsiveness, closes #39

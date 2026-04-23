@@ -1,3 +1,5 @@
+import { ChatMessageProps } from '@/app/types/components'
+
 const questions = [
     {
         scenario:
@@ -87,4 +89,13 @@ const services = [
     },
 ]
 
-export { questions, services }
+const testHistory: ChatMessageProps[] = [
+    { role: 'user', content: 'lorem' },
+    { role: 'assistant', content: 'ipsum' },
+    { role: 'user', content: 'dolor' },
+    { role: 'assistant', content: 'thus' },
+    { role: 'user', content: 'spake' },
+    { role: 'assistant', content: 'zarathustra' },
+]
+
+export { questions, services, testHistory }

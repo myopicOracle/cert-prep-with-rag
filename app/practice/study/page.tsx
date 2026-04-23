@@ -5,11 +5,25 @@ import { lusitana } from '@/app/ui/fonts'
 import ChatInput from '@/app/ui/practice/study/chat-input'
 import ChatDisplay from '@/app/ui/practice/study/chat-display'
 import ChatMessage from '@/app/ui/practice/study/chat-message'
+import { ChatMessageProps } from '@/app/types/components'
 
 export default function Page() {
-    const [assistantResponse, setAssistantResponse] = useState<string | null>(null)
+    const [chatHistory, setChatHistory] = useState<ChatMessageProps[]>([])
+
+    function pushMessage(message: ChatMessageProps) {
+        setChatHistory((prev) => [
+            ...prev,
+            message, //
+        ])
+    }
 
     async function fetchResponse(userInput: string) {
+        const userQuery: ChatMessageProps = {
+            role: 'user',
+            content: userInput,
+        }
+        pushMessage(userQuery)
+
         const response = await fetch('/api/ask', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -28,18 +42,21 @@ export default function Page() {
             })
             .join('\n')
 
-        setAssistantResponse(`\n\n${responseText}\n\n---\n\n${citationText}\n\n`)
+        const assistantResponse: ChatMessageProps = {
+            role: 'assistant',
+            content: `\n\n${responseText}\n\n---\n\n${citationText}\n\n`,
+        }
+        pushMessage(assistantResponse)
     }
 
     return (
         <div className="w-full">
             <h1 className={`${lusitana.className} text-2xl`}>Study Mode</h1>
-            <p className="mt-2 text-gray-500">Get answers from real AWS documentation.</p>
+            <p className="mt-2 text-gray-500">
+                Get answers from real AWS documentation.
+            </p>
             <div className="mt-4">
-                {/* {assistantResponse && (
-                    <ChatMessage role={'assistant'} content={assistantResponse} />
-                )} */}
-                <ChatDisplay />
+                <ChatDisplay chatHistory={chatHistory} />
                 <ChatInput onSubmit={fetchResponse} />
             </div>
         </div>

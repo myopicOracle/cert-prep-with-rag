@@ -1,20 +1,17 @@
 import ChatMessage from '@/app/ui/practice/study/chat-message'
-import { ChatMessageProps } from '@/app/types/components'
+import { ChatDisplayProps } from '@/app/types/components'
 
-const testHistory: ChatMessageProps[] = [
-    { role: 'user', content: 'lorem' },
-    { role: 'assistant', content: 'ipsum' },
-    { role: 'user', content: 'dolor' },
-    { role: 'assistant', content: 'thus' },
-    { role: 'user', content: 'spake' },
-    { role: 'assistant', content: 'zarathustra' },
-]
-
-export default function ChatDisplay() {
+export default function ChatDisplay({ chatHistory }: ChatDisplayProps) {
     return (
         <div className="w-full flex flex-col mb-4">
-            {testHistory.map((message) => {
-                return <ChatMessage role={message.role} content={message.content} />
+            {chatHistory.map((message, index) => {
+                return (
+                    <ChatMessage
+                        key={index}
+                        role={message.role}
+                        content={message.content}
+                    />
+                )
             })}
         </div>
     )

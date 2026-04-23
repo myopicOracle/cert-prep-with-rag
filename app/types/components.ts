@@ -5,6 +5,10 @@ export interface ChatMessageProps {
     content: string | null
 }
 
+export interface ChatDisplayProps {
+    chatHistory: ChatMessageProps[]
+}
+
 export interface ChatInputProps {
     onSubmit: (text: string) => void
 }
