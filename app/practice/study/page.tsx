@@ -21,7 +21,7 @@ export default function Page() {
             <div className="flex-1 overflow-y-auto mt-4">
                 <ChatDisplay chatHistory={chatHistory} />
             </div>
-            <div className="flex-none">
+            <div className="flex-none border-t border-gray-200 pt-4 mt-4">
                 <ChatInput isLoading={isLoading} onSubmit={fetchResponse} />
             </div>
         </div>

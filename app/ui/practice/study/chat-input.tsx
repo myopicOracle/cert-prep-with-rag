@@ -34,7 +34,7 @@ export default function ChatInput({ isLoading, onSubmit }: ChatInputProps) {
     }
 
     return (
-        <div>
+        <div className="rounded-lg border-2 border-gray-200 p-4">
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                 <textarea
                     value={input}
@@ -43,6 +43,7 @@ export default function ChatInput({ isLoading, onSubmit }: ChatInputProps) {
                     placeholder="Ask a question about AWS..."
                     disabled={isLoading}
                     rows={3}
+                    className="w-full rounded-lg border border-gray-200 bg-white p-3 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                 />
                 <button
                     type="submit"

@@ -6,9 +6,10 @@ export default function ChatMessage({
     content,
     citations,
 }: ChatMessageProps) {
-    const userStyle = 'self-end bg-blue-300'
-    const assistantStyle = 'self-start bg-gray-300'
-    const sharedStyle = 'w-full max-w-[66%] m-2 p-4 rounded-lg prose prose-sm'
+    const userStyle = 'max-w-[66%] self-end bg-blue-200 border-blue-500'
+    const assistantStyle = 'max-w-[75%] self-start bg-gray-200 border-gray-500'
+    const sharedStyle =
+        'w-full m-2 px-4 py-2 rounded-lg border-2 shadow-sm prose prose-sm'
 
     return (
         <div
