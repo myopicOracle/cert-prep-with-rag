@@ -13,6 +13,7 @@ export interface ChatMessageProps {
 
 export interface ChatDisplayProps {
     chatHistory: ChatMessageProps[]
+    isLoading?: boolean
 }
 
 export interface ChatInputProps {

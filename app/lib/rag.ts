@@ -89,7 +89,7 @@ function formatChatHistory(messages: any[]) {
 
 function filterCitations(citations: any, response: any) {
     const sourceMatches = response
-        ? [...response.matchAll(/\[Source (\d+)\]/g)]
+        ? [...response.matchAll(/Source \[(\d+)\]/g)]
         : []
     const usedSourceNumbers = sourceMatches.map((match) => parseInt(match[1]))
     const uniqueSourceNumbers = [...new Set(usedSourceNumbers)]

@@ -1,7 +1,21 @@
-import ChatMessage from '@/app/ui/practice/study/chat-message'
+import { useRef, useEffect } from 'react'
 import { ChatDisplayProps } from '@/app/types/components'
+import ChatMessage from '@/app/ui/practice/study/chat-message'
 
-export default function ChatDisplay({ chatHistory }: ChatDisplayProps) {
+export default function ChatDisplay({
+    chatHistory,
+    isLoading,
+}: ChatDisplayProps) {
+    const scrollRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollIntoView({
+                behavior: 'smooth',
+            })
+        }
+    }, [chatHistory, isLoading])
+
     return (
         <>
             {chatHistory.length === 0 ? (
@@ -20,6 +34,7 @@ export default function ChatDisplay({ chatHistory }: ChatDisplayProps) {
                     )
                 })
             )}
+            <div ref={scrollRef}></div>
         </>
     )
 }
