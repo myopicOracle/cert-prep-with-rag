@@ -9,20 +9,27 @@ export default function Page() {
     const { chatHistory, isLoading, fetchResponse } = useChat()
 
     return (
-        <div className="flex flex-col w-full h-full">
+        <div className="flex flex-col w-full h-full gap-4">
             <div className="flex-none">
                 <h1 className={`${lusitana.className} text-2xl`}>Study Mode</h1>
             </div>
             <div className="flex-none">
-                <p className="mt-2 text-sm text-gray-500">
+                <p className="text-sm text-gray-500">
                     Get answers directly from AWS documentation.
                 </p>
             </div>
-            <div className="flex-1 overflow-y-auto mt-4">
-                <ChatDisplay chatHistory={chatHistory} />
+            <div className="flex-1 overflow-y-auto">
+                <div className="w-full h-full flex flex-col max-w-2xl mx-auto rounded-lg border-2 border-gray-200 p-4">
+                    <ChatDisplay chatHistory={chatHistory} />
+                </div>
             </div>
-            <div className="flex-none border-t border-gray-200 pt-4 mt-4">
-                <ChatInput isLoading={isLoading} onSubmit={fetchResponse} />
+            <div className="flex-none">
+                <div className="max-w-lg mx-auto border-t border-gray-200 mx-4" />
+            </div>
+            <div className="flex-none">
+                <div className="max-w-2xl mx-auto rounded-lg border-2 border-gray-200 p-4">
+                    <ChatInput isLoading={isLoading} onSubmit={fetchResponse} />
+                </div>
             </div>
         </div>
     )

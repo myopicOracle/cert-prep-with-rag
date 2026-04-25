@@ -34,7 +34,7 @@ export default function ChatInput({ isLoading, onSubmit }: ChatInputProps) {
     }
 
     return (
-        <div className="rounded-lg border-2 border-gray-200 p-4">
+        <>
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                 <textarea
                     value={input}
@@ -52,6 +52,6 @@ export default function ChatInput({ isLoading, onSubmit }: ChatInputProps) {
                     {isLoading ? 'Noodling...' : 'Ask'}
                 </button>
             </form>
-        </div>
+        </>
     )
 }
