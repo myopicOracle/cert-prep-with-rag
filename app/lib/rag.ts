@@ -87,6 +87,27 @@ function formatChatHistory(messages: any[]) {
     // console.log(chatHistory)
 }
 
+function filterCitations(citations: any, response: any) {
+    const sourceMatches = response
+        ? [...response.matchAll(/\[Source (\d+)\]/g)]
+        : []
+    const usedSourceNumbers = sourceMatches.map((match) => parseInt(match[1]))
+    const uniqueSourceNumbers = [...new Set(usedSourceNumbers)]
+
+    const usedIndices = uniqueSourceNumbers.map((num) => num - 1)
+
+    const filteredCitations = []
+    if (usedIndices.length > 0) {
+        for (const index of usedIndices) {
+            filteredCitations.push(citations[index])
+        }
+    } else {
+        filteredCitations.push(...citations)
+    }
+
+    return filteredCitations
+}
+
 export async function getRagResponse(query: string) {
     const matches = await getMatches(query)
     const context = formatAsContext(matches)
@@ -110,12 +131,14 @@ export async function getRagResponse(query: string) {
         })
     }
 
+    const filteredCitations = filterCitations(citations, response)
+
     console.log('\nLLM Response: ', response)
-    console.log('\nCitations: ', citations)
+    console.log('\nCitations: ', filteredCitations)
 
     return {
         assistantResponse: response,
-        citations: citations,
+        citations: filteredCitations,
     }
 }
 
