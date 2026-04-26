@@ -16,7 +16,7 @@ export default function ChatMessage({
             ? 'bg-blue-200 border-blue-500'
             : 'bg-gray-200 border-gray-500'
     const sharedStyle =
-        'w-full m-2 px-4 py-2 rounded-lg border shadow-sm prose prose-sm'
+        'w-full m-2 px-4 py-2 rounded-lg border shadow-sm prose prose-sm text-[0.8125rem]'
 
     return (
         <div className={`flex flex-col ${roleAlign}`}>
