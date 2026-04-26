@@ -1,5 +1,26 @@
 import { QuestionData, AnswerChoice } from './exam'
 
+export type Citation = {
+    sourceURL: string
+    breadcrumb: string
+}
+
+export interface ChatMessageProps {
+    role: 'user' | 'assistant'
+    content: string | null
+    citations?: Citation[]
+}
+
+export interface ChatDisplayProps {
+    chatHistory: ChatMessageProps[]
+    isLoading?: boolean
+}
+
+export interface ChatInputProps {
+    isLoading: boolean
+    onSubmit: (text: string) => void
+}
+
 export interface ExamWrapperProps {
     examCode: string
     questions: QuestionData[]

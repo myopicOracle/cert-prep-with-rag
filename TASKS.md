@@ -26,4 +26,17 @@
 - [x] lib/rag.ts: embed query, run similarity search, return Bedrock response, completes #8
 - [x] optimize system prompts and tweak RAG params (size, threshold, window), completes #9
 - [x] app/api/ask/route.ts: API endpoint for full RAG chain user query, completes #10
-- [ ] ingest exam guides and AWS whitepapers into docs table, completes #25
+- [x] ingest exam guides and AWS whitepapers into docs table, completes #25
+
+## Sprint 3: Study Mode & Chat UI
+
+- [x] lib/rag.ts: extend getRagResponse to return citations alongside answer, closes #32
+- [x] app/api/ask/route.ts: expose citations in response body, closes #33
+- [x] app/study/page.tsx: create study route and client component skeleton, closes #34
+- [x] build static ChatInput component with textarea and submit button, closes #11
+- [x] wire ChatInput to /api/ask and render raw response below input, closes #14
+- [x] extract ChatMessage component accepting role and content props, closes #35
+- [x] add conversation history state and render scrollable message thread, closes #36
+- [x] render source citations and breadcrumbs beneath assistant messages, closes #37
+- [x] add loading state, submit-disable, and error handling to chat flow, closes #38
+- [x] enhance styling and layout, implement improved responsiveness, closes #39

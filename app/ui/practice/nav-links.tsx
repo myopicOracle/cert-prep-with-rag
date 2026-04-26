@@ -1,6 +1,12 @@
 'use client'
 
-import { HomeIcon, ClipboardDocumentIcon, BoltIcon, ForwardIcon } from '@heroicons/react/24/outline'
+import {
+    HomeIcon,
+    BookOpenIcon,
+    ClipboardDocumentIcon,
+    BoltIcon,
+    ForwardIcon,
+} from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -9,6 +15,11 @@ const links = [
         name: 'Progress',
         href: '/practice',
         icon: HomeIcon,
+    },
+    {
+        name: 'Study Mode',
+        href: '/practice/study',
+        icon: BookOpenIcon,
     },
     {
         name: 'Mock Exams',
