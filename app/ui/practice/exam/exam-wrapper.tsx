@@ -7,7 +7,7 @@ import ProgressWrapper from '@/app/ui/practice/exam/progress-wrapper'
 import Card from '@/app/ui/practice/exam/card'
 import NavButtons from '@/app/ui/practice/exam/nav-buttons'
 import Review from '@/app/ui/practice/exam/review'
-import { examMetadata } from '@/app/lib/metadata'
+import { examMetadata } from '@/app/lib/seed'
 import { ExamWrapperProps } from '@/app/types/components'
 import { QuestionData, AnswerChoice } from '@/app/types/exam'
 

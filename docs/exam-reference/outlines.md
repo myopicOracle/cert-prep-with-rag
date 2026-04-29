@@ -1,4 +1,4 @@
-<!-- Note: Exam metadata (like cost and exam time) lives in `app/lib/metadata.ts`-->
+<!-- Note: Exam metadata (like cost and exam time) lives in `app/lib/seed/metadata.ts`-->
 
 # AWS CLF-C02 
 

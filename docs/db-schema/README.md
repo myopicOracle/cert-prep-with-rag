@@ -1,5 +1,5 @@
 # Database Schema Documentation
 
-`YYYYMMDD-schema-snapshot.sql` point-in-time schema reference. 
+Contains `YYYYMMDD-schema-snapshot.sql` and `YYYYMMDD-schema-snapshot.png` point-in-time schema references. 
 
-*For actual migrations, see `app/utils/migrate/`*
+*For actual migration commands, see `app/utils/migrate/`*
