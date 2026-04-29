@@ -30,8 +30,8 @@ async function seedServices() {
 
 export async function GET() {
     try {
-        const serviceCount = await seedQuestions()
-        const questionCount = await seedServices()
+        const serviceCount = await seedServices()
+        const questionCount = await seedQuestions()
 
         return Response.json({
             message: 'Database seeding was successful',

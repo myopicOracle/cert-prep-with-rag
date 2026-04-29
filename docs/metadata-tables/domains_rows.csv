@@ -1,0 +1,56 @@
+id,exam_id,number,name
+019ba31d-1adb-4203-a201-890503ef440f,fec2781e-7342-448f-a226-1469d7fdcb67,1,"Monitoring, Logging, Analysis, Remediation, and Performance Optimization"
+02d47f1b-cab1-4a22-bba6-9199f469241e,b387a81d-c0a6-4ad2-98c1-a74f9d87a3b3,3,Infrastructure Security
+0475e229-7623-4cc3-8311-72e4c03317aa,0cba4c9d-c747-46c2-b366-63c45c77e826,1,Cloud Concepts
+04c1d49b-af7d-4d7e-b3c1-de2ec2a2715c,2e64290b-2bb2-40e8-9b66-0b6f084db46c,2,Fundamentals of Generative AI
+08ef4e26-c8b1-4e0e-8bcf-f8c064da225e,2e64290b-2bb2-40e8-9b66-0b6f084db46c,3,Applications of Foundation Models
+0c5b91c4-0618-4dc6-8f7d-51e136e433e9,17b647e6-0dbe-442e-9871-8d3f4ab90bbe,1,SDLC Automation
+16b74b94-8a5d-4b10-bee9-f4f88cbf9704,e185433c-3845-4f70-a864-418ac180fdb4,5,"Testing, Validation, and Troubleshooting"
+1799de29-2650-4a50-afd1-98704dff5000,b967ee02-65e1-49d1-bde7-d7a92f98c039,1,Design Solutions for Organizational Complexity
+193ca3b8-65f5-4fef-93cc-02131b5c92fb,b387a81d-c0a6-4ad2-98c1-a74f9d87a3b3,2,Incident Response
+1b3e6052-74a4-4181-8e98-ca6b7ca727ff,bda87e23-7e3c-407a-9ca7-65f4399f9ebb,2,Network Implementation
+1b6a15d6-aeb2-4477-a943-e827b5db5092,ed802a65-ebef-4d51-8208-7d22e5641ee6,3,Data Operations and Support
+2b0fff1e-8b6f-4f8a-9890-99d1714ccc32,fec2781e-7342-448f-a226-1469d7fdcb67,5,Networking and Content Delivery
+3128007e-fb9c-446e-9756-e5146a21d131,bda87e23-7e3c-407a-9ca7-65f4399f9ebb,1,Network Design
+353aec84-ac81-4cbe-9725-5ed4aadb83c6,e185433c-3845-4f70-a864-418ac180fdb4,1,"Foundation Model Integration, Data Management, and Compliance"
+38a75461-6ee5-45c7-8562-f6fbb5b4a24d,17b647e6-0dbe-442e-9871-8d3f4ab90bbe,3,Resilient Cloud Solutions
+455ce9de-ccd9-4ffb-a8c9-0e231c7d4ad2,ed802a65-ebef-4d51-8208-7d22e5641ee6,4,Data Security and Governance
+47fa916e-fb17-407a-8d41-56d7a2cf4770,bda87e23-7e3c-407a-9ca7-65f4399f9ebb,4,"Network Security, Compliance, and Governance"
+4a1ab79f-5ae1-4bbd-a67b-72ba67d03236,b387a81d-c0a6-4ad2-98c1-a74f9d87a3b3,6,Security Foundations and Governance
+575753ae-7a39-491d-ad4c-1cd96182d069,b387a81d-c0a6-4ad2-98c1-a74f9d87a3b3,5,Data Protection
+5ebc6dcd-7bec-4d01-abbe-47858318dcf6,17b647e6-0dbe-442e-9871-8d3f4ab90bbe,5,Incident and Event Response
+5ff337fb-139d-40e3-8ba2-d3d274620f1e,641148b7-475d-4db4-9fa4-42356a8adc84,4,"ML Solution Monitoring, Maintenance, and Security"
+6498cdc9-13c5-47de-a1e7-eaaaac05b883,2e64290b-2bb2-40e8-9b66-0b6f084db46c,4,Guidelines for Responsible AI
+6649703c-8261-4343-9b1d-63d52b2de76c,641148b7-475d-4db4-9fa4-42356a8adc84,3,Deployment and Orchestration of ML Workflows
+66ca14dc-5b79-4fd3-a3a9-5a1b224185c0,2e64290b-2bb2-40e8-9b66-0b6f084db46c,5,"Security, Compliance, and Governance for AI Solutions"
+675af201-4480-4a80-b863-a0c37f08eb31,b387a81d-c0a6-4ad2-98c1-a74f9d87a3b3,4,Identity and Access Management
+7be36c60-303f-413f-ac43-26d0f17de86e,e571030f-5101-4d63-99fd-01813d34b1dd,3,Design High-Performing Architectures
+7f7016d9-c635-40b5-bd9b-0c1ce9c1d0db,e571030f-5101-4d63-99fd-01813d34b1dd,2,Design Resilient Architectures
+85c322e7-d14b-4bf8-80c6-3a281f4de0db,e571030f-5101-4d63-99fd-01813d34b1dd,4,Design Cost-Optimized Architectures
+8aa8ea67-43f7-489d-90eb-a745904087ac,2e64290b-2bb2-40e8-9b66-0b6f084db46c,1,Fundamentals of AI and ML
+90e37868-c663-4101-800f-410a9e3f899c,641148b7-475d-4db4-9fa4-42356a8adc84,1,Data Preparation for Machine Learning
+9165621e-385c-4219-8751-9fbfb35e235c,0cba4c9d-c747-46c2-b366-63c45c77e826,4,Billing and Pricing
+93cf9b98-cb58-442d-8783-7f8125d5d775,5155598d-be2b-43e7-84e0-d00838cfa608,2,Security
+96ed615c-d204-40c7-bfd1-7b6edf0fbc92,b967ee02-65e1-49d1-bde7-d7a92f98c039,2,Design for New Solutions
+98dc7eee-7191-4602-a882-3ed4ff179437,fec2781e-7342-448f-a226-1469d7fdcb67,2,Reliability and Business Continuity
+998d6aad-c0c2-44fc-9500-adb561dadb3d,ed802a65-ebef-4d51-8208-7d22e5641ee6,1,Data Ingestion and Transformation
+9ea6125a-4d31-4c5e-98d8-e79582277431,17b647e6-0dbe-442e-9871-8d3f4ab90bbe,4,Monitoring and Logging
+a07f68ce-8c2f-4487-b21a-5b190f2375f1,b387a81d-c0a6-4ad2-98c1-a74f9d87a3b3,1,Detection
+a14f201e-71a9-4fda-8252-0f931b981409,0cba4c9d-c747-46c2-b366-63c45c77e826,3,Technology
+a1cb0765-5950-4c37-a38e-ffc76d1b94e5,e185433c-3845-4f70-a864-418ac180fdb4,2,Implementation and Integration
+a5575ed3-a5a4-4218-91ec-7540b30dd903,ed802a65-ebef-4d51-8208-7d22e5641ee6,2,Data Store Management
+a77e63de-6c74-44f4-b464-167b393b3802,641148b7-475d-4db4-9fa4-42356a8adc84,2,ML Model Development
+ab98ffa5-9d62-4d9e-81bb-46aba097ae03,e571030f-5101-4d63-99fd-01813d34b1dd,1,Design Secure Architectures
+b2693d10-e227-4385-bf90-07dbfdbc011c,0cba4c9d-c747-46c2-b366-63c45c77e826,2,Security and Compliance
+b2bffab2-e825-49f3-abd3-8004814aeb73,b967ee02-65e1-49d1-bde7-d7a92f98c039,4,Accelerate Workload Migration and Modernization
+bbf1b2f9-8a17-4fb8-80ad-9e47b72d98e3,5155598d-be2b-43e7-84e0-d00838cfa608,4,Troubleshooting and Optimization
+c11c4bae-37fd-4661-8e04-6ea82ac57f86,fec2781e-7342-448f-a226-1469d7fdcb67,4,Security and Compliance
+c19b3a38-09aa-41b1-88ee-65def0ccb8d4,e185433c-3845-4f70-a864-418ac180fdb4,3,"AI Safety, Security, and Governance"
+c54ac289-b927-4596-81eb-73cbc5672ba0,5155598d-be2b-43e7-84e0-d00838cfa608,3,Deployment
+d1fd51cb-4c75-48fc-8b76-aedcb80c1f4f,e185433c-3845-4f70-a864-418ac180fdb4,4,Operational Efficiency and Optimization for GenAI Applications
+da4b76bd-8dd3-4275-b146-48efb05b1f41,17b647e6-0dbe-442e-9871-8d3f4ab90bbe,2,Configuration Management and IaC
+dc19a309-fd04-45d1-90a5-661ec0b769e5,fec2781e-7342-448f-a226-1469d7fdcb67,3,"Deployment, Provisioning, and Automation"
+e1d20877-d725-4cf1-a45d-2284a4b7fa8d,17b647e6-0dbe-442e-9871-8d3f4ab90bbe,6,Security and Compliance
+e582013f-1038-4bb3-a18a-d158ad2cc244,5155598d-be2b-43e7-84e0-d00838cfa608,1,Development with AWS Services
+f062244e-d126-46b1-93af-a01db4b52cd3,bda87e23-7e3c-407a-9ca7-65f4399f9ebb,3,Network Management and Operation
+fe91081e-30a3-488f-ad04-1b07395e00a1,b967ee02-65e1-49d1-bde7-d7a92f98c039,3,Continuous Improvement for Existing Solutions
