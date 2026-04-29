@@ -10,6 +10,7 @@ export interface QuestionData {
     wrong_explanation_1: string
     wrong_explanation_2: string
     wrong_explanation_3: string
+    service_tags: string[] | null
     created_at: string
     isRevealed: boolean
     isFlagged: boolean

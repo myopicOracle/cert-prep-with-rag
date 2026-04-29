@@ -17,26 +17,35 @@
 
 ## Sprint 2: RAG Pipeline
 
-- [x] set up Bedrock client with Titan Embeddings and Haiku 4.5, completes #3
-- [x] build and test Bedrock embedding and converse invocation functions, completes #26
-- [x] create Supabase db with pgvector column and HNSW index, completes #4
-- [x] scripts/ingest.ts: write and test PDF parse + chunking script, completes #5
-- [x] extend ingest script to generate and store Titan embeddings, completes #6
-- [x] write and test Supabase vector table insert function, completes #7
-- [x] lib/rag.ts: embed query, run similarity search, return Bedrock response, completes #8
-- [x] optimize system prompts and tweak RAG params (size, threshold, window), completes #9
-- [x] app/api/ask/route.ts: API endpoint for full RAG chain user query, completes #10
-- [x] ingest exam guides and AWS whitepapers into docs table, completes #25
+- [x] set up Bedrock client with Titan Embeddings and Haiku 4.5, #3
+- [x] build and test Bedrock embedding and converse invocation functions, #26
+- [x] create Supabase db with pgvector column and HNSW index, #4
+- [x] scripts/ingest.ts: write and test PDF parse + chunking script, #5
+- [x] extend ingest script to generate and store Titan embeddings, #6
+- [x] write and test Supabase vector table insert function, #7
+- [x] lib/rag.ts: embed query, run similarity search, return Bedrock response, #8
+- [x] optimize system prompts and tweak RAG params (size, threshold, window), #9
+- [x] app/api/ask/route.ts: API endpoint for full RAG chain user query, #10
+- [x] ingest exam guides and AWS whitepapers into docs table, #25
 
 ## Sprint 3: Study Mode & Chat UI
 
-- [x] lib/rag.ts: extend getRagResponse to return citations alongside answer, closes #32
-- [x] app/api/ask/route.ts: expose citations in response body, closes #33
-- [x] app/study/page.tsx: create study route and client component skeleton, closes #34
-- [x] build static ChatInput component with textarea and submit button, closes #11
-- [x] wire ChatInput to /api/ask and render raw response below input, closes #14
-- [x] extract ChatMessage component accepting role and content props, closes #35
-- [x] add conversation history state and render scrollable message thread, closes #36
-- [x] render source citations and breadcrumbs beneath assistant messages, closes #37
-- [x] add loading state, submit-disable, and error handling to chat flow, closes #38
-- [x] enhance styling and layout, implement improved responsiveness, closes #39
+- [x] lib/rag.ts: extend getRagResponse to return citations alongside answer, #32
+- [x] app/api/ask/route.ts: expose citations in response body, #33
+- [x] app/study/page.tsx: create study route and client component skeleton, #34
+- [x] build static ChatInput component with textarea and submit button, #11
+- [x] wire ChatInput to /api/ask and render raw response below input, #14
+- [x] extract ChatMessage component accepting role and content props, #35
+- [x] add conversation history state and render scrollable message thread, #36
+- [x] render source citations and breadcrumbs beneath assistant messages, #37
+- [x] add loading state, submit-disable, and error handling to chat flow, #38
+- [x] enhance styling and layout, implement improved responsiveness, #39
+
+## Sprint 4: Question Bank & Live Explanations
+
+- [ ] add service_tags column and questions_full view to questions schema, #46
+- [ ] seed exams, domains, and task statements tables with exam metadata, #51
+- [ ] seed questions for 3 exams, add metadata filter, refactor fetch api, #47
+- [ ] add "Explain Answer" feature to answer choices, wire new API route, #48
+- [ ] add "Explain All" feature to question card, wire new API route, #49
+- [ ] add slide-out chat panel with cached sessions for RAG explanations, #50

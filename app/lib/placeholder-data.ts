@@ -16,6 +16,7 @@ const questions = [
             'S3 One Zone-IA stores data in a single Availability Zone, reducing durability and making it inappropriate for critical compliance data.',
         wrong_explanation_3:
             'S3 Glacier Deep Archive is the lowest-cost option but requires up to 12 hours for retrieval, which exceeds the minutes requirement for audits.',
+        service_tags: ['s3'],
     },
     {
         scenario:
@@ -32,6 +33,7 @@ const questions = [
             'The Glue Data Catalog is the central metadata repository; the Crawler is the tool that discovers and fills it with tables.',
         wrong_explanation_3:
             'DataBrew is a visual data-preparation tool for cleaning and profiling but does not automatically crawl S3 for schema inference and cataloging.',
+        service_tags: ['glue', 'glue crawler', 'glue databrew'],
     },
     {
         scenario:
@@ -48,6 +50,7 @@ const questions = [
             'Glue is an ETL and data-integration service for preparing and moving data, not a queryable data warehouse.',
         wrong_explanation_3:
             'Athena is serverless for ad-hoc S3 queries but lacks the managed warehouse features, concurrency scaling, and performance optimizations of Redshift for repeated complex analytics.',
+        service_tags: ['redshift', 'dynamodb', 'glue', 'athena'],
     },
 ]
 
