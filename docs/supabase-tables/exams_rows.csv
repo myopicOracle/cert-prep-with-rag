@@ -1,0 +1,13 @@
+id,code,name,time_limit
+0cba4c9d-c747-46c2-b366-63c45c77e826,CLF-C02,AWS Certified Cloud Practitioner,90
+17b647e6-0dbe-442e-9871-8d3f4ab90bbe,DOP-C02,AWS Certified DevOps Engineer – Professional,180
+2e64290b-2bb2-40e8-9b66-0b6f084db46c,AIF-C01,AWS Certified AI Practitioner,90
+5155598d-be2b-43e7-84e0-d00838cfa608,DVA-C02,AWS Certified Developer – Associate,130
+641148b7-475d-4db4-9fa4-42356a8adc84,MLA-C01,AWS Certified Machine Learning Engineer – Associate,130
+b387a81d-c0a6-4ad2-98c1-a74f9d87a3b3,SCS-C03,AWS Certified Security – Specialty,170
+b967ee02-65e1-49d1-bde7-d7a92f98c039,SAP-C02,AWS Certified Solutions Architect – Professional,180
+bda87e23-7e3c-407a-9ca7-65f4399f9ebb,ANS-C01,AWS Certified Advanced Networking – Specialty,170
+e185433c-3845-4f70-a864-418ac180fdb4,AIP-C01,AWS Certified Generative AI Developer – Professional,180
+e571030f-5101-4d63-99fd-01813d34b1dd,SAA-C03,AWS Certified Solutions Architect – Associate,130
+ed802a65-ebef-4d51-8208-7d22e5641ee6,DEA-C01,AWS Certified Data Engineer – Associate,130
+fec2781e-7342-448f-a226-1469d7fdcb67,SOA-C03,AWS Certified CloudOps Engineer – Associate,130

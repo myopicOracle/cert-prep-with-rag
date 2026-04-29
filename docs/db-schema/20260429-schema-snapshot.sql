@@ -24,6 +24,7 @@ CREATE TABLE public.exams (
   id uuid NOT NULL DEFAULT gen_random_uuid(),
   code text NOT NULL UNIQUE,
   name text NOT NULL,
+  time_limit integer,
   CONSTRAINT exams_pkey PRIMARY KEY (id)
 );
 CREATE TABLE public.questions (

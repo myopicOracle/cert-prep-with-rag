@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
-import { questions, services } from '@/app/lib/placeholder-data'
+import { questions, services } from '@/app/lib/seed'
 
 const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -17,7 +17,9 @@ async function seedQuestions() {
 }
 
 async function seedServices() {
-    const { error } = await supabase.from('services').upsert(services, { onConflict: 'name' })
+    const { error } = await supabase
+        .from('services')
+        .upsert(services, { onConflict: 'name' })
 
     if (error) {
         throw error
@@ -41,5 +43,5 @@ export async function GET() {
     }
 }
 
-// last update: 2025-03-28
+// last update: 2026-04-29
 // {"message":"Database seeding was successful","services":3,"questions":5}
