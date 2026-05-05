@@ -48,6 +48,7 @@ __pycache__/
 data/pdfs/
 data/markdown/
 data/chunks/
+data/archived-questions/
 
 # dev
 /\!dev/
