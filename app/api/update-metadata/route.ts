@@ -1,10 +1,22 @@
 import { createClient } from '@supabase/supabase-js'
-import { examMetadata } from '@/app/lib/seed'
+import { services, examMetadata } from '@/app/lib/seed'
 
 const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
 )
+
+async function seedServices() {
+    const { error } = await supabase
+        .from('services')
+        .upsert(services, { onConflict: 'name' })
+
+    if (error) {
+        throw error
+    }
+
+    return services.length
+}
 
 async function seedExams() {
     const tableRows = examMetadata.map((exam) => ({
@@ -36,7 +48,9 @@ async function seedDomains(seededExams: any) {
     const domainRows = []
 
     for (const exam of examMetadata) {
-        const examRecord = seededExams.find((e: any) => e.code === exam.exam_code)
+        const examRecord = seededExams.find(
+            (e: any) => e.code === exam.exam_code,
+        )
 
         for (const domain of exam.domains) {
             domainRows.push({
@@ -70,11 +84,14 @@ async function seedTaskStatements(seededExams: any, seededDomains: any) {
     const taskRows = []
 
     for (const exam of examMetadata) {
-        const examRecord = seededExams.find((e: any) => e.code === exam.exam_code)
+        const examRecord = seededExams.find(
+            (e: any) => e.code === exam.exam_code,
+        )
 
         for (const domain of exam.domains) {
             const domainRecord = seededDomains.find(
-                (d: any) => d.exam_id === examRecord.id && d.number === domain.number,
+                (d: any) =>
+                    d.exam_id === examRecord.id && d.number === domain.number,
             )
             for (const task of domain.task_statements) {
                 taskRows.push({
@@ -99,12 +116,14 @@ async function seedTaskStatements(seededExams: any, seededDomains: any) {
 
 export async function GET() {
     try {
+        const serviceCount = await seedServices()
         const seededExams = await seedExams()
         const seededDomains = await seedDomains(seededExams)
         const taskCount = await seedTaskStatements(seededExams, seededDomains)
 
         return Response.json({
             message: 'Metadata was updated successfully',
+            services: serviceCount,
             exams: seededExams.length,
             domains: seededDomains.length,
             task_statements: taskCount,
