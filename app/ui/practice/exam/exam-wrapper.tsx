@@ -9,10 +9,16 @@ import NavButtons from '@/app/ui/practice/exam/nav-buttons'
 import Review from '@/app/ui/practice/exam/review'
 import { examMetadata } from '@/app/lib/seed'
 import { ExamWrapperProps } from '@/app/types/components'
-import { QuestionData, AnswerChoice } from '@/app/types/exam'
+import { QuestionsTableRow, AnswerChoice } from '@/app/types/exam'
 
-export default function ExamWrapper({ examCode, questions, currentID }: ExamWrapperProps) {
-    const [statefulQuestions, setStatefulQuestions] = useState<QuestionData[]>(() => questions)
+export default function ExamWrapper({
+    examCode,
+    questions,
+    currentID,
+}: ExamWrapperProps) {
+    const [statefulQuestions, setStatefulQuestions] = useState<
+        QuestionsTableRow[]
+    >(() => questions)
     const [timeRemaining, setTimeRemaining] = useState<number>(0)
 
     const searchParams = useSearchParams()
@@ -109,9 +115,13 @@ export default function ExamWrapper({ examCode, questions, currentID }: ExamWrap
     }
 
     function handleFinish() {
-        if (!currentQuestion.isRevealed && currentQuestion.selectedAnswer !== null) {
+        if (
+            !currentQuestion.isRevealed &&
+            currentQuestion.selectedAnswer !== null
+        ) {
             const isUserCorrect =
-                shuffledChoices[currentIndex][currentQuestion.selectedAnswer].isCorrect
+                shuffledChoices[currentIndex][currentQuestion.selectedAnswer]
+                    .isCorrect
             handleReveal(isUserCorrect)
         }
         const params = new URLSearchParams(searchParams)
@@ -142,7 +152,10 @@ export default function ExamWrapper({ examCode, questions, currentID }: ExamWrap
                         onReveal={handleReveal}
                     />
 
-                    <NavButtons total={totalQuestions} onFinish={handleFinish} />
+                    <NavButtons
+                        total={totalQuestions}
+                        onFinish={handleFinish}
+                    />
                 </>
             ) : (
                 <Review
