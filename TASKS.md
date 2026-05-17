@@ -45,7 +45,7 @@
 
 - [x] add service_tags column and questions_full view to questions schema, #46
 - [x] seed exams, domains, and task statements tables with exam metadata, #51
-- [ ] seed questions for 3 exams, add metadata filter, refactor fetch api, #47
+- [x] seed questions for 3 exams, add metadata filter, refactor fetch api, #47
 - [ ] add "Explain Answer" feature to answer choices, wire new API route, #48
 - [ ] add "Explain All" feature to question card, wire new API route, #49
 - [ ] add slide-out chat panel with cached sessions for RAG explanations, #50
