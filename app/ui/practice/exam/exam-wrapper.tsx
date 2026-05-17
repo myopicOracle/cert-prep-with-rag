@@ -9,7 +9,7 @@ import NavButtons from '@/app/ui/practice/exam/nav-buttons'
 import Review from '@/app/ui/practice/exam/review'
 import { examMetadata } from '@/app/lib/seed'
 import { ExamWrapperProps } from '@/app/types/components'
-import { QuestionsTableRow, AnswerChoice } from '@/app/types/exam'
+import { ExamUIQuestion, AnswerChoice } from '@/app/types/exam'
 
 export default function ExamWrapper({
     examCode,
@@ -17,7 +17,7 @@ export default function ExamWrapper({
     currentID,
 }: ExamWrapperProps) {
     const [statefulQuestions, setStatefulQuestions] = useState<
-        QuestionsTableRow[]
+        ExamUIQuestion[]
     >(() => questions)
     const [timeRemaining, setTimeRemaining] = useState<number>(0)
 

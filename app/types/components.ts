@@ -1,4 +1,4 @@
-import { QuestionsTableRow, AnswerChoice } from './exam'
+import { ExamUIQuestion, AnswerChoice } from './exam'
 
 export type Citation = {
     sourceURL: string
@@ -23,13 +23,13 @@ export interface ChatInputProps {
 
 export interface ExamWrapperProps {
     examCode: string
-    questions: QuestionsTableRow[]
+    questions: ExamUIQuestion[]
     currentID: number
 }
 
 export interface CardProps {
     id: number
-    question: QuestionsTableRow
+    question: ExamUIQuestion
     choices: AnswerChoice[]
     selectedAnswer: number | null
     onSelect: (index: number) => void
@@ -50,7 +50,7 @@ export interface NavButtonsProps {
 }
 
 export interface ReviewProps {
-    questions: QuestionsTableRow[]
+    questions: ExamUIQuestion[]
     totalQuestions: number
     numberCompleted: number
     numberCorrect: number
