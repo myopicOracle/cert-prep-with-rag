@@ -191,7 +191,7 @@ const examMetadata = [
         level: 'Associate',
         full_name: 'AWS Certified Developer – Associate',
         short_name: 'Developer Associate',
-        exam_code: 'DVA-C02',
+        exam_code: 'DVA-C01',
         duration: 130,
         first_active: '2023-02-28',
         description:

@@ -2,7 +2,20 @@ import { createClient } from '@supabase/supabase-js'
 import fs from 'fs/promises'
 import path from 'path'
 
-const FILE_NAME = 'clf-c02-set-a.json'
+// const FILE_NAME = 'clf-c02-set-a.json'
+// const FILE_NAME = 'clf-c02-set-b.json'
+// const FILE_NAME = 'clf-c02-set-c.json'
+// const FILE_NAME = 'aif-c01-set-a.json'
+// const FILE_NAME = 'aif-c01-set-b.json'
+// const FILE_NAME = 'aif-c01-set-c.json'
+// const FILE_NAME = 'dea-c01-set-a.json'
+// const FILE_NAME = 'dea-c01-set-b.json'
+// const FILE_NAME = 'dva-c01-set-a.json'
+// const FILE_NAME = 'dva-c01-set-b.json'
+// const FILE_NAME = 'mla-c01-set-a.json'
+// const FILE_NAME = 'mla-c01-set-b.json'
+// const FILE_NAME = 'saa-c03-set-a.json'
+const FILE_NAME = 'saa-c03-set-b.json'
 const FILE_DIR = 'data/generated-questions/'
 const SOURCE_FILE = FILE_DIR.concat(FILE_NAME)
 
@@ -98,4 +111,17 @@ function buildQuestionRows(questionSeed: any[], taskStatements: any[]) {
 }
 
 // last update: 2026-05-17
-// {"message":"Database seeding was successful","services":3,"questions":5}
+// {"message":"Database seeding was successful","source":"data/generated-questions/clf-c02-set-a.json","questions":65}
+// {"message":"Database seeding was successful","source":"data/generated-questions/clf-c02-set-b.json","questions":65}
+// {"message":"Database seeding was successful","source":"data/generated-questions/clf-c02-set-c.json","questions":65}
+// {"message":"Database seeding was successful","source":"data/generated-questions/aif-c01-set-a.json","questions":65}
+// {"message":"Database seeding was successful","source":"data/generated-questions/aif-c01-set-b.json","questions":65}
+// {"message":"Database seeding was successful","source":"data/generated-questions/aif-c01-set-c.json","questions":65}
+// {"message":"Database seeding was successful","source":"data/generated-questions/dea-c01-set-a.json","questions":65}
+// {"message":"Database seeding was successful","source":"data/generated-questions/dea-c01-set-b.json","questions":65}
+// {"message":"Database seeding was successful","source":"data/generated-questions/dva-c01-set-a.json","questions":65}
+// {"message":"Database seeding was successful","source":"data/generated-questions/dva-c01-set-b.json","questions":65}
+// {"message":"Database seeding was successful","source":"data/generated-questions/mla-c01-set-a.json","questions":65}
+// {"message":"Database seeding was successful","source":"data/generated-questions/mla-c01-set-b.json","questions":65}
+// {"message":"Database seeding was successful","source":"data/generated-questions/saa-c03-set-a.json","questions":65}
+// {"message":"Database seeding was successful","source":"data/generated-questions/saa-c03-set-b.json","questions":65}

@@ -115,7 +115,7 @@
 
 ---
 
-# AWS DVA-C02
+# AWS DVA-C01
 
 [AWS Official Exam Guide Source](https://d1.awsstatic.com/training-and-certification/docs-dev-associate/AWS-Certified-Developer-Associate_Exam-Guide.pdf)
 

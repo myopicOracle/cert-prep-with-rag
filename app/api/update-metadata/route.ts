@@ -1,22 +1,10 @@
 import { createClient } from '@supabase/supabase-js'
-import { services, examMetadata } from '@/app/lib/seed'
+import { examMetadata } from '@/app/lib/seed'
 
 const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
 )
-
-async function seedServices() {
-    const { error } = await supabase
-        .from('services')
-        .upsert(services, { onConflict: 'name' })
-
-    if (error) {
-        throw error
-    }
-
-    return services.length
-}
 
 async function seedExams() {
     const tableRows = examMetadata.map((exam) => ({
@@ -116,14 +104,12 @@ async function seedTaskStatements(seededExams: any, seededDomains: any) {
 
 export async function GET() {
     try {
-        const serviceCount = await seedServices()
         const seededExams = await seedExams()
         const seededDomains = await seedDomains(seededExams)
         const taskCount = await seedTaskStatements(seededExams, seededDomains)
 
         return Response.json({
             message: 'Metadata was updated successfully',
-            services: serviceCount,
             exams: seededExams.length,
             domains: seededDomains.length,
             task_statements: taskCount,
@@ -133,5 +119,5 @@ export async function GET() {
     }
 }
 
-// last update: 2026-04-29
+// last update: 2026-05-17
 // {"message":"Metadata was updated successfully","exams":12,"domains":55,"task_statements":188}
