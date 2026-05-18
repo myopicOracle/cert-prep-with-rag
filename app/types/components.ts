@@ -1,3 +1,4 @@
+import { type UIMessage } from 'ai'
 import { ExamUIQuestion, AnswerChoice } from './exam'
 
 export type Citation = {
@@ -80,4 +81,12 @@ export interface ButtonProps {
 export interface FlagProps {
     isFlagged: boolean
     onFlag: () => void
+}
+
+export interface DrawerProps {
+    isOpen: boolean
+    onClose: () => void
+    messages: UIMessage[]
+    status: 'submitted' | 'streaming' | 'ready' | 'error'
+    onSendFollowUp: (text: string) => Promise<void>
 }
