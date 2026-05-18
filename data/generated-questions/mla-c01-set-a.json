@@ -1,0 +1,1181 @@
+[
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "A machine learning team needs to ingest clickstream data from a high-traffic e-commerce website into AWS for near-real-time model feature computation. The data arrives as a continuous stream of JSON events at variable rates, peaking at hundreds of thousands of events per second. Which AWS service is best suited to ingest this data stream reliably at scale?",
+        "correct_answer": "Amazon Kinesis Data Streams",
+        "wrong_answer_1": "Amazon SQS",
+        "wrong_answer_2": "AWS Glue",
+        "wrong_answer_3": "Amazon S3 Event Notifications",
+        "correct_explanation": "Amazon Kinesis Data Streams is purpose-built for real-time ingestion of high-throughput streaming data. It can scale to handle hundreds of thousands of records per second, retains data for up to 365 days, and integrates natively with downstream consumers like Amazon Managed Service for Apache Flink and AWS Lambda for feature computation.",
+        "wrong_explanation_1": "Amazon SQS is a message queuing service designed for decoupling application components, not for high-throughput streaming analytics. It lacks native support for ordered, partitioned stream processing required for ML feature pipelines.",
+        "wrong_explanation_2": "AWS Glue is a batch-oriented ETL service. While it can read from streaming sources, it is not designed to be the primary ingestion layer for continuous high-velocity event streams.",
+        "wrong_explanation_3": "Amazon S3 Event Notifications trigger actions when objects are written to S3, but they are not a streaming ingestion mechanism. They cannot handle continuous sub-second event streams from a live website.",
+        "service_tags": [
+            "kinesis",
+            "kinesis-data-streams"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "A data engineering team is building a pipeline to load daily batch exports from an on-premises Oracle database into Amazon S3 for ML training. The exports are large CSV files totaling 500 GB per day. The team wants a managed service that handles schema mapping, incremental loads, and automatic retries without writing custom code. Which AWS service best meets these requirements?",
+        "correct_answer": "AWS Database Migration Service (AWS DMS)",
+        "wrong_answer_1": "AWS DataSync",
+        "wrong_answer_2": "Amazon Kinesis Data Firehose",
+        "wrong_answer_3": "AWS Transfer Family",
+        "correct_explanation": "AWS DMS is designed to migrate and replicate data from relational databases including Oracle. It supports ongoing replication with change data capture (CDC), handles schema mapping, and provides automatic retries — making it well-suited for managed incremental loads from on-premises databases to S3 for ML pipelines.",
+        "wrong_explanation_1": "AWS DataSync is optimized for transferring files between on-premises file systems and AWS storage services. It does not connect to relational databases or handle SQL-based incremental extraction.",
+        "wrong_explanation_2": "Amazon Kinesis Data Firehose is designed for streaming data delivery, not batch database exports. It does not connect to Oracle databases or perform schema-aware incremental loads.",
+        "wrong_explanation_3": "AWS Transfer Family provides SFTP/FTP/FTPS endpoints for file transfer into S3. It does not integrate with relational databases or support incremental database replication.",
+        "service_tags": [
+            "dms",
+            "s3"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "An ML engineer needs to store processed training features so they can be reused across multiple model training jobs and also served with low latency during online inference. The features must be consistent between training and serving to avoid training-serving skew. Which AWS service is specifically designed to address this requirement?",
+        "correct_answer": "Amazon SageMaker Feature Store",
+        "wrong_answer_1": "Amazon DynamoDB",
+        "wrong_answer_2": "Amazon ElastiCache",
+        "wrong_answer_3": "Amazon Redshift",
+        "correct_explanation": "Amazon SageMaker Feature Store provides both an online store (low-latency retrieval for inference) and an offline store (S3-backed for training). It ensures feature consistency between training and serving by using the same feature definitions and ingestion pipeline, directly addressing training-serving skew.",
+        "wrong_explanation_1": "Amazon DynamoDB can serve low-latency lookups but has no concept of feature versioning, offline training stores, or built-in integration with SageMaker training jobs. It would require significant custom engineering to replicate Feature Store functionality.",
+        "wrong_explanation_2": "Amazon ElastiCache provides in-memory caching for low-latency reads but is not designed for ML feature management. It has no offline store, no feature versioning, and no native SageMaker integration.",
+        "wrong_explanation_3": "Amazon Redshift is a data warehouse optimized for analytical queries. While it can store features, it does not provide the sub-millisecond online serving latency required for real-time inference, nor does it natively manage training-serving consistency.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-feature-store"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "A company stores IoT sensor readings in an Amazon S3 data lake partitioned by date. An ML team wants to run ad-hoc SQL queries against this data to explore distributions and identify anomalies before building a training dataset, without loading the data into a separate database. Which AWS service enables this with the least operational overhead?",
+        "correct_answer": "Amazon Athena",
+        "wrong_answer_1": "Amazon Redshift Spectrum",
+        "wrong_answer_2": "Amazon EMR",
+        "wrong_answer_3": "AWS Glue Studio",
+        "correct_explanation": "Amazon Athena is a serverless interactive query service that runs SQL directly against data in S3 with no infrastructure to manage. It supports partitioned datasets, charges only per query, and requires no data loading — making it ideal for ad-hoc exploration of S3-resident ML datasets.",
+        "wrong_explanation_1": "Amazon Redshift Spectrum can query S3 data but requires an active Redshift cluster, which adds operational overhead and cost compared to the fully serverless Athena for ad-hoc exploration.",
+        "wrong_explanation_2": "Amazon EMR can run distributed SQL queries via Spark SQL or Hive, but it requires cluster provisioning and management, making it significantly more operationally complex than Athena for ad-hoc queries.",
+        "wrong_explanation_3": "AWS Glue Studio is a visual ETL authoring tool for building data transformation jobs. It is not designed for interactive SQL exploration of S3 data.",
+        "service_tags": [
+            "athena",
+            "s3"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "A healthcare company needs to transfer 200 TB of historical patient records from an on-premises NAS to Amazon S3 to build a training dataset. The on-premises environment has a 1 Gbps internet connection, and the transfer must complete within 5 days. The data is sensitive and must be encrypted in transit. Which AWS service is the most appropriate for this transfer?",
+        "correct_answer": "AWS Snowball Edge",
+        "wrong_answer_1": "AWS DataSync over the internet",
+        "wrong_answer_2": "S3 Transfer Acceleration",
+        "wrong_answer_3": "AWS Direct Connect",
+        "correct_explanation": "At 200 TB over a 1 Gbps connection, a network transfer would take approximately 18+ days at full utilization — well beyond the 5-day window. AWS Snowball Edge is a physical data transfer device that can move petabyte-scale data offline. It encrypts data at rest and in transit, and AWS ships it directly to the destination region, meeting both the timeline and security requirements.",
+        "wrong_explanation_1": "AWS DataSync over a 1 Gbps internet connection cannot transfer 200 TB within 5 days. At theoretical maximum throughput, 200 TB would take over 18 days, making this option infeasible for the given timeline.",
+        "wrong_explanation_2": "S3 Transfer Acceleration improves upload speeds by routing through CloudFront edge locations, but it still relies on the existing internet connection. It cannot overcome the fundamental bandwidth constraint of a 1 Gbps link for 200 TB in 5 days.",
+        "wrong_explanation_3": "AWS Direct Connect provides a dedicated network connection but takes weeks to provision. It would not be available within the 5-day transfer window and is more appropriate for ongoing connectivity rather than a one-time bulk migration.",
+        "service_tags": [
+            "snowball",
+            "snowball-edge",
+            "s3"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "A data scientist is preparing a dataset for a regression model predicting house prices. The dataset contains a 'neighborhood' column with 150 unique string values. The scientist wants to encode this categorical feature for use with a gradient boosting algorithm. Which encoding strategy is most appropriate given the high cardinality of this feature?",
+        "correct_answer": "Target encoding",
+        "wrong_answer_1": "One-hot encoding",
+        "wrong_answer_2": "Label encoding",
+        "wrong_answer_3": "Binary encoding",
+        "correct_explanation": "Target encoding replaces each category with the mean of the target variable for that category. It handles high-cardinality categorical features efficiently without creating hundreds of sparse columns, and it captures the relationship between the category and the target — making it well-suited for tree-based models like gradient boosting.",
+        "wrong_explanation_1": "One-hot encoding creates a binary column for each unique category. With 150 unique neighborhoods, this would produce 150 additional sparse columns, significantly increasing dimensionality and memory usage, which can degrade model performance and training speed.",
+        "wrong_explanation_2": "Label encoding assigns an arbitrary integer to each category. For nominal categories like neighborhood names, this introduces a false ordinal relationship (e.g., neighborhood 5 is not 'greater than' neighborhood 2), which can mislead the model.",
+        "wrong_explanation_3": "Binary encoding reduces dimensionality compared to one-hot encoding by representing categories as binary digits, but it still introduces an implicit ordering and does not capture the relationship between the category and the target variable as effectively as target encoding.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-data-wrangler"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "An ML engineer is building a time-series forecasting model using Amazon SageMaker. The training dataset contains a timestamp column and several numeric sensor readings. The engineer wants to extract cyclical time-based features such as hour of day and day of week to help the model learn seasonal patterns. Which SageMaker tool provides a built-in, no-code interface for this type of feature transformation?",
+        "correct_answer": "Amazon SageMaker Data Wrangler",
+        "wrong_answer_1": "Amazon SageMaker Processing",
+        "wrong_answer_2": "AWS Glue DataBrew",
+        "wrong_answer_3": "Amazon SageMaker Autopilot",
+        "correct_explanation": "Amazon SageMaker Data Wrangler provides a visual, no-code interface for data preparation and feature engineering within SageMaker Studio. It includes built-in transforms for extracting time-based features such as hour, day of week, month, and quarter from timestamp columns, making it ideal for preparing time-series data without writing custom code.",
+        "wrong_explanation_1": "Amazon SageMaker Processing runs custom Python or Spark scripts for data transformation. It requires writing code and does not provide a no-code visual interface for feature engineering.",
+        "wrong_explanation_2": "AWS Glue DataBrew is a visual data preparation tool, but it is not integrated into SageMaker Studio and does not have the same depth of ML-specific feature engineering transforms as SageMaker Data Wrangler.",
+        "wrong_explanation_3": "Amazon SageMaker Autopilot automates the end-to-end ML process including feature engineering, but it does not expose a no-code interface for manually specifying individual feature transformations. It is designed for automated model building, not interactive feature engineering.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-data-wrangler"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "A data scientist is preparing a dataset for a neural network model. The dataset contains a numeric feature representing annual income, with values ranging from $20,000 to $500,000. The distribution is heavily right-skewed. Which preprocessing step should the data scientist apply to this feature to improve model convergence?",
+        "correct_answer": "Apply a log transformation followed by min-max normalization",
+        "wrong_answer_1": "Apply one-hot encoding to the income feature",
+        "wrong_answer_2": "Apply standard scaling (z-score normalization) without any prior transformation",
+        "wrong_answer_3": "Bin the income values into 10 equal-width buckets",
+        "correct_explanation": "A log transformation compresses the right tail of a skewed distribution, making it more symmetric and reducing the influence of extreme values. Following this with min-max normalization scales the values to a [0,1] range, which is beneficial for neural networks that are sensitive to input scale. This two-step approach addresses both skewness and scale.",
+        "wrong_explanation_1": "One-hot encoding is used for categorical features, not continuous numeric features like income. Applying it to a continuous variable would destroy the ordinal and magnitude information in the feature.",
+        "wrong_explanation_2": "Standard scaling (z-score) centers and scales the data but does not address skewness. For a heavily right-skewed distribution, extreme outliers will still dominate the scaled values, potentially slowing convergence or causing instability in neural network training.",
+        "wrong_explanation_3": "Binning converts a continuous feature into a categorical one, which loses granularity and the continuous relationship between income and the target. Equal-width bins are also sensitive to outliers and may result in most data falling into a few bins.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-data-wrangler"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "A machine learning team is building a fraud detection model. The training dataset has 98% legitimate transactions and 2% fraudulent ones. The team is concerned that the model will be biased toward predicting the majority class. Which technique should the team apply during data preparation to address this class imbalance?",
+        "correct_answer": "Apply SMOTE (Synthetic Minority Oversampling Technique) to oversample the minority class",
+        "wrong_answer_1": "Remove samples from the majority class until both classes are equal in size",
+        "wrong_answer_2": "Duplicate the minority class samples until both classes are equal in size",
+        "wrong_answer_3": "Apply PCA to reduce the dimensionality of the dataset",
+        "correct_explanation": "SMOTE generates synthetic samples for the minority class by interpolating between existing minority class examples. This increases the representation of fraudulent transactions without simply duplicating existing samples, which helps the model learn more robust decision boundaries for the minority class.",
+        "wrong_explanation_1": "Random undersampling of the majority class can address imbalance but discards a large portion of legitimate transaction data, potentially losing important patterns. With a 98/2 split, this would eliminate 96% of the training data.",
+        "wrong_explanation_2": "Simple duplication of minority class samples (random oversampling) increases the count but does not add new information. The model may overfit to the exact duplicated samples rather than learning generalizable patterns for fraud detection.",
+        "wrong_explanation_3": "PCA is a dimensionality reduction technique that reduces the number of features. It does not address class imbalance and would not help the model learn to distinguish between the majority and minority classes.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-data-wrangler"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "A data scientist is using Amazon SageMaker Data Wrangler to prepare a dataset for a recommendation model. The dataset contains a user_id column and an item_id column, both of which are high-cardinality integer identifiers. The scientist wants to create an embedding-ready representation of these IDs. Which transformation should be applied?",
+        "correct_answer": "Encode the IDs as categorical features using ordinal encoding to produce contiguous integer indices",
+        "wrong_answer_1": "Normalize the ID columns using min-max scaling",
+        "wrong_answer_2": "Apply one-hot encoding to both ID columns",
+        "wrong_answer_3": "Drop both ID columns as they are not informative features",
+        "correct_explanation": "Embedding layers in neural networks require contiguous integer indices starting from 0. Ordinal encoding maps each unique ID to a contiguous integer, producing the correct input format for an embedding lookup table. This is the standard preprocessing step before passing categorical IDs into an embedding layer.",
+        "wrong_explanation_1": "Min-max scaling treats the IDs as continuous numeric values, which is incorrect. User and item IDs are nominal identifiers — their numeric magnitude has no meaning, and scaling them would not produce a valid input for an embedding layer.",
+        "wrong_explanation_2": "One-hot encoding would create millions of sparse binary columns for high-cardinality ID columns, making the dataset computationally intractable. Embedding layers are specifically designed to replace one-hot encoding for high-cardinality categoricals.",
+        "wrong_explanation_3": "User and item IDs are the primary identifiers in a recommendation model — they are the entities being modeled. Dropping them would remove the core information needed to learn user-item interaction patterns.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-data-wrangler"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "An ML team is preparing a text dataset for a sentiment classification model. The raw data consists of customer reviews stored in Amazon S3 as plain text files. The team needs to tokenize the text, remove stop words, and convert tokens to TF-IDF vectors at scale. Which AWS service is best suited to run this distributed text preprocessing pipeline?",
+        "correct_answer": "Amazon EMR with Apache Spark",
+        "wrong_answer_1": "AWS Lambda",
+        "wrong_answer_2": "Amazon SageMaker Data Wrangler",
+        "wrong_answer_3": "Amazon Comprehend",
+        "correct_explanation": "Amazon EMR with Apache Spark provides a distributed computing environment capable of processing large text datasets at scale. Spark's MLlib includes built-in transformers for tokenization, stop word removal, and TF-IDF vectorization, making it well-suited for this distributed text preprocessing pipeline.",
+        "wrong_explanation_1": "AWS Lambda has a 15-minute execution limit and 10 GB memory cap, making it unsuitable for large-scale distributed text processing. It is designed for event-driven, short-duration tasks rather than batch ML preprocessing pipelines.",
+        "wrong_explanation_2": "Amazon SageMaker Data Wrangler provides a visual interface for structured tabular data preparation. It does not support distributed NLP preprocessing pipelines such as TF-IDF vectorization at scale.",
+        "wrong_explanation_3": "Amazon Comprehend is a managed NLP service for tasks like entity recognition, sentiment analysis, and key phrase extraction. It does not expose raw tokenization or TF-IDF vectorization as configurable preprocessing steps for custom model training.",
+        "service_tags": [
+            "emr",
+            "spark"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "A data scientist discovers that 8% of rows in a training dataset have missing values in a key numeric feature. The feature has a roughly normal distribution and the missingness appears to be random. Which imputation strategy is most appropriate to preserve the statistical properties of the feature?",
+        "correct_answer": "Impute missing values with the mean of the feature",
+        "wrong_answer_1": "Drop all rows with missing values",
+        "wrong_answer_2": "Impute missing values with zero",
+        "wrong_answer_3": "Impute missing values with the maximum value of the feature",
+        "correct_explanation": "When data is missing at random and the feature is normally distributed, mean imputation preserves the central tendency of the distribution and introduces minimal bias. It is a standard, statistically sound approach for handling random missingness in numeric features.",
+        "wrong_explanation_1": "Dropping rows with missing values removes 8% of the training data, which reduces the dataset size and can introduce bias if the missingness is not completely random. This is generally not preferred when imputation is feasible.",
+        "wrong_explanation_2": "Imputing with zero is only appropriate when zero has a meaningful interpretation in the context of the feature (e.g., no purchases). For a normally distributed feature, replacing missing values with zero would distort the distribution and introduce significant bias.",
+        "wrong_explanation_3": "Imputing with the maximum value would severely skew the distribution toward the upper end, introducing systematic bias and potentially causing the model to learn incorrect patterns from the imputed values.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-data-wrangler"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "A machine learning team is preparing a training dataset that was joined from three different source systems. After the join, the team suspects there are duplicate records caused by overlapping data exports. Which approach should the team use to detect and remove duplicates before training?",
+        "correct_answer": "Use AWS Glue DataBrew to profile the dataset and apply a deduplication recipe step based on a composite key",
+        "wrong_answer_1": "Use Amazon SageMaker Clarify to detect duplicate records",
+        "wrong_answer_2": "Use Amazon Macie to scan the dataset for duplicate entries",
+        "wrong_answer_3": "Use Amazon Rekognition to identify duplicate records in the dataset",
+        "correct_explanation": "AWS Glue DataBrew is a visual data preparation tool that includes dataset profiling and built-in recipe steps for deduplication. It can identify duplicate rows based on a composite key (combination of columns) and remove them as part of a repeatable data preparation pipeline.",
+        "wrong_explanation_1": "Amazon SageMaker Clarify is designed to detect bias in ML datasets and explain model predictions. It does not provide functionality for identifying or removing duplicate records.",
+        "wrong_explanation_2": "Amazon Macie is a data security service that uses ML to discover and protect sensitive data such as PII in S3. It is not designed for data quality tasks like deduplication.",
+        "wrong_explanation_3": "Amazon Rekognition is a computer vision service for image and video analysis. It has no capability to detect duplicate records in tabular datasets.",
+        "service_tags": [
+            "glue",
+            "databrew"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "An ML engineer is building a training pipeline for a supervised classification model. The dataset contains 500,000 labeled samples. The engineer wants to split the data into training, validation, and test sets while ensuring that the class distribution is preserved in each split. Which splitting strategy should be used?",
+        "correct_answer": "Stratified split",
+        "wrong_answer_1": "Random split",
+        "wrong_answer_2": "Chronological split",
+        "wrong_answer_3": "K-fold cross-validation",
+        "correct_explanation": "A stratified split preserves the proportion of each class in the training, validation, and test sets. This is critical for imbalanced datasets to ensure that each split is representative of the overall class distribution, preventing evaluation metrics from being skewed by an unrepresentative test set.",
+        "wrong_explanation_1": "A random split does not guarantee that class proportions are preserved across splits. For imbalanced datasets, a random split may result in one split having very few or no samples of a minority class, leading to unreliable evaluation.",
+        "wrong_explanation_2": "A chronological split orders data by time and is appropriate for time-series problems where future data must not leak into training. It does not address class distribution preservation and is not suitable for non-temporal classification datasets.",
+        "wrong_explanation_3": "K-fold cross-validation is a model evaluation technique that repeatedly splits data into training and validation folds. It is not a method for creating a final held-out test set, and it does not produce a single fixed train/validation/test partition.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-data-wrangler"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "A data scientist is validating a training dataset before submitting a SageMaker training job. The dataset is stored in Amazon S3 as CSV files. The scientist wants to automatically check for schema violations, detect outliers, and generate a data quality report without writing custom code. Which AWS service provides this capability?",
+        "correct_answer": "AWS Glue DataBrew",
+        "wrong_answer_1": "Amazon SageMaker Model Monitor",
+        "wrong_answer_2": "AWS CloudTrail",
+        "wrong_answer_3": "Amazon Inspector",
+        "correct_explanation": "AWS Glue DataBrew provides automated data profiling that detects schema violations, identifies outliers, checks for missing values, and generates a comprehensive data quality report. It requires no custom code and integrates directly with S3, making it well-suited for pre-training dataset validation.",
+        "wrong_explanation_1": "Amazon SageMaker Model Monitor is designed to monitor deployed model endpoints for data drift and model quality degradation in production. It is not used for pre-training dataset validation.",
+        "wrong_explanation_2": "AWS CloudTrail records API calls and user activity for auditing and compliance purposes. It does not perform data quality analysis or generate dataset profiling reports.",
+        "wrong_explanation_3": "Amazon Inspector is a security vulnerability assessment service for EC2 instances and container images. It has no capability for data quality profiling or schema validation of ML datasets.",
+        "service_tags": [
+            "glue",
+            "databrew"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "A company is building a training dataset by labeling thousands of product images for a computer vision model. The labeling team is distributed across multiple locations. The company wants a managed service to coordinate the labeling workflow, track labeler agreement, and automatically label high-confidence examples to reduce manual effort. Which AWS service should be used?",
+        "correct_answer": "Amazon SageMaker Ground Truth",
+        "wrong_answer_1": "Amazon Rekognition Custom Labels",
+        "wrong_answer_2": "AWS Mechanical Turk (standalone)",
+        "wrong_answer_3": "Amazon Augmented AI (Amazon A2I)",
+        "correct_explanation": "Amazon SageMaker Ground Truth is a fully managed data labeling service that supports distributed labeling workforces, tracks inter-annotator agreement, and uses active learning to automatically label high-confidence examples — reducing the total labeling cost by up to 70%. It integrates directly with SageMaker training jobs.",
+        "wrong_explanation_1": "Amazon Rekognition Custom Labels trains custom image classification and object detection models using labeled images, but it does not provide a managed labeling workflow for coordinating distributed labelers or tracking annotator agreement.",
+        "wrong_explanation_2": "AWS Mechanical Turk can be used as a labeling workforce, but it is a standalone crowdsourcing marketplace. It does not provide workflow management, inter-annotator agreement tracking, or automated labeling — those capabilities are provided by SageMaker Ground Truth, which can use Mechanical Turk as one of its workforce options.",
+        "wrong_explanation_3": "Amazon Augmented AI (A2I) is designed for human review of ML predictions in production (e.g., reviewing low-confidence model outputs). It is not designed for building initial training datasets through coordinated labeling workflows.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-ground-truth"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "An ML team is preparing a dataset for a binary classification model. After exploratory analysis, they find that one feature has a Pearson correlation of 0.97 with another feature already in the dataset. What should the team do with this highly correlated feature?",
+        "correct_answer": "Remove the redundant feature to reduce multicollinearity",
+        "wrong_answer_1": "Keep both features because more features always improve model performance",
+        "wrong_answer_2": "Apply PCA to all features including the correlated pair to reduce dimensionality",
+        "wrong_answer_3": "Replace both features with their sum as a single combined feature",
+        "correct_explanation": "A Pearson correlation of 0.97 indicates near-perfect linear redundancy between the two features (multicollinearity). Removing one of them reduces dimensionality, speeds up training, and prevents the model from assigning unstable or inflated coefficients to redundant predictors — particularly important for linear models and regularized models.",
+        "wrong_explanation_1": "More features do not always improve model performance. Highly correlated features introduce multicollinearity, which can destabilize model coefficients, increase variance, and slow training without adding predictive value.",
+        "wrong_explanation_2": "PCA can address multicollinearity by transforming correlated features into uncorrelated principal components, but it reduces interpretability. For a single highly correlated pair, simply removing one feature is simpler and preserves interpretability.",
+        "wrong_explanation_3": "Summing two correlated features creates a new feature that may not have a meaningful interpretation and does not necessarily reduce multicollinearity. The resulting sum may still be highly correlated with other features in the dataset.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-data-wrangler"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "A data scientist is preparing a training dataset stored in Amazon S3. The dataset was collected over 18 months and contains records from a period when a known data collection error introduced systematic noise into 3 months of data. The scientist needs to exclude those records before training. Which approach is most efficient?",
+        "correct_answer": "Use Amazon Athena to query and filter the S3 dataset by date range, then export the clean subset to a new S3 prefix for training",
+        "wrong_answer_1": "Download the entire dataset locally, filter it using a Python script, and re-upload to S3",
+        "wrong_answer_2": "Use Amazon SageMaker Model Monitor to detect and remove the noisy records",
+        "wrong_answer_3": "Use AWS Glue to crawl the dataset and automatically detect and remove the corrupted date range",
+        "correct_explanation": "Amazon Athena can run a SQL query directly against the S3 dataset to filter out records from the corrupted date range and write the results to a new S3 prefix using CTAS (CREATE TABLE AS SELECT). This is serverless, requires no data movement, and is far more efficient than downloading and re-uploading the full dataset.",
+        "wrong_explanation_1": "Downloading the full 18-month dataset locally, filtering it, and re-uploading is operationally inefficient and introduces unnecessary data transfer costs and latency. Athena can perform the same filter operation directly in S3.",
+        "wrong_explanation_2": "Amazon SageMaker Model Monitor is designed to detect data drift and quality issues in production inference data. It does not provide a mechanism to filter historical training data by date range.",
+        "wrong_explanation_3": "AWS Glue Crawlers catalog data and infer schemas — they do not automatically detect or remove records based on known data quality issues. A Glue ETL job could perform the filtering, but Athena is simpler and more direct for a date-range filter.",
+        "service_tags": [
+            "athena",
+            "s3"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.1",
+        "scenario": "A data scientist needs to build a model to predict customer churn for a subscription service. The dataset contains 50,000 labeled records with 40 features including demographics, usage patterns, and billing history. The team wants a model that is interpretable enough for the business team to understand which features drive churn. Which algorithm is most appropriate?",
+        "correct_answer": "XGBoost",
+        "wrong_answer_1": "Deep neural network (DNN)",
+        "wrong_answer_2": "K-means clustering",
+        "wrong_answer_3": "Principal Component Analysis (PCA)",
+        "correct_explanation": "XGBoost is a gradient boosting algorithm well-suited for tabular classification problems. It produces feature importance scores that make it interpretable for business stakeholders, handles mixed feature types well, and consistently achieves strong performance on structured datasets like this one.",
+        "wrong_explanation_1": "A deep neural network can achieve high accuracy on tabular data but is generally considered a black-box model. It requires more data and tuning to outperform gradient boosting on structured tabular datasets, and it does not natively provide the feature importance interpretability the business team requires.",
+        "wrong_explanation_2": "K-means clustering is an unsupervised algorithm used for grouping unlabeled data into clusters. Since the dataset has labeled churn outcomes, this is a supervised classification problem — k-means is not applicable.",
+        "wrong_explanation_3": "PCA is a dimensionality reduction technique, not a predictive model. It cannot be used directly to predict churn and would reduce interpretability by transforming original features into abstract principal components.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-built-in-algorithms"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.1",
+        "scenario": "A company wants to build a recommendation system to suggest products to users based on their purchase history. The dataset contains user-item interaction data with 500,000 users and 100,000 products. There are no explicit ratings — only implicit feedback (purchases). Which Amazon SageMaker built-in algorithm is most appropriate for this use case?",
+        "correct_answer": "Factorization Machines",
+        "wrong_answer_1": "Linear Learner",
+        "wrong_answer_2": "K-Nearest Neighbors (KNN)",
+        "wrong_answer_3": "DeepAR",
+        "correct_explanation": "Amazon SageMaker's Factorization Machines algorithm is designed for sparse datasets with high-dimensional feature interactions, making it ideal for collaborative filtering recommendation systems. It can model user-item interactions efficiently even with implicit feedback and large-scale sparse matrices.",
+        "wrong_explanation_1": "Linear Learner is designed for regression and classification tasks on dense feature vectors. It does not model the pairwise interaction structure between users and items that is fundamental to collaborative filtering.",
+        "wrong_explanation_2": "K-Nearest Neighbors finds similar items based on feature distance, but it does not scale well to 500,000 users and 100,000 products. It also requires dense feature representations and does not natively handle sparse user-item interaction matrices.",
+        "wrong_explanation_3": "DeepAR is a time-series forecasting algorithm that models temporal sequences. It is not designed for user-item recommendation tasks and cannot model collaborative filtering interactions.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-built-in-algorithms"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.1",
+        "scenario": "A machine learning engineer needs to group millions of unlabeled customer support tickets into thematic clusters to help the operations team identify common issue categories. No labeled examples exist. Which type of algorithm is appropriate for this task?",
+        "correct_answer": "K-means clustering",
+        "wrong_answer_1": "XGBoost",
+        "wrong_answer_2": "Amazon SageMaker Linear Learner",
+        "wrong_answer_3": "Amazon SageMaker Sequence-to-Sequence",
+        "correct_explanation": "K-means clustering is an unsupervised algorithm that groups data points into k clusters based on feature similarity. Since no labeled examples exist, an unsupervised approach is required. SageMaker's built-in K-means algorithm scales to millions of records and can cluster text embeddings of support tickets into thematic groups.",
+        "wrong_explanation_1": "XGBoost is a supervised learning algorithm that requires labeled training data. Since no labeled examples exist for the support tickets, XGBoost cannot be applied to this unsupervised grouping task.",
+        "wrong_explanation_2": "Amazon SageMaker Linear Learner is a supervised algorithm for regression and classification. It requires labeled data and is not applicable to unsupervised clustering of unlabeled support tickets.",
+        "wrong_explanation_3": "Amazon SageMaker Sequence-to-Sequence is designed for supervised sequence transformation tasks such as machine translation and text summarization. It requires labeled input-output sequence pairs and is not applicable to unsupervised clustering.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-built-in-algorithms"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.1",
+        "scenario": "A data scientist is building a model to detect anomalies in server CPU utilization metrics collected every minute over 6 months. The data is unlabeled — no historical anomaly labels exist. Which Amazon SageMaker built-in algorithm is most appropriate?",
+        "correct_answer": "Random Cut Forest (RCF)",
+        "wrong_answer_1": "DeepAR",
+        "wrong_answer_2": "XGBoost",
+        "wrong_answer_3": "BlazingText",
+        "correct_explanation": "Amazon SageMaker Random Cut Forest (RCF) is an unsupervised anomaly detection algorithm designed for time-series and streaming data. It assigns an anomaly score to each data point based on how much including that point changes the complexity of the forest, making it ideal for detecting unusual CPU utilization patterns without labeled anomaly data.",
+        "wrong_explanation_1": "DeepAR is a supervised time-series forecasting algorithm that predicts future values based on historical patterns. It requires labeled time-series data for training and is designed for forecasting, not anomaly detection.",
+        "wrong_explanation_2": "XGBoost is a supervised classification and regression algorithm. It requires labeled training data and is not designed for unsupervised anomaly detection in time-series metrics.",
+        "wrong_explanation_3": "BlazingText is a text processing algorithm for word2vec embeddings and text classification. It is not applicable to numeric time-series anomaly detection.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-built-in-algorithms"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.2",
+        "scenario": "A machine learning engineer is training an XGBoost model on Amazon SageMaker. The training loss decreases steadily but the validation loss starts increasing after epoch 15. What is the most likely cause of this behavior, and what is the recommended remedy?",
+        "correct_answer": "The model is overfitting; apply early stopping based on the validation metric",
+        "wrong_answer_1": "The model is underfitting; increase the number of estimators and tree depth",
+        "wrong_answer_2": "The learning rate is too high; switch to a larger instance type",
+        "wrong_answer_3": "The training data is too small; collect more training samples before continuing",
+        "correct_explanation": "When training loss decreases while validation loss increases, the model is overfitting — it is memorizing the training data rather than generalizing. Early stopping monitors the validation metric and halts training when it stops improving, preventing the model from overfitting further. SageMaker supports early stopping natively for XGBoost via the `early_stopping_rounds` hyperparameter.",
+        "wrong_explanation_1": "Increasing estimators and tree depth would make the model more complex, which would worsen overfitting. Underfitting is characterized by high training loss and high validation loss simultaneously — not by diverging training and validation losses.",
+        "wrong_explanation_2": "A high learning rate can cause training instability, but it does not explain the specific pattern of decreasing training loss with increasing validation loss. Switching to a larger instance type addresses compute capacity, not overfitting.",
+        "wrong_explanation_3": "While more data can help with overfitting, the immediate and most direct remedy is early stopping, which can be applied without collecting additional data. Collecting more data is a longer-term strategy and may not be feasible.",
+        "service_tags": [
+            "sagemaker",
+            "xgboost"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.2",
+        "scenario": "A data scientist is training a deep learning model on Amazon SageMaker using a single ml.p3.2xlarge instance. Training is taking 48 hours, which is too slow for the team's iteration cycle. The model architecture uses standard dense layers and the dataset is 500 GB stored in S3. Which approach will most effectively reduce training time?",
+        "correct_answer": "Use SageMaker distributed data parallel training across multiple GPU instances",
+        "wrong_answer_1": "Switch to a CPU-based instance type with more vCPUs",
+        "wrong_answer_2": "Reduce the dataset size by randomly sampling 10% of the training data",
+        "wrong_answer_3": "Increase the batch size to the maximum that fits in GPU memory",
+        "correct_explanation": "SageMaker's distributed data parallel (DDP) library splits the training data across multiple GPU instances and synchronizes gradients, enabling near-linear scaling of training throughput. For a 500 GB dataset and a model that is already GPU-bound, distributing across multiple instances is the most effective way to reduce wall-clock training time.",
+        "wrong_explanation_1": "Switching to a CPU-based instance would significantly slow down deep learning training. Deep learning models rely on GPU parallelism for matrix operations — CPUs are orders of magnitude slower for this workload.",
+        "wrong_explanation_2": "Randomly sampling 10% of the training data would reduce training time but at the cost of model quality. The model would train on far less data, likely resulting in worse generalization. This is not a recommended approach when the goal is to maintain model quality.",
+        "wrong_explanation_3": "Increasing batch size can improve GPU utilization and reduce the number of gradient update steps per epoch, but it has diminishing returns and can negatively affect model convergence and generalization. It does not address the fundamental bottleneck of a single GPU instance.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-training"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.2",
+        "scenario": "An ML team wants to find the optimal hyperparameters for a SageMaker training job without manually running dozens of experiments. They want to minimize validation loss while staying within a budget of 20 training jobs. Which SageMaker feature should they use?",
+        "correct_answer": "SageMaker Automatic Model Tuning (Hyperparameter Optimization)",
+        "wrong_answer_1": "SageMaker Autopilot",
+        "wrong_answer_2": "SageMaker Experiments",
+        "wrong_answer_3": "SageMaker Debugger",
+        "correct_explanation": "Amazon SageMaker Automatic Model Tuning (also called Hyperparameter Optimization or HPO) automates the search for optimal hyperparameters. It supports Bayesian optimization, random search, and Hyperband strategies, and can run up to a specified maximum number of training jobs — making it ideal for finding the best hyperparameters within a 20-job budget.",
+        "wrong_explanation_1": "SageMaker Autopilot automates the entire ML pipeline including algorithm selection, feature engineering, and hyperparameter tuning for tabular datasets. It is not designed for tuning a specific user-defined model architecture with custom hyperparameter ranges.",
+        "wrong_explanation_2": "SageMaker Experiments is a tracking and organization tool for logging metrics, parameters, and artifacts across training runs. It does not automate the search for optimal hyperparameters — it only records the results of experiments that are run manually.",
+        "wrong_explanation_3": "SageMaker Debugger monitors training jobs for issues like vanishing gradients, overfitting, and resource utilization. It does not perform hyperparameter search or optimization.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-hyperparameter-tuning"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.2",
+        "scenario": "A machine learning engineer is training a large language model on Amazon SageMaker. During training, the engineer notices that GPU memory is being exhausted, causing out-of-memory errors. The model has 7 billion parameters. Which SageMaker training technique should be used to address this?",
+        "correct_answer": "Use SageMaker model parallel training to split the model across multiple GPUs",
+        "wrong_answer_1": "Use SageMaker data parallel training to distribute the dataset across multiple instances",
+        "wrong_answer_2": "Reduce the number of training epochs to lower memory usage",
+        "wrong_answer_3": "Switch to a CPU-based instance to avoid GPU memory constraints",
+        "correct_explanation": "SageMaker model parallel training splits the model itself across multiple GPUs or instances, allowing models that are too large to fit in a single GPU's memory to be trained. For a 7-billion-parameter model, model parallelism is the appropriate technique to address GPU memory exhaustion.",
+        "wrong_explanation_1": "SageMaker data parallel training distributes the training data across multiple instances, with each instance holding a full copy of the model. For a 7-billion-parameter model that cannot fit in a single GPU, data parallelism alone does not solve the memory problem — each instance would still need to hold the full model.",
+        "wrong_explanation_2": "Reducing the number of training epochs affects how long the model trains, not how much memory the model occupies. GPU memory is consumed by the model parameters and activations, not by the number of epochs.",
+        "wrong_explanation_3": "Switching to CPU-based instances would make training extremely slow for a 7-billion-parameter model. CPUs have more RAM than GPU VRAM but are orders of magnitude slower for deep learning matrix operations.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-training"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.2",
+        "scenario": "A data scientist is training a neural network on SageMaker and wants to monitor the training job in real time to detect issues such as vanishing gradients, exploding tensors, and poor weight initialization without modifying the training script. Which SageMaker feature enables this?",
+        "correct_answer": "Amazon SageMaker Debugger",
+        "wrong_answer_1": "Amazon SageMaker Model Monitor",
+        "wrong_answer_2": "Amazon CloudWatch Metrics",
+        "wrong_answer_3": "Amazon SageMaker Experiments",
+        "correct_explanation": "Amazon SageMaker Debugger automatically captures tensors during training and analyzes them against built-in rules to detect issues like vanishing gradients, exploding tensors, and overfitting — without requiring any changes to the training script. It can stop training automatically when a critical issue is detected.",
+        "wrong_explanation_1": "Amazon SageMaker Model Monitor is designed to monitor deployed model endpoints in production for data drift and model quality degradation. It does not monitor the internal tensor state during model training.",
+        "wrong_explanation_2": "Amazon CloudWatch Metrics captures system-level metrics such as CPU utilization, GPU utilization, and memory usage during training. It does not capture or analyze model-level tensors like gradients and weights.",
+        "wrong_explanation_3": "Amazon SageMaker Experiments tracks and organizes training runs by logging metrics, parameters, and artifacts. It does not perform real-time analysis of tensor values or detect training pathologies like vanishing gradients.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-debugger"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.2",
+        "scenario": "A company wants to fine-tune a pre-trained foundation model from Amazon Bedrock on a proprietary dataset of 10,000 labeled customer service transcripts to improve response quality for their specific domain. Which approach should the ML team use?",
+        "correct_answer": "Use Amazon Bedrock fine-tuning to customize the foundation model with the labeled dataset",
+        "wrong_answer_1": "Train a new foundation model from scratch using the 10,000 transcripts on SageMaker",
+        "wrong_answer_2": "Use Amazon Bedrock Agents to inject the transcripts as context at inference time",
+        "wrong_answer_3": "Use Amazon Comprehend to extract entities from the transcripts and use them as features for a separate classifier",
+        "correct_explanation": "Amazon Bedrock supports fine-tuning of foundation models using custom labeled datasets. Fine-tuning adapts the pre-trained model's weights to the specific domain using the 10,000 transcripts, improving response quality for customer service use cases without the cost and complexity of training from scratch.",
+        "wrong_explanation_1": "Training a foundation model from scratch requires billions of tokens and massive compute resources. 10,000 transcripts are far too few to train a foundation model from scratch, and the cost would be prohibitive. Fine-tuning a pre-trained model is the appropriate approach.",
+        "wrong_explanation_2": "Amazon Bedrock Agents orchestrate multi-step tasks using tools and APIs. Injecting transcripts as context at inference time is a retrieval-augmented generation (RAG) approach, not fine-tuning. RAG does not update the model's weights and may not achieve the same domain adaptation as fine-tuning.",
+        "wrong_explanation_3": "Amazon Comprehend is a managed NLP service for entity recognition and sentiment analysis. Using it to extract entities for a separate classifier does not leverage the generative capabilities of the foundation model and would not improve the model's response quality for customer service.",
+        "service_tags": [
+            "bedrock",
+            "sagemaker"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.3",
+        "scenario": "A data scientist has trained a binary classification model to detect fraudulent transactions. The business requirement is to catch as many fraudulent transactions as possible, even if it means some legitimate transactions are incorrectly flagged. Which evaluation metric should the data scientist prioritize when selecting the final model?",
+        "correct_answer": "Recall (Sensitivity)",
+        "wrong_answer_1": "Precision",
+        "wrong_answer_2": "Accuracy",
+        "wrong_answer_3": "Specificity",
+        "correct_explanation": "Recall (also called sensitivity or true positive rate) measures the proportion of actual fraudulent transactions that the model correctly identifies. When the business priority is to minimize missed fraud (false negatives), recall is the primary metric to optimize — even at the cost of more false positives (legitimate transactions flagged as fraud).",
+        "wrong_explanation_1": "Precision measures the proportion of transactions flagged as fraud that are actually fraudulent. Optimizing for precision minimizes false positives but allows more actual fraud to go undetected (false negatives), which is the opposite of the business requirement.",
+        "wrong_explanation_2": "Accuracy measures the overall proportion of correct predictions. For imbalanced fraud datasets (e.g., 1% fraud rate), a model that predicts 'legitimate' for every transaction achieves 99% accuracy while catching zero fraud. Accuracy is a misleading metric for imbalanced classification problems.",
+        "wrong_explanation_3": "Specificity measures the proportion of legitimate transactions correctly identified as legitimate (true negative rate). Optimizing for specificity reduces false positives but does not address the requirement to maximize fraud detection.",
+        "service_tags": [
+            "sagemaker"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.3",
+        "scenario": "A machine learning team has trained a regression model to predict housing prices. After evaluating on the test set, the model shows a Mean Absolute Error (MAE) of $15,000 and an R² score of 0.62. The team wants to understand whether the model's errors are systematically biased toward over- or under-prediction. Which analysis should they perform?",
+        "correct_answer": "Plot the residuals (predicted minus actual) against the predicted values to check for systematic bias",
+        "wrong_answer_1": "Calculate the F1 score to measure the balance between precision and recall",
+        "wrong_answer_2": "Run a confusion matrix analysis to identify misclassified samples",
+        "wrong_answer_3": "Compute the AUC-ROC curve to evaluate the model's discrimination ability",
+        "correct_explanation": "A residual plot (predicted minus actual values plotted against predicted values) reveals whether errors are randomly distributed or show systematic patterns. If residuals are consistently positive or negative across a range of predicted values, the model has a systematic bias toward over- or under-prediction that needs to be addressed.",
+        "wrong_explanation_1": "F1 score is a classification metric that combines precision and recall. It is not applicable to regression problems and cannot reveal systematic bias in continuous predictions.",
+        "wrong_explanation_2": "A confusion matrix is used for classification problems to show counts of true positives, false positives, true negatives, and false negatives. It is not applicable to regression models predicting continuous values like housing prices.",
+        "wrong_explanation_3": "AUC-ROC is a classification metric that measures a model's ability to discriminate between classes at various threshold settings. It is not applicable to regression problems.",
+        "service_tags": [
+            "sagemaker"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.3",
+        "scenario": "A data scientist has trained three different binary classification models and wants to compare their performance across all possible classification thresholds to select the best one for a medical diagnosis application. Which evaluation approach is most appropriate?",
+        "correct_answer": "Compare the AUC-ROC curves for all three models",
+        "wrong_answer_1": "Compare the accuracy of all three models at a fixed threshold of 0.5",
+        "wrong_answer_2": "Compare the F1 scores of all three models at a fixed threshold of 0.5",
+        "wrong_answer_3": "Compare the training loss curves of all three models",
+        "correct_explanation": "The AUC-ROC (Area Under the Receiver Operating Characteristic Curve) evaluates model performance across all possible classification thresholds by plotting the true positive rate against the false positive rate. A higher AUC indicates better overall discrimination ability regardless of the chosen threshold, making it ideal for comparing models in a medical diagnosis context where the optimal threshold may need to be tuned.",
+        "wrong_explanation_1": "Comparing accuracy at a fixed threshold of 0.5 evaluates models at only one operating point and is sensitive to class imbalance. It does not capture how models perform across the full range of thresholds, which is important when the optimal threshold is unknown.",
+        "wrong_explanation_2": "Comparing F1 scores at a fixed threshold evaluates the balance between precision and recall at one specific operating point. Like accuracy, it does not capture model behavior across all thresholds and may not reflect the best threshold for a medical application.",
+        "wrong_explanation_3": "Training loss curves show how well the model fits the training data during optimization. They do not measure generalization performance on held-out test data and cannot be used to compare models for deployment.",
+        "service_tags": [
+            "sagemaker"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.3",
+        "scenario": "An ML team has deployed a SageMaker model and wants to understand which input features are most influential in driving individual predictions for specific customers. The model is a black-box ensemble. Which SageMaker tool provides feature-level explanations for individual predictions?",
+        "correct_answer": "Amazon SageMaker Clarify",
+        "wrong_answer_1": "Amazon SageMaker Debugger",
+        "wrong_answer_2": "Amazon SageMaker Model Monitor",
+        "wrong_answer_3": "Amazon SageMaker Experiments",
+        "correct_explanation": "Amazon SageMaker Clarify uses SHAP (SHapley Additive exPlanations) values to provide feature-level explanations for individual model predictions. It works with black-box models and can explain why a specific prediction was made for a given input, helping teams understand model behavior and identify potential bias.",
+        "wrong_explanation_1": "Amazon SageMaker Debugger monitors training jobs for issues like vanishing gradients and overfitting. It does not provide post-training feature importance explanations for individual predictions on deployed models.",
+        "wrong_explanation_2": "Amazon SageMaker Model Monitor detects data drift and model quality degradation on deployed endpoints. It monitors statistical properties of inference inputs and outputs but does not provide SHAP-based feature explanations for individual predictions.",
+        "wrong_explanation_3": "Amazon SageMaker Experiments tracks and organizes training runs by logging metrics and parameters. It does not provide feature-level explanations for model predictions.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-clarify"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.3",
+        "scenario": "A data scientist trained a multi-class image classification model with 10 classes. After evaluation, the overall accuracy is 88%, but the business team reports that the model performs poorly on two specific classes. Which tool should the data scientist use to identify which specific classes are being confused with each other?",
+        "correct_answer": "Confusion matrix",
+        "wrong_answer_1": "Learning curve",
+        "wrong_answer_2": "ROC curve",
+        "wrong_answer_3": "Elbow plot",
+        "correct_explanation": "A confusion matrix shows the counts of true positives, false positives, true negatives, and false negatives for each class in a multi-class problem. It directly reveals which classes are being confused with each other, allowing the data scientist to identify specific class pairs where the model struggles.",
+        "wrong_explanation_1": "A learning curve plots training and validation performance as a function of training set size. It is used to diagnose underfitting and overfitting, not to identify which specific classes are being confused.",
+        "wrong_explanation_2": "An ROC curve plots the true positive rate against the false positive rate at various thresholds. For multi-class problems, it requires one-vs-rest decomposition and does not directly show which specific classes are being confused with each other.",
+        "wrong_explanation_3": "An elbow plot is used in unsupervised clustering (e.g., K-means) to determine the optimal number of clusters. It is not applicable to evaluating multi-class classification performance.",
+        "service_tags": [
+            "sagemaker"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.3",
+        "scenario": "A machine learning team trained a time-series forecasting model using Amazon SageMaker DeepAR. The model achieves low Mean Squared Error (MSE) on the test set, but the business team reports that large prediction errors on peak demand days are causing operational problems. Which metric should the team add to their evaluation to better capture the impact of large errors?",
+        "correct_answer": "Root Mean Squared Error (RMSE)",
+        "wrong_answer_1": "Mean Absolute Percentage Error (MAPE)",
+        "wrong_answer_2": "R² (coefficient of determination)",
+        "wrong_answer_3": "Precision at K",
+        "correct_explanation": "RMSE squares the errors before averaging, which penalizes large errors more heavily than small ones. Since the business impact is concentrated in large prediction errors on peak days, RMSE is more sensitive to these outlier errors than MAE or MSE alone, making it a better metric for capturing the operational impact of large forecasting mistakes.",
+        "wrong_explanation_1": "Mean Absolute Percentage Error (MAPE) measures errors as a percentage of actual values. It can be unstable or undefined when actual values are near zero (common in demand forecasting) and does not specifically penalize large absolute errors more than small ones.",
+        "wrong_explanation_2": "R² measures the proportion of variance in the target explained by the model. It is a relative measure of fit and does not directly quantify the magnitude of large errors on specific peak days.",
+        "wrong_explanation_3": "Precision at K is a ranking metric used in recommendation systems and information retrieval. It is not applicable to time-series forecasting evaluation.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-deepar"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.1",
+        "scenario": "A company wants to build a document topic modeling system to automatically categorize thousands of unlabeled news articles into thematic groups. No labeled training data is available. Which Amazon SageMaker built-in algorithm is most appropriate for this task?",
+        "correct_answer": "Latent Dirichlet Allocation (LDA)",
+        "wrong_answer_1": "BlazingText (Text Classification mode)",
+        "wrong_answer_2": "Sequence-to-Sequence",
+        "wrong_answer_3": "Linear Learner",
+        "correct_explanation": "Amazon SageMaker's Latent Dirichlet Allocation (LDA) is an unsupervised topic modeling algorithm that discovers latent topics in a collection of documents. It does not require labeled data and is specifically designed for categorizing text documents into thematic groups based on word co-occurrence patterns.",
+        "wrong_explanation_1": "BlazingText in Text Classification mode is a supervised algorithm that requires labeled training examples for each category. Since no labeled data is available, supervised text classification cannot be applied.",
+        "wrong_explanation_2": "Sequence-to-Sequence is a supervised algorithm designed for tasks like machine translation and text summarization that require labeled input-output sequence pairs. It is not applicable to unsupervised topic discovery.",
+        "wrong_explanation_3": "Linear Learner is a supervised algorithm for regression and classification tasks. It requires labeled training data and is not designed for unsupervised topic modeling of text documents.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-built-in-algorithms"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.1",
+        "scenario": "A company has trained a SageMaker model that needs to serve predictions for a mobile application. The model receives sporadic requests throughout the day with unpredictable traffic spikes. The team wants to minimize costs during idle periods while still handling spikes without cold-start latency issues. Which SageMaker endpoint configuration best meets these requirements?",
+        "correct_answer": "Serverless inference endpoint with provisioned concurrency",
+        "wrong_answer_1": "Real-time inference endpoint with a fixed instance count",
+        "wrong_answer_2": "Batch Transform job scheduled every 5 minutes",
+        "wrong_answer_3": "Asynchronous inference endpoint",
+        "correct_explanation": "SageMaker Serverless Inference automatically scales to zero during idle periods (eliminating idle instance costs) and scales up on demand. Provisioned concurrency pre-warms a specified number of execution environments, eliminating cold-start latency during traffic spikes. This combination addresses both the cost and latency requirements.",
+        "wrong_explanation_1": "A real-time inference endpoint with a fixed instance count keeps instances running continuously, incurring costs even during idle periods. While it avoids cold-start latency, it does not minimize costs for sporadic traffic patterns.",
+        "wrong_explanation_2": "Batch Transform is designed for offline batch inference on large datasets, not for serving real-time predictions to a mobile application. Running it every 5 minutes would introduce significant latency and is not suitable for interactive use cases.",
+        "wrong_explanation_3": "Asynchronous inference is designed for long-running inference requests (up to 1 hour) where the client does not need an immediate response. It is not appropriate for a mobile application that requires low-latency synchronous responses.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-endpoints"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.1",
+        "scenario": "A machine learning team needs to run weekly batch inference on 10 million customer records stored in S3 to generate personalized product recommendations. The inference job takes approximately 4 hours. The team does not need real-time responses. Which SageMaker deployment option is most cost-effective for this use case?",
+        "correct_answer": "SageMaker Batch Transform",
+        "wrong_answer_1": "SageMaker real-time inference endpoint",
+        "wrong_answer_2": "SageMaker Serverless Inference",
+        "wrong_answer_3": "SageMaker Asynchronous Inference with a persistent endpoint",
+        "correct_explanation": "SageMaker Batch Transform is designed for offline batch inference on large datasets. It spins up instances, processes the entire dataset, writes results to S3, and then terminates the instances — charging only for the duration of the job. For weekly batch jobs on millions of records with no real-time requirement, Batch Transform is the most cost-effective option.",
+        "wrong_explanation_1": "A real-time inference endpoint keeps instances running continuously, incurring 24/7 costs even when not processing requests. For a weekly batch job, this would be significantly more expensive than Batch Transform.",
+        "wrong_explanation_2": "SageMaker Serverless Inference is designed for sporadic real-time requests, not for processing 10 million records in a single batch job. It has payload size limits and is not optimized for large-scale batch processing.",
+        "wrong_explanation_3": "SageMaker Asynchronous Inference handles individual requests asynchronously and is designed for long-running single predictions, not for processing millions of records as a batch. A persistent endpoint would also incur continuous costs.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-batch-transform"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.1",
+        "scenario": "A company is deploying a SageMaker real-time inference endpoint that serves a latency-sensitive application. Traffic varies significantly throughout the day, peaking at 10x the average load during business hours. The team wants the endpoint to automatically scale to handle peak traffic without manual intervention. Which SageMaker feature should be configured?",
+        "correct_answer": "SageMaker endpoint auto scaling with a target tracking policy based on InvocationsPerInstance",
+        "wrong_answer_1": "SageMaker multi-model endpoints to serve multiple models on a single instance",
+        "wrong_answer_2": "SageMaker Batch Transform with a larger instance type",
+        "wrong_answer_3": "SageMaker Serverless Inference with a fixed memory configuration",
+        "correct_explanation": "SageMaker endpoint auto scaling uses Application Auto Scaling to automatically adjust the number of instances based on traffic. A target tracking policy based on InvocationsPerInstance scales out when the invocation rate per instance exceeds the target, ensuring the endpoint handles 10x peak traffic without manual intervention.",
+        "wrong_explanation_1": "SageMaker multi-model endpoints allow multiple models to be hosted on a single instance to reduce costs. They do not provide automatic scaling of instance count in response to traffic changes.",
+        "wrong_explanation_2": "SageMaker Batch Transform is for offline batch inference, not real-time serving. It cannot respond to live traffic and does not support auto scaling for real-time requests.",
+        "wrong_explanation_3": "SageMaker Serverless Inference scales automatically but has a maximum concurrency limit and is not designed for sustained high-throughput workloads. For a latency-sensitive application with 10x traffic peaks, a real-time endpoint with auto scaling provides more predictable performance.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-endpoints"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.1",
+        "scenario": "A company hosts 50 infrequently used ML models on separate SageMaker real-time endpoints. Each model serves only a few requests per day. The team wants to reduce infrastructure costs while keeping all models accessible. Which SageMaker feature should they use?",
+        "correct_answer": "SageMaker multi-model endpoints",
+        "wrong_answer_1": "SageMaker multi-container endpoints",
+        "wrong_answer_2": "SageMaker Serverless Inference with separate endpoints per model",
+        "wrong_answer_3": "SageMaker Batch Transform with a shared job queue",
+        "correct_explanation": "SageMaker multi-model endpoints allow multiple models to be hosted behind a single endpoint on shared infrastructure. Models are loaded into memory on demand and unloaded when not in use, significantly reducing the cost of hosting 50 infrequently used models compared to maintaining 50 separate endpoints.",
+        "wrong_explanation_1": "SageMaker multi-container endpoints run multiple containers on a single endpoint for ensemble or pipeline inference. They are designed for a small number of containers that run simultaneously, not for hosting 50 independently invocable models.",
+        "wrong_explanation_2": "SageMaker Serverless Inference with separate endpoints per model would still require 50 separate endpoints, each with its own configuration and management overhead. Multi-model endpoints consolidate all 50 models behind a single endpoint.",
+        "wrong_explanation_3": "SageMaker Batch Transform is for offline batch inference, not for serving real-time requests to 50 accessible models. It does not provide an always-available inference endpoint.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-endpoints"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.2",
+        "scenario": "A machine learning team wants to package a custom PyTorch training script with specific library dependencies that are not available in SageMaker's pre-built containers. They want to run this as a SageMaker training job. What is the correct approach?",
+        "correct_answer": "Build a custom Docker container with the required dependencies, push it to Amazon ECR, and specify it as the training image in the SageMaker training job",
+        "wrong_answer_1": "Install the dependencies using a SageMaker lifecycle configuration script before training starts",
+        "wrong_answer_2": "Upload the dependencies as a separate S3 artifact and reference them in the training script",
+        "wrong_answer_3": "Use SageMaker Studio to manually install the packages in a notebook kernel before submitting the training job",
+        "correct_explanation": "SageMaker supports Bring Your Own Container (BYOC), where you build a Docker image with all required dependencies, push it to Amazon ECR, and reference it as the training image in the SageMaker training job configuration. This is the standard approach for custom environments not covered by SageMaker's pre-built containers.",
+        "wrong_explanation_1": "SageMaker lifecycle configurations apply to SageMaker Studio notebook instances, not to training jobs. Training jobs run in isolated containers and do not support lifecycle configuration scripts for dependency installation.",
+        "wrong_explanation_2": "Uploading dependencies as S3 artifacts does not make them installable in the training container's Python environment. The container's environment is fixed at build time — dependencies must be included in the Docker image.",
+        "wrong_explanation_3": "Installing packages in a Studio notebook kernel affects only the notebook environment, not the isolated container environment used by SageMaker training jobs. The training job runs in a separate container with its own environment.",
+        "service_tags": [
+            "sagemaker",
+            "ecr",
+            "sagemaker-training"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.2",
+        "scenario": "A company is deploying a SageMaker model to a fleet of edge devices at remote manufacturing sites with intermittent internet connectivity. The devices run on ARM-based processors. Which AWS service should be used to compile and optimize the model for deployment to these edge devices?",
+        "correct_answer": "Amazon SageMaker Neo",
+        "wrong_answer_1": "Amazon SageMaker Batch Transform",
+        "wrong_answer_2": "AWS IoT Greengrass",
+        "wrong_answer_3": "Amazon SageMaker Serverless Inference",
+        "correct_explanation": "Amazon SageMaker Neo compiles ML models for specific hardware targets including ARM processors, optimizing them for performance and reducing their size. The compiled model can then be deployed to edge devices using AWS IoT Greengrass, enabling inference at the edge without requiring a cloud connection for each prediction.",
+        "wrong_explanation_1": "SageMaker Batch Transform runs inference jobs in the AWS cloud on managed instances. It cannot deploy models to edge devices and requires internet connectivity for each inference request.",
+        "wrong_explanation_2": "AWS IoT Greengrass is the runtime that deploys and runs models on edge devices, but it does not compile or optimize models for specific hardware. SageMaker Neo handles the compilation step before Greengrass handles the deployment.",
+        "wrong_explanation_3": "SageMaker Serverless Inference runs in the AWS cloud and requires internet connectivity for each inference call. It cannot operate on edge devices with intermittent connectivity.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-neo",
+            "iot-greengrass"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.2",
+        "scenario": "An ML team needs to deploy a SageMaker model endpoint that requires GPU-accelerated inference but wants to minimize costs by sharing GPU resources across multiple endpoints. Which SageMaker feature enables GPU resource sharing across multiple inference workloads?",
+        "correct_answer": "SageMaker Elastic Inference",
+        "wrong_answer_1": "SageMaker multi-model endpoints",
+        "wrong_answer_2": "SageMaker Serverless Inference",
+        "wrong_answer_3": "SageMaker Batch Transform with GPU instances",
+        "correct_explanation": "Amazon SageMaker Elastic Inference allows you to attach a fractional GPU accelerator to any SageMaker endpoint instance type. This enables GPU-accelerated inference at a fraction of the cost of a full GPU instance, as the GPU resources are shared across multiple workloads in the AWS infrastructure.",
+        "wrong_explanation_1": "SageMaker multi-model endpoints share CPU/memory resources across multiple models on a single instance but do not provide GPU resource sharing across endpoints. They are designed for cost reduction through model consolidation, not GPU sharing.",
+        "wrong_explanation_2": "SageMaker Serverless Inference does not support GPU acceleration. It runs on managed CPU infrastructure and is not suitable for GPU-accelerated inference workloads.",
+        "wrong_explanation_3": "SageMaker Batch Transform with GPU instances allocates a dedicated GPU instance for the duration of the batch job. It does not share GPU resources across multiple endpoints and is designed for offline batch inference, not real-time serving.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-elastic-inference"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.3",
+        "scenario": "A machine learning team wants to automate their end-to-end ML workflow: data preprocessing, model training, evaluation, and conditional deployment (only deploy if the new model outperforms the current production model). They want to version and reuse pipeline steps and trigger the pipeline on a schedule. Which AWS service is best suited to orchestrate this workflow?",
+        "correct_answer": "Amazon SageMaker Pipelines",
+        "wrong_answer_1": "AWS Step Functions",
+        "wrong_answer_2": "AWS Glue Workflows",
+        "wrong_answer_3": "Amazon EventBridge Scheduler",
+        "correct_explanation": "Amazon SageMaker Pipelines is a purpose-built CI/CD service for ML workflows. It supports defining multi-step pipelines with conditional logic (e.g., deploy only if accuracy exceeds a threshold), caches step outputs for reuse, integrates natively with SageMaker training and deployment, and can be triggered on a schedule via EventBridge.",
+        "wrong_explanation_1": "AWS Step Functions can orchestrate ML workflows by calling SageMaker APIs, but it requires more custom configuration and does not natively cache pipeline step outputs or provide ML-specific pipeline visualization and lineage tracking that SageMaker Pipelines offers.",
+        "wrong_explanation_2": "AWS Glue Workflows orchestrate ETL jobs and crawlers. They are not designed for ML training, evaluation, and deployment workflows and do not integrate natively with SageMaker training jobs or model registry.",
+        "wrong_explanation_3": "Amazon EventBridge Scheduler triggers actions on a schedule but is not an orchestration service. It can trigger a SageMaker Pipeline but cannot define the pipeline steps, conditional logic, or step caching on its own.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-pipelines"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.3",
+        "scenario": "A company uses Amazon SageMaker Pipelines to retrain their fraud detection model weekly. After each training run, the team wants to automatically register the new model in a central repository, track its version, and require a manual approval step before it is deployed to production. Which SageMaker feature supports model versioning and approval workflows?",
+        "correct_answer": "Amazon SageMaker Model Registry",
+        "wrong_answer_1": "Amazon SageMaker Experiments",
+        "wrong_answer_2": "Amazon S3 versioning",
+        "wrong_answer_3": "AWS CodeArtifact",
+        "correct_explanation": "Amazon SageMaker Model Registry provides a central repository for registering, versioning, and managing ML models. It supports approval workflows where models can be set to 'PendingManualApproval' status, requiring a human reviewer to approve before the model is deployed to production. It integrates natively with SageMaker Pipelines.",
+        "wrong_explanation_1": "Amazon SageMaker Experiments tracks training runs and their associated metrics and parameters. It does not provide model versioning, approval workflows, or a deployment-ready model registry.",
+        "wrong_explanation_2": "Amazon S3 versioning tracks versions of objects stored in S3 buckets. While model artifacts are stored in S3, S3 versioning does not provide ML-specific metadata, approval workflows, or integration with SageMaker deployment pipelines.",
+        "wrong_explanation_3": "AWS CodeArtifact is a package management service for software artifacts like npm, Maven, and PyPI packages. It is not designed for managing ML model versions or approval workflows.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-model-registry"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.3",
+        "scenario": "A machine learning team is implementing a CI/CD pipeline for their SageMaker model. They want to automatically trigger model retraining whenever new training data is uploaded to a specific S3 prefix. Which AWS service should be used to detect the S3 upload event and trigger the retraining pipeline?",
+        "correct_answer": "Amazon EventBridge with an S3 event notification rule",
+        "wrong_answer_1": "AWS CloudTrail with a CloudWatch alarm",
+        "wrong_answer_2": "Amazon SageMaker Model Monitor",
+        "wrong_answer_3": "AWS Config with a remediation action",
+        "correct_explanation": "Amazon EventBridge can receive S3 event notifications (such as object creation in a specific prefix) and route them to targets like SageMaker Pipelines or Step Functions to trigger retraining. This is the standard event-driven pattern for automating ML pipeline triggers based on data arrival.",
+        "wrong_explanation_1": "AWS CloudTrail records API calls for auditing. While CloudTrail can log S3 PutObject events, using CloudTrail with CloudWatch alarms to trigger pipelines is more complex and less direct than using EventBridge with native S3 event notifications.",
+        "wrong_explanation_2": "Amazon SageMaker Model Monitor detects data drift and model quality degradation on deployed endpoints. It does not monitor S3 for new data uploads or trigger retraining pipelines.",
+        "wrong_explanation_3": "AWS Config monitors resource configuration changes for compliance purposes. It is not designed to detect S3 data uploads or trigger ML retraining pipelines.",
+        "service_tags": [
+            "eventbridge",
+            "s3",
+            "sagemaker-pipelines"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.3",
+        "scenario": "A company is deploying a new version of a SageMaker model to production. The team wants to gradually shift traffic from the current model to the new model, starting with 10% of traffic, and increase it over time if no issues are detected. Which SageMaker deployment strategy supports this?",
+        "correct_answer": "SageMaker endpoint with production variants and traffic shifting",
+        "wrong_answer_1": "SageMaker Batch Transform with two separate jobs",
+        "wrong_answer_2": "SageMaker multi-model endpoints with two models",
+        "wrong_answer_3": "Deploy the new model to a separate endpoint and use Route 53 weighted routing",
+        "correct_explanation": "SageMaker endpoints support multiple production variants, each with a configurable traffic weight. You can start with 10% traffic to the new model variant and gradually increase the weight over time. This enables a controlled canary or blue/green deployment strategy directly within SageMaker without external routing infrastructure.",
+        "wrong_explanation_1": "SageMaker Batch Transform runs offline batch inference jobs and does not serve real-time traffic. It cannot implement gradual traffic shifting between model versions.",
+        "wrong_explanation_2": "SageMaker multi-model endpoints host multiple models on shared infrastructure for cost efficiency, but they do not support traffic splitting between model versions. Each model is invoked explicitly by name, not by traffic weight.",
+        "wrong_explanation_3": "Using Route 53 weighted routing between two separate SageMaker endpoints would work technically but adds unnecessary complexity. SageMaker's native production variants feature handles traffic splitting within a single endpoint without requiring external DNS routing.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-endpoints"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.1",
+        "scenario": "A company needs to run inference on medical imaging data where each image takes 8 minutes to process. The application submits images for analysis and retrieves results later. The payload size is up to 1 GB per image. Which SageMaker inference option is most appropriate?",
+        "correct_answer": "SageMaker Asynchronous Inference",
+        "wrong_answer_1": "SageMaker real-time inference endpoint",
+        "wrong_answer_2": "SageMaker Serverless Inference",
+        "wrong_answer_3": "SageMaker Batch Transform",
+        "correct_explanation": "SageMaker Asynchronous Inference is designed for requests that take minutes to process and supports large payload sizes (up to 1 GB). It queues requests, processes them asynchronously, and stores results in S3 for later retrieval — making it ideal for long-running inference tasks like medical image analysis.",
+        "wrong_explanation_1": "SageMaker real-time inference endpoints have a 60-second timeout for synchronous responses. An 8-minute processing time would exceed this limit, causing the request to time out.",
+        "wrong_explanation_2": "SageMaker Serverless Inference has a maximum invocation timeout of 60 seconds and a payload size limit of 4 MB. Both constraints make it unsuitable for 8-minute processing times and 1 GB payloads.",
+        "wrong_explanation_3": "SageMaker Batch Transform is designed for processing large datasets of many records in a single job, not for individual on-demand inference requests submitted by an application. It does not support the request-response pattern needed here.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-endpoints"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.2",
+        "scenario": "A machine learning team is building a SageMaker training pipeline that requires a custom preprocessing step using a library not available in any SageMaker managed container. The team wants to run this step as a SageMaker Processing job. What is the correct approach to provide the custom environment?",
+        "correct_answer": "Build a custom Docker image with the required library, push it to Amazon ECR, and specify it as the image URI in the SageMaker Processing job configuration",
+        "wrong_answer_1": "Use a SageMaker notebook instance to run the preprocessing step before submitting the training job",
+        "wrong_answer_2": "Install the library using pip in the processing script's entry point before importing it",
+        "wrong_answer_3": "Use AWS Lambda to run the preprocessing step with the custom library installed as a Lambda layer",
+        "correct_explanation": "SageMaker Processing jobs support custom Docker containers. You build an image with the required library, push it to ECR, and reference the ECR image URI in the ProcessingJob configuration. This is the standard BYOC pattern for SageMaker Processing jobs with custom dependencies.",
+        "wrong_explanation_1": "Running preprocessing in a notebook instance is not a scalable or reproducible approach for a production pipeline. Notebook instances are interactive environments, not managed processing job infrastructure.",
+        "wrong_explanation_2": "Installing packages via pip at runtime in the processing script's entry point is unreliable in isolated container environments and may fail due to network restrictions or missing build tools. Dependencies should be baked into the Docker image at build time.",
+        "wrong_explanation_3": "AWS Lambda has a 15-minute execution limit, a 10 GB memory cap, and is not designed for data-intensive ML preprocessing workloads. SageMaker Processing jobs provide managed, scalable compute specifically designed for ML preprocessing.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-processing",
+            "ecr"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.3",
+        "scenario": "A company wants to implement automated model retraining triggered by data drift detection. When SageMaker Model Monitor detects that the distribution of inference inputs has shifted significantly from the training baseline, the team wants to automatically kick off a SageMaker Pipeline to retrain the model. Which integration pattern achieves this?",
+        "correct_answer": "Configure Model Monitor to emit a CloudWatch alarm on drift detection, and use an EventBridge rule to trigger the SageMaker Pipeline when the alarm fires",
+        "wrong_answer_1": "Configure Model Monitor to directly invoke the SageMaker Pipeline via a built-in trigger",
+        "wrong_answer_2": "Use AWS Lambda to poll Model Monitor results every hour and trigger the pipeline if drift is detected",
+        "wrong_answer_3": "Use Amazon SNS to send a notification to the team, who then manually triggers the pipeline",
+        "correct_explanation": "SageMaker Model Monitor publishes monitoring results as CloudWatch metrics. You can create a CloudWatch alarm that fires when drift exceeds a threshold, and an EventBridge rule can route that alarm event to trigger a SageMaker Pipeline execution. This is the standard event-driven pattern for automated retraining on drift detection.",
+        "wrong_explanation_1": "SageMaker Model Monitor does not have a built-in direct trigger to invoke SageMaker Pipelines. The integration requires routing through CloudWatch alarms and EventBridge.",
+        "wrong_explanation_2": "Polling Model Monitor results with Lambda every hour introduces unnecessary latency and complexity. The event-driven CloudWatch alarm + EventBridge pattern reacts immediately when drift is detected without polling.",
+        "wrong_explanation_3": "Sending an SNS notification for manual pipeline triggering introduces human latency into what should be an automated retraining workflow. The goal is automated retraining, not human-in-the-loop notification.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-model-monitor",
+            "sagemaker-pipelines",
+            "eventbridge",
+            "cloudwatch"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.1",
+        "scenario": "A company has deployed a SageMaker real-time inference endpoint for a credit scoring model. The data science team wants to detect when the statistical distribution of incoming inference requests deviates significantly from the training data baseline, which could indicate that the model's predictions are becoming unreliable. Which SageMaker feature should be configured?",
+        "correct_answer": "SageMaker Model Monitor with data quality monitoring",
+        "wrong_answer_1": "SageMaker Debugger with built-in rules",
+        "wrong_answer_2": "Amazon CloudWatch custom metrics with manual threshold alarms",
+        "wrong_answer_3": "SageMaker Clarify post-training bias analysis",
+        "correct_explanation": "SageMaker Model Monitor's data quality monitoring captures a statistical baseline from the training dataset and continuously compares the distribution of live inference inputs against that baseline. When significant deviations are detected (data drift), it generates violations that can trigger CloudWatch alarms for automated alerting or retraining.",
+        "wrong_explanation_1": "SageMaker Debugger monitors the internal state of model training (tensors, gradients) during training jobs. It does not monitor the distribution of inference inputs on deployed endpoints.",
+        "wrong_explanation_2": "CloudWatch custom metrics can track endpoint-level metrics like latency and invocation count, but they do not automatically compute statistical distributions of inference inputs or compare them to a training baseline. This would require significant custom engineering to replicate Model Monitor's functionality.",
+        "wrong_explanation_3": "SageMaker Clarify post-training bias analysis evaluates a trained model for bias against a static dataset. It does not continuously monitor live inference traffic for data drift on a deployed endpoint.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-model-monitor"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.1",
+        "scenario": "A machine learning team has deployed a binary classification model on a SageMaker endpoint. The model makes predictions on customer loan applications. The team wants to monitor whether the model's prediction quality (accuracy, precision, recall) is degrading over time as new data arrives, using ground truth labels that become available with a 2-week delay. Which SageMaker Model Monitor monitor type should be used?",
+        "correct_answer": "Model quality monitoring",
+        "wrong_answer_1": "Data quality monitoring",
+        "wrong_answer_2": "Bias drift monitoring",
+        "wrong_answer_3": "Feature attribution drift monitoring",
+        "correct_explanation": "SageMaker Model Monitor's model quality monitoring compares model predictions against ground truth labels to track metrics like accuracy, precision, and recall over time. It supports delayed ground truth ingestion, making it suitable for scenarios where labels become available after a delay (e.g., 2 weeks after a loan decision).",
+        "wrong_explanation_1": "Data quality monitoring detects statistical drift in the distribution of input features compared to the training baseline. It does not evaluate prediction quality against ground truth labels.",
+        "wrong_explanation_2": "Bias drift monitoring (via SageMaker Clarify) tracks changes in bias metrics over time, such as disparate impact across demographic groups. It does not directly measure model accuracy, precision, or recall.",
+        "wrong_explanation_3": "Feature attribution drift monitoring tracks changes in SHAP-based feature importance over time. It does not measure prediction quality metrics like accuracy or recall against ground truth labels.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-model-monitor"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.1",
+        "scenario": "A data scientist wants to capture a sample of inference requests and responses from a SageMaker real-time endpoint for offline analysis and model monitoring. The captured data should be stored in Amazon S3. Which SageMaker feature enables this?",
+        "correct_answer": "SageMaker Data Capture",
+        "wrong_answer_1": "SageMaker Debugger",
+        "wrong_answer_2": "Amazon Kinesis Data Firehose",
+        "wrong_answer_3": "AWS CloudTrail",
+        "correct_explanation": "SageMaker Data Capture is a feature of SageMaker real-time endpoints that records a configurable sample of inference requests and responses to an S3 bucket. The captured data serves as input for SageMaker Model Monitor and offline analysis of model behavior in production.",
+        "wrong_explanation_1": "SageMaker Debugger captures tensor data during model training to detect training issues. It does not capture inference requests and responses from deployed endpoints.",
+        "wrong_explanation_2": "Amazon Kinesis Data Firehose is a streaming data delivery service. While it can deliver data to S3, it is not a native SageMaker feature and would require custom integration to capture endpoint inference data.",
+        "wrong_explanation_3": "AWS CloudTrail records API calls made to AWS services for auditing purposes. It captures API-level events (e.g., InvokeEndpoint calls) but does not capture the actual payload content of inference requests and responses.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-model-monitor"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.2",
+        "scenario": "A company runs multiple SageMaker training jobs and inference endpoints across several teams. The finance team wants to allocate ML infrastructure costs to individual business units for chargeback purposes. Which approach enables cost allocation by team or project in AWS?",
+        "correct_answer": "Apply AWS cost allocation tags to SageMaker resources and enable them in the AWS Billing console",
+        "wrong_answer_1": "Create separate AWS accounts for each team and use AWS Organizations for consolidated billing",
+        "wrong_answer_2": "Use Amazon CloudWatch to track resource utilization and manually calculate costs per team",
+        "wrong_answer_3": "Use AWS Trusted Advisor to generate per-team cost reports",
+        "correct_explanation": "AWS cost allocation tags allow you to label SageMaker resources (training jobs, endpoints, notebooks) with key-value pairs such as team or project. Once activated in the Billing console, these tags appear in Cost Explorer and detailed billing reports, enabling precise cost allocation and chargeback to individual business units.",
+        "wrong_explanation_1": "Creating separate accounts per team is a valid isolation strategy but is a significant organizational change. Cost allocation tags achieve the same chargeback goal within a single account without requiring account restructuring.",
+        "wrong_explanation_2": "CloudWatch tracks utilization metrics (CPU, GPU, memory) but does not directly map to AWS billing costs. Manually calculating costs from utilization data is complex and error-prone compared to using cost allocation tags.",
+        "wrong_explanation_3": "AWS Trusted Advisor provides recommendations for cost optimization, security, and performance. It does not generate per-team cost allocation reports or support chargeback workflows.",
+        "service_tags": [
+            "sagemaker",
+            "cost-explorer"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.2",
+        "scenario": "A machine learning team notices that their SageMaker training jobs are consistently underutilizing GPU resources — GPU utilization averages 30% during training. They want to identify the bottleneck and optimize resource usage. Which tool should they use to diagnose the issue?",
+        "correct_answer": "Amazon SageMaker Debugger system monitoring",
+        "wrong_answer_1": "Amazon SageMaker Model Monitor",
+        "wrong_answer_2": "AWS Cost Explorer",
+        "wrong_answer_3": "Amazon Inspector",
+        "correct_explanation": "Amazon SageMaker Debugger includes system monitoring capabilities that capture CPU, GPU, memory, network, and I/O utilization metrics during training jobs. It can identify bottlenecks such as data loading being the limiting factor (CPU-bound data pipeline starving the GPU), enabling the team to optimize the training pipeline.",
+        "wrong_explanation_1": "Amazon SageMaker Model Monitor monitors deployed inference endpoints for data drift and model quality degradation. It does not monitor resource utilization during training jobs.",
+        "wrong_explanation_2": "AWS Cost Explorer provides cost and usage reports for billing optimization. It shows how much was spent on SageMaker instances but does not provide granular GPU/CPU utilization metrics during training.",
+        "wrong_explanation_3": "Amazon Inspector is a security vulnerability assessment service for EC2 instances and container images. It does not monitor ML training job resource utilization.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-debugger"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.2",
+        "scenario": "A company runs long SageMaker training jobs that sometimes fail partway through due to spot instance interruptions. The team wants to reduce training costs by using Spot Instances while ensuring that training can resume from the last checkpoint rather than restarting from scratch. Which SageMaker feature enables this?",
+        "correct_answer": "SageMaker Managed Spot Training with checkpoint configuration",
+        "wrong_answer_1": "SageMaker Automatic Model Tuning with early stopping",
+        "wrong_answer_2": "SageMaker Pipelines with retry policies",
+        "wrong_answer_3": "SageMaker Processing jobs with Spot Instances",
+        "correct_explanation": "SageMaker Managed Spot Training uses EC2 Spot Instances to reduce training costs by up to 90%. When configured with a checkpoint S3 path, the training job saves checkpoints periodically. If a Spot Instance is interrupted, SageMaker automatically resumes training from the last checkpoint on a new instance, avoiding full restarts.",
+        "wrong_explanation_1": "SageMaker Automatic Model Tuning with early stopping stops individual training jobs when the validation metric stops improving. It does not use Spot Instances or provide checkpoint-based resumption after interruptions.",
+        "wrong_explanation_2": "SageMaker Pipelines retry policies can retry a failed pipeline step, but they restart the training job from scratch rather than resuming from a checkpoint. This does not address the cost of restarting long training jobs.",
+        "wrong_explanation_3": "SageMaker Processing jobs support Spot Instances for data processing workloads, but they are not designed for model training with checkpoint-based resumption. Managed Spot Training is the feature specifically designed for training job interruption recovery.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-training"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.2",
+        "scenario": "A data science team wants to reduce the cost of running a SageMaker real-time inference endpoint that serves moderate traffic during business hours but receives almost no traffic overnight. Which approach minimizes cost while maintaining availability during business hours?",
+        "correct_answer": "Configure SageMaker endpoint auto scaling with a scheduled scaling action to scale down to 1 instance overnight and scale up before business hours",
+        "wrong_answer_1": "Delete the endpoint overnight and recreate it each morning",
+        "wrong_answer_2": "Switch to SageMaker Batch Transform for all inference requests",
+        "wrong_answer_3": "Use SageMaker multi-model endpoints to consolidate all models onto one instance",
+        "correct_explanation": "SageMaker endpoint auto scaling supports scheduled scaling actions that can reduce the instance count to a minimum (e.g., 1 instance) during low-traffic overnight hours and scale back up before business hours. This reduces costs during idle periods while maintaining endpoint availability.",
+        "wrong_explanation_1": "Deleting and recreating the endpoint daily introduces operational complexity, potential downtime during recreation, and does not handle unexpected traffic outside business hours. Scheduled auto scaling is simpler and more reliable.",
+        "wrong_explanation_2": "SageMaker Batch Transform is for offline batch inference and cannot serve real-time requests. Switching to Batch Transform would break the real-time inference capability required during business hours.",
+        "wrong_explanation_3": "SageMaker multi-model endpoints consolidate multiple models onto shared infrastructure to reduce costs when hosting many models. They do not reduce costs for a single model endpoint based on time-of-day traffic patterns.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-endpoints"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.3",
+        "scenario": "A company is training a SageMaker model on a dataset containing sensitive customer PII stored in Amazon S3. The security team requires that the training job cannot make outbound internet connections and that all data transfer between the training instance and S3 must stay within the AWS network. Which two configurations should be applied to the SageMaker training job?",
+        "correct_answer": "Enable network isolation mode and configure a VPC with an S3 VPC endpoint",
+        "wrong_answer_1": "Enable SageMaker encryption at rest and use AWS KMS for the training data",
+        "wrong_answer_2": "Use SageMaker Private Link and enable CloudTrail logging",
+        "wrong_answer_3": "Apply an S3 bucket policy restricting access to the training instance's IP address",
+        "correct_explanation": "Network isolation mode prevents the SageMaker training container from making any outbound internet connections, ensuring the training environment is fully isolated. An S3 VPC endpoint (Gateway endpoint) routes all S3 traffic from the VPC through the AWS private network, ensuring that training data never traverses the public internet.",
+        "wrong_explanation_1": "Encryption at rest with KMS protects data stored in S3 and on training instance volumes, but it does not prevent outbound internet connections from the training container or ensure that data transfer stays within the AWS network.",
+        "wrong_explanation_2": "SageMaker PrivateLink creates private connectivity between VPCs and SageMaker APIs, but it does not prevent the training container from making outbound internet connections. CloudTrail logging provides audit trails but does not enforce network isolation.",
+        "wrong_explanation_3": "An S3 bucket policy restricting access by IP address is fragile (training instance IPs are dynamic) and does not prevent the training container from making other outbound internet connections. It also does not ensure traffic stays within the AWS network.",
+        "service_tags": [
+            "sagemaker",
+            "vpc",
+            "s3",
+            "iam"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.3",
+        "scenario": "A machine learning team uses Amazon SageMaker Studio to develop and train models. The security team requires that all SageMaker Studio traffic to AWS services (S3, ECR, SageMaker APIs) must route through the private AWS network and not traverse the public internet. Which configuration achieves this?",
+        "correct_answer": "Deploy SageMaker Studio in a VPC with VPC-only mode and create interface VPC endpoints for the required AWS services",
+        "wrong_answer_1": "Enable SageMaker Studio encryption and use AWS KMS customer-managed keys",
+        "wrong_answer_2": "Attach an IAM policy to the SageMaker execution role that denies internet access",
+        "wrong_answer_3": "Configure a NAT Gateway in the VPC to route all outbound traffic through a single IP",
+        "correct_explanation": "SageMaker Studio VPC-only mode routes all traffic through the customer's VPC instead of the public internet. Interface VPC endpoints (AWS PrivateLink) for S3, ECR, and SageMaker APIs ensure that traffic to these services stays within the AWS private network, satisfying the security requirement.",
+        "wrong_explanation_1": "KMS encryption protects data at rest and in transit but does not control network routing. It does not prevent Studio traffic from traversing the public internet.",
+        "wrong_explanation_2": "IAM policies control API authorization (what actions are allowed) but do not control network routing. An IAM policy cannot prevent network traffic from routing through the public internet.",
+        "wrong_explanation_3": "A NAT Gateway routes outbound traffic through a single IP but still sends traffic over the public internet. It does not keep traffic within the AWS private network as required.",
+        "service_tags": [
+            "sagemaker",
+            "vpc",
+            "privatelink"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.3",
+        "scenario": "A company stores ML training data in Amazon S3. The security team requires that the data be encrypted at rest using a customer-managed key so the company retains full control over key rotation and revocation. Which AWS service and configuration should be used?",
+        "correct_answer": "Use AWS KMS with a customer-managed key (CMK) and configure S3 server-side encryption with SSE-KMS",
+        "wrong_answer_1": "Use S3 server-side encryption with SSE-S3 (Amazon S3-managed keys)",
+        "wrong_answer_2": "Use client-side encryption with a key stored in the application code",
+        "wrong_answer_3": "Enable S3 default encryption with SSE-S3 and rotate the key annually",
+        "correct_explanation": "AWS KMS customer-managed keys (CMKs) give the company full control over key policies, rotation schedules, and the ability to revoke access by disabling or deleting the key. Configuring S3 SSE-KMS with a CMK ensures training data is encrypted at rest using the company-controlled key.",
+        "wrong_explanation_1": "SSE-S3 uses Amazon S3-managed keys where AWS controls the key material. The company has no control over key rotation schedules or the ability to revoke access by disabling the key — which does not meet the requirement for customer-controlled key management.",
+        "wrong_explanation_2": "Client-side encryption with a key stored in application code is a security anti-pattern. Hardcoded keys are difficult to rotate, can be exposed in code repositories, and do not leverage AWS's managed key infrastructure.",
+        "wrong_explanation_3": "SSE-S3 with annual rotation still uses Amazon-managed keys. The company cannot control the rotation schedule or revoke access, which does not satisfy the requirement for full customer control over key management.",
+        "service_tags": [
+            "s3",
+            "kms"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.3",
+        "scenario": "A machine learning team needs to grant a SageMaker training job access to read training data from an S3 bucket and write model artifacts to another S3 bucket. Following the principle of least privilege, which approach should be used?",
+        "correct_answer": "Create an IAM role with a policy granting s3:GetObject on the training data bucket and s3:PutObject on the artifacts bucket, and attach it as the SageMaker execution role",
+        "wrong_answer_1": "Use the AWS root account credentials in the training job configuration to ensure full access",
+        "wrong_answer_2": "Create an IAM user with AdministratorAccess and pass the access keys to the training job as environment variables",
+        "wrong_answer_3": "Grant the SageMaker training job s3:* permissions on all S3 buckets in the account",
+        "correct_explanation": "The principle of least privilege requires granting only the minimum permissions needed. An IAM role with specific s3:GetObject on the training bucket and s3:PutObject on the artifacts bucket provides exactly the access needed. SageMaker training jobs assume IAM roles, which is the secure, credential-free way to grant AWS service access.",
+        "wrong_explanation_1": "Using root account credentials violates AWS security best practices. Root credentials have unrestricted access to all AWS resources and should never be used for programmatic access or service configurations.",
+        "wrong_explanation_2": "Creating an IAM user with AdministratorAccess and passing access keys as environment variables violates least privilege and exposes long-lived credentials in the training environment. IAM roles are the correct mechanism for granting SageMaker jobs AWS service access.",
+        "wrong_explanation_3": "Granting s3:* on all S3 buckets gives the training job far more access than needed, violating least privilege. If the training job were compromised, an attacker could access or modify any S3 bucket in the account.",
+        "service_tags": [
+            "sagemaker",
+            "iam",
+            "s3"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.1",
+        "scenario": "A company has deployed a SageMaker endpoint for a product recommendation model. After several months in production, the team observes that model accuracy has declined. They suspect that the relationship between input features and the target variable has changed over time (concept drift). Which SageMaker Model Monitor monitor type is designed to detect this?",
+        "correct_answer": "Model quality monitoring",
+        "wrong_answer_1": "Data quality monitoring",
+        "wrong_answer_2": "Feature attribution drift monitoring",
+        "wrong_answer_3": "Bias drift monitoring",
+        "correct_explanation": "Model quality monitoring compares model predictions against ground truth labels over time to detect degradation in prediction accuracy — which is the direct signal of concept drift (the relationship between features and the target has changed). When ground truth labels are available, model quality monitoring quantifies the actual performance decline.",
+        "wrong_explanation_1": "Data quality monitoring detects changes in the statistical distribution of input features (data drift). While data drift can cause concept drift, data quality monitoring does not directly measure whether the model's predictions are becoming less accurate.",
+        "wrong_explanation_2": "Feature attribution drift monitoring tracks changes in SHAP-based feature importance over time. It can indicate that the model is relying on different features, but it does not directly measure prediction accuracy degradation.",
+        "wrong_explanation_3": "Bias drift monitoring tracks changes in fairness metrics across demographic groups. It does not measure overall model accuracy degradation caused by concept drift.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-model-monitor"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.2",
+        "scenario": "A company wants to receive automated alerts when their SageMaker inference endpoint's average latency exceeds 500 milliseconds over a 5-minute period. Which AWS service should be used to configure this alert?",
+        "correct_answer": "Amazon CloudWatch Alarms",
+        "wrong_answer_1": "Amazon SageMaker Model Monitor",
+        "wrong_answer_2": "AWS Health Dashboard",
+        "wrong_answer_3": "Amazon GuardDuty",
+        "correct_explanation": "Amazon CloudWatch automatically collects SageMaker endpoint metrics including ModelLatency and OverheadLatency. You can create a CloudWatch Alarm that triggers when the average ModelLatency metric exceeds 500 milliseconds over a 5-minute evaluation period, sending notifications via SNS or triggering automated remediation.",
+        "wrong_explanation_1": "SageMaker Model Monitor detects data drift and model quality degradation by analyzing the statistical properties of inference inputs and outputs. It does not monitor infrastructure-level metrics like endpoint latency.",
+        "wrong_explanation_2": "AWS Health Dashboard provides information about AWS service health events and scheduled maintenance. It does not monitor application-level metrics like SageMaker endpoint latency.",
+        "wrong_explanation_3": "Amazon GuardDuty is a threat detection service that monitors for malicious activity and unauthorized behavior. It does not monitor application performance metrics like inference latency.",
+        "service_tags": [
+            "sagemaker",
+            "cloudwatch"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.3",
+        "scenario": "A financial services company needs to audit all API calls made to their SageMaker endpoints and training jobs for compliance purposes. They need a complete record of who called which API, from which IP address, and when. Which AWS service provides this audit trail?",
+        "correct_answer": "AWS CloudTrail",
+        "wrong_answer_1": "Amazon CloudWatch Logs",
+        "wrong_answer_2": "Amazon SageMaker Model Monitor",
+        "wrong_answer_3": "AWS Config",
+        "correct_explanation": "AWS CloudTrail records all API calls made to AWS services including SageMaker, capturing the caller identity, source IP address, timestamp, and request parameters. CloudTrail logs are stored in S3 and can be queried for compliance auditing, providing the complete audit trail required.",
+        "wrong_explanation_1": "Amazon CloudWatch Logs captures application and system logs from SageMaker training jobs and endpoints (stdout/stderr). It does not record API-level audit trails including caller identity and source IP for compliance purposes.",
+        "wrong_explanation_2": "SageMaker Model Monitor monitors the statistical properties of inference data for drift detection. It does not record API call audit trails for compliance purposes.",
+        "wrong_explanation_3": "AWS Config records changes to AWS resource configurations over time. While it tracks resource state changes, it does not provide the detailed API call audit trail (caller identity, source IP, timestamp) that CloudTrail provides.",
+        "service_tags": [
+            "cloudtrail",
+            "sagemaker"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.1",
+        "scenario": "A company deployed a SageMaker endpoint 6 months ago. The team wants to establish a baseline of the model's current prediction behavior and then continuously compare future predictions against this baseline to detect when the model's output distribution shifts. Which SageMaker Model Monitor capability supports this?",
+        "correct_answer": "Model quality monitoring with a baseline created from captured predictions",
+        "wrong_answer_1": "SageMaker Clarify bias detection with a pre-training baseline",
+        "wrong_answer_2": "SageMaker Debugger with a custom rule comparing output tensors",
+        "wrong_answer_3": "Amazon CloudWatch anomaly detection on the endpoint invocation count metric",
+        "correct_explanation": "SageMaker Model Monitor's model quality monitoring can create a baseline from captured predictions and ground truth labels, then continuously compare future predictions against this baseline to detect shifts in output distribution. This enables detection of model degradation over time.",
+        "wrong_explanation_1": "SageMaker Clarify bias detection analyzes a static dataset for bias metrics before or after training. It does not continuously monitor live prediction distributions against a baseline on a deployed endpoint.",
+        "wrong_explanation_2": "SageMaker Debugger monitors tensor values during training jobs, not prediction distributions on deployed endpoints. It cannot compare live inference outputs against a historical baseline.",
+        "wrong_explanation_3": "CloudWatch anomaly detection on invocation count detects unusual traffic patterns (e.g., sudden spikes or drops in request volume). It does not analyze the content or distribution of model predictions.",
+        "service_tags": [
+            "sagemaker",
+            "sagemaker-model-monitor"
+        ]
+    },
+    {
+        "exam_code": "MLA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.3",
+        "scenario": "A company's ML team uses Amazon SageMaker Studio notebooks to experiment with models. The security team wants to ensure that data scientists cannot exfiltrate sensitive training data by downloading it to their local machines through the notebook interface. Which control should be implemented?",
+        "correct_answer": "Deploy SageMaker Studio in VPC-only mode and restrict outbound internet access using VPC security groups and NACLs",
+        "wrong_answer_1": "Enable SageMaker Studio encryption with a KMS customer-managed key",
+        "wrong_answer_2": "Apply an IAM policy to the data scientist's role that denies s3:GetObject on the training data bucket",
+        "wrong_answer_3": "Enable AWS CloudTrail logging for all SageMaker API calls",
+        "correct_explanation": "Deploying SageMaker Studio in VPC-only mode routes all traffic through the customer's VPC. By configuring VPC security groups and NACLs to block outbound internet access, data scientists cannot transfer data from the notebook environment to external destinations, preventing data exfiltration through the notebook interface.",
+        "wrong_explanation_1": "KMS encryption protects data at rest and in transit within AWS. It does not prevent a data scientist from reading data in a notebook and then downloading it through the browser interface to their local machine.",
+        "wrong_explanation_2": "Denying s3:GetObject would prevent data scientists from accessing the training data at all, which would block their legitimate work. The goal is to prevent exfiltration, not to block access entirely.",
+        "wrong_explanation_3": "CloudTrail logging records API calls for auditing purposes. It provides visibility into what happened after the fact but does not prevent data exfiltration in real time.",
+        "service_tags": [
+            "sagemaker",
+            "vpc",
+            "iam"
+        ]
+    }
+]

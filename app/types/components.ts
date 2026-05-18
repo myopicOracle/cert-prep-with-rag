@@ -1,4 +1,5 @@
-import { QuestionData, AnswerChoice } from './exam'
+import { type UIMessage } from 'ai'
+import { ExamUIQuestion, AnswerChoice } from './exam'
 
 export type Citation = {
     sourceURL: string
@@ -23,18 +24,19 @@ export interface ChatInputProps {
 
 export interface ExamWrapperProps {
     examCode: string
-    questions: QuestionData[]
+    questions: ExamUIQuestion[]
     currentID: number
 }
 
 export interface CardProps {
     id: number
-    question: QuestionData
+    question: ExamUIQuestion
     choices: AnswerChoice[]
     selectedAnswer: number | null
     onSelect: (index: number) => void
     isRevealed: boolean
     onReveal: (isCorrect: boolean) => void
+    onExplainAll: () => void
 }
 
 export interface ChoiceProps {
@@ -50,7 +52,7 @@ export interface NavButtonsProps {
 }
 
 export interface ReviewProps {
-    questions: QuestionData[]
+    questions: ExamUIQuestion[]
     totalQuestions: number
     numberCompleted: number
     numberCorrect: number
@@ -80,4 +82,13 @@ export interface ButtonProps {
 export interface FlagProps {
     isFlagged: boolean
     onFlag: () => void
+}
+
+export interface DrawerProps {
+    isOpen: boolean
+    onClose: () => void
+    messages: UIMessage[]
+    status: 'submitted' | 'streaming' | 'ready' | 'error'
+    isEnhancing: boolean
+    onSendFollowUp: (text: string) => Promise<void>
 }

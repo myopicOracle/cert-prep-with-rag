@@ -1,0 +1,1177 @@
+[
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "A developer is building a REST API using Amazon API Gateway with Lambda proxy integration. The API has a caching TTL of 300 seconds configured on the stage. A mobile client needs to bypass the cache and always retrieve the latest data from the Lambda function for a specific request. What should the client include in the request to force a cache bypass?",
+        "correct_answer": "Cache-Control: max-age=0 header",
+        "wrong_answer_1": "Cache-Control: no-store header",
+        "wrong_answer_2": "X-Bypass-Cache: true header",
+        "wrong_answer_3": "Pragma: no-cache header",
+        "correct_explanation": "API Gateway allows clients to invalidate a cached response for individual requests by including the Cache-Control: max-age=0 header. When API Gateway receives this header from an authorized client, it bypasses the cache and forwards the request directly to the Lambda integration, then replaces the existing cache entry with the fresh response.",
+        "wrong_explanation_1": "Cache-Control: no-store is a valid HTTP cache directive that instructs caches not to store the response, but API Gateway specifically requires max-age=0 to trigger per-request cache invalidation. The no-store directive is not recognized by API Gateway for this purpose.",
+        "wrong_explanation_2": "X-Bypass-Cache is a custom header with no meaning in API Gateway. API Gateway does not recognize custom headers as cache invalidation signals — only the standard Cache-Control: max-age=0 header triggers this behavior.",
+        "wrong_explanation_3": "Pragma: no-cache is a legacy HTTP/1.0 directive. API Gateway does not use the Pragma header for cache invalidation. The Cache-Control: max-age=0 header is the correct mechanism for per-request cache bypass in API Gateway.",
+        "service_tags": [
+            "api-gateway",
+            "lambda"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "A developer has deployed a Lambda function that runs in DEV, UAT, and PROD environments. The function uses different database endpoints and log levels depending on the environment. These values are currently hardcoded in the function code, requiring a redeployment every time an environment-specific value changes. What should the developer do to reference the appropriate values per environment without modifying the function code?",
+        "correct_answer": "Use Lambda environment variables to store the environment-specific values and reference them in the function code via the runtime's standard environment variable API.",
+        "wrong_answer_1": "Publish three separate versions of the Lambda function with different hardcoded values and assign aliases DEV, UAT, and PROD to each version.",
+        "wrong_answer_2": "Create a stage variable in API Gateway called ENV and pass it to the Lambda function on each invocation.",
+        "wrong_answer_3": "Create individual Lambda Layers for each environment containing the configuration values.",
+        "correct_explanation": "Lambda environment variables are key-value pairs defined in the function configuration. They are injected into the runtime environment and accessible via standard APIs (e.g., process.env in Node.js, os.environ in Python) without any code changes. Updating an environment variable does not require redeployment — only a configuration update. Different values can be set per environment by configuring each function's environment variables independently.",
+        "wrong_explanation_1": "Publishing separate versions with different hardcoded values still requires a code change and redeployment whenever a value needs to change. Aliases are pointers to versions — they do not allow configuration values to be changed independently of the code.",
+        "wrong_explanation_2": "API Gateway stage variables are a feature of API Gateway, not Lambda. They can be passed to Lambda as part of the event payload, but this requires the function to be invoked through API Gateway and adds coupling between the function and the API configuration. Lambda environment variables are the correct mechanism for function-level configuration.",
+        "wrong_explanation_3": "Lambda Layers contain shared code libraries, custom runtimes, or binary dependencies packaged as ZIP archives. They are not designed to store environment-specific configuration values, and creating a separate layer per environment adds unnecessary complexity and overhead.",
+        "service_tags": [
+            "lambda"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "A developer has several API Gateway REST APIs, each corresponding to a different release stage of an application: ALPHA, BETA, and PROD. The company wants to consolidate these into a single API Gateway deployment where each stage points to a different Lambda function version. Clients connect using stage-specific custom domain names. What is the MOST suitable approach to achieve this?",
+        "correct_answer": "Use API Gateway stage variables to reference different Lambda function ARNs per stage.",
+        "wrong_answer_1": "Create separate API Gateway deployments for each stage and use Route 53 to route traffic.",
+        "wrong_answer_2": "Use Lambda aliases to point to different function versions and configure a single API Gateway stage.",
+        "wrong_answer_3": "Use API Gateway usage plans to assign different Lambda functions to different API keys.",
+        "correct_explanation": "Stage variables in API Gateway are key-value pairs that can be defined per stage and referenced in integration URIs. By setting a stage variable (e.g., lambdaAlias) to different values in each stage, a single API Gateway can route requests to different Lambda function versions or aliases without changing the API definition. This is the standard pattern for managing multiple release environments in a single API Gateway.",
+        "wrong_explanation_1": "Creating separate API Gateway deployments per stage defeats the purpose of consolidation. The requirement is a single API Gateway with multiple stages, not multiple separate deployments.",
+        "wrong_explanation_2": "Lambda aliases alone do not solve the problem of routing different stages to different function versions within a single API Gateway. Stage variables are needed to dynamically reference the correct alias or ARN per stage.",
+        "wrong_explanation_3": "Usage plans and API keys control throttling and quota limits for API consumers. They are not a mechanism for routing requests to different Lambda function versions based on the deployment stage.",
+        "service_tags": [
+            "api-gateway",
+            "lambda"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "A developer is using the AWS CLI to list all objects in an S3 bucket that contains hundreds of thousands of objects. The CLI command is timing out before returning results. Which solution resolves this issue?",
+        "correct_answer": "Apply pagination parameters such as --page-size to the AWS CLI command to retrieve results in smaller batches.",
+        "wrong_answer_1": "Increase the --cli-read-timeout value to allow more time for the full result set to be returned.",
+        "wrong_answer_2": "Enable S3 Transfer Acceleration on the bucket to speed up the list operation.",
+        "wrong_answer_3": "Use the S3 console instead of the CLI to list objects in large buckets.",
+        "correct_explanation": "By default, the AWS CLI retrieves all results with a page size of 1,000, which can cause timeouts when listing very large buckets. The --page-size option reduces the number of items retrieved per API call, making each individual call faster and less likely to time out. The CLI still retrieves all results but does so across multiple smaller requests.",
+        "wrong_explanation_1": "Increasing the read timeout simply extends how long the CLI waits before giving up. It does not address the root cause — the single API call is trying to retrieve too many objects at once. Pagination solves the problem by breaking the request into manageable chunks.",
+        "wrong_explanation_2": "S3 Transfer Acceleration improves data transfer speeds for uploads and downloads by routing through CloudFront edge locations. It has no effect on list operations, which are metadata API calls, not data transfers.",
+        "wrong_explanation_3": "The S3 console also uses the same underlying API and would face similar limitations. Switching to the console does not resolve the timeout issue and is not a scalable solution for scripted operations.",
+        "service_tags": [
+            "s3"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "A developer is building a serverless application using AWS Lambda, API Gateway, and DynamoDB. The developer wants to define all resources in a single template, test the application locally before deploying, and use a simplified syntax for declaring Lambda functions and event sources. Which AWS tool should the developer use?",
+        "correct_answer": "AWS Serverless Application Model (AWS SAM)",
+        "wrong_answer_1": "AWS CloudFormation",
+        "wrong_answer_2": "AWS Elastic Beanstalk",
+        "wrong_answer_3": "AWS CodeDeploy",
+        "correct_explanation": "AWS SAM is an open-source framework built on top of CloudFormation that provides a simplified syntax for defining serverless resources (Lambda functions, API Gateway APIs, DynamoDB tables). The AWS SAM CLI enables local building, testing, and debugging of serverless applications using a Lambda-like execution environment, making it the purpose-built tool for this use case.",
+        "wrong_explanation_1": "AWS CloudFormation can deploy Lambda, API Gateway, and DynamoDB resources but does not provide the simplified SAM syntax for serverless resources or the SAM CLI for local testing. SAM is an extension of CloudFormation specifically designed for serverless applications.",
+        "wrong_explanation_2": "AWS Elastic Beanstalk is a platform-as-a-service for deploying web applications on managed infrastructure such as EC2. It is not designed for serverless architectures and does not support local Lambda testing.",
+        "wrong_explanation_3": "AWS CodeDeploy automates application deployments to EC2, Lambda, and ECS. It handles the deployment process but does not provide infrastructure definition templates or local testing capabilities.",
+        "service_tags": [
+            "sam",
+            "lambda",
+            "api-gateway"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "A developer is deploying a serverless application using an AWS SAM template. The template uses AWS SAM resource types to define Lambda functions and API Gateway resources. When the developer runs the CloudFormation deployment, it fails with an error stating the resource type is not recognized. Which required CloudFormation template section is the developer missing?",
+        "correct_answer": "Transform",
+        "wrong_answer_1": "Parameters",
+        "wrong_answer_2": "Mappings",
+        "wrong_answer_3": "Metadata",
+        "correct_explanation": "The Transform section in a CloudFormation template specifies the AWS SAM version (AWS::Serverless-2016-10-31) that CloudFormation should use to process the template. Without this section, CloudFormation does not know to apply the SAM macro that translates SAM resource types (like AWS::Serverless::Function) into standard CloudFormation resources, causing the deployment to fail.",
+        "wrong_explanation_1": "The Parameters section defines values that can be passed into the template at runtime. It is optional and has no effect on whether CloudFormation can process SAM resource types.",
+        "wrong_explanation_2": "The Mappings section defines static lookup tables for conditional parameter values. It is optional and unrelated to SAM resource type processing.",
+        "wrong_explanation_3": "The Metadata section provides additional information about the template and its resources. It is optional and does not enable CloudFormation to process SAM-specific resource types.",
+        "service_tags": [
+            "sam",
+            "cloudformation"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "A developer is building a photo-sharing application. When a user uploads a photo to S3, a Lambda function is invoked to apply filters and store the result. The processing takes an average of 4 minutes. The application currently invokes Lambda synchronously, causing the API to hang until processing completes. What change should the developer make to prevent the API from becoming unresponsive?",
+        "correct_answer": "Change the Lambda invocation type to Event to invoke the function asynchronously.",
+        "wrong_answer_1": "Change the Lambda invocation type to DryRun to validate the request without waiting.",
+        "wrong_answer_2": "Increase the API Gateway integration timeout to 15 minutes to match the Lambda execution time.",
+        "wrong_answer_3": "Enable Lambda Provisioned Concurrency to reduce the function's execution time.",
+        "correct_explanation": "Setting the invocation type to Event triggers asynchronous Lambda invocation. The API immediately receives a 202 Accepted response and Lambda processes the image in the background. The function's result is not returned to the caller, which is appropriate for fire-and-forget processing tasks like image filtering.",
+        "wrong_explanation_1": "The DryRun invocation type validates parameters and permissions without executing the function. It does not process the image and is used only for testing IAM permissions, not for production workloads.",
+        "wrong_explanation_2": "API Gateway has a maximum integration timeout of 29 seconds. It cannot be extended to 15 minutes, so synchronous invocation of a 4-minute Lambda function through API Gateway will always time out regardless of configuration.",
+        "wrong_explanation_3": "Provisioned Concurrency pre-warms Lambda execution environments to eliminate cold start latency. It reduces initialization time but does not reduce the actual processing time of the filter operation, which is the cause of the 4-minute duration.",
+        "service_tags": [
+            "lambda",
+            "api-gateway",
+            "s3"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "A developer is building an application that processes real-time payment transactions. The system must support multiple independent consumers — a fraud detection model, a ledger service, and an audit logger — each reading the same transaction events at their own pace. The solution must retain events for replay for up to 7 days. Which AWS service best meets these requirements?",
+        "correct_answer": "Amazon Kinesis Data Streams",
+        "wrong_answer_1": "Amazon SQS Standard Queue",
+        "wrong_answer_2": "Amazon Data Firehose",
+        "wrong_answer_3": "Amazon SNS",
+        "correct_explanation": "Kinesis Data Streams supports multiple independent consumers reading from the same stream simultaneously, each maintaining its own position (shard iterator). Data is retained for up to 365 days (7 days by default), enabling replay. This makes it ideal for fan-out real-time processing where each consumer reads at its own pace.",
+        "wrong_explanation_1": "SQS Standard queues deliver each message to only one consumer. Multiple consumers polling the same queue would each receive different messages, not the same message. SQS does not support the fan-out pattern where all consumers receive every event.",
+        "wrong_explanation_2": "Amazon Data Firehose is designed to deliver streaming data to destinations like S3, Redshift, or OpenSearch. It does not support multiple independent consumers reading from the same stream and is not designed for real-time processing with replay capability.",
+        "wrong_explanation_3": "Amazon SNS supports fan-out by delivering messages to multiple subscribers simultaneously, but it does not retain messages for replay. Once a message is delivered, it is gone. SNS cannot support consumers reading at their own pace from a retained event log.",
+        "service_tags": [
+            "kinesis",
+            "kinesis-data-streams"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "A developer is running a Lambda function that processes events from Amazon S3. The function is expected to receive 80 requests per second, and each execution takes an average of 40 seconds to complete. The developer is concerned about hitting Lambda concurrency limits. What is the expected number of concurrent executions for this function?",
+        "correct_answer": "3200",
+        "wrong_answer_1": "80",
+        "wrong_answer_2": "40",
+        "wrong_answer_3": "320",
+        "correct_explanation": "Lambda concurrent executions are calculated using the formula: concurrent executions = invocations per second × average execution duration in seconds. In this case: 80 requests/second × 40 seconds = 3,200 concurrent executions. Since the default account-level concurrency limit is 1,000, the developer must request a limit increase from AWS to prevent throttling.",
+        "wrong_explanation_1": "80 is simply the invocations per second — it does not account for the duration of each execution. Concurrent executions accumulate over time as long-running functions overlap with new invocations.",
+        "wrong_explanation_2": "40 is the average execution duration in seconds. It is one factor in the concurrency formula but not the result of the calculation.",
+        "wrong_explanation_3": "320 would result from a calculation error such as dividing instead of multiplying (80 × 40 = 3,200, not 320). The correct formula multiplies invocations per second by average duration.",
+        "service_tags": [
+            "lambda"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "A developer has a Lambda function that processes events from API Gateway. The function receives 20 requests per second and each execution takes a maximum of 30 seconds. The developer is worried about throttling. What action should the developer take?",
+        "correct_answer": "No action is needed — Lambda will automatically scale to handle the load within the default concurrency limit.",
+        "wrong_answer_1": "Request a concurrency limit increase from AWS Support.",
+        "wrong_answer_2": "Enable Lambda Provisioned Concurrency to pre-warm enough instances.",
+        "wrong_answer_3": "Set the function's reserved concurrency to 600 to guarantee capacity.",
+        "correct_explanation": "Using the concurrency formula: 20 requests/second × 30 seconds = 600 concurrent executions. The default account-level Lambda concurrency limit is 1,000. Since 600 is well within this limit, Lambda will automatically scale to handle the load without any configuration changes or limit increase requests.",
+        "wrong_explanation_1": "A limit increase is only necessary when the expected concurrent executions exceed the account-level limit of 1,000. At 600 concurrent executions, the function operates comfortably within the default limit.",
+        "wrong_explanation_2": "Provisioned Concurrency eliminates cold start latency by pre-warming execution environments. It does not affect the account-level concurrency limit and is not needed to prevent throttling in this scenario.",
+        "wrong_explanation_3": "Setting reserved concurrency to 600 would guarantee that capacity for this function but would also cap it at 600 concurrent executions. Since the function needs up to 600 and the account limit is 1,000, no reservation is necessary — and setting it could unnecessarily limit the function if demand spikes.",
+        "service_tags": [
+            "lambda"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "A developer needs to deploy a new version of a Lambda function using AWS CodeDeploy. The traffic must shift 10% to the new version immediately, with the remaining 90% shifting after exactly 5 minutes. Which CodeDeploy deployment configuration should the developer use?",
+        "correct_answer": "CodeDeployDefault.LambdaCanary10Percent5Minutes",
+        "wrong_answer_1": "CodeDeployDefault.LambdaLinear10PercentEvery1Minute",
+        "wrong_answer_2": "CodeDeployDefault.LambdaAllAtOnce",
+        "wrong_answer_3": "CodeDeployDefault.HalfAtATime",
+        "correct_explanation": "Canary deployment configurations shift traffic in exactly two increments. CodeDeployDefault.LambdaCanary10Percent5Minutes shifts 10% of traffic to the new version immediately, then shifts the remaining 90% after 5 minutes. The entire deployment completes in 5 minutes, which matches the requirement.",
+        "wrong_explanation_1": "LambdaLinear10PercentEvery1Minute shifts traffic in equal 10% increments every 1 minute. It takes 10 minutes to complete the full shift and does not match the two-increment canary pattern described in the requirement.",
+        "wrong_explanation_2": "LambdaAllAtOnce shifts 100% of traffic to the new version immediately in a single step. It does not provide the gradual 10%/90% split required.",
+        "wrong_explanation_3": "CodeDeployDefault.HalfAtATime is a deployment configuration for EC2 and on-premises compute platforms, not for Lambda. It is not a valid Lambda deployment configuration.",
+        "service_tags": [
+            "lambda",
+            "codedeploy"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "A developer wants to update a production Lambda function and gradually shift traffic to the new version while retaining the ability to instantly roll back. The developer wants to route 5% of traffic to the new version initially. Which Lambda feature should the developer use?",
+        "correct_answer": "Lambda alias with weighted traffic routing between two published versions.",
+        "wrong_answer_1": "Lambda environment variables to toggle between code paths.",
+        "wrong_answer_2": "Route 53 weighted routing between two Lambda function URLs.",
+        "wrong_answer_3": "API Gateway stage variables pointing to different Lambda versions.",
+        "correct_explanation": "Lambda aliases can be configured with a routing-config that splits traffic between two published versions by weight. Setting the alias to route 5% to the new version and 95% to the current version enables gradual rollout. Rolling back is instant — update the alias weight to 100% on the stable version. An alias can point to a maximum of two versions simultaneously.",
+        "wrong_explanation_1": "Environment variables can toggle code paths within a single deployed version, but both code paths exist in the same deployment package. This does not provide true version isolation or the ability to instantly roll back to a separately published version.",
+        "wrong_explanation_2": "Route 53 weighted routing between Lambda function URLs is not a supported or recommended pattern for Lambda traffic shifting. Lambda aliases with weighted routing are the native, purpose-built mechanism for this use case.",
+        "wrong_explanation_3": "API Gateway stage variables can reference different Lambda versions, but they route all traffic for a given stage to one version — they do not support percentage-based traffic splitting between two versions within the same stage.",
+        "service_tags": [
+            "lambda"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "A developer is using AWS SAM to deploy a serverless application and needs to embed a nested application from the AWS Serverless Application Repository into the SAM template. Which SAM resource type should the developer use?",
+        "correct_answer": "AWS::Serverless::Application",
+        "wrong_answer_1": "AWS::Serverless::Function",
+        "wrong_answer_2": "AWS::Serverless::LayerVersion",
+        "wrong_answer_3": "AWS::Serverless::Api",
+        "correct_explanation": "AWS::Serverless::Application is the SAM resource type used to embed a nested application from the AWS Serverless Application Repository or from an S3 bucket. It allows serverless applications to be composed of reusable components defined as separate applications.",
+        "wrong_explanation_1": "AWS::Serverless::Function defines a Lambda function and its event sources. It is used to declare individual functions, not to embed entire nested applications from the Serverless Application Repository.",
+        "wrong_explanation_2": "AWS::Serverless::LayerVersion defines a Lambda Layer containing shared libraries or runtime dependencies. It is used to package reusable code, not to embed nested applications.",
+        "wrong_explanation_3": "AWS::Serverless::Api defines an API Gateway REST API resource. It is used for advanced API configuration scenarios, not for embedding nested applications.",
+        "service_tags": [
+            "sam"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "A developer is creating a Lambda function using the AWS CLI. After running the create-function command, the developer receives an InvalidParameterValueException error. What is the MOST likely cause?",
+        "correct_answer": "The IAM role provided in the --role parameter cannot be assumed by AWS Lambda.",
+        "wrong_answer_1": "The deployment package size exceeds the account's total code storage limit.",
+        "wrong_answer_2": "A Lambda function with the same name already exists in the account.",
+        "wrong_answer_3": "The Lambda service is experiencing an internal error.",
+        "correct_explanation": "InvalidParameterValueException is returned when one or more parameters in the CreateFunction request are invalid. The most common cause is providing an IAM role ARN that Lambda cannot assume — for example, because the role's trust policy does not include lambda.amazonaws.com as a trusted principal. This results in an invalid parameter value for the --role argument.",
+        "wrong_explanation_1": "Exceeding the total code storage limit returns a CodeStorageExceededException, not an InvalidParameterValueException. These are distinct error types with different root causes.",
+        "wrong_explanation_2": "Attempting to create a function that already exists returns a ResourceConflictException. InvalidParameterValueException indicates a problem with the request parameters, not a naming conflict.",
+        "wrong_explanation_3": "An internal Lambda service error returns a ServiceException with an HTTP 500 status. InvalidParameterValueException is a client-side error (HTTP 400) indicating the request itself contains invalid values.",
+        "service_tags": [
+            "lambda",
+            "iam"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "A developer has a Lambda function deployed in a VPC that needs to call an external third-party API over the internet. After deploying the function with VPC configuration, the external API calls are failing with connection timeout errors. What must the developer add to restore internet connectivity?",
+        "correct_answer": "A NAT Gateway in a public subnet, with a route in the private subnet's route table directing 0.0.0.0/0 traffic to the NAT Gateway.",
+        "wrong_answer_1": "An internet gateway attached directly to the Lambda function's subnet.",
+        "wrong_answer_2": "An Elastic IP address assigned to the Lambda function's network interface.",
+        "wrong_answer_3": "A VPC endpoint for the third-party API service.",
+        "correct_explanation": "When a Lambda function is placed inside a VPC, it loses its default internet access. To restore outbound internet connectivity, the function must be placed in a private subnet that has a route to a NAT Gateway in a public subnet. The NAT Gateway provides outbound internet access while keeping the function in the private network.",
+        "wrong_explanation_1": "Internet gateways are attached to VPCs, not to individual subnets. Even if a subnet has a route to an internet gateway (making it a public subnet), Lambda functions in that subnet do not receive public IP addresses and therefore cannot reach the internet.",
+        "wrong_explanation_2": "Lambda functions in a VPC do not support direct assignment of Elastic IP addresses to their network interfaces. Even if they did, a public IP alone does not provide internet access without a corresponding route to an internet gateway.",
+        "wrong_explanation_3": "VPC endpoints provide private connectivity to AWS services, not to arbitrary third-party APIs on the internet. A NAT Gateway is required for outbound internet access to external endpoints.",
+        "service_tags": [
+            "lambda",
+            "vpc",
+            "nat-gateway"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "A developer is working on a DynamoDB table that tracks game scores. The table has UserId as the partition key and GameTitle as the sort key. The developer needs to build a leaderboard that shows the top scores for each game across all users. Which is the MOST efficient solution?",
+        "correct_answer": "Create a Global Secondary Index with GameTitle as the partition key and TopScore as the sort key.",
+        "wrong_answer_1": "Create a Local Secondary Index with TopScore as the partition key and GameTitle as the sort key.",
+        "wrong_answer_2": "Use a Scan operation with a FilterExpression on GameTitle to retrieve scores per game.",
+        "wrong_answer_3": "Create a Local Secondary Index with GameTitle as the partition key and TopScore as the sort key.",
+        "correct_explanation": "A Global Secondary Index (GSI) with GameTitle as the partition key and TopScore as the sort key allows efficient Query operations to retrieve all scores for a specific game, sorted by score. This enables the leaderboard to fetch top scores per game without scanning the entire table.",
+        "wrong_explanation_1": "A Local Secondary Index (LSI) must share the same partition key as the base table (UserId). You cannot create an LSI with TopScore as the partition key. Additionally, LSIs cannot be added to an existing table.",
+        "wrong_explanation_2": "A Scan operation reads every item in the table and applies a filter afterward. As the table grows, Scan operations become increasingly slow and consume significant read capacity. This is the least efficient approach for a leaderboard query.",
+        "wrong_explanation_3": "A Local Secondary Index must have the same partition key as the base table (UserId). An LSI with GameTitle as the partition key is not valid — that would be a GSI. Additionally, LSIs cannot be added to an existing table after creation.",
+        "service_tags": [
+            "dynamodb"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "A developer is working on a DynamoDB table that stores item-level changes. When an item is updated, the developer needs a Lambda function to receive only the item's state before the modification — not the new value — so it can be archived to S3. Which DynamoDB Streams StreamViewType should the developer configure?",
+        "correct_answer": "OLD_IMAGE",
+        "wrong_answer_1": "NEW_IMAGE",
+        "wrong_answer_2": "KEYS_ONLY",
+        "wrong_answer_3": "NEW_AND_OLD_IMAGES",
+        "correct_explanation": "OLD_IMAGE writes the entire item as it appeared before the modification to the stream. This gives the Lambda function access to the pre-update state of the item, which can then be archived to S3. It is the correct StreamViewType when only the previous value is needed.",
+        "wrong_explanation_1": "NEW_IMAGE writes the entire item as it appears after the modification. This provides the post-update state, not the pre-update state that the developer needs to archive.",
+        "wrong_explanation_2": "KEYS_ONLY writes only the key attributes of the modified item to the stream. It does not include any attribute values, making it impossible to archive the full previous state of the item.",
+        "wrong_explanation_3": "NEW_AND_OLD_IMAGES writes both the pre-update and post-update states of the item to the stream. While this includes the old image, it also sends the new image, which is unnecessary overhead. The developer only needs the old image, so OLD_IMAGE is the more precise and appropriate choice.",
+        "service_tags": [
+            "dynamodb",
+            "lambda"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "A developer is processing a Kinesis Data Stream that has been resharded from 4 shards to 8 shards. The application uses the Kinesis Client Library (KCL) with one worker per EC2 instance. What is the MAXIMUM number of EC2 instances the developer should run to achieve optimal processing performance?",
+        "correct_answer": "8",
+        "wrong_answer_1": "4",
+        "wrong_answer_2": "16",
+        "wrong_answer_3": "2",
+        "correct_explanation": "The KCL ensures that each shard is processed by exactly one record processor. The maximum number of EC2 instances that provides optimal performance equals the number of open shards — in this case, 8. Running more instances than shards means some instances would have no shards to process. Running fewer instances means each instance handles multiple shards, which is valid but not the maximum for optimal parallelism.",
+        "wrong_explanation_1": "4 was the original shard count before resharding. After resharding to 8 shards, the maximum number of useful EC2 instances increases to 8. Running only 4 instances means each instance processes 2 shards.",
+        "wrong_explanation_2": "Running 16 instances for 8 shards means 8 instances would have no shards assigned and would sit idle. The KCL does not assign more than one instance per shard, so instances beyond the shard count provide no additional processing capacity.",
+        "wrong_explanation_3": "2 instances would each process 4 shards. While this is a valid configuration, it is not the maximum number of instances for optimal performance. The maximum is equal to the number of shards.",
+        "service_tags": [
+            "kinesis"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "A developer is building an application that uses ElastiCache to reduce database load. The application currently queries the database on every request. The developer wants to implement a caching strategy where the cache is only populated when a cache miss occurs, and the database is never queried if the data is already cached. Which pseudocode correctly implements this pattern?",
+        "correct_answer": "value = cache.get(key)\nif value is None:\n    value = db.query(key)\n    cache.set(key, value)\nreturn value",
+        "wrong_answer_1": "value = db.query(key)\nif value is None:\n    value = cache.get(key)\nreturn value",
+        "wrong_answer_2": "value = cache.get(key)\nif value is not None:\n    value = db.query(key)\n    cache.set(key, value)\nreturn value",
+        "wrong_answer_3": "db.write(key, value)\ncache.set(key, value)\nreturn value",
+        "correct_explanation": "This is the Lazy Loading (Cache-Aside) pattern. The application checks the cache first. On a cache hit, the cached value is returned immediately without querying the database. On a cache miss (value is None), the application queries the database, stores the result in the cache for future requests, and returns the value.",
+        "wrong_explanation_1": "This pseudocode queries the database first on every request, then checks the cache only if the database returns nothing. This is the opposite of lazy loading — it always hits the database and never benefits from cached data.",
+        "wrong_explanation_2": "This pseudocode queries the database when the cache already has a value (value is not None), meaning it bypasses the cache on every cache hit and always queries the database. This defeats the purpose of caching entirely.",
+        "wrong_explanation_3": "This pseudocode writes to both the database and cache simultaneously, which describes the Write-Through caching pattern. It is used for write operations, not for the read-on-miss pattern described in the scenario.",
+        "service_tags": [
+            "elasticache"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "A developer has a Lambda function that processes records from a DynamoDB Stream. The function needs to capture only the key attributes of modified items — no attribute values — to log which items changed without storing sensitive data. Which DynamoDB Streams StreamViewType should the developer configure?",
+        "correct_answer": "KEYS_ONLY",
+        "wrong_answer_1": "OLD_IMAGE",
+        "wrong_answer_2": "NEW_IMAGE",
+        "wrong_answer_3": "NEW_AND_OLD_IMAGES",
+        "correct_explanation": "KEYS_ONLY writes only the partition key and sort key attributes of the modified item to the stream. This is the most minimal StreamViewType and is appropriate when the application only needs to know which items changed, not what their values were. It also minimizes the data written to the stream, reducing costs.",
+        "wrong_explanation_1": "OLD_IMAGE writes the entire item as it appeared before the modification, including all attribute values. This includes sensitive data that the developer specifically wants to avoid capturing.",
+        "wrong_explanation_2": "NEW_IMAGE writes the entire item as it appears after the modification, including all attribute values. Like OLD_IMAGE, this captures sensitive attribute data that the developer wants to exclude.",
+        "wrong_explanation_3": "NEW_AND_OLD_IMAGES writes both the pre-update and post-update states of the entire item. This is the most verbose StreamViewType and captures the most sensitive data — the opposite of what the developer needs.",
+        "service_tags": [
+            "dynamodb",
+            "lambda"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "A developer is building a Lambda function that connects to an Amazon RDS for MySQL database. During load testing, the database returns a 'Too many connections' error when Lambda scales to hundreds of concurrent executions. Each Lambda invocation opens a new database connection. Which solution resolves this issue with the least application code change?",
+        "correct_answer": "Provision an Amazon RDS Proxy between the Lambda function and the RDS instance.",
+        "wrong_answer_1": "Increase the max_connections parameter on the RDS instance.",
+        "wrong_answer_2": "Increase the Lambda function's reserved concurrency limit.",
+        "wrong_answer_3": "Move the database connection initialization outside the Lambda handler function.",
+        "correct_explanation": "RDS Proxy maintains a pool of database connections and multiplexes thousands of Lambda connections onto a smaller set of long-lived database connections. Lambda functions connect to the proxy endpoint instead of RDS directly. The proxy handles connection pooling transparently, requiring only a change to the connection string — no application logic changes.",
+        "wrong_explanation_1": "Increasing max_connections raises the ceiling but does not solve the architectural problem. As Lambda concurrency grows, the connection count will eventually exceed any fixed limit. RDS Proxy addresses the root cause by pooling connections rather than simply raising the limit.",
+        "wrong_explanation_2": "Increasing reserved concurrency allows more concurrent Lambda executions, which would create even more database connections and worsen the problem. The issue is too many connections, not too few Lambda executions.",
+        "wrong_explanation_3": "Moving connection initialization outside the handler (into the global scope) allows connection reuse across warm invocations of the same execution environment. However, with hundreds of concurrent executions, each environment still holds its own connection, and the total connection count can still exceed RDS limits. RDS Proxy is the correct solution for connection pooling at scale.",
+        "service_tags": [
+            "lambda",
+            "rds",
+            "rds-proxy"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.1",
+        "scenario": "A developer is building a Node.js application that runs on an on-premises Linux server and needs to call AWS services such as S3 and DynamoDB using the AWS SDK. The server is not an EC2 instance and cannot be assigned an IAM role. What is the MOST suitable way to provide AWS credentials to the application?",
+        "correct_answer": "Create an IAM user with programmatic access and store the access keys in the credentials file at ~/.aws/credentials on the server.",
+        "wrong_answer_1": "Assign an IAM role to the on-premises server and use the AssumeRole API to retrieve temporary credentials.",
+        "wrong_answer_2": "Hardcode the AWS access keys directly in the application source code.",
+        "wrong_answer_3": "Use the root account access keys stored in the credentials file.",
+        "correct_explanation": "For applications running outside of AWS, access keys are the standard mechanism for programmatic access. The AWS SDK automatically reads credentials from the ~/.aws/credentials file on Linux servers. Creating a dedicated IAM user with only the required permissions and storing its access keys in the credentials file is the correct approach for on-premises SDK usage.",
+        "wrong_explanation_1": "IAM roles can be assigned to EC2 instances, ECS tasks, and Lambda functions — not to arbitrary on-premises servers. While AWS Systems Manager hybrid activations can extend some IAM capabilities to on-premises servers, directly assigning a role to an on-premises server is not supported in the standard model.",
+        "wrong_explanation_2": "Hardcoding access keys in source code is a critical security anti-pattern. Keys embedded in code are easily exposed through version control systems, code reviews, or accidental sharing. The credentials file keeps keys separate from the application code.",
+        "wrong_explanation_3": "Root account access keys provide unrestricted access to all AWS resources and should never be created or used for application access. AWS strongly recommends against creating root access keys under any circumstances.",
+        "service_tags": [
+            "iam"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.1",
+        "scenario": "A developer is building a mobile application using Amazon Cognito. Authenticated users need temporary AWS credentials to upload files directly to a private S3 bucket. The credentials should be scoped to only allow uploads to the user's own folder. Which Cognito feature provides temporary AWS credentials to authenticated users?",
+        "correct_answer": "Amazon Cognito Identity Pools",
+        "wrong_answer_1": "Amazon Cognito User Pools",
+        "wrong_answer_2": "Amazon Cognito Sync",
+        "wrong_answer_3": "AWS IAM Identity Center",
+        "correct_explanation": "Cognito Identity Pools (Federated Identities) exchange Cognito User Pool tokens (or other identity provider tokens) for temporary AWS credentials via STS. The credentials are scoped by an IAM role associated with the identity pool, and IAM policy variables like ${cognito-identity.amazonaws.com:sub} can restrict access to the user's specific S3 folder.",
+        "wrong_explanation_1": "Cognito User Pools handle user authentication and issue JWT tokens (ID, access, and refresh tokens). They do not issue AWS credentials. To get AWS credentials, the JWT token from a User Pool must be exchanged through an Identity Pool.",
+        "wrong_explanation_2": "Amazon Cognito Sync is a service for synchronizing user profile data and app preferences across devices. It does not issue AWS credentials or provide access to S3.",
+        "wrong_explanation_3": "AWS IAM Identity Center (formerly SSO) is designed for workforce identity — employees accessing AWS accounts and business applications. It is not designed for mobile application end-user authentication or for issuing per-user scoped AWS credentials to app users.",
+        "service_tags": [
+            "cognito",
+            "iam",
+            "s3"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.1",
+        "scenario": "A developer is building a REST API with Amazon API Gateway. Certain endpoints should only be accessible to authenticated users from the company's Amazon Cognito User Pool. The developer wants to validate the JWT token on every request without writing custom validation code. Which API Gateway feature should the developer configure?",
+        "correct_answer": "A Cognito User Pool Authorizer attached to the protected API methods.",
+        "wrong_answer_1": "A Lambda Authorizer that calls the Cognito User Pool to validate the token.",
+        "wrong_answer_2": "API Gateway resource policies that restrict access to Cognito User Pool ARNs.",
+        "wrong_answer_3": "IAM authorization with SigV4 signing on every API request.",
+        "correct_explanation": "API Gateway's native Cognito User Pool Authorizer validates the JWT token from the Authorization header against the specified User Pool automatically, without any custom code. It caches the authorization result for a configurable TTL, reducing latency. Validated claims are passed to the backend in the request context.",
+        "wrong_explanation_1": "A Lambda Authorizer can validate Cognito tokens but requires writing and maintaining custom validation code, adds invocation latency, and incurs additional Lambda costs. The native Cognito Authorizer handles this more efficiently without custom code.",
+        "wrong_explanation_2": "API Gateway resource policies control which AWS accounts, VPCs, or IP ranges can invoke the API. They operate on AWS identity, not on Cognito User Pool JWT tokens, and cannot validate user authentication.",
+        "wrong_explanation_3": "IAM authorization requires clients to sign requests with SigV4 using AWS credentials. This is appropriate for machine-to-machine API access using IAM roles, not for end-user authentication with Cognito User Pool JWT tokens.",
+        "service_tags": [
+            "api-gateway",
+            "cognito"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.1",
+        "scenario": "A developer is building a web application where users log in with their Google accounts. After authentication, users need temporary AWS credentials to access specific AWS resources. The application uses Amazon Cognito. What is the correct flow to obtain AWS credentials for a Google-authenticated user?",
+        "correct_answer": "Authenticate with Google to get a Google ID token, exchange it through a Cognito Identity Pool for temporary AWS credentials via STS.",
+        "wrong_answer_1": "Authenticate with Google to get a Google ID token, then call the IAM CreateUser API to create a temporary IAM user.",
+        "wrong_answer_2": "Authenticate with Google to get a Google ID token, then call STS AssumeRole directly using the Google token.",
+        "wrong_answer_3": "Authenticate with Google to get a Google ID token, store it in the Cognito User Pool, and use the User Pool token for AWS API calls.",
+        "correct_explanation": "Cognito Identity Pools support external identity providers including Google. The application authenticates with Google, receives a Google ID token, and passes it to the Cognito Identity Pool's GetId and GetCredentialsForIdentity APIs. Cognito validates the token with Google and returns temporary STS credentials scoped to the configured IAM role.",
+        "wrong_explanation_1": "Creating IAM users dynamically for application end-users is an anti-pattern. IAM users are long-term identities intended for human operators and service accounts, not for application end-users. Cognito Identity Pools provide temporary credentials without creating persistent IAM users.",
+        "wrong_explanation_2": "STS AssumeRole requires the caller to already have AWS credentials. A Google ID token is not an AWS credential and cannot be used directly with STS. The token must first be validated through Cognito Identity Pools, which then calls STS on behalf of the user.",
+        "wrong_explanation_3": "Cognito User Pools are for managing your own user directory. They do not store third-party identity provider tokens. Additionally, Cognito User Pool tokens (JWTs) are not AWS credentials and cannot be used directly to call AWS APIs.",
+        "service_tags": [
+            "cognito",
+            "iam",
+            "sts"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.1",
+        "scenario": "A developer has deployed a Lambda function that needs to read from an SQS queue and write results to a DynamoDB table. When testing, the function receives an AccessDeniedException when calling DynamoDB. The function's execution role has an SQS read policy attached. What should the developer do to fix this?",
+        "correct_answer": "Attach an IAM policy granting the required DynamoDB actions (such as dynamodb:PutItem) to the Lambda function's execution role.",
+        "wrong_answer_1": "Add the Lambda function's ARN to the DynamoDB table's resource-based policy.",
+        "wrong_answer_2": "Create a new IAM user with DynamoDB permissions and store its access keys in the Lambda environment variables.",
+        "wrong_answer_3": "Enable DynamoDB Streams on the table to allow Lambda to write to it.",
+        "correct_explanation": "Lambda functions access AWS services using the permissions granted to their execution role. Since the execution role only has SQS permissions, DynamoDB calls fail with AccessDeniedException. Attaching a policy with the required DynamoDB actions (e.g., dynamodb:PutItem) to the execution role grants the function the necessary permissions.",
+        "wrong_explanation_1": "DynamoDB does not support resource-based policies in the same way S3 or SQS does. Access to DynamoDB is controlled through IAM identity-based policies attached to the calling principal's role, not through table-level resource policies.",
+        "wrong_explanation_2": "Storing IAM user access keys in Lambda environment variables introduces long-term credentials into the function's configuration, which is a security anti-pattern. Lambda execution roles provide temporary, automatically rotated credentials that are the correct mechanism for granting AWS service access.",
+        "wrong_explanation_3": "DynamoDB Streams is a feature that captures item-level changes for downstream processing. Enabling Streams does not grant write permissions to any principal — it is a data capture feature, not an access control mechanism.",
+        "service_tags": [
+            "lambda",
+            "iam",
+            "dynamodb"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.1",
+        "scenario": "A developer is configuring an Amazon API Gateway REST API. Some endpoints are public and require no authentication. Other endpoints must only be accessible to internal services that present valid AWS credentials. The developer wants to use AWS-native authentication for the protected endpoints without writing custom authorization code. Which API Gateway authorization type should the developer configure on the protected endpoints?",
+        "correct_answer": "IAM authorization, which requires callers to sign requests using AWS Signature Version 4 (SigV4) with valid IAM credentials.",
+        "wrong_answer_1": "A Cognito User Pool Authorizer, which validates JWT tokens issued by a Cognito User Pool.",
+        "wrong_answer_2": "A Lambda Authorizer, which invokes a custom Lambda function to validate the caller's identity.",
+        "wrong_answer_3": "API Gateway usage plans with API keys, which restrict access to callers that present a valid API key.",
+        "correct_explanation": "IAM authorization on API Gateway requires callers to sign requests using AWS Signature Version 4 with valid IAM credentials (access key, secret key, and optionally a session token). API Gateway validates the signature against IAM before forwarding the request. This is the native AWS authentication mechanism for service-to-service API calls and requires no custom code.",
+        "wrong_explanation_1": "Cognito User Pool Authorizers validate JWT tokens issued to human users by a Cognito User Pool. They are designed for end-user authentication in web and mobile applications, not for internal service-to-service authentication using AWS credentials.",
+        "wrong_explanation_2": "Lambda Authorizers invoke a custom Lambda function to perform authorization logic. While flexible, they require writing and maintaining custom code. IAM authorization handles AWS credential validation natively without any custom code.",
+        "wrong_explanation_3": "API Gateway API keys are identifiers used for usage tracking and throttling within usage plans. They are not an authentication mechanism — they do not verify the caller's identity or provide any security guarantee. Any caller who obtains the API key can use it.",
+        "service_tags": [
+            "api-gateway",
+            "iam"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.1",
+        "scenario": "A company has multiple AWS accounts managed under AWS Organizations. A developer in a member account needs to assume a role in a different member account to access S3 resources. The developer's IAM user has sts:AssumeRole permission. What additional configuration is required in the target account?",
+        "correct_answer": "The IAM role in the target account must have a trust policy that allows the developer's IAM user ARN (or the source account) to assume it.",
+        "wrong_answer_1": "The target account must have an SCP that explicitly allows cross-account role assumption.",
+        "wrong_answer_2": "The developer must create an IAM user in the target account with the same username.",
+        "wrong_answer_3": "The target account must enable cross-account access in the AWS Organizations console.",
+        "correct_explanation": "Cross-account role assumption requires two things: the caller must have sts:AssumeRole permission (already granted), and the target role must have a trust policy that explicitly allows the caller's principal to assume it. The trust policy is the access control mechanism on the role side that permits the cross-account assumption.",
+        "wrong_explanation_1": "SCPs in AWS Organizations restrict what actions member account principals can perform — they do not grant permissions. An SCP cannot enable cross-account role assumption; that is controlled by the role's trust policy and the caller's IAM permissions.",
+        "wrong_explanation_2": "Cross-account access works through role assumption, not through matching usernames. The developer assumes a role in the target account using their existing credentials — no user needs to be created in the target account.",
+        "wrong_explanation_3": "There is no 'cross-account access' setting in the AWS Organizations console. Cross-account access is configured through IAM role trust policies and the caller's IAM permissions, not through an organizational setting.",
+        "service_tags": [
+            "iam",
+            "sts",
+            "organizations"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.2",
+        "scenario": "A developer is storing sensitive database credentials for an RDS instance in AWS Secrets Manager. The application retrieves the credentials at runtime. The security team requires that credentials be automatically rotated every 30 days without any application changes. Which Secrets Manager feature supports this?",
+        "correct_answer": "Enable automatic rotation on the secret with a 30-day rotation schedule using the built-in RDS rotation Lambda function.",
+        "wrong_answer_1": "Set the secret's TTL to 30 days so it expires and forces the application to re-authenticate.",
+        "wrong_answer_2": "Use AWS Config to detect when credentials are 30 days old and trigger a Lambda function to update them.",
+        "wrong_answer_3": "Store the credentials in SSM Parameter Store with a 30-day expiration policy.",
+        "correct_explanation": "Secrets Manager supports automatic rotation using Lambda functions. For RDS databases, AWS provides built-in rotation Lambda functions that automatically generate new credentials, update the database, and store the new secret — all without application changes. The application always retrieves the current secret value from Secrets Manager at runtime.",
+        "wrong_explanation_1": "Secrets Manager does not have a TTL or expiration feature that automatically rotates credentials. Secret expiration (via rotation schedules) is a separate concept from TTL. Setting a TTL would not rotate the credentials — it would just mark them as expired.",
+        "wrong_explanation_2": "Using AWS Config for credential rotation adds unnecessary complexity. Config is a compliance and configuration tracking service, not a secrets management tool. Secrets Manager's built-in rotation is the purpose-built solution.",
+        "wrong_explanation_3": "AWS Systems Manager Parameter Store does not natively support automatic credential rotation for RDS databases. While it can store secrets securely, rotation must be implemented manually or through custom automation. Secrets Manager is the correct service for automatic rotation.",
+        "service_tags": [
+            "secrets-manager",
+            "rds",
+            "lambda"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.2",
+        "scenario": "A developer needs to encrypt data before storing it in DynamoDB. The encryption key must be managed by the company and must never leave the company's control. The developer wants to use AWS KMS for key management. Which KMS key type gives the company full control over key material, rotation, and the ability to disable the key?",
+        "correct_answer": "Customer managed key (CMK)",
+        "wrong_answer_1": "AWS managed key",
+        "wrong_answer_2": "AWS owned key",
+        "wrong_answer_3": "Data encryption key (DEK)",
+        "correct_explanation": "Customer managed keys (CMKs) are KMS keys that the customer creates and controls. The customer defines the key policy, can enable or disable the key, configure rotation, and audit usage via CloudTrail. CMKs give the company full control over the key lifecycle, satisfying the requirement for company-controlled key management.",
+        "wrong_explanation_1": "AWS managed keys are created and managed by AWS on behalf of the customer for use with specific AWS services (e.g., aws/dynamodb). While they appear in the customer's KMS key list, the customer cannot disable them, control their rotation schedule, or modify their key policy. They do not provide full customer control.",
+        "wrong_explanation_2": "AWS owned keys are managed entirely by AWS and are not visible in the customer's KMS console. The customer has no control over or visibility into these keys. They are used by AWS services internally and do not satisfy the requirement for company-controlled key management.",
+        "wrong_explanation_3": "A data encryption key (DEK) is a key generated by KMS to encrypt data — it is not a key type that customers create or manage directly in KMS. DEKs are generated from CMKs using the GenerateDataKey API and are used for envelope encryption.",
+        "service_tags": [
+            "kms",
+            "dynamodb"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.2",
+        "scenario": "A developer is building an application that encrypts large files before uploading them to S3. The developer wants to use AWS KMS for key management but is concerned about the 4 KB data size limit for KMS Encrypt operations. Which approach should the developer use to encrypt large files with KMS?",
+        "correct_answer": "Use envelope encryption: call KMS GenerateDataKey to get a plaintext data key, encrypt the file locally with the data key, then store the encrypted file and the encrypted data key together in S3.",
+        "wrong_answer_1": "Split the file into 4 KB chunks and call KMS Encrypt on each chunk separately.",
+        "wrong_answer_2": "Use KMS to generate a data key pair and encrypt the file with the public key.",
+        "wrong_answer_3": "Store the file in S3 with SSE-S3 and use KMS only to encrypt the S3 bucket policy.",
+        "correct_explanation": "Envelope encryption is the standard pattern for encrypting large data with KMS. KMS generates a plaintext data key and an encrypted copy of the same key. The application uses the plaintext data key to encrypt the file locally (no size limit), then discards the plaintext key. The encrypted data key is stored alongside the encrypted file. To decrypt, the application calls KMS Decrypt on the encrypted data key to recover the plaintext key, then decrypts the file locally.",
+        "wrong_explanation_1": "Splitting a file into 4 KB chunks and calling KMS Encrypt on each chunk is impractical for large files, extremely slow due to the number of API calls, and expensive. KMS is not designed for direct encryption of large data — envelope encryption is the correct pattern.",
+        "wrong_explanation_2": "KMS data key pairs (asymmetric keys) are used for digital signing and asymmetric encryption scenarios. For symmetric file encryption, GenerateDataKey with a symmetric CMK is the appropriate approach. Asymmetric encryption of large files with KMS is not the standard pattern.",
+        "wrong_explanation_3": "SSE-S3 encrypts objects using S3-managed keys, not KMS. KMS cannot encrypt S3 bucket policies — bucket policies are IAM documents, not data. This option does not use KMS for file encryption at all.",
+        "service_tags": [
+            "kms",
+            "s3"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.2",
+        "scenario": "A developer is configuring server-side encryption for an S3 bucket. The security team requires that all objects be encrypted using AES-256 and that the encryption keys be managed entirely by AWS with no customer key management overhead. Which S3 encryption option should the developer use?",
+        "correct_answer": "SSE-S3 (Server-Side Encryption with Amazon S3 managed keys)",
+        "wrong_answer_1": "SSE-KMS (Server-Side Encryption with AWS KMS keys)",
+        "wrong_answer_2": "SSE-C (Server-Side Encryption with Customer-Provided Keys)",
+        "wrong_answer_3": "Client-side encryption with a locally generated AES-256 key",
+        "correct_explanation": "SSE-S3 encrypts objects using AES-256 with keys that are fully managed by Amazon S3. AWS handles key generation, rotation, and management transparently. There is no customer key management overhead, no additional cost for key usage, and no configuration required beyond enabling the encryption option.",
+        "wrong_explanation_1": "SSE-KMS also uses AES-256 encryption but uses KMS keys, which require the customer to manage key policies, monitor usage via CloudTrail, and pay per-API-call charges for KMS operations. This introduces key management overhead that the security team wants to avoid.",
+        "wrong_explanation_2": "SSE-C requires the customer to provide the encryption key with every PUT and GET request. The customer is responsible for generating, storing, and managing the key entirely outside of AWS. This is the highest-overhead option and the opposite of what the team requires.",
+        "wrong_explanation_3": "Client-side encryption requires the application to encrypt data before uploading and decrypt after downloading. The customer manages the keys entirely, adding significant application complexity and key management overhead.",
+        "service_tags": [
+            "s3",
+            "kms"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.2",
+        "scenario": "A developer needs to set up HTTPS between viewers and a CloudFront distribution that serves a web application. The origin is an Application Load Balancer. The developer also wants to ensure that traffic between CloudFront and the ALB origin is encrypted. Which TWO configurations are required? (Select the answer that covers both.)",
+        "correct_answer": "Set the Viewer Protocol Policy to HTTPS Only, and set the Origin Protocol Policy to HTTPS Only.",
+        "wrong_answer_1": "Set the Viewer Protocol Policy to HTTPS Only, and use a self-signed certificate on the ALB.",
+        "wrong_answer_2": "Set the Viewer Protocol Policy to Redirect HTTP to HTTPS, and configure the ALB to use its default SSL certificate.",
+        "wrong_answer_3": "Associate a WAF web ACL with the CloudFront distribution and enable HTTPS on the ALB listener.",
+        "correct_explanation": "End-to-end HTTPS requires two separate configurations: the Viewer Protocol Policy controls encryption between viewers and CloudFront edge locations, and the Origin Protocol Policy controls encryption between CloudFront and the origin (ALB). Both must be set to HTTPS Only for full end-to-end encryption. The ALB must have a valid SSL certificate from ACM or a trusted CA.",
+        "wrong_explanation_1": "CloudFront does not support self-signed certificates on custom origins. The ALB must use a certificate from AWS Certificate Manager or a trusted third-party certificate authority. A self-signed certificate will cause CloudFront to reject the origin connection.",
+        "wrong_explanation_2": "ALBs do not have a 'default SSL certificate' — a certificate must be explicitly provisioned and attached to the HTTPS listener. Additionally, 'Redirect HTTP to HTTPS' only addresses the viewer-to-CloudFront leg; the Origin Protocol Policy must also be configured for the CloudFront-to-ALB leg.",
+        "wrong_explanation_3": "AWS WAF protects against web application attacks but does not configure encryption protocols. Enabling HTTPS on the ALB listener alone does not configure CloudFront to use HTTPS when communicating with the origin — the Origin Protocol Policy must be explicitly set.",
+        "service_tags": [
+            "cloudfront",
+            "acm",
+            "alb"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.3",
+        "scenario": "A developer has a Lambda function that requires a database password to connect to RDS. The developer wants to store the password securely so it is never visible in the Lambda console, environment variable list, or application logs. Which approach should the developer use?",
+        "correct_answer": "Store the password in AWS Secrets Manager and retrieve it at runtime using the Secrets Manager SDK, ensuring the value is never logged.",
+        "wrong_answer_1": "Store the password as a Lambda environment variable encrypted with the default Lambda service key.",
+        "wrong_answer_2": "Store the password in an S3 object with server-side encryption and download it at Lambda startup.",
+        "wrong_answer_3": "Store the password in a DynamoDB table with encryption at rest and query it at runtime.",
+        "correct_explanation": "AWS Secrets Manager stores secrets encrypted with KMS and provides an API for runtime retrieval. The secret value is never stored in the Lambda configuration, environment variables, or deployment package. The developer must ensure the retrieved value is not logged, but the storage mechanism itself keeps the secret out of all visible Lambda configuration.",
+        "wrong_explanation_1": "Lambda environment variables are visible in the Lambda console and in the function's configuration API response, even when encrypted. Anyone with access to view the Lambda function configuration can see the encrypted value and potentially decrypt it. Secrets Manager keeps the value entirely separate from the function configuration.",
+        "wrong_explanation_2": "Storing a password in S3 and downloading it at startup requires the Lambda function to have S3 read permissions and adds startup latency. It also means the password exists as a plaintext file in the Lambda execution environment's /tmp directory during execution, which is less secure than Secrets Manager's in-memory retrieval.",
+        "wrong_explanation_3": "Storing a password in DynamoDB requires the Lambda function to have DynamoDB read permissions and adds a database round-trip at startup. DynamoDB is a general-purpose database, not a secrets management service. It lacks features like automatic rotation, secret versioning, and audit trails that Secrets Manager provides.",
+        "service_tags": [
+            "secrets-manager",
+            "lambda",
+            "kms"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.3",
+        "scenario": "A developer needs to store configuration values that differ between environments (dev, staging, prod) and one of the values is a plaintext API endpoint while another is a sensitive API key. The developer wants a single service that can store both types with the sensitive value encrypted. Which AWS service and parameter types should the developer use?",
+        "correct_answer": "AWS Systems Manager Parameter Store — use String type for the API endpoint and SecureString type for the API key.",
+        "wrong_answer_1": "AWS Secrets Manager for both values, since it encrypts all stored values by default.",
+        "wrong_answer_2": "AWS Systems Manager Parameter Store — use StringList type for the API endpoint and String type for the API key.",
+        "wrong_answer_3": "Amazon S3 with SSE-KMS for the API key and a public S3 object for the API endpoint.",
+        "correct_explanation": "Parameter Store supports three parameter types: String (plaintext), StringList (comma-separated plaintext values), and SecureString (encrypted with KMS). Using String for the non-sensitive endpoint and SecureString for the API key allows both to be stored in a single service with appropriate security for each, organized by environment path.",
+        "wrong_explanation_1": "Secrets Manager encrypts all stored values and is well-suited for secrets like API keys. However, it charges per secret per month, making it less cost-effective for storing non-sensitive configuration values like API endpoints. Parameter Store is more appropriate for mixed sensitive and non-sensitive configuration.",
+        "wrong_explanation_2": "StringList stores a comma-separated list of plaintext string values. It is used for storing multiple related values in a single parameter, not for a single API endpoint. More importantly, using String type for the API key stores it in plaintext without encryption, which is incorrect for a sensitive value.",
+        "wrong_explanation_3": "Storing configuration in S3 requires managing bucket permissions, object paths, and download logic. A public S3 object for the API endpoint exposes it to anyone on the internet. This approach adds unnecessary complexity compared to Parameter Store's purpose-built configuration management.",
+        "service_tags": [
+            "systems-manager",
+            "parameter-store",
+            "kms"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.3",
+        "scenario": "A developer is reviewing a Lambda function and notices that the function logs the full request payload, which includes user-submitted form data containing credit card numbers. The application is subject to PCI DSS compliance. What should the developer do to remediate this?",
+        "correct_answer": "Modify the function code to redact or mask sensitive fields (such as credit card numbers) before logging the payload.",
+        "wrong_answer_1": "Enable CloudWatch Logs encryption with KMS to protect the logged credit card numbers.",
+        "wrong_answer_2": "Set the CloudWatch Logs retention period to 1 day so that sensitive data is deleted quickly.",
+        "wrong_answer_3": "Move the Lambda function to a VPC to prevent CloudWatch Logs from capturing sensitive data.",
+        "correct_explanation": "The root cause is that sensitive data is being written to logs in the first place. The correct fix is to modify the application code to never log sensitive fields — either by removing the logging statement, masking the card number (e.g., showing only the last 4 digits), or filtering sensitive fields before logging. Encryption and retention policies protect data that is already logged but do not prevent the compliance violation of logging PCI data.",
+        "wrong_explanation_1": "Encrypting CloudWatch Logs with KMS protects the logs at rest from unauthorized access, but the credit card numbers are still present in the logs in plaintext form. PCI DSS prohibits storing sensitive authentication data, including full card numbers, regardless of whether the storage is encrypted.",
+        "wrong_explanation_2": "A 1-day retention period reduces the window during which the data is accessible, but the data is still logged and stored for that period. PCI DSS compliance requires that sensitive data not be logged at all, not just that it be deleted quickly.",
+        "wrong_explanation_3": "VPC placement controls network access for the Lambda function. It has no effect on what data the function writes to CloudWatch Logs. The function will continue to log credit card numbers regardless of whether it is in a VPC.",
+        "service_tags": [
+            "lambda",
+            "cloudwatch"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.3",
+        "scenario": "A developer is building an application that stores user passwords in Amazon DynamoDB. The developer wants to ensure that passwords cannot be recovered even if the DynamoDB table is compromised. Which approach should the developer implement?",
+        "correct_answer": "Hash the passwords using a strong one-way hashing algorithm with a unique salt per user (such as bcrypt) before storing them in DynamoDB.",
+        "wrong_answer_1": "Encrypt the passwords using AES-256 with a KMS customer managed key before storing them in DynamoDB.",
+        "wrong_answer_2": "Store the passwords in a DynamoDB table encrypted with SSE-KMS to protect them at rest.",
+        "wrong_answer_3": "Base64-encode the passwords before storing them in DynamoDB.",
+        "correct_explanation": "Passwords should never be stored in a recoverable form. One-way hashing with a salt (using algorithms like bcrypt, Argon2, or scrypt) produces a hash that cannot be reversed to obtain the original password. During authentication, the submitted password is hashed and compared to the stored hash. Even if the database is compromised, the original passwords cannot be recovered.",
+        "wrong_explanation_1": "Encrypting passwords with AES-256 and KMS is reversible — anyone with access to the KMS key can decrypt and recover the original passwords. Encryption protects data in transit and at rest but does not prevent recovery of the original value. Passwords must be hashed, not encrypted.",
+        "wrong_explanation_2": "DynamoDB SSE-KMS encrypts the table data at rest, protecting against unauthorized access to the underlying storage. However, the passwords are still stored in their original form within the encrypted table. Anyone with DynamoDB read permissions can retrieve the plaintext passwords.",
+        "wrong_explanation_3": "Base64 encoding is a reversible encoding scheme, not encryption or hashing. It provides no security whatsoever — any attacker can trivially decode a base64-encoded password. This is not an acceptable approach for storing passwords.",
+        "service_tags": [
+            "dynamodb"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 2,
+        "task_statement_number": "2.3",
+        "scenario": "A developer is building a multi-tenant SaaS application where each tenant's data is stored in the same DynamoDB table. The application uses Cognito for authentication. The developer needs to ensure that authenticated users can only read and write items that belong to their own tenant, enforced at the AWS level rather than in application code. Which approach achieves this?",
+        "correct_answer": "Use Cognito Identity Pools to issue temporary credentials with an IAM policy that uses the cognito-identity.amazonaws.com:sub condition variable to restrict DynamoDB access to items matching the user's identity.",
+        "wrong_answer_1": "Implement tenant isolation in the application layer by filtering DynamoDB query results based on the authenticated user's tenant ID.",
+        "wrong_answer_2": "Create a separate DynamoDB table per tenant and use IAM policies to restrict each Cognito user to their own table.",
+        "wrong_answer_3": "Use a Lambda Authorizer in API Gateway to validate the tenant ID in each request before forwarding to DynamoDB.",
+        "correct_explanation": "Cognito Identity Pools issue temporary IAM credentials with a policy that uses IAM policy variables referencing the authenticated user's Cognito identity. A condition using dynamodb:LeadingKeys matching ${cognito-identity.amazonaws.com:sub} restricts the user to only access DynamoDB items where the partition key matches their identity — enforced by IAM at the AWS level, not by application code.",
+        "wrong_explanation_1": "Application-layer filtering relies on the application correctly enforcing tenant isolation on every query. A bug or bypass in the application code could expose other tenants' data. IAM-level enforcement via Cognito Identity Pool credentials is more robust because it cannot be bypassed by application logic errors.",
+        "wrong_explanation_2": "Creating a separate DynamoDB table per tenant is operationally unscalable for a SaaS application with many tenants. AWS accounts have limits on the number of DynamoDB tables, and managing hundreds or thousands of tables adds significant operational overhead. Fine-grained IAM conditions on a shared table is the recommended pattern.",
+        "wrong_explanation_3": "A Lambda Authorizer validates the request at the API Gateway level and can reject unauthorized requests, but it does not prevent the application code from accessing other tenants' DynamoDB data once the request is authorized. IAM-level enforcement via scoped credentials is the only mechanism that restricts DynamoDB access at the AWS API level.",
+        "service_tags": [
+            "cognito",
+            "dynamodb",
+            "iam"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.1",
+        "scenario": "A developer is packaging a Lambda function for deployment. The function depends on a third-party library that is 200 MB unzipped. The developer's function code itself is only 2 MB. The deployment package exceeds the Lambda zip size limit. Which approach should the developer use to deploy the function?",
+        "correct_answer": "Package the third-party library as a Lambda Layer and attach it to the function. Deploy only the 2 MB function code as the deployment package.",
+        "wrong_answer_1": "Upload the entire 202 MB package to S3 and reference it in the Lambda deployment configuration.",
+        "wrong_answer_2": "Compress the library further using a higher compression algorithm to reduce the package below the limit.",
+        "wrong_answer_3": "Split the function into two Lambda functions — one containing the library and one containing the function code — and invoke them in sequence.",
+        "correct_explanation": "Lambda Layers allow large dependencies to be packaged separately from function code. A layer can be up to 250 MB unzipped and is mounted at /opt in the execution environment. The function deployment package only needs to contain the function code (2 MB), keeping it well within limits. Layers can also be shared across multiple functions.",
+        "wrong_explanation_1": "Lambda does support deploying from an S3 zip file, but the unzipped size limit of 250 MB still applies. A 202 MB package would be within the 250 MB unzipped limit, but using a Layer is the better architectural approach as it separates the dependency from the function code and enables reuse.",
+        "wrong_explanation_2": "Lambda's size limits apply to the unzipped package size, not the compressed zip. Further compressing the zip file does not reduce the unzipped size that Lambda measures against its limits.",
+        "wrong_explanation_3": "Splitting a function to separate library code from application code is not a valid Lambda pattern. Lambda functions execute code — they cannot serve as passive library containers. This approach would require significant architectural changes and would not work as described.",
+        "service_tags": [
+            "lambda"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.1",
+        "scenario": "A developer is deploying a serverless application using AWS SAM. The application includes a Lambda function, an API Gateway, and a DynamoDB table. The developer wants to deploy to multiple environments (dev, staging, prod) using the same SAM template with different configuration values per environment. Which SAM/CloudFormation feature should the developer use?",
+        "correct_answer": "Define CloudFormation Parameters in the SAM template and pass different parameter values using --parameter-overrides in the sam deploy command for each environment.",
+        "wrong_answer_1": "Create a separate SAM template file for each environment with hardcoded values.",
+        "wrong_answer_2": "Use Lambda environment variables in the SAM template to differentiate between environments at runtime.",
+        "wrong_answer_3": "Use AWS CodePipeline to deploy different versions of the SAM template to each environment.",
+        "correct_explanation": "CloudFormation Parameters allow a single template to accept different input values at deployment time. Using --parameter-overrides with sam deploy passes environment-specific values (such as table names, memory sizes, or log levels) without modifying the template. This is the standard pattern for multi-environment SAM deployments.",
+        "wrong_explanation_1": "Maintaining separate template files per environment creates duplication and drift — changes must be applied to every template. A single parameterized template is easier to maintain and ensures consistency across environments.",
+        "wrong_explanation_2": "Lambda environment variables can differentiate runtime behavior, but they are defined within the template. Without parameters, the template still needs to be modified per environment to set different variable values. Parameters allow the values to be injected at deploy time.",
+        "wrong_explanation_3": "CodePipeline orchestrates the deployment process but does not itself solve the problem of passing different configuration values to the same template. Parameters are the mechanism for environment-specific configuration, regardless of whether CodePipeline or the CLI is used for deployment.",
+        "service_tags": [
+            "sam",
+            "cloudformation"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.1",
+        "scenario": "A developer is deploying an application to AWS Elastic Beanstalk. The application requires a specific Nginx configuration file to be placed in /etc/nginx/conf.d/ on each EC2 instance during deployment. Which Elastic Beanstalk feature allows the developer to customize the EC2 instance configuration as part of the deployment?",
+        "correct_answer": "Place the Nginx configuration file in the .ebextensions/ directory of the application source bundle using a config file with files: or container_commands: directives.",
+        "wrong_answer_1": "SSH into each EC2 instance after deployment and manually place the configuration file.",
+        "wrong_answer_2": "Use an EC2 user data script in the Elastic Beanstalk environment configuration to copy the file during instance launch.",
+        "wrong_answer_3": "Store the configuration file in S3 and use a Lambda function triggered by Elastic Beanstalk events to copy it to each instance.",
+        "correct_explanation": "Elastic Beanstalk processes .ebextensions/ configuration files during deployment. A .config file in this directory can use the files: key to place files at specific paths on the instance, or container_commands: to run commands after the application is deployed. This is the standard mechanism for customizing instance configuration as part of the deployment lifecycle.",
+        "wrong_explanation_1": "Manually SSHing into instances after deployment is not repeatable or scalable. When Elastic Beanstalk replaces instances during scaling or updates, the manual configuration is lost. Deployment-time customization via .ebextensions is the correct approach.",
+        "wrong_explanation_2": "EC2 user data runs only once at instance launch and is not part of the Elastic Beanstalk deployment lifecycle. It cannot be easily updated with new application versions and does not integrate with Beanstalk's deployment hooks.",
+        "wrong_explanation_3": "Using Lambda to copy files to EC2 instances requires the instances to be reachable from Lambda (network access) and adds significant complexity. .ebextensions is the purpose-built, integrated mechanism for this use case.",
+        "service_tags": [
+            "elastic-beanstalk"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.1",
+        "scenario": "A developer is deploying an application to an ECS cluster. The task definition requires a Docker image stored in Amazon ECR. During deployment, the ECS task fails to start with an error indicating it cannot pull the image. The ECS cluster uses EC2 launch type. What is the MOST likely cause?",
+        "correct_answer": "The EC2 instance's IAM role does not have the ecr:GetAuthorizationToken and ecr:BatchGetImage permissions required to pull images from ECR.",
+        "wrong_answer_1": "The ECR repository is in a different AWS Region than the ECS cluster.",
+        "wrong_answer_2": "The Docker image tag specified in the task definition does not exist in the ECR repository.",
+        "wrong_answer_3": "The ECS task definition is using the wrong network mode for ECR image pulls.",
+        "correct_explanation": "EC2 instances in an ECS cluster pull Docker images from ECR using the instance's IAM role (the EC2 instance profile). The role must have ecr:GetAuthorizationToken to authenticate with ECR and ecr:BatchGetImage (along with ecr:GetDownloadUrlForLayer) to pull the image layers. Without these permissions, the image pull fails.",
+        "wrong_explanation_1": "ECR repositories are regional, but ECS can pull images from ECR in any region as long as the full image URI (including the region) is specified in the task definition. A cross-region pull is possible but requires the correct URI format.",
+        "wrong_explanation_2": "A missing image tag would produce a different error message indicating the image was not found, not a permissions-related pull failure. The question specifies a pull error, which is most commonly a permissions issue.",
+        "wrong_explanation_3": "Network mode affects how containers communicate with each other and the host, not whether the EC2 instance can authenticate with ECR to pull images. Image pulls happen at the instance level before the container starts, independent of the task's network mode.",
+        "service_tags": [
+            "ecs",
+            "ecr",
+            "iam"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.2",
+        "scenario": "A developer wants to test a Lambda function locally before deploying it to AWS. The function uses API Gateway as a trigger and reads from a DynamoDB table. The developer wants to simulate the API Gateway event and invoke the function locally without deploying to AWS. Which tool enables this?",
+        "correct_answer": "AWS SAM CLI using the sam local invoke or sam local start-api commands.",
+        "wrong_answer_1": "AWS CloudFormation with a local stack deployment.",
+        "wrong_answer_2": "The AWS Lambda console's test event feature.",
+        "wrong_answer_3": "AWS CodeBuild with a local build environment.",
+        "correct_explanation": "The AWS SAM CLI provides sam local invoke to invoke a Lambda function locally with a test event payload, and sam local start-api to start a local HTTP server that simulates API Gateway. Both commands run the function in a Docker container that replicates the Lambda execution environment, enabling local testing before deployment.",
+        "wrong_explanation_1": "CloudFormation deploys infrastructure to AWS — it does not provide a local execution environment for Lambda functions. There is no 'local stack deployment' feature in standard CloudFormation.",
+        "wrong_explanation_2": "The Lambda console's test event feature invokes the function in AWS, not locally. It requires the function to already be deployed and does not support local pre-deployment testing.",
+        "wrong_explanation_3": "AWS CodeBuild runs build and test commands in a managed build environment in AWS. It does not provide a local Lambda execution environment and requires network access to AWS services.",
+        "service_tags": [
+            "sam",
+            "lambda"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.2",
+        "scenario": "A developer is deploying an application to Elastic Beanstalk and needs to run a database migration script after the new application version is deployed but before traffic is shifted to the new instances. Which Elastic Beanstalk deployment hook should the developer use?",
+        "correct_answer": "Use a container_commands: directive in .ebextensions with leader_only: true to run the migration script on a single instance after the application is deployed.",
+        "wrong_answer_1": "Use a commands: directive in .ebextensions to run the migration script before the application is deployed.",
+        "wrong_answer_2": "Use an EC2 user data script to run the migration script when the instance launches.",
+        "wrong_answer_3": "Use an AWS Lambda function triggered by an Elastic Beanstalk environment event to run the migration.",
+        "correct_explanation": "container_commands in .ebextensions run after the application source is extracted but before the application version is deployed to the web server. Setting leader_only: true ensures the command runs on only one instance (the leader), preventing duplicate migration runs when multiple instances are being updated simultaneously.",
+        "wrong_explanation_1": "The commands: directive in .ebextensions runs before the application source is extracted and before the application is deployed. Database migrations should run after the new code is in place but before traffic is served — container_commands is the correct hook for post-extraction, pre-traffic operations.",
+        "wrong_explanation_2": "EC2 user data runs only at instance launch, not during application deployments. If Elastic Beanstalk deploys a new application version to existing instances, user data does not re-execute. It is not suitable for deployment-time migration scripts.",
+        "wrong_explanation_3": "Elastic Beanstalk environment events (via SNS) notify about environment state changes but do not provide fine-grained deployment lifecycle hooks. A Lambda function triggered by these events cannot reliably execute at the precise point between deployment and traffic shift.",
+        "service_tags": [
+            "elastic-beanstalk"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.2",
+        "scenario": "A developer is testing an application that integrates with Amazon SQS. The developer wants to verify that the application correctly handles SQS messages without sending real messages to the production queue during development. Which approach allows the developer to test SQS integration locally?",
+        "correct_answer": "Use a separate SQS queue in a development AWS account or use LocalStack to emulate SQS locally for integration testing.",
+        "wrong_answer_1": "Use the SQS console to manually inspect messages in the production queue during testing.",
+        "wrong_answer_2": "Mock the SQS SDK client in unit tests to simulate message sending and receiving without a real queue.",
+        "wrong_answer_3": "Enable SQS dead-letter queues on the production queue to capture test messages separately.",
+        "correct_explanation": "For integration testing of SQS, using a dedicated development queue in a separate AWS account isolates test traffic from production. LocalStack provides a local AWS service emulator that includes SQS, enabling fully offline integration testing. Both approaches prevent test messages from reaching the production queue.",
+        "wrong_explanation_1": "Inspecting the production queue during testing risks mixing test and production messages, potentially causing production consumers to process test data. Testing should always be isolated from production resources.",
+        "wrong_explanation_2": "Mocking the SQS SDK client in unit tests is valid for testing application logic in isolation, but it does not test the actual SQS integration (message serialization, queue configuration, visibility timeout behavior). Integration testing requires a real or emulated SQS endpoint.",
+        "wrong_explanation_3": "Dead-letter queues capture messages that fail processing after a configured number of attempts. They are not a mechanism for isolating test traffic from production traffic. Test messages would still be processed by production consumers before being moved to the DLQ.",
+        "service_tags": [
+            "sqs"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.2",
+        "scenario": "A developer is building a CI/CD pipeline for a Lambda function. After each code commit, the pipeline should automatically run unit tests, and only deploy to production if all tests pass. Which AWS service should the developer use to run the automated unit tests as part of the pipeline?",
+        "correct_answer": "AWS CodeBuild, configured with a buildspec.yml that runs the test suite and fails the build if tests do not pass.",
+        "wrong_answer_1": "AWS CodeDeploy, configured with lifecycle hooks that run tests before deployment.",
+        "wrong_answer_2": "AWS Lambda, invoked by CodePipeline to run the test suite.",
+        "wrong_answer_3": "AWS CodeCommit, configured with pre-commit hooks that run tests before accepting the commit.",
+        "correct_explanation": "AWS CodeBuild is a fully managed build service that compiles code, runs tests, and produces deployment artifacts. A buildspec.yml file defines the build phases including a test phase. If tests fail, CodeBuild marks the build as failed, which stops the CodePipeline execution and prevents deployment to production.",
+        "wrong_explanation_1": "AWS CodeDeploy manages application deployments and supports lifecycle hooks (BeforeInstall, AfterInstall, etc.) for running scripts during deployment. However, it is not designed for running unit tests before a deployment decision is made — that is CodeBuild's role in the pipeline.",
+        "wrong_explanation_2": "While Lambda can run code, using it to execute a test suite requires managing test dependencies, execution time limits (15 minutes max), and result reporting. CodeBuild is purpose-built for this use case with better tooling, longer timeouts, and native CodePipeline integration.",
+        "wrong_explanation_3": "CodeCommit pre-commit hooks run on the developer's local machine before a commit is pushed, not in the CI/CD pipeline. They cannot enforce test passage for all developers and do not integrate with the pipeline's deployment gate.",
+        "service_tags": [
+            "codebuild",
+            "codepipeline"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.3",
+        "scenario": "A developer is setting up a CI/CD pipeline using AWS CodePipeline. The pipeline should automatically trigger whenever code is pushed to the main branch of an AWS CodeCommit repository. Which CodePipeline source action configuration enables this automatic triggering?",
+        "correct_answer": "Configure the CodePipeline source stage with a CodeCommit source action and enable the Amazon EventBridge rule that CodePipeline creates to detect repository changes.",
+        "wrong_answer_1": "Configure a CodeCommit trigger that sends an SNS notification, then manually invoke the pipeline from the SNS notification.",
+        "wrong_answer_2": "Set up a CloudWatch Events rule that polls the CodeCommit repository every minute for new commits.",
+        "wrong_answer_3": "Configure the pipeline to use periodic polling of the CodeCommit repository every 5 minutes.",
+        "correct_explanation": "When a CodeCommit source action is added to CodePipeline, it automatically creates an Amazon EventBridge rule that detects push events to the specified branch. This triggers the pipeline immediately when code is pushed, without polling delays. This is the recommended and default behavior for CodeCommit source actions.",
+        "wrong_explanation_1": "Manually invoking the pipeline from an SNS notification requires custom Lambda or other automation to bridge the SNS notification to a pipeline execution. CodePipeline's native EventBridge integration handles this automatically without custom code.",
+        "wrong_explanation_2": "CloudWatch Events (EventBridge) does not poll repositories — it receives events pushed by CodeCommit when changes occur. Polling is a legacy mechanism that CodePipeline previously used but has replaced with event-based triggering for lower latency.",
+        "wrong_explanation_3": "Periodic polling every 5 minutes introduces up to 5 minutes of delay between a code push and pipeline execution. EventBridge-based triggering fires within seconds of a push and is the recommended approach for CodeCommit source actions.",
+        "service_tags": [
+            "codepipeline",
+            "codecommit",
+            "eventbridge"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.3",
+        "scenario": "A developer is using AWS CodeBuild to build a Docker image and push it to Amazon ECR as part of a CI/CD pipeline. The CodeBuild project fails with an authorization error when attempting to push to ECR. What is the MOST likely cause?",
+        "correct_answer": "The CodeBuild service role does not have the ecr:GetAuthorizationToken, ecr:BatchCheckLayerAvailability, ecr:PutImage, and ecr:InitiateLayerUpload permissions.",
+        "wrong_answer_1": "The ECR repository does not have a repository policy allowing CodeBuild to push images.",
+        "wrong_answer_2": "The CodeBuild project is in a different VPC than the ECR repository.",
+        "wrong_answer_3": "The Docker daemon in CodeBuild is not configured to use the ECR registry endpoint.",
+        "correct_explanation": "CodeBuild uses its service role to authenticate with AWS services. To push images to ECR, the service role must have permissions to call ecr:GetAuthorizationToken (to get a Docker login token) and the image push permissions (ecr:BatchCheckLayerAvailability, ecr:PutImage, ecr:InitiateLayerUpload, ecr:UploadLayerPart, ecr:CompleteLayerUpload). Without these, the push fails with an authorization error.",
+        "wrong_explanation_1": "ECR repository policies are optional and are used for cross-account access. For same-account access, IAM identity-based policies on the CodeBuild service role are sufficient. The absence of a repository policy does not cause authorization failures for same-account pushes.",
+        "wrong_explanation_2": "ECR is a regional service accessible over the internet and via VPC endpoints. CodeBuild does not need to be in the same VPC as ECR — it accesses ECR via the service endpoint. VPC placement affects connectivity to resources inside a VPC, not to AWS managed services like ECR.",
+        "wrong_explanation_3": "CodeBuild's managed build environments include Docker and are pre-configured to work with ECR. The aws ecr get-login-password command in the buildspec handles authentication. The issue is permissions on the service role, not Docker daemon configuration.",
+        "service_tags": [
+            "codebuild",
+            "ecr",
+            "iam"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.3",
+        "scenario": "A developer wants to store build artifacts produced by AWS CodeBuild so they can be used in a later CodePipeline stage. The artifacts include compiled binaries and configuration files. Which CodeBuild feature stores these artifacts for use by downstream pipeline stages?",
+        "correct_answer": "Configure the artifacts section in the CodeBuild project's buildspec.yml to specify the output files, and configure the CodeBuild project to store artifacts in an S3 bucket.",
+        "wrong_answer_1": "Use CodeBuild environment variables to pass artifact file paths to the next pipeline stage.",
+        "wrong_answer_2": "Configure CodeBuild to push artifacts directly to the deployment target (EC2 or Lambda) at the end of the build.",
+        "wrong_answer_3": "Use an SNS notification from CodeBuild to trigger the next pipeline stage with the artifact location.",
+        "correct_explanation": "CodeBuild's artifacts configuration in buildspec.yml specifies which files to include as output artifacts. CodePipeline automatically stores these in an S3 artifact bucket and makes them available as input artifacts to downstream stages (such as a CodeDeploy deploy stage). This is the standard mechanism for passing build outputs through a pipeline.",
+        "wrong_explanation_1": "Environment variables in CodeBuild are available only within the build environment during execution. They cannot pass data to downstream CodePipeline stages — artifacts stored in S3 are the mechanism for inter-stage data transfer.",
+        "wrong_explanation_2": "Pushing artifacts directly to the deployment target from CodeBuild bypasses the pipeline's artifact management and makes the build stage tightly coupled to the deployment target. CodePipeline's artifact store (S3) is the correct intermediary.",
+        "wrong_explanation_3": "SNS notifications from CodeBuild report build status events (succeeded, failed) but do not carry artifact data. Artifact transfer between pipeline stages is handled through S3, not SNS.",
+        "service_tags": [
+            "codebuild",
+            "codepipeline",
+            "s3"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.4",
+        "scenario": "A developer is deploying an application to a fleet of EC2 instances using AWS CodeDeploy. The deployment must update instances in small batches, keeping at least 75% of instances in service at all times. If the deployment fails on any instance, CodeDeploy should automatically roll back. Which CodeDeploy deployment configuration and setting should the developer use?",
+        "correct_answer": "Use the CodeDeployDefault.HalfAtATime or a custom deployment configuration with a minimum healthy hosts percentage of 75%, and enable automatic rollback on deployment failure.",
+        "wrong_answer_1": "Use CodeDeployDefault.AllAtOnce with a CloudWatch alarm to trigger manual rollback if errors are detected.",
+        "wrong_answer_2": "Use CodeDeployDefault.OneAtATime and disable automatic rollback to manually review each failed instance.",
+        "wrong_answer_3": "Use a Blue/Green deployment with CodeDeployDefault.AllAtOnce and enable automatic rollback.",
+        "correct_explanation": "A custom deployment configuration with minimum healthy hosts set to 75% ensures that at least 75% of instances remain in service during the rolling deployment. Enabling automatic rollback on deployment failure instructs CodeDeploy to redeploy the last successful revision to any instances where the deployment failed, without manual intervention.",
+        "wrong_explanation_1": "CodeDeployDefault.AllAtOnce deploys to all instances simultaneously, taking 100% of instances out of service during deployment. This violates the requirement to keep 75% of instances in service. CloudWatch alarm-based rollback also requires manual configuration and does not provide the same immediacy as automatic rollback on failure.",
+        "wrong_explanation_2": "CodeDeployDefault.OneAtATime deploys to one instance at a time, which keeps more than 75% of instances in service. However, disabling automatic rollback means failed deployments require manual intervention, which does not meet the requirement for automatic rollback.",
+        "wrong_explanation_3": "Blue/Green deployments provision a new set of instances and shift traffic after validation. While they support automatic rollback, the AllAtOnce configuration for the replacement fleet does not address the rolling update requirement for the existing fleet.",
+        "service_tags": [
+            "codedeploy",
+            "ec2"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.4",
+        "scenario": "A developer is building a CI/CD pipeline using AWS CodePipeline for a Lambda function. The pipeline should deploy the function using AWS SAM and require a manual approval before deploying to production. Which CodePipeline action type provides the manual approval gate?",
+        "correct_answer": "An Approval action in a CodePipeline stage, which pauses the pipeline and sends an SNS notification to reviewers who must approve or reject before the pipeline continues.",
+        "wrong_answer_1": "A Lambda action that invokes a function to check approval status from an external ticketing system.",
+        "wrong_answer_2": "A CodeBuild action configured to wait for a manual input before proceeding.",
+        "wrong_answer_3": "A CloudFormation action with a manual change set execution step.",
+        "correct_explanation": "CodePipeline has a built-in Approval action type that pauses pipeline execution and optionally sends an SNS notification to reviewers. A designated approver must log into the console (or use the CLI/API) to approve or reject the pipeline. Only after approval does the pipeline continue to the next stage.",
+        "wrong_explanation_1": "A Lambda action can integrate with external systems, but building a custom approval workflow with Lambda adds unnecessary complexity when CodePipeline's native Approval action provides this functionality out of the box.",
+        "wrong_explanation_2": "CodeBuild runs automated build and test commands. It does not support interactive manual input during execution — builds run to completion automatically. It cannot serve as a manual approval gate.",
+        "wrong_explanation_3": "CloudFormation change sets require manual execution when using the MANUAL execution mode, which does provide a review step. However, this is specific to CloudFormation stack deployments and is not the general-purpose manual approval mechanism for CodePipeline stages.",
+        "service_tags": [
+            "codepipeline",
+            "sns"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.4",
+        "scenario": "A developer is using AWS CodeDeploy to deploy a new version of a Lambda function. The deployment should shift 10% of traffic to the new version immediately, then shift an additional 10% every minute until all traffic is on the new version. Which deployment configuration should the developer use?",
+        "correct_answer": "CodeDeployDefault.LambdaLinear10PercentEvery1Minute",
+        "wrong_answer_1": "CodeDeployDefault.LambdaCanary10Percent10Minutes",
+        "wrong_answer_2": "CodeDeployDefault.LambdaAllAtOnce",
+        "wrong_answer_3": "CodeDeployDefault.LambdaLinear10PercentEvery2Minutes",
+        "correct_explanation": "Linear deployment configurations shift traffic in equal increments at regular intervals. LambdaLinear10PercentEvery1Minute shifts 10% of traffic to the new version every minute, completing the full migration in 10 minutes. This matches the requirement of equal increments at 1-minute intervals.",
+        "wrong_explanation_1": "LambdaCanary10Percent10Minutes shifts 10% of traffic immediately, then shifts the remaining 90% all at once after 10 minutes. This is a two-increment canary pattern, not the gradual equal-increment linear pattern described in the requirement.",
+        "wrong_explanation_2": "LambdaAllAtOnce shifts 100% of traffic to the new version immediately in a single step. It does not provide the gradual incremental shifting described in the requirement.",
+        "wrong_explanation_3": "LambdaLinear10PercentEvery2Minutes shifts 10% every 2 minutes, completing the migration in 20 minutes. The requirement specifies 1-minute intervals, so this configuration takes twice as long as needed.",
+        "service_tags": [
+            "lambda",
+            "codedeploy"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 3,
+        "task_statement_number": "3.4",
+        "scenario": "A developer is setting up a CodePipeline to deploy a containerized application to Amazon ECS. After a successful build in CodeBuild that produces a new Docker image in ECR, the pipeline needs to update the ECS service with the new image. Which artifact should CodeBuild produce to enable the ECS deploy action in CodePipeline?",
+        "correct_answer": "An imagedefinitions.json file that maps the container name to the new ECR image URI, used by the ECS deploy action to update the task definition.",
+        "wrong_answer_1": "A taskdefinition.json file containing the full ECS task definition with the new image URI.",
+        "wrong_answer_2": "An appspec.yml file specifying the ECS service name and cluster to deploy to.",
+        "wrong_answer_3": "A buildspec.yml file containing the new image URI as an environment variable.",
+        "correct_explanation": "The CodePipeline ECS deploy action requires an imagedefinitions.json artifact from the build stage. This JSON file maps container names to their new image URIs (e.g., [{\"name\":\"my-container\",\"imageUri\":\"123456789.dkr.ecr.us-east-1.amazonaws.com/my-app:latest\"}]). CodePipeline uses this file to update the ECS task definition with the new image and deploy the updated service.",
+        "wrong_explanation_1": "A full taskdefinition.json is used with the CodeDeploy ECS Blue/Green deployment action, not the standard ECS deploy action. The standard ECS deploy action only needs the imagedefinitions.json to identify which container image to update.",
+        "wrong_explanation_2": "An appspec.yml is used by AWS CodeDeploy for EC2, Lambda, and ECS Blue/Green deployments. The standard CodePipeline ECS deploy action (not CodeDeploy) uses imagedefinitions.json, not appspec.yml.",
+        "wrong_explanation_3": "buildspec.yml defines the CodeBuild build process itself — it is an input to CodeBuild, not an output artifact. Environment variables within a build are not accessible to downstream pipeline stages. The imagedefinitions.json must be produced as an explicit build artifact.",
+        "service_tags": [
+            "codepipeline",
+            "codebuild",
+            "ecs",
+            "ecr"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.1",
+        "scenario": "A serverless application uses API Gateway with Lambda proxy integration. Users are intermittently reporting HTTP 504 errors. The errors occur only on certain requests that take longer than usual to process. What is the MOST likely cause?",
+        "correct_answer": "The Lambda function is taking longer than 29 seconds to respond, exceeding the maximum API Gateway integration timeout.",
+        "wrong_answer_1": "The Lambda function is hitting its account-level concurrency limit, causing throttling errors that API Gateway reports as 504.",
+        "wrong_answer_2": "The API Gateway usage plan quota has been exceeded, causing some requests to be rejected with a 504 error.",
+        "wrong_answer_3": "The Lambda function's memory is insufficient, causing it to crash and return a 504 to API Gateway.",
+        "correct_explanation": "API Gateway has a maximum integration timeout of 29 seconds for all integration types including Lambda. If the Lambda function takes longer than 29 seconds to return a response, API Gateway terminates the connection and returns an HTTP 504 Gateway Timeout (INTEGRATION_TIMEOUT) to the client. Since the errors are intermittent and occur on longer requests, this is the most likely cause.",
+        "wrong_explanation_1": "Lambda concurrency throttling returns an HTTP 429 Too Many Requests error to API Gateway, which API Gateway typically surfaces as a 502 or 429 to the client — not a 504. Throttling errors are also not specific to longer-running requests.",
+        "wrong_explanation_2": "Exceeding a usage plan quota returns an HTTP 429 Too Many Requests error, not a 504. Usage plan limits apply to request counts, not to request duration.",
+        "wrong_explanation_3": "A Lambda function crash (out-of-memory or unhandled exception) returns an HTTP 502 Bad Gateway error to API Gateway, not a 504. A 504 specifically indicates a timeout, not a function failure.",
+        "service_tags": [
+            "api-gateway",
+            "lambda"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.1",
+        "scenario": "A developer has an application that uses a Lambda function connected to an Aurora MySQL database in a VPC. Under high load, the database returns a 'Too many connections' error. The developer has already set the Lambda function's reserved concurrency to 100. What is the MOST suitable solution?",
+        "correct_answer": "Provision an RDS Proxy between the Lambda function and the Aurora database to pool and reuse database connections.",
+        "wrong_answer_1": "Increase the max_connections parameter on the Aurora instance to match the Lambda concurrency limit.",
+        "wrong_answer_2": "Increase the Lambda function's reserved concurrency to reduce the number of concurrent executions.",
+        "wrong_answer_3": "Increase the Lambda function's memory allocation to reduce execution time and free connections faster.",
+        "correct_explanation": "RDS Proxy maintains a warm connection pool to the database and multiplexes many Lambda connections onto a smaller set of long-lived database connections. Lambda functions connect to the proxy endpoint instead of Aurora directly. The proxy handles connection management transparently, resolving the 'too many connections' error without requiring changes to the database or Lambda concurrency settings.",
+        "wrong_explanation_1": "Increasing max_connections raises the limit but does not solve the architectural problem. As Lambda scales, the connection count will continue to grow. RDS Proxy addresses the root cause by pooling connections rather than simply raising the ceiling.",
+        "wrong_explanation_2": "Reducing reserved concurrency would limit the number of simultaneous Lambda executions, which reduces connections but also reduces throughput. This trades one problem for another. RDS Proxy solves the connection problem without sacrificing Lambda's ability to scale.",
+        "wrong_explanation_3": "Faster execution does reduce the time each connection is held open, but under sustained high load, connections are still opened at a rate that can exceed the database limit. RDS Proxy is the correct architectural solution for Lambda-to-RDS connection management.",
+        "service_tags": [
+            "lambda",
+            "rds",
+            "rds-proxy",
+            "aurora"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.1",
+        "scenario": "A developer is troubleshooting an API Gateway REST API that is returning HTTP 502 Bad Gateway errors for some requests. The API uses Lambda proxy integration. What is the MOST likely cause of the 502 errors?",
+        "correct_answer": "The Lambda function is returning a response that does not conform to the expected proxy integration response format (missing statusCode, headers, or body fields).",
+        "wrong_answer_1": "The Lambda function is taking longer than 29 seconds to respond.",
+        "wrong_answer_2": "The API Gateway stage does not have a deployment associated with it.",
+        "wrong_answer_3": "The Lambda function's execution role does not have permission to be invoked by API Gateway.",
+        "correct_explanation": "With Lambda proxy integration, API Gateway expects the Lambda function to return a specific JSON structure containing statusCode (integer), headers (object), and body (string). If the function returns a malformed response — missing required fields, returning body as an object instead of a string, or throwing an unhandled exception — API Gateway cannot parse the response and returns a 502 Bad Gateway error.",
+        "wrong_explanation_1": "A Lambda function exceeding the 29-second API Gateway timeout returns an HTTP 504 Gateway Timeout, not a 502. The 504 indicates a timeout; the 502 indicates a bad response from the integration.",
+        "wrong_explanation_2": "An API Gateway stage without a deployment would return a 403 or configuration error, not a 502. A 502 specifically indicates that API Gateway received an invalid response from the Lambda integration.",
+        "wrong_explanation_3": "If API Gateway does not have permission to invoke the Lambda function, it returns a 500 Internal Server Error or a specific authorization error — not a 502. A 502 indicates the function was invoked but returned an invalid response.",
+        "service_tags": [
+            "api-gateway",
+            "lambda"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.1",
+        "scenario": "A developer needs to detect new items written to a DynamoDB table and automatically trigger a Lambda function to process each new entry with minimal configuration. Which approach should the developer use?",
+        "correct_answer": "Enable DynamoDB Streams on the table and configure the Lambda function with the stream ARN as an event source mapping.",
+        "wrong_answer_1": "Set up an Amazon EventBridge rule to detect DynamoDB table write events and trigger the Lambda function.",
+        "wrong_answer_2": "Configure an SNS topic that the application publishes to after each DynamoDB write, with Lambda subscribed to the topic.",
+        "wrong_answer_3": "Use AWS AppSync with a DynamoDB resolver to trigger the Lambda function on each write.",
+        "correct_explanation": "DynamoDB Streams captures item-level changes in near real-time. When a stream is enabled and configured as a Lambda event source mapping, Lambda automatically polls the stream and invokes the function synchronously with batches of new records. This requires only enabling the stream and creating the event source mapping — no application code changes are needed.",
+        "wrong_explanation_1": "Amazon EventBridge does not natively receive item-level DynamoDB write events. EventBridge can receive DynamoDB table-level events (like table creation) via CloudTrail, but not individual item writes. DynamoDB Streams is the correct mechanism for item-level change detection.",
+        "wrong_explanation_2": "Publishing to SNS after each DynamoDB write requires modifying the application code that writes to DynamoDB to also publish an SNS message. This adds application complexity and creates a two-step process. DynamoDB Streams captures changes automatically without application code changes.",
+        "wrong_explanation_3": "AWS AppSync is a managed GraphQL service. While it can use DynamoDB as a data source, it is not designed to trigger Lambda functions in response to DynamoDB writes. It is an API layer, not an event-driven trigger mechanism.",
+        "service_tags": [
+            "dynamodb",
+            "lambda"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.2",
+        "scenario": "A developer wants to trace requests through a serverless application that uses API Gateway, Lambda, and DynamoDB to identify performance bottlenecks and latency spikes. Which AWS service provides end-to-end distributed tracing for this architecture?",
+        "correct_answer": "AWS X-Ray",
+        "wrong_answer_1": "Amazon CloudWatch Metrics",
+        "wrong_answer_2": "AWS CloudTrail",
+        "wrong_answer_3": "Amazon CloudWatch Logs Insights",
+        "correct_explanation": "AWS X-Ray provides distributed tracing across AWS services. When enabled on API Gateway and Lambda, X-Ray generates trace data showing the full request path including time spent in each service, downstream calls to DynamoDB, and any subsegments created by the application. The X-Ray service map visualizes the architecture and highlights latency bottlenecks.",
+        "wrong_explanation_1": "CloudWatch Metrics provides aggregate performance data (invocation count, duration, error rate) but does not trace individual requests through multiple services. It cannot show the breakdown of time spent in each service for a specific request.",
+        "wrong_explanation_2": "AWS CloudTrail records API calls made to AWS services for auditing and compliance. It captures who called which API and when, but does not provide request-level latency tracing or performance analysis across service boundaries.",
+        "wrong_explanation_3": "CloudWatch Logs Insights queries log data using a SQL-like syntax. While it can analyze Lambda function logs, it requires the application to log timing information explicitly and cannot automatically correlate requests across API Gateway, Lambda, and DynamoDB without custom instrumentation.",
+        "service_tags": [
+            "xray",
+            "lambda",
+            "api-gateway"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.2",
+        "scenario": "A developer is instrumenting a Lambda function with AWS X-Ray. The function makes calls to DynamoDB and an external HTTP API. The developer wants X-Ray to automatically capture these downstream calls as subsegments without writing custom instrumentation code. Which approach enables this?",
+        "correct_answer": "Use the AWS X-Ray SDK to patch the AWS SDK clients and the http/https modules in the Lambda function code.",
+        "wrong_answer_1": "Enable X-Ray active tracing on the Lambda function — X-Ray automatically traces all downstream calls without any code changes.",
+        "wrong_answer_2": "Add the _X_AMZN_TRACE_ID environment variable to the Lambda function configuration.",
+        "wrong_answer_3": "Enable X-Ray on the DynamoDB table to automatically capture calls from Lambda.",
+        "correct_explanation": "The X-Ray SDK provides patching utilities that wrap AWS SDK clients and HTTP modules to automatically create subsegments for downstream calls. In Node.js, AWSXRay.captureAWS(require('aws-sdk')) patches all AWS SDK calls, and AWSXRay.captureHTTPsGlobal patches outbound HTTP calls. This captures DynamoDB and external API calls as subsegments without manual instrumentation.",
+        "wrong_explanation_1": "Enabling X-Ray active tracing on Lambda creates a segment for the Lambda invocation itself and captures the Lambda service overhead, but it does not automatically instrument downstream AWS SDK calls or HTTP requests within the function code. The X-Ray SDK must be used to capture those.",
+        "wrong_explanation_2": "_X_AMZN_TRACE_ID is an environment variable that Lambda sets automatically when X-Ray tracing is enabled. It contains the trace header used to propagate the trace context. It does not instrument downstream calls — that requires the X-Ray SDK.",
+        "wrong_explanation_3": "X-Ray tracing is configured on the calling service (Lambda), not on the target service (DynamoDB). DynamoDB does not have an X-Ray configuration option. The Lambda function's X-Ray SDK captures the DynamoDB call as a subsegment from the Lambda side.",
+        "service_tags": [
+            "xray",
+            "lambda"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.2",
+        "scenario": "A developer is monitoring an API Gateway REST API with Lambda integration. The API is experiencing slow response times. The developer wants to measure the time the Lambda function takes to process requests separately from the total API Gateway response time. Which CloudWatch metric should the developer use?",
+        "correct_answer": "IntegrationLatency measures the time between API Gateway sending a request to the Lambda integration and receiving a response.",
+        "wrong_answer_1": "Latency measures the time between API Gateway sending a request to the Lambda integration and receiving a response.",
+        "wrong_answer_2": "Count measures the total number of API requests, which can be used to calculate average response time.",
+        "wrong_answer_3": "CacheHitCount measures the number of requests served from the API Gateway cache, indicating faster response times.",
+        "correct_explanation": "IntegrationLatency is the API Gateway metric that measures the time between when API Gateway relays a request to the backend integration (Lambda) and when it receives a response. This isolates the Lambda processing time from the total API Gateway overhead. The Latency metric measures the total time from when API Gateway receives a request to when it returns a response to the client, which includes both integration latency and API Gateway processing time.",
+        "wrong_explanation_1": "Latency measures the total end-to-end response time from API Gateway's perspective — from receiving the client request to returning the response. It includes both the integration time and API Gateway's own processing overhead. To isolate Lambda processing time specifically, IntegrationLatency is the correct metric.",
+        "wrong_explanation_2": "Count is the total number of API requests in a given period. It is a volume metric, not a latency metric, and cannot be used to calculate average response time without also knowing the total duration.",
+        "wrong_explanation_3": "CacheHitCount measures the number of requests served from the API Gateway response cache. It is relevant for cache performance analysis, not for measuring Lambda processing latency.",
+        "service_tags": [
+            "api-gateway",
+            "cloudwatch"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.2",
+        "scenario": "A developer needs to configure a CloudWatch alarm that triggers only when all three data points in the most recent three consecutive evaluation periods exceed a threshold. The metric is checked every minute. How should the developer configure the alarm?",
+        "correct_answer": "Set the Evaluation Period to 3 and Datapoints to Alarm to 3.",
+        "wrong_answer_1": "Set the Period to 3 minutes and Datapoints to Alarm to 3.",
+        "wrong_answer_2": "Set the Evaluation Period to 3 and use high-resolution metrics with a 10-second period.",
+        "wrong_answer_3": "Set the Evaluation Period to 1 and Datapoints to Alarm to 3.",
+        "correct_explanation": "Evaluation Period defines how many of the most recent data points to evaluate. Datapoints to Alarm defines how many of those data points must be breaching for the alarm to trigger. Setting both to 3 means all three of the most recent consecutive 1-minute data points must exceed the threshold before the alarm fires. This prevents false alarms from transient spikes.",
+        "wrong_explanation_1": "Period defines the length of time (in seconds) for each individual data point — it is not the number of periods to evaluate. Setting Period to 3 minutes would create one data point every 3 minutes, not evaluate 3 consecutive 1-minute data points. The correct setting is Evaluation Period, not Period.",
+        "wrong_explanation_2": "High-resolution metrics with a 10-second period would create data points every 10 seconds, not every minute. This changes the metric resolution and is not needed to configure the 3-consecutive-period alarm behavior described in the scenario.",
+        "wrong_explanation_3": "Setting Evaluation Period to 1 means only the most recent data point is evaluated. With Datapoints to Alarm set to 3, the alarm would require 3 breaching data points out of 1 evaluated period, which is impossible. The Evaluation Period must be at least equal to Datapoints to Alarm.",
+        "service_tags": [
+            "cloudwatch"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.3",
+        "scenario": "A developer is optimizing a DynamoDB table that is being scanned entirely on every request to find items matching a filter. The table has 10 million items and the scan is slow and consuming excessive read capacity. The filter is always on the same non-key attribute. What is the MOST effective optimization?",
+        "correct_answer": "Create a Global Secondary Index on the frequently filtered attribute so the application can use Query instead of Scan.",
+        "wrong_answer_1": "Reduce the page size of the Scan operation to consume fewer read capacity units per request.",
+        "wrong_answer_2": "Enable DynamoDB auto scaling to increase read capacity during scan operations.",
+        "wrong_answer_3": "Add DynamoDB Accelerator (DAX) as a caching layer to cache scan results.",
+        "correct_explanation": "A GSI on the filtered attribute allows the application to use a Query operation instead of Scan. Query operations are targeted — they read only items matching the key condition, consuming read capacity proportional to the result set rather than the entire table. This is the fundamental architectural fix for replacing inefficient scans with efficient queries.",
+        "wrong_explanation_1": "Reducing page size breaks the scan into smaller requests, which reduces the impact on provisioned throughput per request and allows other operations to proceed. However, the total read capacity consumed across all pages is the same — the entire table is still read. This is a mitigation, not a solution to the underlying inefficiency.",
+        "wrong_explanation_2": "Auto scaling increases read capacity to handle the scan load, but the scan still reads every item in the table. This increases cost proportionally with table size and does not address the fundamental inefficiency of scanning 10 million items to find a small subset.",
+        "wrong_explanation_3": "DAX caches the results of read operations including scans. If the same scan is repeated frequently with the same parameters, DAX can serve subsequent requests from cache. However, the first scan still reads the entire table, and any change to the filter parameters results in a cache miss and another full scan.",
+        "service_tags": [
+            "dynamodb"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.3",
+        "scenario": "A developer is optimizing a Lambda function that processes S3 events. The function initializes a large configuration object by reading from Parameter Store on every invocation, adding 500ms of latency. The configuration rarely changes. What is the MOST effective optimization to reduce this latency?",
+        "correct_answer": "Move the Parameter Store initialization code outside the Lambda handler function into the global scope, so it executes once during the cold start and is reused across warm invocations.",
+        "wrong_answer_1": "Enable Lambda Provisioned Concurrency to eliminate cold starts and reduce initialization latency.",
+        "wrong_answer_2": "Increase the Lambda function's memory to speed up the Parameter Store API call.",
+        "wrong_answer_3": "Cache the configuration in an ElastiCache cluster and have the Lambda function read from ElastiCache instead.",
+        "correct_explanation": "Lambda execution environments are reused across multiple invocations (warm invocations). Code in the global scope (outside the handler) executes only once during the cold start and the result is available to all subsequent warm invocations. Moving the Parameter Store call to the global scope means the 500ms initialization happens only on cold starts, not on every invocation.",
+        "wrong_explanation_1": "Provisioned Concurrency pre-warms execution environments, eliminating cold start latency for those environments. However, if the Parameter Store call is inside the handler, it still executes on every invocation — warm or cold. The optimization must be moving the call to the global scope, not just eliminating cold starts.",
+        "wrong_explanation_2": "Lambda memory allocation increases CPU proportionally, which speeds up compute-bound operations. A Parameter Store API call is network I/O bound — more CPU does not significantly reduce the time spent waiting for the API response.",
+        "wrong_explanation_3": "Adding ElastiCache introduces additional infrastructure, cost, and network latency for a Lambda function that may not be in a VPC. The global scope initialization pattern achieves in-process caching with zero additional infrastructure and is the simpler, more appropriate solution for this use case.",
+        "service_tags": [
+            "lambda",
+            "systems-manager"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.3",
+        "scenario": "A developer is reviewing a Lambda function that processes records from an SQS queue. The function is frequently failing on a specific malformed message, causing it to retry repeatedly and blocking all other messages in the queue. What should the developer configure to prevent this message from blocking the queue?",
+        "correct_answer": "Configure a Dead Letter Queue (DLQ) on the SQS event source mapping with a maxReceiveCount, so that after a set number of failed processing attempts the message is moved to the DLQ automatically.",
+        "wrong_answer_1": "Increase the Lambda function's timeout to give it more time to process the malformed message.",
+        "wrong_answer_2": "Enable SQS FIFO ordering to ensure messages are processed in the correct sequence.",
+        "wrong_answer_3": "Increase the SQS visibility timeout to prevent other consumers from receiving the message while Lambda retries.",
+        "correct_explanation": "A Dead Letter Queue captures messages that fail processing after a configurable number of attempts (maxReceiveCount). Once the message exceeds this threshold, SQS automatically moves it to the DLQ, allowing subsequent valid messages to be processed. The failed message is preserved in the DLQ for investigation and reprocessing.",
+        "wrong_explanation_1": "Increasing the timeout gives the function more time per attempt but does not help with a malformed message that fails due to data issues rather than time constraints. The function will still fail on the same message after the extended timeout, continuing to block the queue.",
+        "wrong_explanation_2": "SQS FIFO queues guarantee ordering and exactly-once processing but do not solve the poison pill problem. A malformed message in a FIFO queue will still block processing of subsequent messages in the same message group until it is resolved.",
+        "wrong_explanation_3": "Increasing the visibility timeout extends the window during which the message is hidden from other consumers while Lambda processes it. It does not move the message out of the queue or prevent it from blocking subsequent messages after the timeout expires and the message becomes visible again.",
+        "service_tags": [
+            "sqs",
+            "lambda"
+        ]
+    },
+    {
+        "exam_code": "DVA-C01",
+        "domain_number": 4,
+        "task_statement_number": "4.3",
+        "scenario": "A developer is building a reporting application on Elastic Beanstalk that queries a DynamoDB table using Scan operations. As the table grows to millions of items, the Scan operations are becoming slower and consuming excessive read capacity. The developer wants to improve performance with minimal cost. Which TWO actions should the developer take? (Select the answer that covers both.)",
+        "correct_answer": "Replace Scan operations with Query operations where possible, and reduce the Scan page size using the Limit parameter to minimize read capacity consumption per request.",
+        "wrong_answer_1": "Add DAX as a caching layer and increase the DynamoDB table's provisioned read capacity.",
+        "wrong_answer_2": "Enable DynamoDB auto scaling and use parallel scans to speed up full-table reads.",
+        "wrong_answer_3": "Switch to DynamoDB on-demand capacity mode and use ProjectionExpression to reduce the data returned per scan.",
+        "correct_explanation": "Using Query instead of Scan is the most impactful optimization — Query reads only items matching the key condition rather than the entire table. Where full scans are unavoidable, reducing the page size with the Limit parameter breaks the scan into smaller requests, reducing the per-request read capacity impact and allowing other operations to proceed between scan pages. Both are low-cost optimizations requiring only code changes.",
+        "wrong_explanation_1": "DAX caches read results and can reduce repeated scan costs, but it adds infrastructure cost and does not address the fundamental inefficiency of scanning millions of items. Increasing provisioned capacity increases cost without improving the scan's efficiency.",
+        "wrong_explanation_2": "Parallel scans divide the table into segments processed simultaneously, which speeds up full-table scans but consumes proportionally more read capacity. This increases cost rather than minimizing it, which contradicts the minimal cost requirement.",
+        "wrong_explanation_3": "On-demand capacity mode eliminates provisioning concerns but does not reduce the read capacity consumed by scans — it just changes how you pay for it. ProjectionExpression reduces the data returned per item but does not reduce the number of items read during the scan, so read capacity consumption is unchanged.",
+        "service_tags": [
+            "dynamodb",
+            "elastic-beanstalk"
+        ]
+    }
+]

@@ -1,6 +1,6 @@
 import { lusitana } from '@/app/ui/fonts'
 import ExamWrapper from '@/app/ui/practice/exam/exam-wrapper'
-import { fetchQuestions } from '@/app/lib/data'
+import { fetchQuestionsByExamSet } from '@/app/lib/data'
 
 export default async function Page({
     searchParams,
@@ -14,7 +14,10 @@ export default async function Page({
     const currentID = Number(params?.id) || 1
     console.log('currentID:', currentID)
 
-    const rawQuestions = await fetchQuestions()
+    const examCode = 'DEA-C01' // NTD: make dynamic (pull from questions table)
+    const setLetter = 'a' // NTD: make dynamic alongside examCode
+    // const examName = `${questions[0].exam_code} - ${questions[0].full_name}`
+    const rawQuestions = await fetchQuestionsByExamSet(examCode, setLetter)
 
     // Temporary state tracking - move into database once Auth is set up and user data persisted
     const questions = rawQuestions.map((question) => {
@@ -27,14 +30,15 @@ export default async function Page({
         }
     })
 
-    const examCode = 'DEA-C01' // NTD: make dynamic (pull from questions table)
-    // const examName = `${questions[0].exam_code} - ${questions[0].full_name}`
-
     return (
-        <div className="w-full">
+        <div className="w-full px-2 md:px-10">
             <h1 className={`${lusitana.className} text-3xl`}>{examCode}</h1>
 
-            <ExamWrapper examCode={examCode} questions={questions} currentID={currentID} />
+            <ExamWrapper
+                examCode={examCode}
+                questions={questions}
+                currentID={currentID}
+            />
         </div>
     )
 }

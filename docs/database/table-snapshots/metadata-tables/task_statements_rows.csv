@@ -1,0 +1,189 @@
+id,domain_id,number,name
+02bdacae-f7ce-4339-a0cb-47ca6d8cd4d5,a5575ed3-a5a4-4218-91ec-7540b30dd903,2.3,Manage the lifecycle of data
+04ada9f4-fdba-4946-a12d-d916f2c1fdae,7f7016d9-c635-40b5-bd9b-0c1ce9c1d0db,2.1,Design scalable and loosely coupled architectures
+088afd74-a264-4126-a318-9cc46a249dd1,85c322e7-d14b-4bf8-80c6-3a281f4de0db,4.1,Design cost-optimized storage solutions
+08b64d9a-6a62-4f4d-84e1-a8138166601b,90e37868-c663-4101-800f-410a9e3f899c,1.2,Transform data and perform feature engineering
+08ff21d9-7d41-42e7-9b54-98ba37bec1be,90e37868-c663-4101-800f-410a9e3f899c,1.3,Ensure data integrity and prepare data for modeling
+09801066-2a49-4238-9e6a-6757e1ac4e64,e582013f-1038-4bb3-a18a-d158ad2cc244,1.2,Develop code for AWS Lambda
+09fa0149-f3e1-4a90-af16-c3931ac128e9,6498cdc9-13c5-47de-a1e7-eaaaac05b883,4.2,Recognize the importance of transparent and explainable models
+0bc0cc76-9109-42c2-a0ce-2e5b1c31cd72,f062244e-d126-46b1-93af-a01db4b52cd3,3.2,Monitor and analyze network traffic to troubleshoot and optimize connectivity patterns
+0c23fbaf-6fbf-46dc-b6e4-01717062a10e,a5575ed3-a5a4-4218-91ec-7540b30dd903,2.4,Design data models and schema evolution
+143b8da8-f5d7-43ae-a0d4-5a45dda0c602,4a1ab79f-5ae1-4bbd-a67b-72ba67d03236,6.3,Evaluate the compliance of AWS resources
+15645975-c2d7-4fd6-b1ef-64e2d82decdf,04c1d49b-af7d-4d7e-b3c1-de2ec2a2715c,2.3,Describe AWS infrastructure and technologies for building generative AI applications
+16b9d9cc-e948-49fa-a497-6b37ca5f8043,93cf9b98-cb58-442d-8783-7f8125d5d775,2.2,Implement encryption by using AWS services
+184f2fa8-b244-4105-a743-5a0fb92e9b90,fe91081e-30a3-488f-ad04-1b07395e00a1,3.1,Determine a strategy to improve overall operational excellence
+19b3f12f-022e-47c6-ba60-1c4fd80f43ce,c54ac289-b927-4596-81eb-73cbc5672ba0,3.2,Test applications in development environments
+1a256526-048a-4b88-bd76-566a843469e2,019ba31d-1adb-4203-a201-890503ef440f,1.1,"Implement metrics, alarms, and filters by using AWS monitoring and logging services"
+1beec2db-4409-43ce-8f12-6d062a8d1728,9ea6125a-4d31-4c5e-98d8-e79582277431,4.2,"Audit, monitor, and analyze logs and metrics to detect issues"
+1dd3c218-eb59-48e0-9f20-8617c12cfb4d,9ea6125a-4d31-4c5e-98d8-e79582277431,4.1,"Configure the collection, aggregation, and storage of logs and metrics"
+1e3b8aa3-131a-4557-bd21-1b934e6008b0,7be36c60-303f-413f-ac43-26d0f17de86e,3.3,Determine high-performing database solutions
+21313721-0acc-4e7d-95bb-2c40e60cd464,b2bffab2-e825-49f3-abd3-8004814aeb73,4.3,Determine a new architecture for existing workloads
+22cee2f9-5d43-4110-808a-ce90fe4d1a80,c19b3a38-09aa-41b1-88ee-65def0ccb8d4,3.4,Implement responsible AI principles
+2469d360-3de2-48ff-a26e-0ecc5a5fc9ca,1b3e6052-74a4-4181-8e98-ca6b7ca727ff,2.2,"Implement routing and connectivity across multiple AWS accounts, Regions, and VPCs to support different connectivity patterns"
+25598c94-4b89-4d80-98b7-1bcc91d7ee88,08ef4e26-c8b1-4e0e-8bcf-f8c064da225e,3.3,Describe the training and fine-tuning process for foundation models
+25af395a-a3f8-418f-bdb7-c1b7f17b0803,8aa8ea67-43f7-489d-90eb-a745904087ac,1.3,Describe the ML development lifecycle
+2700ed0d-610c-495d-9f5a-cdea8f80be69,4a1ab79f-5ae1-4bbd-a67b-72ba67d03236,6.1,Develop a strategy to centrally deploy and manage AWS accounts
+273bb383-a3f1-4440-8bb1-9e78dd36a126,66ca14dc-5b79-4fd3-a3a9-5a1b224185c0,5.2,Recognize governance and compliance regulations for AI systems
+2a1e725a-cff5-4d31-a9cd-0e5cf67d54f0,96ed615c-d204-40c7-bfd1-7b6edf0fbc92,2.3,Determine security controls based on requirements
+2c555337-0e3e-4d60-b11d-7856bdc58956,a1cb0765-5950-4c37-a38e-ffc76d1b94e5,2.1,Implement agentic AI solutions and tool integrations
+2e2e04ea-6cd4-4dcf-9baf-1ecdf14239bf,3128007e-fb9c-446e-9756-e5146a21d131,1.3,"Design solutions that integrate load balancing to meet high availability, scalability, and security requirements"
+2f2abe48-a4ca-4cdc-b366-dc52e922beb1,e1d20877-d725-4cf1-a45d-2284a4b7fa8d,6.3,Implement security monitoring and auditing solutions
+3109f985-3112-4b10-a184-9c6743e90459,2b0fff1e-8b6f-4f8a-9890-99d1714ccc32,5.1,Implement and optimize networking features and connectivity
+3113352e-397c-416f-ae81-4ec4dbd6820f,98dc7eee-7191-4602-a882-3ed4ff179437,2.2,Implement highly available and resilient environments
+323bbd8d-c8ef-468d-9113-cd29a7e3946e,353aec84-ac81-4cbe-9725-5ed4aadb83c6,1.1,Analyze requirements and design GenAI solutions
+32f6d41c-bdda-4275-a7ef-9b34fcf08a28,353aec84-ac81-4cbe-9725-5ed4aadb83c6,1.3,Implement data validation and processing pipelines for FM consumption
+34bde8fc-180a-4a88-9619-3394d3b260b0,16b74b94-8a5d-4b10-bee9-f4f88cbf9704,5.1,Implement evaluation systems for GenAI
+390e7997-042c-472c-a693-66ed8b0495ff,675af201-4480-4a80-b863-a0c37f08eb31,4.1,"Design, implement, and troubleshoot authentication strategies"
+3927c898-ae6a-4319-af81-552cbcc4d39f,5ff337fb-139d-40e3-8ba2-d3d274620f1e,4.3,Secure AWS resources
+39d8a9ea-5700-45ef-8480-230837f45446,455ce9de-ccd9-4ffb-a8c9-0e231c7d4ad2,4.3,Ensure data encryption and masking
+3b4141d5-0d21-423c-ba3c-2e162c9c14f3,ab98ffa5-9d62-4d9e-81bb-46aba097ae03,1.2,Design secure workloads and applications
+3e315ba5-352c-4416-a201-8ef9930f4341,a5575ed3-a5a4-4218-91ec-7540b30dd903,2.1,Choose a data store
+3f7073ed-ba43-41e6-bc5e-4dfe7d89496b,04c1d49b-af7d-4d7e-b3c1-de2ec2a2715c,2.1,Explain the basic concepts of generative AI
+3ffbf98b-a6f5-4447-b2dc-172aebdba336,fe91081e-30a3-488f-ad04-1b07395e00a1,3.2,Determine a strategy to improve security
+402593be-d55c-4cb6-82d7-a293f5a4d206,998d6aad-c0c2-44fc-9500-adb561dadb3d,1.4,Apply programming concepts
+40f009d2-8a57-45f0-af18-4b2ce5f0e08c,dc19a309-fd04-45d1-90a5-661ec0b769e5,3.1,Provision and maintain cloud resources
+41a48a14-4af6-4c85-8c4d-b70cbf4e6a14,85c322e7-d14b-4bf8-80c6-3a281f4de0db,4.4,Design cost-optimized network architectures
+4201aad1-8cd3-47c7-9750-d6fad4bb5601,9165621e-385c-4219-8751-9fbfb35e235c,4.1,Compare and contrast the various pricing models for AWS
+42afbeb9-746d-4f19-a7e9-cb49ea7c2ecb,3128007e-fb9c-446e-9756-e5146a21d131,1.5,Design a routing strategy and connectivity architecture between on-premises networks and the AWS Cloud
+46b02aa1-98b7-4bd2-880d-581f0fab840c,bbf1b2f9-8a17-4fb8-80ad-9e47b72d98e3,4.1,Assist in a root cause analysis
+48877edb-2d6c-4792-acab-ed766f7258a7,998d6aad-c0c2-44fc-9500-adb561dadb3d,1.3,Orchestrate data pipelines
+4967dd62-b27d-434f-b815-4b673801bf8e,e582013f-1038-4bb3-a18a-d158ad2cc244,1.1,Develop code for applications hosted on AWS
+4be7fa28-0532-4572-b63c-d80588397d08,98dc7eee-7191-4602-a882-3ed4ff179437,2.3,Implement backup and restore strategies
+4d70b201-0b6e-4c99-ba2c-b1e9584a7228,4a1ab79f-5ae1-4bbd-a67b-72ba67d03236,6.2,Implement a secure and consistent deployment strategy for cloud resources
+512d135f-6469-4741-adc5-a12c59b86085,b2bffab2-e825-49f3-abd3-8004814aeb73,4.2,Determine the optimal migration approach for existing workloads
+52a349d0-d00d-4700-beeb-d0bdf4339c7f,b2693d10-e227-4385-bf90-07dbfdbc011c,2.3,Identify AWS access management capabilities
+535e1358-f2c8-4eb0-93f4-967195c36858,fe91081e-30a3-488f-ad04-1b07395e00a1,3.5,Identify opportunities for cost optimizations
+55dfa646-3519-47ed-b639-6f4cb4baed87,3128007e-fb9c-446e-9756-e5146a21d131,1.6,"Design a routing strategy and connectivity architecture that include multiple AWS accounts, AWS Regions, and VPCs to support different connectivity patterns"
+56079a88-cd05-4205-b2a3-f2c4d154135d,575753ae-7a39-491d-ad4c-1cd96182d069,5.1,Design and implement controls for data in transit
+56399e01-fd71-4cb5-9e7e-c525dd5ba9b9,998d6aad-c0c2-44fc-9500-adb561dadb3d,1.2,Transform and process data
+5cd33856-f0de-45cb-81bc-6dc557db96fa,96ed615c-d204-40c7-bfd1-7b6edf0fbc92,2.5,Design a solution to meet performance objectives
+5df4dbb9-52dc-4f93-8cd4-174c169c3d75,1b6a15d6-aeb2-4477-a943-e827b5db5092,3.2,Analyze data by using AWS services
+5ecc7722-e9c7-4a60-96ea-04c7a12e79de,a07f68ce-8c2f-4487-b21a-5b190f2375f1,1.3,"Troubleshoot security monitoring, logging, and alerting solutions"
+5f07e006-653f-4b5f-bf68-c52c8ec41e6c,9ea6125a-4d31-4c5e-98d8-e79582277431,4.3,Automate monitoring and event management of complex environments
+5f740073-e4f8-46d1-9d64-fbdfd080364b,96ed615c-d204-40c7-bfd1-7b6edf0fbc92,2.4,Design a strategy to meet reliability requirements
+5fb1132d-68a4-4f54-99de-0bec982491fb,0c5b91c4-0618-4dc6-8f7d-51e136e433e9,1.4,"Implement deployment strategies for instance, container, and serverless environments"
+5fdfe0ae-4614-4726-ba66-04883454688f,353aec84-ac81-4cbe-9725-5ed4aadb83c6,1.2,Select and configure foundation models
+62973afd-f15a-4b54-bb44-a7a994c8a504,353aec84-ac81-4cbe-9725-5ed4aadb83c6,1.4,Design and implement vector store solutions
+63339211-3036-49ff-b557-8689ad83ba10,ab98ffa5-9d62-4d9e-81bb-46aba097ae03,1.1,Design secure access to AWS resources
+6527de0b-be84-462b-8c85-a8669f1cb107,0475e229-7623-4cc3-8311-72e4c03317aa,1.2,Identify aspects of AWS Cloud economics
+658d790d-d14f-4f1f-9dd6-bff746471e7d,bbf1b2f9-8a17-4fb8-80ad-9e47b72d98e3,4.2,Instrument code for observability
+65cc4462-bc0f-4d90-a119-6ee7bbd9435d,c11c4bae-37fd-4661-8e04-6ea82ac57f86,4.2,Implement strategies to protect data and infrastructure
+660b8b95-587d-4a78-8f81-329a39e74e38,5ebc6dcd-7bec-4d01-abbe-47858318dcf6,5.3,Troubleshoot system and application failures
+6685fe22-2d93-4f8f-8441-0ada37597ac3,1b6a15d6-aeb2-4477-a943-e827b5db5092,3.4,Ensure data quality
+675956ac-0bca-46cc-9c99-b8a74999db4c,02d47f1b-cab1-4a22-bba6-9199f469241e,3.2,"Design, implement, and troubleshoot security controls for compute workloads"
+6a9b1874-55a7-47a1-bb33-1cf67f01e978,85c322e7-d14b-4bf8-80c6-3a281f4de0db,4.3,Design cost-optimized database solutions
+6c03c84e-4581-4fd2-bc92-974d200d81a7,2b0fff1e-8b6f-4f8a-9890-99d1714ccc32,5.2,"Configure domains, DNS services, and content delivery"
+6defc2dc-f0d3-4052-b624-c524884cf481,c54ac289-b927-4596-81eb-73cbc5672ba0,3.1,Prepare application artifacts to be deployed to AWS
+6e0f3bbe-1278-4816-9433-6a8cb5273b3b,193ca3b8-65f5-4fef-93cc-02131b5c92fb,2.2,Respond to security events
+6fafeaa6-a3ac-4c59-9ff0-02eac6f2e8b2,a77e63de-6c74-44f4-b464-167b393b3802,2.3,Analyze model performance
+70307010-ffdb-46df-ad4b-6ec31d5af659,0475e229-7623-4cc3-8311-72e4c03317aa,1.3,List the different cloud architecture design principles
+710b5a0e-da4a-4610-8263-bd7fe66412f6,b2693d10-e227-4385-bf90-07dbfdbc011c,2.2,Define AWS Cloud security and compliance concepts
+7188aa13-f1cc-4018-9d2a-d831d7a7869b,04c1d49b-af7d-4d7e-b3c1-de2ec2a2715c,2.2,Understand the capabilities and limitations of generative AI for solving business problems
+718a49f1-4820-437f-b4b4-2cd66a5348a6,9165621e-385c-4219-8751-9fbfb35e235c,4.2,Recognize the various account structures in relation to AWS billing and pricing
+728af047-240e-44ac-b703-92b3b916f8e0,3128007e-fb9c-446e-9756-e5146a21d131,1.4,Define logging and monitoring requirements across AWS and hybrid networks
+72bed0d1-84fb-45ac-b439-48c403ac54ee,3128007e-fb9c-446e-9756-e5146a21d131,1.2,"Design DNS solutions that meet public, private, and hybrid requirements"
+776d9b6e-b516-4fc5-abe3-5a5288cb1757,353aec84-ac81-4cbe-9725-5ed4aadb83c6,1.6,Implement prompt engineering strategies and governance for FM interactions
+776e2564-25e8-4caf-a04f-cf5b6438fc57,47fa916e-fb17-407a-8d41-56d7a2cf4770,4.3,Implement and maintain confidentiality of data and communications of the network
+77aac6fc-22f9-4ce0-868a-926a4d3b44de,a14f201e-71a9-4fda-8252-0f931b981409,3.1,Define methods of deploying and operating in the AWS Cloud
+780ba3a7-8ab1-46fe-a5d5-1ac65a06969e,47fa916e-fb17-407a-8d41-56d7a2cf4770,4.1,Implement and maintain network features to meet security and compliance needs and requirements
+7a23b8fa-7665-4aba-928c-c8ef4bf203c3,7be36c60-303f-413f-ac43-26d0f17de86e,3.4,Determine high-performing and/or scalable network architectures
+7a810d61-39bc-4cf1-91d0-abed6cd91609,998d6aad-c0c2-44fc-9500-adb561dadb3d,1.1,Perform data ingestion
+7c9629ad-69b4-464b-9933-e7fcd1172de4,7be36c60-303f-413f-ac43-26d0f17de86e,3.2,Design high-performing and elastic compute solutions
+7cca40b4-1cd5-47fc-a6e1-0c42d0da25c4,1799de29-2650-4a50-afd1-98704dff5000,1.3,Design reliable and resilient architectures
+7d3a8b7b-1189-4955-9f8d-c2052423cc79,0475e229-7623-4cc3-8311-72e4c03317aa,1.1,Define the AWS Cloud and its value proposition
+7d60a47b-7caa-42f8-81b6-5d1976f903aa,b2bffab2-e825-49f3-abd3-8004814aeb73,4.4,Determine opportunities for modernization and enhancements
+7fc0a15f-b550-4820-858d-8b677bea79fc,38a75461-6ee5-45c7-8562-f6fbb5b4a24d,3.1,Implement highly available solutions to meet resilience and business requirements
+800e6afc-9dc9-4924-9791-498d3a6af00e,7be36c60-303f-413f-ac43-26d0f17de86e,3.5,Determine high-performing data ingestion and transformation solutions
+8087403f-04a7-48af-8645-9ca65adb33d4,da4b76bd-8dd3-4275-b146-48efb05b1f41,2.2,"Deploy automation to create, onboard, and secure AWS accounts in a multi-account or multi-Region environment"
+8321ec9a-a61e-4519-adc6-1817ebf08ab7,675af201-4480-4a80-b863-a0c37f08eb31,4.2,"Design, implement, and troubleshoot authorization strategies"
+873fc00d-f0ad-4fc5-834e-de912503467a,a14f201e-71a9-4fda-8252-0f931b981409,3.3,Identify the core AWS services
+88e5f559-d1ee-4a89-bc92-a91846c419a2,3128007e-fb9c-446e-9756-e5146a21d131,1.1,Design a solution that incorporates edge network services to optimize user performance and traffic management for global architectures
+88f043db-70fa-41c1-9108-0e9b7ea3b95f,8aa8ea67-43f7-489d-90eb-a745904087ac,1.1,Explain basic AI concepts and terminologies
+8ceb364d-4f3b-4914-a480-58357945f6b2,575753ae-7a39-491d-ad4c-1cd96182d069,5.2,Design and implement controls for data at rest
+8cf47cc5-184e-4149-85bf-0ad88948613f,16b74b94-8a5d-4b10-bee9-f4f88cbf9704,5.2,Troubleshoot GenAI applications
+8e648ecf-3382-44a1-9d1f-a9b0e13ead7b,7be36c60-303f-413f-ac43-26d0f17de86e,3.1,Determine high-performing and/or scalable storage solutions
+90c66426-6376-4d8c-9a5c-c57107168c2b,5ebc6dcd-7bec-4d01-abbe-47858318dcf6,5.1,"Manage event sources to process, notify, and take action in response to events"
+90e96d5c-80c6-40e2-977d-acf7e73fdcf2,1b3e6052-74a4-4181-8e98-ca6b7ca727ff,2.4,Automate and configure network infrastructure
+92555a53-7219-4c9f-add5-7f67c84f4aee,9165621e-385c-4219-8751-9fbfb35e235c,4.3,Identify resources available for billing support
+932fc9a3-d588-4aa1-996d-320222109bab,8aa8ea67-43f7-489d-90eb-a745904087ac,1.2,Identify practical use cases for AI
+94091917-271d-44a1-a640-881451493c9b,b2bffab2-e825-49f3-abd3-8004814aeb73,4.1,Select existing workloads and processes for potential migration
+963d8e1b-4c20-4862-aec6-cfdb6d597bef,6649703c-8261-4343-9b1d-63d52b2de76c,3.1,Select deployment infrastructure based on existing architecture and requirements
+98056cd5-f589-4968-b980-d231bfbf5b29,d1fd51cb-4c75-48fc-8b76-aedcb80c1f4f,4.2,Optimize application performance
+994db49e-9953-48ea-af0c-fe9b8da1cbc9,193ca3b8-65f5-4fef-93cc-02131b5c92fb,2.1,Design and test an incident response plan
+9b25285d-85db-4ef2-8964-e000190c6da9,1b3e6052-74a4-4181-8e98-ca6b7ca727ff,2.1,Implement routing and connectivity between on-premises networks and the AWS Cloud
+9be34ba9-152d-4963-b459-f59ebcb7ff18,019ba31d-1adb-4203-a201-890503ef440f,1.2,Identify and remediate issues by using monitoring and availability metrics
+9c025526-21da-40bd-a656-2eeba5073e66,38a75461-6ee5-45c7-8562-f6fbb5b4a24d,3.3,Implement automated recovery processes to meet RTO and RPO requirements
+9cd2b729-9e2c-4c3a-8163-f9a7025d9834,019ba31d-1adb-4203-a201-890503ef440f,1.3,"Implement performance optimization strategies for compute, storage, and database resources"
+a0bbd287-f854-47c5-a555-d5f9992af114,a77e63de-6c74-44f4-b464-167b393b3802,2.2,Train and refine models
+a145852c-c8b0-4616-9fc2-1c89f5332715,93cf9b98-cb58-442d-8783-7f8125d5d775,2.1,Implement authentication and/or authorization for applications and AWS services
+a31dc302-9a0f-4f37-821c-a5767e134b5d,f062244e-d126-46b1-93af-a01db4b52cd3,3.1,Maintain routing and connectivity on AWS and hybrid networks
+a49a5d13-b59c-4d19-a33b-b6fcb4a1f9e6,c11c4bae-37fd-4661-8e04-6ea82ac57f86,4.1,Implement and manage security and compliance tools and policies
+a6f2012b-10bb-49bc-887c-2727c140c633,a14f201e-71a9-4fda-8252-0f931b981409,3.4,Identify resources for technology support
+aba568b8-f372-4bff-aa8c-043d6ce94926,6498cdc9-13c5-47de-a1e7-eaaaac05b883,4.1,Explain the development of AI systems that are responsible
+ac78122a-afcf-4c89-bd83-7eef56041909,0c5b91c4-0618-4dc6-8f7d-51e136e433e9,1.3,Build and manage artifacts
+ad7ad50b-3187-45dd-91d9-5b21fb9a3b4e,90e37868-c663-4101-800f-410a9e3f899c,1.1,Ingest and store data
+ae0882c0-7772-4151-b5ad-015fd7db4fc3,d1fd51cb-4c75-48fc-8b76-aedcb80c1f4f,4.3,Implement monitoring systems for GenAI applications
+b0434787-fe64-4b03-b19c-5f0680a7bad0,e582013f-1038-4bb3-a18a-d158ad2cc244,1.3,Use data stores in application development
+b2bc19f8-6014-42d6-8a70-89b243537202,08ef4e26-c8b1-4e0e-8bcf-f8c064da225e,3.2,Choose effective prompt engineering techniques
+b3843601-5f87-4124-958f-b216eef3ddc2,1b6a15d6-aeb2-4477-a943-e827b5db5092,3.1,Automate data processing by using AWS services
+b4d5240d-42d7-4992-abeb-89f8545ee09c,c54ac289-b927-4596-81eb-73cbc5672ba0,3.3,Automate deployment testing
+b61c94f7-c44a-4451-a310-7d32f76dc304,575753ae-7a39-491d-ad4c-1cd96182d069,5.3,"Design and implement controls to protect confidential data, credentials, secrets, and cryptographic key materials"
+bc55c6b1-dbb2-4369-862f-aa5f9d9358c4,1799de29-2650-4a50-afd1-98704dff5000,1.2,Prescribe security controls
+bd0a78eb-252e-4705-8bde-30676f808700,47fa916e-fb17-407a-8d41-56d7a2cf4770,4.2,Validate and audit security by using network monitoring and logging services
+bf3e02bf-6819-4f7b-b8dc-c523f7a3c938,1b6a15d6-aeb2-4477-a943-e827b5db5092,3.3,Maintain and monitor data pipelines
+c0262b7c-9c3a-4347-8bb1-2a290c624800,b2693d10-e227-4385-bf90-07dbfdbc011c,2.4,Identify resources for security support
+c44108fe-55a5-4529-ad65-79eab7ac66aa,96ed615c-d204-40c7-bfd1-7b6edf0fbc92,2.1,Design a deployment strategy to meet business requirements
+c5e8225d-dac7-4b5c-9f89-9d5de467a920,5ebc6dcd-7bec-4d01-abbe-47858318dcf6,5.2,Implement configuration changes in response to events
+c676f79c-c323-4668-9267-4593f68cedec,e1d20877-d725-4cf1-a45d-2284a4b7fa8d,6.2,Apply automation for security controls and data protection
+c71937f9-ea87-41b4-bd3e-8cf994b85872,d1fd51cb-4c75-48fc-8b76-aedcb80c1f4f,4.1,Implement cost optimization and resource efficiency strategies
+c74f7926-d00c-4cd1-b7a4-15b8c0ad0e29,08ef4e26-c8b1-4e0e-8bcf-f8c064da225e,3.4,Describe methods to evaluate foundation model performance
+c781d16e-3ebe-4bec-8608-759e7389e402,a77e63de-6c74-44f4-b464-167b393b3802,2.1,Choose a modeling approach
+c8b01801-cb82-414d-8764-81756a9dbf67,96ed615c-d204-40c7-bfd1-7b6edf0fbc92,2.6,Determine a cost optimization strategy to meet solution goals and objectives
+ca38ff23-9f88-4dcc-8bfa-ca9b943751ab,e1d20877-d725-4cf1-a45d-2284a4b7fa8d,6.1,Implement techniques for identity and access management at scale
+cb98e414-7e62-4117-8791-6b31e2516bc7,02d47f1b-cab1-4a22-bba6-9199f469241e,3.3,Design and troubleshoot network security controls
+ccebc239-74d6-4e24-99ee-18b557fe69a4,bbf1b2f9-8a17-4fb8-80ad-9e47b72d98e3,4.3,Optimize applications by using AWS services and features
+cd72fda9-0a0b-40ca-b76b-594e66b38b98,353aec84-ac81-4cbe-9725-5ed4aadb83c6,1.5,Design retrieval mechanisms for FM augmentation
+ce0a97b3-7822-4e45-b0f3-9f644768d5df,66ca14dc-5b79-4fd3-a3a9-5a1b224185c0,5.1,Explain methods to secure AI systems
+ce0f59a6-c387-4779-9a51-10d74cce2754,b2693d10-e227-4385-bf90-07dbfdbc011c,2.1,Define the AWS shared responsibility model
+ce430daf-570f-43e7-8d50-37109ceb66e8,6649703c-8261-4343-9b1d-63d52b2de76c,3.2,Create and script infrastructure based on existing architecture and requirements
+cea06c63-9a1f-4c46-a265-98161514682b,a1cb0765-5950-4c37-a38e-ffc76d1b94e5,2.4,Implement FM API integrations
+d5138afd-4153-4ada-951a-cf6fce593546,1b3e6052-74a4-4181-8e98-ca6b7ca727ff,2.3,Implement complex hybrid and multi-account DNS architectures
+d5598a65-fc58-48e7-9122-52fe8c9704bf,a1cb0765-5950-4c37-a38e-ffc76d1b94e5,2.3,Design and implement enterprise integration architectures
+d8251159-c554-4287-bcfe-9662c56e58d0,fe91081e-30a3-488f-ad04-1b07395e00a1,3.3,Determine a strategy to improve performance
+d84ea66b-7ff9-4749-86a3-de406945bd72,1799de29-2650-4a50-afd1-98704dff5000,1.4,Design a multi-account AWS environment
+d897c5da-2715-4ec8-8493-6ff174f58dc0,5ff337fb-139d-40e3-8ba2-d3d274620f1e,4.1,Monitor model inference
+da5788fc-8a1f-4c8c-9260-b4216eb87a87,2b0fff1e-8b6f-4f8a-9890-99d1714ccc32,5.3,Troubleshoot network connectivity issues
+dbf6f1b3-2bc3-4c35-927b-072db3c30525,a1cb0765-5950-4c37-a38e-ffc76d1b94e5,2.5,Implement application integration patterns and development tools
+dcea8259-69d7-4032-bd30-8d3a13c82102,ab98ffa5-9d62-4d9e-81bb-46aba097ae03,1.3,Determine appropriate data security controls
+dddab175-224f-44e7-9755-731d972a6752,c19b3a38-09aa-41b1-88ee-65def0ccb8d4,3.2,Implement data security and privacy controls
+e102adce-ff23-4a7f-90b8-af064c55db33,5ff337fb-139d-40e3-8ba2-d3d274620f1e,4.2,Monitor and optimize infrastructure and costs
+e1643e87-06a4-411a-97c9-5de041534fde,7f7016d9-c635-40b5-bd9b-0c1ce9c1d0db,2.2,Design highly available and/or fault-tolerant architectures
+e1b7bd1d-b9d5-4e76-a798-2ec80713fd10,93cf9b98-cb58-442d-8783-7f8125d5d775,2.3,Manage sensitive data in application code
+e1cb7c28-57b6-4e5b-b384-86f233bbe920,02d47f1b-cab1-4a22-bba6-9199f469241e,3.1,"Design, implement, and troubleshoot security controls for network edge services"
+e2f30e9c-f48c-4b17-b68f-f0715413c1e4,da4b76bd-8dd3-4275-b146-48efb05b1f41,2.3,Design and build automated solutions for complex tasks and large-scale environments
+e31b0d71-18cf-45de-b7e2-560fa56adc79,a5575ed3-a5a4-4218-91ec-7540b30dd903,2.2,Understand data cataloging systems
+e4316a40-2245-44b3-b95d-0fd1be87d9b7,455ce9de-ccd9-4ffb-a8c9-0e231c7d4ad2,4.1,Apply authentication mechanisms
+e4562535-d3a2-4f4d-9d66-ecca5d624463,c54ac289-b927-4596-81eb-73cbc5672ba0,3.4,Deploy code by using AWS Continuous Integration and Continuous Delivery services
+e49c5d93-9b52-407a-8e7d-26fdff6f00d2,455ce9de-ccd9-4ffb-a8c9-0e231c7d4ad2,4.5,Understand data privacy and governance
+e6e23afb-b358-4f55-adcb-1f45ed98e626,da4b76bd-8dd3-4275-b146-48efb05b1f41,2.1,Define cloud infrastructure and reusable components to provision and manage systems throughout their lifecycle
+e81086b9-e411-49da-94ba-07cd78bfa6ff,c19b3a38-09aa-41b1-88ee-65def0ccb8d4,3.3,Implement AI governance and compliance mechanisms
+ebea2b7d-8964-4610-96c7-52f9b08bf40b,0c5b91c4-0618-4dc6-8f7d-51e136e433e9,1.1,Implement CI/CD pipelines
+ed974cc3-397d-4685-bc60-2174b046a637,6649703c-8261-4343-9b1d-63d52b2de76c,3.3,Use automated orchestration tools to set up continuous integration and continuous delivery pipelines
+ef5da4b3-abce-42a0-bc97-cf0d6a9c9385,fe91081e-30a3-488f-ad04-1b07395e00a1,3.4,Determine a strategy to improve reliability
+f00b7963-1e11-4abb-9f7a-2941cb5e98a0,1799de29-2650-4a50-afd1-98704dff5000,1.5,Determine cost optimization and visibility strategies
+f04c0945-f2b9-4376-abcc-cde74edc06e6,a14f201e-71a9-4fda-8252-0f931b981409,3.2,Define the AWS global infrastructure
+f1560b4b-0c79-4b02-b886-1351973a9caf,38a75461-6ee5-45c7-8562-f6fbb5b4a24d,3.2,Implement solutions that are scalable to meet business requirements
+f47b9153-e42e-4bca-a091-f2bf082d8f29,1799de29-2650-4a50-afd1-98704dff5000,1.1,Architect network connectivity strategies
+f5c7ddae-3577-44ed-876f-cc82837a1b44,dc19a309-fd04-45d1-90a5-661ec0b769e5,3.2,Automate the management of existing resources
+f5dd8a30-d584-4bf5-a128-fbeffb4b8886,455ce9de-ccd9-4ffb-a8c9-0e231c7d4ad2,4.2,Apply authorization mechanisms
+f7ec9490-e565-4184-91b3-b7425f15d2ed,85c322e7-d14b-4bf8-80c6-3a281f4de0db,4.2,Design cost-optimized compute solutions
+f87f883b-12e6-4970-acdc-4b97b52b2f03,455ce9de-ccd9-4ffb-a8c9-0e231c7d4ad2,4.4,Prepare logs for audit
+f8e045ad-ff8b-4347-9e70-672e6704a5eb,08ef4e26-c8b1-4e0e-8bcf-f8c064da225e,3.1,Describe design considerations for applications that use foundation models
+f95b40b4-81c6-4dae-ac64-1c12f3f7661b,0c5b91c4-0618-4dc6-8f7d-51e136e433e9,1.2,Integrate automated testing into CI/CD pipelines
+fc9abff5-2c40-4313-b8d7-5f20808c8bee,c19b3a38-09aa-41b1-88ee-65def0ccb8d4,3.1,Implement input and output safety controls
+fd18e85b-2751-493e-b56e-447720ec5188,a07f68ce-8c2f-4487-b21a-5b190f2375f1,1.1,Design and implement monitoring and alerting solutions for an AWS account or organization
+fdc9f4e2-db45-414e-8872-b106494b07a1,a07f68ce-8c2f-4487-b21a-5b190f2375f1,1.2,Design and implement logging solutions
+fdd37254-90ac-4133-be11-391b4e7e7d15,98dc7eee-7191-4602-a882-3ed4ff179437,2.1,Implement scalability and elasticity
+feb1a10d-8b5d-480d-b8dd-eb9fcb14225f,a1cb0765-5950-4c37-a38e-ffc76d1b94e5,2.2,Implement model deployment strategies
+fedf5f15-dfd9-4dc0-8b86-965fd0476be9,f062244e-d126-46b1-93af-a01db4b52cd3,3.3,"Optimize AWS networks for performance, reliability, and cost-effectiveness"
+ff7cecbe-8f2c-40e9-858a-1b8b10f7d911,96ed615c-d204-40c7-bfd1-7b6edf0fbc92,2.2,Design a solution to ensure business continuity

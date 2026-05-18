@@ -1,0 +1,1076 @@
+[
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "A startup wants to launch a new SaaS product but cannot accurately predict how many customers will sign up in the first six months. The team wants to avoid purchasing servers that may sit idle if demand is low, but they also need the option to scale rapidly if demand surges. Which AWS Cloud value proposition addresses this concern most directly?",
+        "correct_answer": "Trade capital expense for variable expense",
+        "wrong_answer_1": "Stop spending money running and maintaining data centers",
+        "wrong_answer_2": "Benefit from massive economies of scale",
+        "wrong_answer_3": "Increase speed and agility",
+        "correct_explanation": "The ability to trade capital expense for variable expense is the cloud value proposition that lets a business pay only for what it consumes, rather than committing capital up front for hardware that may be over- or under-utilized. The startup pays in proportion to actual customer demand.",
+        "wrong_explanation_1": "Stopping data center spend is a real cloud benefit, but it primarily addresses operational overhead and physical infrastructure costs — not the specific risk of buying compute capacity for uncertain demand.",
+        "wrong_explanation_2": "Economies of scale describe how AWS achieves lower per-unit pricing because of its scale, allowing customers to benefit from lower pay-as-you-go prices. It does not directly address right-sizing for unknown demand.",
+        "wrong_explanation_3": "Speed and agility describe how quickly resources can be provisioned. It is a related benefit but does not specifically address the cost risk of provisioning capacity before demand is known.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "An IT director is evaluating which AWS Region to deploy a new workload to. The application will serve European Union citizens, and the company must comply with regulations that require personal data to remain inside the EU. Which factor should be the PRIMARY driver in the Region selection?",
+        "correct_answer": "Compliance and data residency requirements",
+        "wrong_answer_1": "The number of Availability Zones in the Region",
+        "wrong_answer_2": "Service pricing in the Region",
+        "wrong_answer_3": "Proximity of the Region to AWS Support headquarters",
+        "correct_explanation": "When data residency or regulatory compliance dictates where data may be stored or processed, that requirement overrides all other Region selection criteria. AWS Regions are isolated, and customers choose Regions based on legal, regulatory, latency, cost, and service availability — with compliance taking precedence when required by law.",
+        "wrong_explanation_1": "AZ count affects resilience and is a secondary consideration. It does not override regulatory requirements about where data must reside.",
+        "wrong_explanation_2": "Pricing differs between Regions and is a valid selection factor, but it cannot take priority over a legal requirement that data remain in the EU.",
+        "wrong_explanation_3": "Proximity to AWS Support is not a meaningful Region selection criterion. AWS Support is available globally regardless of where workloads are deployed.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "You operate a media streaming service whose users are distributed across six continents. End users have complained about slow video startup times when accessing content stored in a single S3 bucket in us-east-1. Which AWS infrastructure component is designed to address this latency problem by caching content close to end users?",
+        "correct_answer": "Edge locations",
+        "wrong_answer_1": "Availability Zones",
+        "wrong_answer_2": "AWS Regions",
+        "wrong_answer_3": "AWS Local Zones",
+        "correct_explanation": "Edge locations are part of the Amazon CloudFront global network. They cache static and dynamic content close to viewers worldwide, reducing the latency users experience when retrieving large objects like video segments. There are far more edge locations than Regions, so users almost always connect to a nearby cache.",
+        "wrong_explanation_1": "Availability Zones are isolated data centers within a single Region. They provide intra-Region high availability but do not bring content closer to globally distributed users.",
+        "wrong_explanation_2": "Adding more Regions could reduce latency but is operationally heavy and typically reserved for compliance or major workload distribution — not low-latency content delivery, which is what edge locations are purpose-built for.",
+        "wrong_explanation_3": "Local Zones place compute and storage close to a specific metropolitan area for ultra-low-latency applications. They are not designed as a global content cache like edge locations are.",
+        "service_tags": [
+            "cloudfront"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "A company has determined that its application requires a fault-tolerant deployment that can survive the loss of one data center without service interruption. The application is hosted entirely in the us-west-2 Region. Which deployment approach satisfies this requirement?",
+        "correct_answer": "Deploy across multiple Availability Zones within us-west-2",
+        "wrong_answer_1": "Deploy across multiple edge locations within us-west-2",
+        "wrong_answer_2": "Deploy to multiple AWS Regions",
+        "wrong_answer_3": "Deploy on a Dedicated Host within a single AZ",
+        "correct_explanation": "Each Availability Zone is one or more discrete data centers with independent power, cooling, and networking. Deploying across multiple AZs in the same Region survives the failure of a single data center without service loss — the standard high-availability design within a Region.",
+        "wrong_explanation_1": "Edge locations are part of the CloudFront network and are not customer-deployable compute targets. Applications cannot be hosted across edge locations the way they are across AZs.",
+        "wrong_explanation_2": "Multi-Region deployment exceeds the stated requirement, adding cost and complexity. Multi-AZ within one Region is the appropriate level of resilience for surviving a single data center failure.",
+        "wrong_explanation_3": "A Dedicated Host in a single AZ does not provide fault tolerance; if that AZ fails, the application goes down. Dedicated Hosts address licensing or isolation requirements, not high availability.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "A small business currently runs all of its applications on three physical servers in a leased data center. The CFO is interested in moving to AWS but worries the company will lose the ability to predict monthly IT spend. Which characteristic of AWS BEST addresses this concern?",
+        "correct_answer": "Pay-as-you-go pricing combined with tools like AWS Budgets and Cost Explorer for forecasting",
+        "wrong_answer_1": "Reserved Instances must be purchased to use AWS at all",
+        "wrong_answer_2": "AWS bills are fixed at the same amount each month regardless of usage",
+        "wrong_answer_3": "AWS requires a three-year commitment for all services",
+        "correct_explanation": "AWS pay-as-you-go billing reflects actual consumption, and AWS provides AWS Budgets to set spending thresholds and Cost Explorer to forecast and analyze costs. Combined, these capabilities let finance teams predict and control monthly spend.",
+        "wrong_explanation_1": "Reserved Instances are an optional pricing model, not a requirement for using AWS. Most AWS services can be consumed on demand without any reservation.",
+        "wrong_explanation_2": "AWS bills vary with usage; they are not fixed. The variable nature is precisely what concerns the CFO, which is why visibility and forecasting tools matter.",
+        "wrong_explanation_3": "AWS does not require multi-year commitments. Commitments are only relevant to specific pricing models such as Reserved Instances or Savings Plans, which are optional.",
+        "service_tags": [
+            "aws-budgets",
+            "cost-explorer"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 1,
+        "task_statement_number": "1.1",
+        "scenario": "A non-profit organization is evaluating moving its donation processing system to AWS. Leadership wants to understand which benefit of the AWS Cloud most directly enables the organization to focus its limited engineering staff on building features rather than maintaining infrastructure.",
+        "correct_answer": "Reduced operational overhead through managed services",
+        "wrong_answer_1": "Unlimited free service credits for non-profits",
+        "wrong_answer_2": "Guaranteed elimination of all security responsibilities",
+        "wrong_answer_3": "Mandatory enrollment in AWS Enterprise Support",
+        "correct_explanation": "Managed AWS services (RDS, Lambda, S3, etc.) handle patching, scaling, replication, and infrastructure maintenance on behalf of customers. This frees engineering staff to invest time in building product features rather than running infrastructure.",
+        "wrong_explanation_1": "AWS offers some credits and programs for non-profits, but unlimited free credits are not a standard offering. The core value proposition for small teams is managed services, not free credits.",
+        "wrong_explanation_2": "Security on AWS is a shared responsibility model. AWS handles security of the cloud, but customers retain responsibility for security in the cloud (their data, IAM, configurations).",
+        "wrong_explanation_3": "Enterprise Support is a paid option, not a mandatory feature. Customers choose the support plan that fits their needs.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "A finance team is comparing the cost of running an application on-premises versus on AWS. They want to capture not just hardware costs but also power, cooling, real estate, and the staffing required to operate the data center. Which concept describes this complete cost comparison?",
+        "correct_answer": "Total Cost of Ownership (TCO)",
+        "wrong_answer_1": "Return on Investment (ROI)",
+        "wrong_answer_2": "Capital expenditure (CapEx)",
+        "wrong_answer_3": "Operating expenditure (OpEx)",
+        "correct_explanation": "TCO captures the full cost of an IT solution including hardware, software, facilities (power, cooling, space), and staffing over its useful life. It is the standard framework for comparing on-premises infrastructure against a cloud alternative.",
+        "wrong_explanation_1": "ROI measures the return delivered by an investment, not the total cost of operating it. ROI relies on TCO as one input.",
+        "wrong_explanation_2": "CapEx is one cost category (upfront capital spend) within TCO. It does not by itself capture ongoing facilities or staffing costs.",
+        "wrong_explanation_3": "OpEx is the ongoing expense category. Like CapEx, it is a single component of TCO rather than the comprehensive comparison framework.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "A company purchases physical servers for a five-year refresh cycle and pays for them up front through its capital budget. After moving the equivalent workload to AWS, the same dollars now appear as ongoing monthly charges. This shift in how IT spend is classified illustrates which transition?",
+        "correct_answer": "Capital expenditure to operating expenditure",
+        "wrong_answer_1": "Operating expenditure to capital expenditure",
+        "wrong_answer_2": "Fixed cost to amortized cost",
+        "wrong_answer_3": "Variable cost to depreciated cost",
+        "correct_explanation": "Buying physical hardware is a capital expenditure (CapEx) — large upfront investment, depreciated over time. Pay-as-you-go cloud usage is operating expenditure (OpEx) — ongoing consumption costs. Moving to AWS shifts IT spend from CapEx to OpEx.",
+        "wrong_explanation_1": "The direction is reversed. Cloud consumption is OpEx; on-premises hardware purchases are CapEx. The company is moving from CapEx to OpEx, not the other way around.",
+        "wrong_explanation_2": "Amortized cost is a generic accounting term and does not specifically describe the cloud spending model. The relevant terminology is CapEx to OpEx.",
+        "wrong_explanation_3": "Depreciation applies to capital assets being consumed over their useful life. Cloud spend is not depreciated — it is expensed in the period consumed.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "A company is reviewing usage data and discovers several Amazon EC2 instances are consistently running at less than 10% CPU utilization. Which practice should be applied to address this inefficiency and reduce cost?",
+        "correct_answer": "Right-sizing",
+        "wrong_answer_1": "Vertical scaling",
+        "wrong_answer_2": "Horizontal scaling",
+        "wrong_answer_3": "Multi-AZ deployment",
+        "correct_explanation": "Right-sizing is the practice of matching instance types and sizes to actual workload needs. When instances run at very low utilization, selecting a smaller instance type — or a different instance family — reduces cost without sacrificing performance. AWS Compute Optimizer can recommend right-sizing actions.",
+        "wrong_explanation_1": "Vertical scaling increases the size of an instance. It is the opposite of what an under-utilized workload needs — that workload requires a smaller instance, not a larger one.",
+        "wrong_explanation_2": "Horizontal scaling adds more instances. For a workload already over-provisioned, adding instances increases cost rather than reducing it.",
+        "wrong_explanation_3": "Multi-AZ deployment improves availability by distributing across data centers. It does not address utilization-based cost waste.",
+        "service_tags": [
+            "ec2",
+            "compute-optimizer"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "A retailer's storefront receives heavy traffic on Black Friday and Cyber Monday but only modest traffic the rest of the year. Which AWS Cloud economic benefit allows the company to handle holiday spikes without paying for that peak capacity year-round?",
+        "correct_answer": "Elasticity",
+        "wrong_answer_1": "Durability",
+        "wrong_answer_2": "Loose coupling",
+        "wrong_answer_3": "Fault tolerance",
+        "correct_explanation": "Elasticity is the ability to add capacity when demand grows and remove it when demand falls. Pairing elasticity with pay-as-you-go pricing means the retailer pays for peak capacity only during peak periods, dramatically lowering year-round cost compared to provisioning for peak in advance.",
+        "wrong_explanation_1": "Durability describes the resilience of stored data against loss (e.g., S3's 11 nines of durability). It is unrelated to scaling compute capacity with demand.",
+        "wrong_explanation_2": "Loose coupling is a design principle that reduces dependencies between components. It enables scalability but does not by itself describe the cost benefit of scaling on demand.",
+        "wrong_explanation_3": "Fault tolerance is the ability to continue operating despite component failures. It is about availability, not about scaling capacity with demand.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 1,
+        "task_statement_number": "1.2",
+        "scenario": "A CTO is making the business case for AWS to the board and wants to highlight how AWS's massive purchasing power and infrastructure scale translate into lower customer prices. Which AWS Cloud benefit BEST captures this concept?",
+        "correct_answer": "Massive economies of scale",
+        "wrong_answer_1": "High availability",
+        "wrong_answer_2": "Global reach",
+        "wrong_answer_3": "Operational excellence",
+        "correct_explanation": "AWS aggregates demand from millions of customers and benefits from large-scale infrastructure purchasing. These savings are passed to customers as lower pay-as-you-go prices — the essence of the economies-of-scale benefit.",
+        "wrong_explanation_1": "High availability describes architectures that remain accessible despite failures. It is a technical capability, not the economic benefit driving lower prices.",
+        "wrong_explanation_2": "Global reach refers to the geographic spread of AWS infrastructure. While related, it does not by itself describe why prices are lower than what an individual customer could achieve.",
+        "wrong_explanation_3": "Operational excellence is a Well-Architected pillar describing how to run and improve workloads, not a pricing benefit.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "A team is designing a new application and wants to ensure that if any single component fails, the rest of the system continues to function. Which AWS Well-Architected design principle should the team apply?",
+        "correct_answer": "Design for failure",
+        "wrong_answer_1": "Optimize for cost",
+        "wrong_answer_2": "Make frequent, small, reversible changes",
+        "wrong_answer_3": "Stop guessing capacity",
+        "correct_explanation": "\"Design for failure\" assumes components will fail and structures the application so that those failures do not cascade. Practices include redundancy across AZs, retries with backoff, circuit breakers, and stateless services. This principle is core to the reliability pillar.",
+        "wrong_explanation_1": "Cost optimization is a separate Well-Architected pillar focused on avoiding unnecessary spend. It does not address how the system behaves when components fail.",
+        "wrong_explanation_2": "Frequent small reversible changes is an operational excellence principle that reduces deployment risk. It is not about tolerating component failures at runtime.",
+        "wrong_explanation_3": "\"Stop guessing capacity\" addresses capacity planning by using elastic scaling. It is unrelated to designing for component failure.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "Your team uses CloudFormation templates and CodePipeline to deploy infrastructure and application code. Manual changes through the console are forbidden, and all environments are reproduced from version-controlled definitions. Which Well-Architected design principle does this practice illustrate?",
+        "correct_answer": "Perform operations as code",
+        "wrong_answer_1": "Scale horizontally",
+        "wrong_answer_2": "Decouple components",
+        "wrong_answer_3": "Implement security at all layers",
+        "correct_explanation": "\"Perform operations as code\" means defining infrastructure, runbooks, and deployments in version-controlled code so they can be tested, repeated, and audited. Using CloudFormation and CodePipeline with no manual console changes is the textbook implementation of this principle.",
+        "wrong_explanation_1": "Horizontal scaling adds more small resources to handle load. It is about workload sizing, not about codifying operations.",
+        "wrong_explanation_2": "Decoupling components reduces dependencies between services. It is a separate architectural design principle.",
+        "wrong_explanation_3": "Defense in depth is a security principle. While important, it is not what is illustrated by using IaC for all deployments.",
+        "service_tags": [
+            "cloudformation",
+            "codepipeline"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "An application's front-end web tier currently calls the back-end database directly. The team wants to redesign the architecture so that the front-end can be deployed, scaled, and replaced independently of the back-end. Which design principle should guide this redesign?",
+        "correct_answer": "Loose coupling",
+        "wrong_answer_1": "Tight coupling",
+        "wrong_answer_2": "Vertical scaling",
+        "wrong_answer_3": "Single point of failure",
+        "correct_explanation": "Loose coupling — typically achieved by inserting a message queue (Amazon SQS) or notification topic (Amazon SNS) between tiers — allows each component to be developed, deployed, and scaled independently. Failures or slowdowns in one tier do not directly cascade to the other.",
+        "wrong_explanation_1": "Tight coupling is the opposite problem — components depend directly on each other. This is what the team is trying to move away from.",
+        "wrong_explanation_2": "Vertical scaling increases the size of a single resource. It does not address the design coupling between tiers.",
+        "wrong_explanation_3": "Single points of failure are reliability anti-patterns. They are not a design principle to follow.",
+        "service_tags": [
+            "sqs",
+            "sns"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "A team needs to choose which Well-Architected pillar most directly addresses the goal of using the minimum required resources to meet performance objectives. Which pillar should the team focus on?",
+        "correct_answer": "Performance efficiency",
+        "wrong_answer_1": "Operational excellence",
+        "wrong_answer_2": "Security",
+        "wrong_answer_3": "Sustainability",
+        "correct_explanation": "The performance efficiency pillar focuses on using IT and computing resources efficiently — selecting the right resource types and sizes for the workload and maintaining that efficiency over time as the workload evolves.",
+        "wrong_explanation_1": "Operational excellence focuses on running and monitoring systems and continually improving processes. It is not specifically about resource sizing for performance.",
+        "wrong_explanation_2": "Security focuses on protecting information, systems, and assets. It does not directly address using minimum required resources for performance.",
+        "wrong_explanation_3": "Sustainability focuses on minimizing the environmental impact of cloud workloads. It overlaps with performance efficiency conceptually but is its own pillar with different goals.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "A team is moving from a deployment process where releases happen once per quarter to a process where small changes are deployed several times per day. The goal is to reduce risk by limiting the blast radius of any one change. Which Well-Architected pillar's design principle is this practice associated with?",
+        "correct_answer": "Operational excellence — make frequent, small, reversible changes",
+        "wrong_answer_1": "Cost optimization — adopt a consumption model",
+        "wrong_answer_2": "Reliability — automatically recover from failure",
+        "wrong_answer_3": "Security — automate security best practices",
+        "correct_explanation": "Making frequent, small, reversible changes is a design principle of the operational excellence pillar. Small changes are easier to understand, test, and roll back, so each one carries less risk than a large quarterly release.",
+        "wrong_explanation_1": "Adopting a consumption model is about paying for what you use. It is unrelated to deployment cadence.",
+        "wrong_explanation_2": "Automatic recovery from failure is a reliability principle that focuses on runtime resilience, not deployment frequency.",
+        "wrong_explanation_3": "Automating security best practices addresses security operations. It is not about reducing the blast radius of deployments.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 1,
+        "task_statement_number": "1.3",
+        "scenario": "A workload runs on a single large EC2 instance. To improve resilience and to spread load, the architects plan to replace it with a fleet of smaller instances behind a load balancer. Which design principle does this change illustrate?",
+        "correct_answer": "Scale horizontally to increase aggregate workload availability",
+        "wrong_answer_1": "Scale vertically by upgrading the instance type",
+        "wrong_answer_2": "Stop guessing capacity",
+        "wrong_answer_3": "Test recovery procedures regularly",
+        "correct_explanation": "Replacing one large server with multiple smaller ones behind a load balancer is horizontal scaling. It reduces blast radius (one failed instance affects only a fraction of capacity) and increases aggregate availability — a core reliability pillar principle.",
+        "wrong_explanation_1": "Upgrading to a larger instance is vertical scaling. The scenario explicitly describes moving to many smaller instances — the opposite approach.",
+        "wrong_explanation_2": "\"Stop guessing capacity\" addresses using elastic, demand-driven sizing. While related, the specific illustrative principle here is horizontal scaling.",
+        "wrong_explanation_3": "Testing recovery procedures is a reliability principle, but it is about validating runbooks — not about how the workload is sized.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 2,
+        "task_statement_number": "2.1",
+        "scenario": "Under the AWS shared responsibility model, a customer running Amazon EC2 instances is responsible for which of the following?",
+        "correct_answer": "Patching the guest operating system on the EC2 instances",
+        "wrong_answer_1": "Patching the hypervisor that runs the EC2 instances",
+        "wrong_answer_2": "Replacing failed disks in the underlying physical hosts",
+        "wrong_answer_3": "Maintaining the physical security of the AWS data centers",
+        "correct_explanation": "For IaaS services like Amazon EC2, AWS is responsible for security \"of\" the cloud — the hardware, hypervisor, network, and facilities. The customer is responsible for security \"in\" the cloud, which includes patching the guest OS, configuring security groups, and managing data.",
+        "wrong_explanation_1": "The hypervisor is part of the underlying virtualization layer that AWS manages. Customers have no access to the hypervisor.",
+        "wrong_explanation_2": "Physical hardware including disks is AWS's responsibility. Customers never see or replace physical components.",
+        "wrong_explanation_3": "AWS is solely responsible for the physical security of its data centers. Customers cannot access these facilities.",
+        "service_tags": [
+            "ec2"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 2,
+        "task_statement_number": "2.1",
+        "scenario": "A company is using Amazon RDS for MySQL. The DBA wants to clarify which OS-level patching activities the team needs to schedule. Under the shared responsibility model for Amazon RDS, who is responsible for patching the underlying database operating system?",
+        "correct_answer": "AWS",
+        "wrong_answer_1": "The customer",
+        "wrong_answer_2": "Shared between the customer and AWS",
+        "wrong_answer_3": "The database engine vendor",
+        "correct_explanation": "Amazon RDS is a managed database service. AWS manages the underlying host OS and the database engine patching. Customers control the database content, user accounts, network access settings, and choose maintenance windows but do not patch the OS themselves.",
+        "wrong_explanation_1": "The customer is not responsible for OS patching on RDS. That is one of the key differences between RDS and running a database on EC2.",
+        "wrong_explanation_2": "OS patching for RDS is solely an AWS responsibility, not shared. Shared items include things like training and configuration management.",
+        "wrong_explanation_3": "The database engine vendor (e.g., MySQL or PostgreSQL upstream) does not perform patching on customer RDS instances. AWS distributes and applies the patches.",
+        "service_tags": [
+            "rds"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 2,
+        "task_statement_number": "2.1",
+        "scenario": "A company stores customer files in Amazon S3. Under the shared responsibility model, which of the following is the customer's responsibility?",
+        "correct_answer": "Configuring bucket policies and access controls for the data",
+        "wrong_answer_1": "Replacing the physical storage devices that hold the data",
+        "wrong_answer_2": "Maintaining the global S3 service software",
+        "wrong_answer_3": "Operating the network backbone connecting AWS Regions",
+        "correct_explanation": "AWS operates the S3 service, hardware, and underlying software. Customers are responsible for the data they put in S3 and for configuring access — bucket policies, IAM permissions, encryption settings, and lifecycle rules.",
+        "wrong_explanation_1": "Physical storage hardware is owned and replaced by AWS. Customers never touch the underlying disks.",
+        "wrong_explanation_2": "The S3 service software is operated entirely by AWS. Customers consume the service through APIs but do not maintain its code or runtime.",
+        "wrong_explanation_3": "The AWS global network is operated by AWS. Customers consume but do not manage it.",
+        "service_tags": [
+            "s3"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 2,
+        "task_statement_number": "2.1",
+        "scenario": "Which of the following is described as a SHARED responsibility between AWS and the customer in the AWS shared responsibility model?",
+        "correct_answer": "Patch management",
+        "wrong_answer_1": "Decommissioning physical storage devices",
+        "wrong_answer_2": "Physical security of AWS data centers",
+        "wrong_answer_3": "Configuration of customer S3 bucket policies",
+        "correct_explanation": "Patch management is a shared control: AWS patches the infrastructure and managed services, while the customer patches guest operating systems on EC2 and any applications running on top. Both parties have responsibilities that meet in the middle, which is why it is classified as shared.",
+        "wrong_explanation_1": "Decommissioning storage media is wholly AWS's responsibility — customers never see the hardware.",
+        "wrong_explanation_2": "Physical data center security is solely AWS's responsibility. Customers cannot access the facilities.",
+        "wrong_explanation_3": "Bucket policies are configured entirely by the customer. AWS provides the mechanism, but the policy content is the customer's responsibility.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 2,
+        "task_statement_number": "2.2",
+        "scenario": "An auditor has requested a current copy of the SOC 2 Type II report covering AWS services. Which AWS service should the company use to download this compliance report?",
+        "correct_answer": "AWS Artifact",
+        "wrong_answer_1": "AWS Trusted Advisor",
+        "wrong_answer_2": "AWS Config",
+        "wrong_answer_3": "AWS Audit Manager",
+        "correct_explanation": "AWS Artifact is the central, self-service portal for on-demand access to AWS compliance reports such as SOC 1/2/3, ISO certifications, and PCI reports. It is the standard way auditors obtain AWS's compliance documentation.",
+        "wrong_explanation_1": "Trusted Advisor inspects your AWS environment and recommends improvements. It does not deliver third-party compliance reports.",
+        "wrong_explanation_2": "AWS Config records configuration history of AWS resources. It does not provide AWS's own compliance reports.",
+        "wrong_explanation_3": "AWS Audit Manager helps customers continuously audit their own AWS usage. It does not deliver AWS's external SOC reports — those come from Artifact.",
+        "service_tags": [
+            "artifact"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 2,
+        "task_statement_number": "2.2",
+        "scenario": "A health-care company is preparing to handle protected health information (PHI) in the AWS Cloud and needs assurance that the AWS services it uses are designed in a way that supports HIPAA compliance. What is the company's most direct path to confirming HIPAA eligibility for specific AWS services?",
+        "correct_answer": "Review the AWS HIPAA-eligible services list and execute an AWS Business Associate Addendum (BAA)",
+        "wrong_answer_1": "Wait for AWS to send a printed HIPAA certificate by mail",
+        "wrong_answer_2": "Open a support case asking AWS to verify each service individually",
+        "wrong_answer_3": "Rely on a third-party assessor's letter without any AWS-specific documentation",
+        "correct_explanation": "AWS publishes a list of HIPAA-eligible services, and customers handling PHI must execute a Business Associate Addendum (BAA) with AWS. Together these establish the contractual and technical baseline for storing or processing PHI on AWS.",
+        "wrong_explanation_1": "AWS does not issue printed HIPAA certificates. Compliance information is available digitally through AWS Artifact and through public documentation.",
+        "wrong_explanation_2": "Support cases are not the appropriate channel for confirming HIPAA eligibility. AWS publishes the official list publicly.",
+        "wrong_explanation_3": "A third-party letter cannot substitute for the AWS BAA, which is the contractual mechanism that addresses HIPAA obligations between AWS and the customer.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 2,
+        "task_statement_number": "2.2",
+        "scenario": "A development team needs to centrally create, manage, and rotate symmetric encryption keys used by Amazon S3, Amazon EBS, and AWS Lambda. Which service should the team use?",
+        "correct_answer": "AWS Key Management Service (AWS KMS)",
+        "wrong_answer_1": "AWS Secrets Manager",
+        "wrong_answer_2": "AWS Certificate Manager (ACM)",
+        "wrong_answer_3": "AWS CloudHSM",
+        "correct_explanation": "AWS KMS is the managed service for creating, controlling, and rotating cryptographic keys used to encrypt data across most AWS services including S3, EBS, and Lambda. It provides integrated key management with native AWS service integration.",
+        "wrong_explanation_1": "Secrets Manager stores and rotates secrets such as database passwords or API keys. It does not manage data-encryption keys for service-level encryption.",
+        "wrong_explanation_2": "ACM provisions and manages TLS/SSL certificates for use with AWS services. It is for transport-layer security, not data encryption keys.",
+        "wrong_explanation_3": "CloudHSM provides dedicated hardware security modules for customers with strict regulatory requirements. KMS is the default and more commonly used managed service for encryption keys.",
+        "service_tags": [
+            "kms"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 2,
+        "task_statement_number": "2.2",
+        "scenario": "A regulator requires the company to demonstrate that all S3 buckets containing financial data are encrypted at rest and that any change to that encryption configuration is detected. Which combination of capabilities BEST supports this requirement?",
+        "correct_answer": "AWS Config rules that detect non-compliant bucket configurations, combined with S3 default encryption enabled by KMS",
+        "wrong_answer_1": "Amazon GuardDuty alone monitoring for suspicious encryption changes",
+        "wrong_answer_2": "Amazon Inspector scans for vulnerabilities on the buckets",
+        "wrong_answer_3": "AWS CloudTrail logs reviewed manually each quarter",
+        "correct_explanation": "S3 default encryption (using SSE-KMS or SSE-S3) ensures all new objects are encrypted at rest. AWS Config rules can continuously evaluate whether buckets remain compliant and generate findings if the configuration changes. Together they meet both the encryption and detection requirements.",
+        "wrong_explanation_1": "GuardDuty focuses on threat detection (e.g., suspicious API behavior). It is not the primary tool for confirming bucket encryption configuration compliance.",
+        "wrong_explanation_2": "Amazon Inspector scans EC2 instances, Lambda functions, and container images for vulnerabilities. It does not evaluate S3 bucket encryption configuration.",
+        "wrong_explanation_3": "CloudTrail logs API events, but manual quarterly review is not continuous detection. The auditor's requirement implies near-real-time detection that AWS Config rules provide.",
+        "service_tags": [
+            "s3",
+            "config",
+            "kms"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 2,
+        "task_statement_number": "2.3",
+        "scenario": "A company wants to give a contractor temporary, time-limited access to perform a task in its AWS account. What is the recommended way to grant this access without sharing long-term credentials?",
+        "correct_answer": "Have the contractor assume an IAM role with temporary credentials",
+        "wrong_answer_1": "Email the root user password to the contractor for the duration of the project",
+        "wrong_answer_2": "Create an IAM user and embed the access key in the contractor's application code",
+        "wrong_answer_3": "Add the contractor's personal email to the AWS account's contact list",
+        "correct_explanation": "IAM roles deliver temporary, time-bounded credentials via the STS service. The contractor assumes the role for the duration of the engagement; when the role assumption expires (or is revoked), access ends. No long-term credentials are exchanged, which is the recommended pattern.",
+        "wrong_explanation_1": "Sharing the root user password is forbidden by AWS best practices. The root user has unrestricted access to everything and should never be shared.",
+        "wrong_explanation_2": "Embedding long-term access keys in code creates persistent credentials that can be leaked and are difficult to revoke. Best practice is to avoid long-term keys entirely when role-based access is possible.",
+        "wrong_explanation_3": "Adding an email to the account's contact list does not grant AWS access. Contact lists are for billing and operational notifications.",
+        "service_tags": [
+            "iam",
+            "sts"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 2,
+        "task_statement_number": "2.3",
+        "scenario": "An application running on an EC2 instance needs to read from a specific Amazon S3 bucket. What is the most secure way to grant this access?",
+        "correct_answer": "Attach an IAM role to the EC2 instance with permission to read from the bucket",
+        "wrong_answer_1": "Hardcode an IAM user's access key and secret in the application configuration file",
+        "wrong_answer_2": "Use the AWS root user's access keys in the application",
+        "wrong_answer_3": "Disable the bucket policy so any AWS account can read from it",
+        "correct_explanation": "An IAM role attached to an EC2 instance delivers short-lived credentials through the instance metadata service. The application uses those rotating credentials automatically — there are no long-term secrets stored in the application, and access is scoped to exactly what the role permits.",
+        "wrong_explanation_1": "Long-term access keys in configuration files are a common source of credential leaks. The role-based approach eliminates this risk.",
+        "wrong_explanation_2": "Using root user credentials is the worst possible choice — it gives the application unrestricted access to the entire account and violates AWS security best practices.",
+        "wrong_explanation_3": "Disabling the bucket policy to allow public access exposes the data to the internet and unrelated AWS accounts. It is the opposite of least privilege.",
+        "service_tags": [
+            "iam",
+            "ec2",
+            "s3"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 2,
+        "task_statement_number": "2.3",
+        "scenario": "A security team wants to require all IAM users in the account to provide a one-time code from a virtual authenticator app in addition to their password when signing in. Which capability should be enabled?",
+        "correct_answer": "Multi-factor authentication (MFA)",
+        "wrong_answer_1": "IAM Access Analyzer",
+        "wrong_answer_2": "AWS Single Sign-On password rotation",
+        "wrong_answer_3": "Service control policies (SCPs)",
+        "correct_explanation": "Multi-factor authentication (MFA) requires a second factor — typically a one-time code from a virtual or hardware authenticator — in addition to a password. MFA can be enabled per IAM user and is required by best practice for the root user and privileged users.",
+        "wrong_explanation_1": "IAM Access Analyzer identifies resources shared outside an account or organization. It does not affect sign-in flow.",
+        "wrong_explanation_2": "Password rotation does not require a second factor. It only enforces periodic password changes, which is a weaker control than MFA.",
+        "wrong_explanation_3": "SCPs limit what permissions IAM principals in an Organization can use. They do not control sign-in authentication factors.",
+        "service_tags": [
+            "iam"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 2,
+        "task_statement_number": "2.3",
+        "scenario": "A company manages dozens of AWS accounts under AWS Organizations. The security team needs to centrally manage workforce identities so that the same set of users can sign in to any account they are authorized for, with their permissions defined centrally. Which AWS service should the team use?",
+        "correct_answer": "AWS IAM Identity Center",
+        "wrong_answer_1": "Amazon Cognito user pools",
+        "wrong_answer_2": "AWS Directory Service Simple AD",
+        "wrong_answer_3": "AWS Key Management Service",
+        "correct_explanation": "AWS IAM Identity Center (formerly AWS SSO) provides centralized, single sign-on access across multiple AWS accounts in an Organization. Administrators define users and permission sets once and assign them to accounts, replacing per-account IAM user management.",
+        "wrong_explanation_1": "Amazon Cognito user pools are designed for end-user (customer) authentication in mobile and web applications, not for managing workforce access to AWS accounts.",
+        "wrong_explanation_2": "Simple AD provides a managed directory service compatible with Microsoft AD, useful for joining EC2 instances to a domain. It is not the recommended SSO service across AWS accounts.",
+        "wrong_explanation_3": "KMS manages encryption keys. It has no role in workforce identity or single sign-on.",
+        "service_tags": [
+            "iam-identity-center"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 2,
+        "task_statement_number": "2.3",
+        "scenario": "Which IAM principle states that a user, role, or service should be granted only the permissions necessary to complete its assigned tasks — and nothing more?",
+        "correct_answer": "Principle of least privilege",
+        "wrong_answer_1": "Principle of shared responsibility",
+        "wrong_answer_2": "Principle of separation of duties",
+        "wrong_answer_3": "Principle of defense in depth",
+        "correct_explanation": "The principle of least privilege grants only the minimum permissions required to perform a task. Following this principle reduces blast radius if a credential is compromised and is a fundamental IAM best practice.",
+        "wrong_explanation_1": "Shared responsibility describes the division of security duties between AWS and customers. It is not specifically about permission scoping.",
+        "wrong_explanation_2": "Separation of duties divides sensitive tasks across multiple people to prevent fraud. It is related but distinct from least privilege.",
+        "wrong_explanation_3": "Defense in depth is layered security across the stack (network, host, application). It is a security strategy, not a permission-granting principle.",
+        "service_tags": [
+            "iam"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 2,
+        "task_statement_number": "2.4",
+        "scenario": "A company suspects malicious activity in its AWS account, including unusual API calls and connections from unexpected geographic locations. Which AWS service is purpose-built for continuous threat detection by analyzing CloudTrail, VPC flow logs, and DNS logs?",
+        "correct_answer": "Amazon GuardDuty",
+        "wrong_answer_1": "Amazon Macie",
+        "wrong_answer_2": "AWS Trusted Advisor",
+        "wrong_answer_3": "AWS Config",
+        "correct_explanation": "Amazon GuardDuty is the AWS threat detection service. It continuously analyzes data sources including CloudTrail event logs, VPC flow logs, and DNS logs to identify malicious activity such as compromised credentials, anomalous API calls, and connections to known-bad IP addresses.",
+        "wrong_explanation_1": "Macie focuses on discovering and protecting sensitive data (e.g., PII) in S3. It does not analyze logs for general threat detection.",
+        "wrong_explanation_2": "Trusted Advisor recommends best-practice improvements across cost, performance, security, and limits. It does not perform threat detection on log streams.",
+        "wrong_explanation_3": "AWS Config tracks resource configuration changes for governance and compliance. It does not perform behavioral threat detection.",
+        "service_tags": [
+            "guardduty"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 2,
+        "task_statement_number": "2.4",
+        "scenario": "A team wants a single dashboard that aggregates security findings from GuardDuty, Inspector, Macie, and partner products, prioritizes them, and tracks remediation. Which AWS service provides this capability?",
+        "correct_answer": "AWS Security Hub",
+        "wrong_answer_1": "Amazon CloudWatch dashboards",
+        "wrong_answer_2": "AWS CloudTrail Lake",
+        "wrong_answer_3": "AWS Systems Manager OpsCenter",
+        "correct_explanation": "AWS Security Hub is the central, multi-service security posture dashboard. It aggregates and prioritizes findings from GuardDuty, Inspector, Macie, IAM Access Analyzer, AWS Partner Network products, and your own checks against compliance standards like CIS and PCI-DSS.",
+        "wrong_explanation_1": "CloudWatch dashboards display operational metrics. They are general-purpose and do not aggregate security findings out of the box the way Security Hub does.",
+        "wrong_explanation_2": "CloudTrail Lake stores and queries CloudTrail event data. It is for investigations on API logs, not for cross-service finding aggregation.",
+        "wrong_explanation_3": "Systems Manager OpsCenter centralizes operational issues but is not the dedicated security findings aggregator that Security Hub is.",
+        "service_tags": [
+            "security-hub"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 2,
+        "task_statement_number": "2.4",
+        "scenario": "A company's web application is being targeted by DDoS attacks at the network and application layers. The team wants AWS to automatically protect against larger and more sophisticated attacks, with response support included. Which AWS offering is appropriate?",
+        "correct_answer": "AWS Shield Advanced",
+        "wrong_answer_1": "AWS Shield Standard",
+        "wrong_answer_2": "Amazon Inspector",
+        "wrong_answer_3": "AWS Trusted Advisor",
+        "correct_explanation": "AWS Shield Advanced offers enhanced DDoS protection for higher-tier attacks, near-real-time visibility into incidents, integration with WAF, and 24/7 access to the AWS Shield Response Team. It is the appropriate tier when sophisticated DDoS protection and response are required.",
+        "wrong_explanation_1": "Shield Standard is included free with all AWS accounts and protects against common network-layer attacks. It does not include the advanced application-layer mitigations or response team access of Shield Advanced.",
+        "wrong_explanation_2": "Amazon Inspector identifies software vulnerabilities and network exposure on workloads. It does not provide DDoS mitigation.",
+        "wrong_explanation_3": "Trusted Advisor offers best-practice recommendations. It is not a DDoS mitigation product.",
+        "service_tags": [
+            "shield"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.1",
+        "scenario": "A company wants to define its entire AWS infrastructure — including VPCs, subnets, security groups, EC2 instances, and RDS databases — in a declarative template that can be version-controlled and deployed across multiple environments. Which AWS service should the team use?",
+        "correct_answer": "AWS CloudFormation",
+        "wrong_answer_1": "AWS Systems Manager",
+        "wrong_answer_2": "AWS OpsWorks",
+        "wrong_answer_3": "AWS CodeDeploy",
+        "correct_explanation": "AWS CloudFormation provides infrastructure as code through declarative JSON or YAML templates. Templates define all AWS resources and can be deployed repeatably across environments, supporting drift detection, change sets, and stack management.",
+        "wrong_explanation_1": "Systems Manager helps operate and manage existing infrastructure (patching, parameter store, automation). It does not define infrastructure declaratively in templates.",
+        "wrong_explanation_2": "OpsWorks is a configuration management service based on Chef and Puppet. It manages application configuration, not the full set of AWS infrastructure resources in a template.",
+        "wrong_explanation_3": "CodeDeploy automates application code deployment to compute resources. It does not provision the underlying infrastructure.",
+        "service_tags": [
+            "cloudformation"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.1",
+        "scenario": "A developer wants to interact with AWS services from a script that runs on their laptop. They want to avoid clicking through the AWS Management Console and instead issue commands like `aws s3 ls` from the terminal. Which AWS tool should the developer use?",
+        "correct_answer": "AWS Command Line Interface (AWS CLI)",
+        "wrong_answer_1": "AWS Management Console",
+        "wrong_answer_2": "AWS CloudShell only",
+        "wrong_answer_3": "AWS Direct Connect",
+        "correct_explanation": "The AWS CLI is the unified command-line tool for interacting with AWS services. After configuring credentials, the developer can run commands such as `aws s3 ls` from any terminal, enabling scripting and automation outside the web Console.",
+        "wrong_explanation_1": "The Management Console is a web-based UI. It does not provide a local terminal command experience.",
+        "wrong_explanation_2": "CloudShell is a browser-based shell that has the CLI installed in AWS. While useful, the scenario explicitly says the developer wants to run commands from their laptop terminal, which is the AWS CLI's primary use case.",
+        "wrong_explanation_3": "Direct Connect is a dedicated network link between on-premises and AWS. It is not a command-line interaction tool.",
+        "service_tags": [
+            "aws-cli"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.1",
+        "scenario": "A company wants to deploy a Java web application by uploading the WAR file and letting AWS handle capacity provisioning, load balancing, auto scaling, and health monitoring — without writing infrastructure templates. Which AWS service is purpose-built for this?",
+        "correct_answer": "AWS Elastic Beanstalk",
+        "wrong_answer_1": "Amazon EC2",
+        "wrong_answer_2": "AWS Lambda",
+        "wrong_answer_3": "Amazon EKS",
+        "correct_explanation": "Elastic Beanstalk is a Platform-as-a-Service offering. The developer uploads the application artifact (WAR, JAR, ZIP) and Elastic Beanstalk provisions and manages the EC2, ELB, ASG, and CloudWatch components automatically.",
+        "wrong_explanation_1": "Amazon EC2 by itself provides virtual machines but no automatic application deployment, load balancing, or scaling — those would need to be assembled manually or via another service.",
+        "wrong_explanation_2": "Lambda is for serverless functions. Hosting a traditional WAR-packaged Java web application is not Lambda's typical use case.",
+        "wrong_explanation_3": "EKS runs Kubernetes clusters. It requires substantial container and Kubernetes setup work — the opposite of the upload-and-go model the scenario describes.",
+        "service_tags": [
+            "elastic-beanstalk"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.1",
+        "scenario": "An enterprise wants to run some workloads on AWS while keeping latency-sensitive workloads in its on-premises data center, with both environments managed in a connected fashion. Which deployment model does this describe?",
+        "correct_answer": "Hybrid cloud",
+        "wrong_answer_1": "All-in cloud",
+        "wrong_answer_2": "On-premises only",
+        "wrong_answer_3": "Multi-Region cloud",
+        "correct_explanation": "A hybrid cloud deployment combines cloud and on-premises resources, connected so workloads can run where they best fit. AWS supports hybrid through services like AWS Outposts, AWS Storage Gateway, and AWS Direct Connect.",
+        "wrong_explanation_1": "All-in cloud means moving all workloads to AWS, which contradicts the scenario's requirement to keep some workloads on-premises.",
+        "wrong_explanation_2": "On-premises only means no cloud, also contradicting the scenario.",
+        "wrong_explanation_3": "Multi-Region cloud spans multiple AWS Regions but does not include on-premises infrastructure.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.1",
+        "scenario": "A team wants to define and deploy a serverless application — Lambda functions, API Gateway endpoints, and DynamoDB tables — using a simplified template syntax that compiles down to CloudFormation. Which AWS framework is designed for this?",
+        "correct_answer": "AWS Serverless Application Model (AWS SAM)",
+        "wrong_answer_1": "AWS Amplify",
+        "wrong_answer_2": "AWS CodeStar",
+        "wrong_answer_3": "AWS App Mesh",
+        "correct_explanation": "AWS SAM extends CloudFormation with a simplified syntax tailored to serverless resources. SAM templates are transformed into full CloudFormation at deploy time, providing concise definitions for Lambda, API Gateway, DynamoDB, and event sources.",
+        "wrong_explanation_1": "Amplify is a framework for building front-end web and mobile applications, including hosting and backend resource provisioning. It is broader than SAM but not the specific serverless-template framework described.",
+        "wrong_explanation_2": "CodeStar (deprecated for new projects) provided project templates and a unified development dashboard. It is not a serverless template framework.",
+        "wrong_explanation_3": "App Mesh is a service mesh for microservices traffic management. It is not an IaC framework.",
+        "service_tags": [
+            "sam"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.2",
+        "scenario": "Which statement correctly describes an AWS Availability Zone?",
+        "correct_answer": "One or more discrete data centers with redundant power, networking, and connectivity, located within an AWS Region",
+        "wrong_answer_1": "A globally distributed cache location used by CloudFront",
+        "wrong_answer_2": "A logical grouping of AWS accounts within AWS Organizations",
+        "wrong_answer_3": "A virtual network that spans multiple Regions",
+        "correct_explanation": "Each Availability Zone consists of one or more discrete data centers with independent power, cooling, and networking, located within a Region but isolated from other AZs. AZs are connected by low-latency links to support multi-AZ high-availability architectures.",
+        "wrong_explanation_1": "Globally distributed CloudFront cache locations are edge locations, not Availability Zones.",
+        "wrong_explanation_2": "Account groupings in AWS Organizations are organizational units (OUs), not Availability Zones.",
+        "wrong_explanation_3": "VPCs are scoped to a single Region. There is no virtual network construct that spans Regions natively — cross-Region connectivity is built on top with peering or Transit Gateway.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.2",
+        "scenario": "A mobile gaming company needs single-digit-millisecond compute latency to end users in Los Angeles, even though the nearest AWS Region is hundreds of miles away. Which AWS infrastructure offering places compute and storage in metropolitan areas close to end users?",
+        "correct_answer": "AWS Local Zones",
+        "wrong_answer_1": "AWS Outposts",
+        "wrong_answer_2": "AWS Wavelength",
+        "wrong_answer_3": "CloudFront edge locations",
+        "correct_explanation": "AWS Local Zones extend AWS Regions to specific metropolitan areas, placing compute, storage, and database services close to end users for low single-digit-millisecond latency. They are managed by AWS and accessed as an extension of a parent Region.",
+        "wrong_explanation_1": "Outposts brings AWS infrastructure into a customer's on-premises data center. The scenario calls for AWS-managed metro infrastructure rather than customer-hosted hardware.",
+        "wrong_explanation_2": "Wavelength deploys AWS compute and storage at the edge of 5G telecommunications networks for ultra-low-latency mobile applications over a 5G carrier — different from a generic metro deployment.",
+        "wrong_explanation_3": "CloudFront edge locations cache content but do not run customer compute workloads in the way Local Zones do.",
+        "service_tags": [
+            "local-zones"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.2",
+        "scenario": "A telecommunications carrier wants to deploy an application that processes mobile device traffic directly inside the carrier's 5G network for ultra-low latency. Which AWS offering is purpose-built for this scenario?",
+        "correct_answer": "AWS Wavelength",
+        "wrong_answer_1": "AWS Direct Connect",
+        "wrong_answer_2": "AWS Snowball Edge",
+        "wrong_answer_3": "AWS Global Accelerator",
+        "correct_explanation": "AWS Wavelength embeds AWS compute and storage at the edge of 5G telecommunications networks, enabling applications to process mobile traffic without it traversing to a Region. This is the AWS offering specifically designed for 5G edge workloads.",
+        "wrong_explanation_1": "Direct Connect is a dedicated, private connection from on-premises networks to AWS. It is not deployed inside carrier 5G networks.",
+        "wrong_explanation_2": "Snowball Edge is a portable data transfer and edge compute appliance for remote or disconnected locations, not for 5G carrier-network deployment.",
+        "wrong_explanation_3": "Global Accelerator routes user traffic to the optimal AWS endpoint over the AWS network. It does not place compute inside 5G networks.",
+        "service_tags": [
+            "wavelength"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.2",
+        "scenario": "A company is designing a disaster-recovery strategy and wants to host a warm standby of its application in a geographically distant location that is fully isolated from its primary location. Which AWS infrastructure component should it use for the standby location?",
+        "correct_answer": "A second AWS Region",
+        "wrong_answer_1": "A different subnet in the same VPC",
+        "wrong_answer_2": "A different Availability Zone in the same Region",
+        "wrong_answer_3": "An edge location",
+        "correct_explanation": "AWS Regions are geographically separated and fully isolated from each other. Deploying a warm standby in a second Region protects against Region-wide failures and natural disasters affecting the primary Region.",
+        "wrong_explanation_1": "Subnets in the same VPC share the same Region and likely the same data center group. They do not provide geographic isolation.",
+        "wrong_explanation_2": "Different AZs within a Region are isolated data centers within the same metropolitan area. They do not provide the geographic distance the scenario requires.",
+        "wrong_explanation_3": "Edge locations cache content and are not full deployment targets for hosting applications or standby environments.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.2",
+        "scenario": "Which statement correctly describes AWS Regions and Availability Zones?",
+        "correct_answer": "An AWS Region is a geographic area containing multiple, isolated Availability Zones",
+        "wrong_answer_1": "An Availability Zone contains multiple AWS Regions",
+        "wrong_answer_2": "A Region is a single physical data center",
+        "wrong_answer_3": "An Availability Zone and an edge location are equivalent",
+        "correct_explanation": "An AWS Region is a geographic area composed of multiple, isolated Availability Zones. Each AZ consists of one or more data centers. This structure provides both fault isolation and low-latency connectivity within the Region.",
+        "wrong_explanation_1": "The hierarchy is reversed: a Region contains AZs, not the other way around.",
+        "wrong_explanation_2": "A Region comprises multiple AZs, each of which may contain multiple data centers. A single data center is not the same as a Region.",
+        "wrong_explanation_3": "Edge locations are part of the CloudFront global network for content delivery and are distinct from AZs.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.3",
+        "scenario": "A company wants to run code in response to events such as new files uploaded to S3 or messages arriving in SQS, without provisioning or managing servers. Which AWS service meets these requirements?",
+        "correct_answer": "AWS Lambda",
+        "wrong_answer_1": "Amazon EC2 with auto scaling",
+        "wrong_answer_2": "Amazon EKS",
+        "wrong_answer_3": "AWS Batch",
+        "correct_explanation": "AWS Lambda runs code in response to events without server management. Lambda integrates natively with event sources like S3, SQS, DynamoDB Streams, and EventBridge, scaling automatically and charging per invocation and duration.",
+        "wrong_explanation_1": "EC2 with auto scaling requires the customer to manage instances, AMIs, OS patches, and scaling configuration. It is not serverless.",
+        "wrong_explanation_2": "EKS runs Kubernetes clusters. Customers manage worker nodes (unless using Fargate) and the cluster configuration — far more operational overhead than Lambda.",
+        "wrong_explanation_3": "AWS Batch runs batch computing jobs. It is suited to long-running, queued workloads rather than short event-driven invocations.",
+        "service_tags": [
+            "lambda"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.3",
+        "scenario": "An application needs durable object storage that is accessible over HTTPS, supports objects up to 5 TB in size, and offers eleven 9s of durability. Which AWS service is the correct choice?",
+        "correct_answer": "Amazon S3",
+        "wrong_answer_1": "Amazon EBS",
+        "wrong_answer_2": "Amazon EFS",
+        "wrong_answer_3": "Amazon FSx",
+        "correct_explanation": "Amazon S3 is durable object storage accessed over HTTPS. It supports objects up to 5 TB, provides 11 nines (99.999999999%) of durability by replicating data across multiple devices and AZs, and is the standard service for large object workloads.",
+        "wrong_explanation_1": "EBS provides block storage volumes attached to a single EC2 instance. It is not object storage and is not accessed via HTTPS API.",
+        "wrong_explanation_2": "EFS is a managed NFS file system, not object storage. Access is through file system protocols, not S3 APIs.",
+        "wrong_explanation_3": "FSx provides managed file systems (Windows, Lustre, NetApp ONTAP, OpenZFS). Like EFS, it is file storage, not object storage.",
+        "service_tags": [
+            "s3"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.3",
+        "scenario": "A team needs a fully managed NoSQL database that delivers single-digit-millisecond read and write latency at any scale, with automatic replication across multiple Availability Zones. Which AWS service should the team choose?",
+        "correct_answer": "Amazon DynamoDB",
+        "wrong_answer_1": "Amazon RDS for MySQL",
+        "wrong_answer_2": "Amazon Redshift",
+        "wrong_answer_3": "Amazon Neptune",
+        "correct_explanation": "DynamoDB is a fully managed, serverless, key-value and document NoSQL database. It provides single-digit-millisecond latency at any scale, automatically replicates across multiple AZs, and supports on-demand and provisioned capacity modes.",
+        "wrong_explanation_1": "RDS for MySQL is a relational database. While managed and capable of Multi-AZ, it is not NoSQL and has higher latency characteristics than DynamoDB.",
+        "wrong_explanation_2": "Redshift is a data warehouse for analytical (OLAP) queries on large datasets. It is not designed for low-latency operational workloads.",
+        "wrong_explanation_3": "Neptune is a managed graph database, suitable for relationship-heavy data like social networks or fraud detection — a specialized purpose, not a general-purpose NoSQL key-value store.",
+        "service_tags": [
+            "dynamodb"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.3",
+        "scenario": "A team is provisioning an EC2 instance and needs persistent block storage to attach as a root volume that survives instance stop/start. Which AWS service provides this storage?",
+        "correct_answer": "Amazon Elastic Block Store (EBS)",
+        "wrong_answer_1": "Amazon S3",
+        "wrong_answer_2": "Amazon EC2 Instance Store",
+        "wrong_answer_3": "Amazon EFS",
+        "correct_explanation": "Amazon EBS provides persistent block-level storage volumes for EC2 instances. EBS volumes persist independently of the instance lifecycle — they survive instance stop/start and can be detached and reattached to other instances.",
+        "wrong_explanation_1": "S3 is object storage accessed over HTTPS. It cannot serve as a block-level root volume for an EC2 instance.",
+        "wrong_explanation_2": "Instance Store is ephemeral storage physically attached to the host. Data is lost when the instance stops or terminates — the opposite of the requirement.",
+        "wrong_explanation_3": "EFS is a shared file system, not a block device. It cannot be used as an EC2 root volume.",
+        "service_tags": [
+            "ebs"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.3",
+        "scenario": "A developer needs a logically isolated section of the AWS Cloud where they can launch resources in a virtual network they define, including IP address ranges, subnets, route tables, and gateways. Which AWS service is this?",
+        "correct_answer": "Amazon Virtual Private Cloud (Amazon VPC)",
+        "wrong_answer_1": "Amazon Route 53",
+        "wrong_answer_2": "AWS Direct Connect",
+        "wrong_answer_3": "AWS PrivateLink",
+        "correct_explanation": "Amazon VPC is the foundational networking service that lets customers define their own private virtual network in AWS — including CIDR ranges, subnets, route tables, internet gateways, and security controls.",
+        "wrong_explanation_1": "Route 53 is the DNS service. It resolves names to addresses but does not provide an isolated virtual network.",
+        "wrong_explanation_2": "Direct Connect provides a dedicated physical link from on-premises to AWS. It connects to a VPC but is not itself the virtual network.",
+        "wrong_explanation_3": "PrivateLink provides private connectivity between VPCs and supported AWS services. It runs inside a VPC and does not define the VPC.",
+        "service_tags": [
+            "vpc"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.3",
+        "scenario": "An application sends messages between a producer microservice and a consumer microservice. The messages must be stored reliably and consumed at the consumer's own pace, even if the consumer is temporarily offline. Which AWS service provides this decoupled, polling-based message queue?",
+        "correct_answer": "Amazon Simple Queue Service (Amazon SQS)",
+        "wrong_answer_1": "Amazon Simple Notification Service (Amazon SNS)",
+        "wrong_answer_2": "Amazon Kinesis Data Streams",
+        "wrong_answer_3": "Amazon EventBridge",
+        "correct_explanation": "Amazon SQS is a fully managed message queue. Producers send messages, and consumers pull them at their own pace. SQS stores messages durably until consumed and is the standard service for decoupling producer and consumer microservices.",
+        "wrong_explanation_1": "SNS is a publish/subscribe notification service that pushes messages to subscribers. It does not store messages for later pull-based consumption the way SQS does.",
+        "wrong_explanation_2": "Kinesis Data Streams is for real-time streaming of large volumes of data with multiple consumers reading from the same stream. It is heavier than a simple queue.",
+        "wrong_explanation_3": "EventBridge routes events between AWS services and SaaS applications based on rules. It is event-driven routing rather than a worker queue.",
+        "service_tags": [
+            "sqs"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.3",
+        "scenario": "A company needs to register a domain name, provide authoritative DNS resolution, and route traffic to AWS resources with health checks and failover. Which AWS service provides all of these capabilities?",
+        "correct_answer": "Amazon Route 53",
+        "wrong_answer_1": "AWS CloudFront",
+        "wrong_answer_2": "Elastic Load Balancing",
+        "wrong_answer_3": "AWS Global Accelerator",
+        "correct_explanation": "Amazon Route 53 is the AWS DNS web service. It supports domain registration, authoritative DNS hosting, multiple routing policies (latency, failover, weighted, geolocation), and health checks for failover.",
+        "wrong_explanation_1": "CloudFront is a CDN that caches content at edge locations. It does not register domains or perform authoritative DNS resolution.",
+        "wrong_explanation_2": "ELB distributes traffic to back-end targets but is not a DNS service and cannot register domains.",
+        "wrong_explanation_3": "Global Accelerator improves global application traffic routing using the AWS network but does not register domains or host authoritative DNS records.",
+        "service_tags": [
+            "route53"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.3",
+        "scenario": "A development team wants to run Docker containers without managing the underlying EC2 instances. They want AWS to provision compute on demand for each task. Which combination of services meets this requirement?",
+        "correct_answer": "Amazon ECS with the AWS Fargate launch type",
+        "wrong_answer_1": "Amazon ECS with the EC2 launch type",
+        "wrong_answer_2": "Amazon EC2 with Docker installed manually",
+        "wrong_answer_3": "Amazon EMR with custom containers",
+        "correct_explanation": "AWS Fargate is the serverless compute engine for containers. Using Amazon ECS with the Fargate launch type lets the team run containers without provisioning or managing EC2 instances — AWS provisions and scales compute per task.",
+        "wrong_explanation_1": "ECS with the EC2 launch type requires the customer to manage the underlying EC2 cluster, defeating the goal of avoiding server management.",
+        "wrong_explanation_2": "Running Docker on EC2 manually means managing instances, patching, and scaling — the opposite of serverless container compute.",
+        "wrong_explanation_3": "EMR is a big-data processing service for frameworks like Spark and Hadoop. It is not the standard service for general-purpose container workloads.",
+        "service_tags": [
+            "ecs",
+            "fargate"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.4",
+        "scenario": "A team is looking for community-driven answers to AWS technical questions, with reputation-tracked contributors and AWS Heroes participating in discussions. Which AWS resource is purpose-built for this kind of peer-supported Q&A?",
+        "correct_answer": "AWS re:Post",
+        "wrong_answer_1": "AWS Marketplace",
+        "wrong_answer_2": "AWS Partner Network (APN) portal",
+        "wrong_answer_3": "AWS Service Health Dashboard",
+        "correct_explanation": "AWS re:Post is the official AWS community-driven Q&A service. AWS experts, Heroes, and community members participate, and questions are tagged and reputation-tracked. It replaced the older AWS Forums.",
+        "wrong_explanation_1": "AWS Marketplace is a catalog of third-party software products. It is not a question-and-answer community.",
+        "wrong_explanation_2": "The APN portal is where partners manage their relationship with AWS. It is not a public Q&A community.",
+        "wrong_explanation_3": "The Service Health Dashboard reports the operational status of AWS services. It is not a Q&A resource.",
+        "service_tags": [
+            "repost"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.4",
+        "scenario": "A large enterprise needs hands-on AWS expertise to help architect and migrate a complex workload to AWS. They want a paid engagement with AWS-employed consultants who deliver tailored recommendations. Which AWS resource meets this need?",
+        "correct_answer": "AWS Professional Services",
+        "wrong_answer_1": "AWS re:Post",
+        "wrong_answer_2": "AWS Documentation",
+        "wrong_answer_3": "AWS Free Tier",
+        "correct_explanation": "AWS Professional Services is a global team of experts inside AWS that engages directly with customers on complex projects. Engagements are paid and tailored to the customer's specific architecture and migration needs.",
+        "wrong_explanation_1": "AWS re:Post is a free community Q&A. It does not provide paid, tailored consulting engagements.",
+        "wrong_explanation_2": "Documentation is reference material, not a consulting engagement.",
+        "wrong_explanation_3": "The Free Tier offers limited free service usage for new accounts. It is unrelated to consulting services.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 3,
+        "task_statement_number": "3.4",
+        "scenario": "A company is looking for a third-party consulting partner with AWS expertise to assist with a Well-Architected review and migration planning. Which AWS resource catalogs vetted partner companies for this purpose?",
+        "correct_answer": "AWS Partner Network (APN)",
+        "wrong_answer_1": "AWS Service Catalog",
+        "wrong_answer_2": "AWS Marketplace Vendor Insights",
+        "wrong_answer_3": "AWS Trusted Advisor",
+        "correct_explanation": "The AWS Partner Network (APN) is the global community of AWS partner companies — consulting and technology partners — vetted by AWS at different tiers. Customers use the APN partner finder to locate qualified consulting partners.",
+        "wrong_explanation_1": "AWS Service Catalog lets administrators publish approved IT services for use within their own organization. It is not a directory of external partners.",
+        "wrong_explanation_2": "Vendor Insights provides security and compliance information about SaaS vendors in AWS Marketplace. It is not a consulting partner directory.",
+        "wrong_explanation_3": "Trusted Advisor provides best-practice recommendations within an AWS account. It does not list partners.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 4,
+        "task_statement_number": "4.1",
+        "scenario": "A company uses 100 GB of S3 storage in January and 500 GB in February. The February bill for storage is approximately five times the January bill. Which AWS pricing concept does this billing pattern illustrate?",
+        "correct_answer": "Pay-as-you-go pricing",
+        "wrong_answer_1": "Reserved Instance pricing",
+        "wrong_answer_2": "Spot Instance pricing",
+        "wrong_answer_3": "All Upfront pricing",
+        "correct_explanation": "Pay-as-you-go pricing charges customers in direct proportion to consumed resources. Storing five times as much data leads to roughly five times the storage cost, with no commitments or upfront payments involved.",
+        "wrong_explanation_1": "Reserved Instances apply to EC2, RDS, and a few other compute services. S3 storage is not purchased through Reserved Instances.",
+        "wrong_explanation_2": "Spot Instances are a discounted EC2 purchase option. They do not apply to S3 storage.",
+        "wrong_explanation_3": "All Upfront is a payment option for Reserved Instances or Savings Plans. S3 storage bills monthly based on usage, not upfront.",
+        "service_tags": [
+            "s3"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 4,
+        "task_statement_number": "4.1",
+        "scenario": "A company stores petabytes of objects in S3 Standard. As monthly storage usage crosses higher tiers, the per-GB price decreases. Which AWS pricing concept does this illustrate?",
+        "correct_answer": "Volume-based discounts (tiered pricing)",
+        "wrong_answer_1": "Savings Plans",
+        "wrong_answer_2": "Spot pricing",
+        "wrong_answer_3": "Compute Savings Plans",
+        "correct_explanation": "Some AWS services, including S3 Standard, apply tiered pricing — the per-unit price decreases as monthly usage exceeds tier thresholds. This volume-based discount applies automatically without commitments.",
+        "wrong_explanation_1": "Savings Plans apply to compute services (Lambda, Fargate, EC2). They do not apply to S3 storage.",
+        "wrong_explanation_2": "Spot pricing is an EC2 purchasing option. It is not relevant to S3 storage pricing.",
+        "wrong_explanation_3": "Compute Savings Plans cover Lambda, Fargate, and EC2 usage. S3 is outside their scope.",
+        "service_tags": [
+            "s3"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 4,
+        "task_statement_number": "4.1",
+        "scenario": "A company is willing to commit to a consistent amount of compute usage measured in dollars per hour for a one-year term in exchange for a significant discount across EC2, Lambda, and Fargate. Which pricing model is the BEST fit?",
+        "correct_answer": "Compute Savings Plans",
+        "wrong_answer_1": "EC2 Reserved Instances",
+        "wrong_answer_2": "Spot Instances",
+        "wrong_answer_3": "On-Demand Instances",
+        "correct_explanation": "Compute Savings Plans offer significant discounts in exchange for a one-year or three-year commitment to a consistent dollars-per-hour compute usage. They apply across EC2 (regardless of family, size, AZ, Region, or OS), Lambda, and Fargate, providing the flexibility the scenario describes.",
+        "wrong_explanation_1": "EC2 Reserved Instances are tied to specific EC2 instance families and apply only to EC2 — they do not cover Lambda or Fargate.",
+        "wrong_explanation_2": "Spot Instances offer steep EC2 discounts but can be reclaimed with two minutes' notice. They are unsuitable when consistent usage is the goal.",
+        "wrong_explanation_3": "On-Demand pricing has no commitment but also no discount. It does not match the scenario's discount goal.",
+        "service_tags": [
+            "savings-plans"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 4,
+        "task_statement_number": "4.1",
+        "scenario": "A workload is batch-oriented, can tolerate interruption, and can be restarted from a checkpoint. The company wants to run it on EC2 as cheaply as possible. Which purchasing option provides the largest discount?",
+        "correct_answer": "Spot Instances",
+        "wrong_answer_1": "On-Demand Instances",
+        "wrong_answer_2": "Reserved Instances (Standard, 1-year)",
+        "wrong_answer_3": "Dedicated Hosts",
+        "correct_explanation": "Spot Instances offer discounts up to 90% off On-Demand pricing in exchange for the possibility that AWS reclaims them with two minutes' notice. They are ideal for interruption-tolerant, checkpointable workloads.",
+        "wrong_explanation_1": "On-Demand is the highest published price and offers no discount.",
+        "wrong_explanation_2": "Reserved Instances provide significant discounts (up to ~72%) but less than Spot's potential 90%. They also require a 1- or 3-year commitment.",
+        "wrong_explanation_3": "Dedicated Hosts address licensing or isolation requirements and are more expensive, not cheaper. They are the opposite of cost-optimal for this workload.",
+        "service_tags": [
+            "ec2"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 4,
+        "task_statement_number": "4.2",
+        "scenario": "A holding company owns several subsidiaries, each with its own AWS account. The finance team wants a single, consolidated bill for all accounts and the ability to apply volume pricing tiers across aggregated usage. Which AWS service enables this?",
+        "correct_answer": "AWS Organizations with consolidated billing",
+        "wrong_answer_1": "AWS Cost Explorer",
+        "wrong_answer_2": "AWS Budgets",
+        "wrong_answer_3": "AWS Control Tower",
+        "correct_explanation": "AWS Organizations enables consolidated billing across multiple AWS accounts. All member-account usage is invoiced through the management account, and aggregated usage benefits from tier-based volume discounts.",
+        "wrong_explanation_1": "Cost Explorer visualizes and analyzes spend but does not itself consolidate billing across accounts.",
+        "wrong_explanation_2": "Budgets sets thresholds and triggers alerts. It is not a billing consolidation mechanism.",
+        "wrong_explanation_3": "Control Tower establishes a secure multi-account landing zone built on top of Organizations. The specific consolidated-billing capability comes from Organizations itself.",
+        "service_tags": [
+            "organizations"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 4,
+        "task_statement_number": "4.2",
+        "scenario": "An enterprise wants to set up a well-architected multi-account environment with guardrails, an account factory for provisioning new accounts, and a central dashboard — all built on top of AWS Organizations. Which AWS service provides this turn-key landing zone?",
+        "correct_answer": "AWS Control Tower",
+        "wrong_answer_1": "AWS Config",
+        "wrong_answer_2": "AWS Service Catalog",
+        "wrong_answer_3": "AWS Trusted Advisor",
+        "correct_explanation": "AWS Control Tower sets up a multi-account landing zone with preventive and detective guardrails, an account factory for repeatable account provisioning, and a central dashboard. It uses Organizations and other services as building blocks.",
+        "wrong_explanation_1": "AWS Config records configuration history and compliance. It is one input to Control Tower's guardrails but does not by itself provide a multi-account landing zone.",
+        "wrong_explanation_2": "Service Catalog lets administrators publish approved IT products. It is not a multi-account landing-zone service.",
+        "wrong_explanation_3": "Trusted Advisor offers best-practice recommendations but does not establish a multi-account architecture.",
+        "service_tags": [
+            "control-tower"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 4,
+        "task_statement_number": "4.2",
+        "scenario": "A security team wants to prevent any IAM principal in member accounts of an AWS Organization from using the EC2 instance launch API in a specific Region, regardless of what permissions are granted at the account level. Which feature should the team use?",
+        "correct_answer": "Service control policies (SCPs)",
+        "wrong_answer_1": "IAM identity-based policies",
+        "wrong_answer_2": "Resource-based policies",
+        "wrong_answer_3": "Permissions boundaries on individual users",
+        "correct_explanation": "Service control policies (SCPs) in AWS Organizations define the maximum permissions available to IAM principals in member accounts. An SCP that denies the EC2 launch action in a Region is enforced regardless of identity-based grants in those accounts.",
+        "wrong_explanation_1": "IAM identity-based policies grant permissions. They can be bypassed via account-level configuration changes if no account-wide guardrail exists.",
+        "wrong_explanation_2": "Resource-based policies attach to specific resources and control access to those resources. They do not impose an organization-wide cap on launching EC2.",
+        "wrong_explanation_3": "Permissions boundaries cap the permissions of an individual user or role within a single account. They do not provide an organization-wide guardrail across all accounts.",
+        "service_tags": [
+            "organizations",
+            "iam"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 4,
+        "task_statement_number": "4.2",
+        "scenario": "A company wants to share a centrally provisioned VPC subnet with several AWS accounts in its Organization, so that workloads in those accounts can deploy ENIs into the shared subnet. Which AWS service makes this resource sharing possible?",
+        "correct_answer": "AWS Resource Access Manager (AWS RAM)",
+        "wrong_answer_1": "AWS Transit Gateway",
+        "wrong_answer_2": "AWS PrivateLink",
+        "wrong_answer_3": "AWS Direct Connect",
+        "correct_explanation": "AWS RAM allows resources such as VPC subnets, Transit Gateways, License Manager configurations, and others to be shared across AWS accounts in an Organization. Sharing a subnet via RAM lets workloads in multiple accounts deploy ENIs into a common subnet.",
+        "wrong_explanation_1": "Transit Gateway is a network hub for connecting VPCs and on-premises networks. It is not the mechanism for sharing a subnet across accounts.",
+        "wrong_explanation_2": "PrivateLink provides private endpoint connectivity between VPCs and services. It does not share subnets between accounts.",
+        "wrong_explanation_3": "Direct Connect is a dedicated link between on-premises networks and AWS. It does not handle cross-account resource sharing.",
+        "service_tags": [
+            "ram"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 4,
+        "task_statement_number": "4.3",
+        "scenario": "A company is in the planning phase of a new AWS workload and wants to estimate monthly cost before any resources are deployed. Which AWS tool is designed for this pre-deployment cost estimation?",
+        "correct_answer": "AWS Pricing Calculator",
+        "wrong_answer_1": "AWS Cost Explorer",
+        "wrong_answer_2": "AWS Cost and Usage Report",
+        "wrong_answer_3": "AWS Budgets",
+        "correct_explanation": "AWS Pricing Calculator lets users build estimates for AWS workloads before deployment. It models the cost of services and configurations, supports sharing estimates, and is the recommended tool for budgetary planning.",
+        "wrong_explanation_1": "Cost Explorer analyzes historical and projected spend for existing usage. It cannot estimate costs for resources not yet deployed.",
+        "wrong_explanation_2": "Cost and Usage Report provides detailed billing data for existing usage. It is not a forward-looking estimation tool.",
+        "wrong_explanation_3": "Budgets sets and tracks spending thresholds — it does not build pre-deployment estimates.",
+        "service_tags": null
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 4,
+        "task_statement_number": "4.3",
+        "scenario": "A finance manager wants to be alerted by email when AWS spend exceeds $5,000 in any given month, and again when forecasted spend is projected to exceed $7,500. Which AWS service should be configured?",
+        "correct_answer": "AWS Budgets",
+        "wrong_answer_1": "AWS Cost Explorer",
+        "wrong_answer_2": "AWS Trusted Advisor",
+        "wrong_answer_3": "AWS Cost Anomaly Detection only",
+        "correct_explanation": "AWS Budgets supports both actual-spend and forecasted-spend thresholds, with notifications via email or SNS when thresholds are crossed. It is the appropriate service for setting per-period budget alerts.",
+        "wrong_explanation_1": "Cost Explorer visualizes spend trends but does not send threshold-based alerts by itself.",
+        "wrong_explanation_2": "Trusted Advisor checks for best-practice recommendations including some cost-related ones but does not provide budget-threshold alerting.",
+        "wrong_explanation_3": "Cost Anomaly Detection identifies unusual spending patterns. It complements Budgets but does not handle simple threshold alerts.",
+        "service_tags": [
+            "aws-budgets"
+        ]
+    },
+    {
+        "exam_code": "CLF-C02",
+        "domain_number": 4,
+        "task_statement_number": "4.3",
+        "scenario": "A company wants to analyze historical AWS spending by service and by linked account over the past 12 months and visualize trends in an interactive interface. Which AWS service provides this analysis?",
+        "correct_answer": "AWS Cost Explorer",
+        "wrong_answer_1": "AWS Pricing Calculator",
+        "wrong_answer_2": "AWS Budgets",
+        "wrong_answer_3": "AWS Trusted Advisor",
+        "correct_explanation": "AWS Cost Explorer provides an interactive interface to visualize, understand, and analyze AWS costs and usage over time. It supports filtering by service, linked account, tag, and other dimensions, with up to 12 months of history available by default.",
+        "wrong_explanation_1": "Pricing Calculator estimates the cost of planned workloads. It does not analyze historical usage.",
+        "wrong_explanation_2": "AWS Budgets handles threshold-based alerts. It does not provide deep interactive visualization of historical trends.",
+        "wrong_explanation_3": "Trusted Advisor offers cost-related recommendations but is not the historical cost-analysis dashboard.",
+        "service_tags": [
+            "cost-explorer"
+        ]
+    }
+]

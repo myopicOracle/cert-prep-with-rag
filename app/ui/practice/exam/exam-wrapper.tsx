@@ -3,17 +3,32 @@
 import { shuffle } from 'lodash'
 import { useState, useEffect, useMemo } from 'react'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
+import { ChatBubbleOvalLeftEllipsisIcon } from '@heroicons/react/24/outline'
+import useExplain from '@/app/hooks/useExplain'
+
 import ProgressWrapper from '@/app/ui/practice/exam/progress-wrapper'
 import Card from '@/app/ui/practice/exam/card'
 import NavButtons from '@/app/ui/practice/exam/nav-buttons'
 import Review from '@/app/ui/practice/exam/review'
-import { examMetadata } from '@/app/lib/metadata'
-import { ExamWrapperProps } from '@/app/types/components'
-import { QuestionData, AnswerChoice } from '@/app/types/exam'
+import Drawer from '@/app/ui/practice/exam/drawer'
 
-export default function ExamWrapper({ examCode, questions, currentID }: ExamWrapperProps) {
-    const [statefulQuestions, setStatefulQuestions] = useState<QuestionData[]>(() => questions)
+import { examMetadata } from '@/app/lib/seed'
+import { fetchEnhancedBundle } from '@/app/lib/explain'
+import { ExamWrapperProps } from '@/app/types/components'
+import { ExamUIQuestion, AnswerChoice } from '@/app/types/exam'
+
+export default function ExamWrapper({
+    examCode,
+    questions,
+    currentID,
+}: ExamWrapperProps) {
+    const [statefulQuestions, setStatefulQuestions] = useState<
+        ExamUIQuestion[]
+    >(() => questions)
     const [timeRemaining, setTimeRemaining] = useState<number>(0)
+    const [isChatOpen, setIsChatOpen] = useState<boolean>(false)
+    const [isEnhancing, setIsEnhancing] = useState<boolean>(false)
+    const { messages, status, explain, sendMessage, clearThread } = useExplain()
 
     const searchParams = useSearchParams()
     const isReviewMode = searchParams.get('view') === 'review'
@@ -68,6 +83,13 @@ export default function ExamWrapper({ examCode, questions, currentID }: ExamWrap
         setTimeRemaining(215999) // display 59:59:59
     }, [examCode])
 
+    useEffect(() => {
+        setIsChatOpen(false)
+        clearThread()
+    }, [currentID, clearThread])
+
+    // exam interface navigation
+
     function handleSelect(index: number) {
         setStatefulQuestions((prev) => {
             const updatedArray = [...prev]
@@ -109,18 +131,44 @@ export default function ExamWrapper({ examCode, questions, currentID }: ExamWrap
     }
 
     function handleFinish() {
-        if (!currentQuestion.isRevealed && currentQuestion.selectedAnswer !== null) {
+        if (
+            !currentQuestion.isRevealed &&
+            currentQuestion.selectedAnswer !== null
+        ) {
             const isUserCorrect =
-                shuffledChoices[currentIndex][currentQuestion.selectedAnswer].isCorrect
+                shuffledChoices[currentIndex][currentQuestion.selectedAnswer]
+                    .isCorrect
             handleReveal(isUserCorrect)
         }
         const params = new URLSearchParams(searchParams)
         params.set('view', 'review')
-        replace(`${pathname}? ${params.toString()}`)
+        replace(`${pathname}?${params.toString()}`)
+    }
+
+    // AI explanation logic
+
+    function handleCloseChat() {
+        setIsChatOpen(false)
+    }
+
+    async function handleSendFollowUp(text: string) {
+        await sendMessage({ text })
+    }
+
+    async function handleExplainAll() {
+        setIsChatOpen(true)
+        setIsEnhancing(true)
+        const message = await fetchEnhancedBundle({
+            scenario: currentQuestion.scenario,
+            choices: shuffledChoices[currentIndex],
+        })
+        setIsEnhancing(false)
+
+        await explain(message)
     }
 
     return (
-        <div>
+        <>
             {!isReviewMode ? (
                 <>
                     <ProgressWrapper
@@ -140,9 +188,35 @@ export default function ExamWrapper({ examCode, questions, currentID }: ExamWrap
                         onSelect={handleSelect}
                         isRevealed={currentQuestion.isRevealed}
                         onReveal={handleReveal}
+                        onExplainAll={handleExplainAll}
                     />
 
-                    <NavButtons total={totalQuestions} onFinish={handleFinish} />
+                    <Drawer
+                        isOpen={isChatOpen}
+                        onClose={handleCloseChat}
+                        messages={messages}
+                        status={status}
+                        isEnhancing={isEnhancing}
+                        onSendFollowUp={handleSendFollowUp}
+                    />
+
+                    {currentQuestion.isRevealed && !isChatOpen && (
+                        <button
+                            type="button"
+                            onClick={handleExplainAll}
+                            aria-label="Explain all answers"
+                            className="fixed z-20 flex bottom-2 right-2 size-10 md:bottom-6 md:right-6 md:size-20 items-center justify-center rounded-full bg-purple-500 text-white shadow-lg transition-colors hover:bg-purple-600 cursor-pointer">
+                            <ChatBubbleOvalLeftEllipsisIcon
+                                aria-hidden="true"
+                                className="size-5 md:size-14"
+                            />
+                        </button>
+                    )}
+
+                    <NavButtons
+                        total={totalQuestions}
+                        onFinish={handleFinish}
+                    />
                 </>
             ) : (
                 <Review
@@ -152,6 +226,6 @@ export default function ExamWrapper({ examCode, questions, currentID }: ExamWrap
                     numberCorrect={numberCorrect}
                 />
             )}
-        </div>
+        </>
     )
 }
