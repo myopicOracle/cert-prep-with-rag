@@ -1,7 +1,7 @@
 import { useChat } from '@ai-sdk/react'
 import { DefaultChatTransport } from 'ai'
 import { toast } from 'sonner'
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 
 export default function useExplain() {
     const { messages, sendMessage, status, error, setMessages, stop } = useChat(
@@ -20,14 +20,17 @@ export default function useExplain() {
         }
     }, [error])
 
-    function clearThread() {
+    const clearThread = useCallback(() => {
         setMessages([])
-    }
+    }, [setMessages])
 
-    async function explain(prompt: string) {
-        setMessages([])
-        await sendMessage({ text: prompt })
-    }
+    const explain = useCallback(
+        async (prompt: string) => {
+            setMessages([])
+            await sendMessage({ text: prompt })
+        },
+        [setMessages, sendMessage],
+    )
 
     return {
         messages,

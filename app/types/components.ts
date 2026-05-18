@@ -36,6 +36,7 @@ export interface CardProps {
     onSelect: (index: number) => void
     isRevealed: boolean
     onReveal: (isCorrect: boolean) => void
+    onExplainAll: () => void
 }
 
 export interface ChoiceProps {

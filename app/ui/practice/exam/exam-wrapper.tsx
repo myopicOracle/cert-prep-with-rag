@@ -71,6 +71,8 @@ export default function ExamWrapper({
         })
     }, [])
 
+    // exam interface navigation
+
     useEffect(() => {
         for (let i = 0; i < examMetadata.length; i++) {
             if (examMetadata[i].exam_code === examCode) {
@@ -138,8 +140,10 @@ export default function ExamWrapper({
         }
         const params = new URLSearchParams(searchParams)
         params.set('view', 'review')
-        replace(`${pathname}? ${params.toString()}`)
+        replace(`${pathname}?${params.toString()}`)
     }
+
+    // AI explanation logic
 
     function handleCloseChat() {
         setIsChatOpen(false)
@@ -147,6 +151,28 @@ export default function ExamWrapper({
 
     async function handleSendFollowUp(text: string) {
         await sendMessage({ text })
+    }
+
+    async function handleExplainAll() {
+        const choices = shuffledChoices[currentIndex]
+        const letters = ['A', 'B', 'C', 'D']
+
+        const labeledChoices = choices
+            .map((choice, index) => `${letters[index]}. ${choice.answer}`)
+            .join('\n')
+
+        const prompt = [
+            `Scenario:`,
+            currentQuestion.scenario,
+            ``,
+            `Answer Choices:`,
+            labeledChoices,
+            ``,
+            task.explainAll,
+        ].join('\n')
+
+        setIsChatOpen(true)
+        await explain(prompt)
     }
 
     return (
@@ -170,6 +196,7 @@ export default function ExamWrapper({
                         onSelect={handleSelect}
                         isRevealed={currentQuestion.isRevealed}
                         onReveal={handleReveal}
+                        onExplainAll={handleExplainAll}
                     />
 
                     <Drawer

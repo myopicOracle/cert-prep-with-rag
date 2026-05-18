@@ -14,9 +14,9 @@ export default function Card({
     onSelect,
     isRevealed,
     onReveal,
+    onExplainAll,
 }: CardProps) {
     const questionID = id
-
     const scenario = question.scenario
 
     return (
@@ -47,7 +47,7 @@ export default function Card({
                     )
                 })}
             </div>
-            <div>
+            <div className="flex gap-3">
                 <Button
                     name="Check Answer"
                     buttonStyle={
@@ -60,6 +60,16 @@ export default function Card({
                         }
                     }}
                 />
+                {isRevealed && (
+                    <Button
+                        name="Explain All Answers"
+                        buttonStyle={
+                            'rounded mb-4 px-4 py-2 bg-purple-500 text-white hover:bg-purple-600'
+                        }
+                        isDisabled={false}
+                        onClick={onExplainAll}
+                    />
+                )}
             </div>
         </div>
     )

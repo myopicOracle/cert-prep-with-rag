@@ -47,5 +47,5 @@
 - [x] seed exams, domains, and task statements tables with exam metadata, #51
 - [x] seed questions for 3 exams, add metadata filter, refactor fetch api, #47
 - [x] add /api/explain streaming endpoint and slide-out chat panel, #50
-- [ ] add "Explain Answer" feature to answer choices, wire new API route, #48
-- [ ] add "Explain All" feature to question card, wire new API route, #49
+- [x] add "Explain Answer" feature to answer choices, wire new API route, #48
+- [x] add "Explain All" feature to question card, wire new API route, #49
