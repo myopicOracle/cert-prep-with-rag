@@ -3,6 +3,7 @@
 import { shuffle } from 'lodash'
 import { useState, useEffect, useMemo } from 'react'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
+import { ChatBubbleOvalLeftEllipsisIcon } from '@heroicons/react/24/outline'
 import useExplain from '@/app/hooks/useExplain'
 
 import ProgressWrapper from '@/app/ui/practice/exam/progress-wrapper'
@@ -176,7 +177,7 @@ export default function ExamWrapper({
     }
 
     return (
-        <div>
+        <>
             {!isReviewMode ? (
                 <>
                     <ProgressWrapper
@@ -207,6 +208,19 @@ export default function ExamWrapper({
                         onSendFollowUp={handleSendFollowUp}
                     />
 
+                    {currentQuestion.isRevealed && !isChatOpen && (
+                        <button
+                            type="button"
+                            onClick={handleExplainAll}
+                            aria-label="Explain all answers"
+                            className="fixed z-20 flex bottom-2 right-2 size-10 md:bottom-6 md:right-6 md:size-20 items-center justify-center rounded-full bg-purple-500 text-white shadow-lg transition-colors hover:bg-purple-600 cursor-pointer">
+                            <ChatBubbleOvalLeftEllipsisIcon
+                                aria-hidden="true"
+                                className="size-5 md:size-14"
+                            />
+                        </button>
+                    )}
+
                     <NavButtons
                         total={totalQuestions}
                         onFinish={handleFinish}
@@ -220,6 +234,6 @@ export default function ExamWrapper({
                     numberCorrect={numberCorrect}
                 />
             )}
-        </div>
+        </>
     )
 }

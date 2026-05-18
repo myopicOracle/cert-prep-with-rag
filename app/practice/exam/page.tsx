@@ -31,7 +31,7 @@ export default async function Page({
     })
 
     return (
-        <div className="w-full">
+        <div className="w-full px-2 md:px-10">
             <h1 className={`${lusitana.className} text-3xl`}>{examCode}</h1>
 
             <ExamWrapper
