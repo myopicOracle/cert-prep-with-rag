@@ -49,3 +49,4 @@
 - [x] add /api/explain streaming endpoint and slide-out chat panel, #50
 - [x] add "Explain Answer" feature to answer choices, wire new API route, #48
 - [x] add "Explain All" feature to question card, wire new API route, #49
+- [ ] fix untracked exam variants by adding set_letter field and reseeding db, #54

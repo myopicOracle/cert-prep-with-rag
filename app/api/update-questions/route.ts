@@ -25,9 +25,14 @@ const supabase = createClient(
 )
 
 async function seedQuestions() {
+    const setLetter = parseSetLetter(FILE_NAME)
     const questionSeed = await loadQuestionsFromFile()
     const taskStatements = await fetchTaskStatements()
-    const questionRows = buildQuestionRows(questionSeed, taskStatements)
+    const questionRows = buildQuestionRows(
+        questionSeed,
+        taskStatements,
+        setLetter,
+    )
 
     const { error } = await supabase.from('questions').insert(questionRows)
 
@@ -54,6 +59,16 @@ export async function GET() {
 
 // helper functions below
 
+function parseSetLetter(fileName: string): string {
+    const match = fileName.match(/-set-([a-z])\.json$/)
+    if (!match) {
+        throw new Error(
+            `File "${fileName}" does not match the expected "{exam-code}-set-{letter}.json" pattern`,
+        )
+    }
+    return match[1]
+}
+
 async function loadQuestionsFromFile() {
     const filePath = path.join(process.cwd(), SOURCE_FILE)
     const fileContent = await fs.readFile(filePath, 'utf-8')
@@ -72,7 +87,11 @@ async function fetchTaskStatements() {
     return data
 }
 
-function buildQuestionRows(questionSeed: any[], taskStatements: any[]) {
+function buildQuestionRows(
+    questionSeed: any[],
+    taskStatements: any[],
+    setLetter: string,
+) {
     const questionRows = []
 
     for (const q of questionSeed) {
@@ -104,13 +123,14 @@ function buildQuestionRows(questionSeed: any[], taskStatements: any[]) {
             wrong_explanation_2: q.wrong_explanation_2,
             wrong_explanation_3: q.wrong_explanation_3,
             service_tags: q.service_tags,
+            set_letter: setLetter,
         })
     }
 
     return questionRows
 }
 
-// last update: 2026-05-17
+// last update: 2026-05-18
 // {"message":"Database seeding was successful","source":"data/generated-questions/clf-c02-set-a.json","questions":65}
 // {"message":"Database seeding was successful","source":"data/generated-questions/clf-c02-set-b.json","questions":65}
 // {"message":"Database seeding was successful","source":"data/generated-questions/clf-c02-set-c.json","questions":65}
