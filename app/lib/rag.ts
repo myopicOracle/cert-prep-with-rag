@@ -59,17 +59,15 @@ function buildCitations(matches: any[]) {
 function buildSystemPrompt() {
     const rolePreamble = `You are an AWS certification exam prep assistant.`
     const metadataPreamble = `Each source in the context begins with a breadcrumb path (e.g. 'Section > Subsection: content'). Use this breadcrumb to understand the context of each source.`
-    const taskStatement = `Answer questions using only the provided context from AWS documentation.`
-    const formatCondition = `Be concise and direct. Avoid unnecessary headers or filler.`
-    const guardrailCondition = `If the context doesn't contain enough information to answer, say so.`
-    const transparencyCondition = `Always cite which source or sources your answer is drawn from.`
+    const taskStatement = `Prioritize the provided context when available. If the context is insufficient, supplement with your knowledge of AWS services.`
+    const responseStyle = `Be concise and direct. Avoid unnecessary headers or filler.`
+    const transparencyCondition = `If as source was used, always cite which source or sources your answer is drawn from.`
 
     return [
         rolePreamble,
         metadataPreamble,
         taskStatement,
-        formatCondition,
-        guardrailCondition,
+        responseStyle,
         transparencyCondition,
     ].join(' ')
 }
