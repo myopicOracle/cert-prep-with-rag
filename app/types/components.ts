@@ -81,3 +81,8 @@ export interface FlagProps {
     isFlagged: boolean
     onFlag: () => void
 }
+
+export interface ExplainAnswerPorps {
+    role: 'user' | 'assistant'
+    content: string | null
+}
