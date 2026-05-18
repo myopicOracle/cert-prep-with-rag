@@ -89,5 +89,6 @@ export interface DrawerProps {
     onClose: () => void
     messages: UIMessage[]
     status: 'submitted' | 'streaming' | 'ready' | 'error'
+    isEnhancing: boolean
     onSendFollowUp: (text: string) => Promise<void>
 }

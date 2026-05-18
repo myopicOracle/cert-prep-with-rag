@@ -18,6 +18,7 @@ export default function Drawer({
     onClose,
     messages,
     status,
+    isEnhancing,
     onSendFollowUp,
 }: DrawerProps) {
     const [input, setInput] = useState('')
@@ -106,7 +107,7 @@ export default function Drawer({
                                             </div>
                                         </div>
                                     ))}
-                                    {status === 'submitted' && (
+                                    {(isEnhancing || status === 'submitted') && (
                                         <p className="text-sm text-gray-500 italic">
                                             Thinking…
                                         </p>

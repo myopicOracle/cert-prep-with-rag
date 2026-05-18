@@ -13,9 +13,9 @@ import Review from '@/app/ui/practice/exam/review'
 import Drawer from '@/app/ui/practice/exam/drawer'
 
 import { examMetadata } from '@/app/lib/seed'
+import { fetchEnhancedBundle } from '@/app/lib/explain'
 import { ExamWrapperProps } from '@/app/types/components'
 import { ExamUIQuestion, AnswerChoice } from '@/app/types/exam'
-import { task } from '@/app/lib/prompts'
 
 export default function ExamWrapper({
     examCode,
@@ -27,6 +27,7 @@ export default function ExamWrapper({
     >(() => questions)
     const [timeRemaining, setTimeRemaining] = useState<number>(0)
     const [isChatOpen, setIsChatOpen] = useState<boolean>(false)
+    const [isEnhancing, setIsEnhancing] = useState<boolean>(false)
     const { messages, status, explain, sendMessage, clearThread } = useExplain()
 
     const searchParams = useSearchParams()
@@ -72,8 +73,6 @@ export default function ExamWrapper({
         })
     }, [])
 
-    // exam interface navigation
-
     useEffect(() => {
         for (let i = 0; i < examMetadata.length; i++) {
             if (examMetadata[i].exam_code === examCode) {
@@ -88,6 +87,8 @@ export default function ExamWrapper({
         setIsChatOpen(false)
         clearThread()
     }, [currentID, clearThread])
+
+    // exam interface navigation
 
     function handleSelect(index: number) {
         setStatefulQuestions((prev) => {
@@ -155,25 +156,15 @@ export default function ExamWrapper({
     }
 
     async function handleExplainAll() {
-        const choices = shuffledChoices[currentIndex]
-        const letters = ['A', 'B', 'C', 'D']
-
-        const labeledChoices = choices
-            .map((choice, index) => `${letters[index]}. ${choice.answer}`)
-            .join('\n')
-
-        const prompt = [
-            `Scenario:`,
-            currentQuestion.scenario,
-            ``,
-            `Answer Choices:`,
-            labeledChoices,
-            ``,
-            task.explainAll,
-        ].join('\n')
-
         setIsChatOpen(true)
-        await explain(prompt)
+        setIsEnhancing(true)
+        const message = await fetchEnhancedBundle({
+            scenario: currentQuestion.scenario,
+            choices: shuffledChoices[currentIndex],
+        })
+        setIsEnhancing(false)
+
+        await explain(message)
     }
 
     return (
@@ -205,6 +196,7 @@ export default function ExamWrapper({
                         onClose={handleCloseChat}
                         messages={messages}
                         status={status}
+                        isEnhancing={isEnhancing}
                         onSendFollowUp={handleSendFollowUp}
                     />
 
