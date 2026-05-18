@@ -11,6 +11,8 @@ import { examMetadata } from '@/app/lib/seed'
 import { ExamWrapperProps } from '@/app/types/components'
 import { ExamUIQuestion, AnswerChoice } from '@/app/types/exam'
 
+import ExplainDebug from '@/app/ui/practice/exam/explain-debug'
+
 export default function ExamWrapper({
     examCode,
     questions,
@@ -151,6 +153,8 @@ export default function ExamWrapper({
                         isRevealed={currentQuestion.isRevealed}
                         onReveal={handleReveal}
                     />
+
+                    <ExplainDebug />
 
                     <NavButtons
                         total={totalQuestions}
