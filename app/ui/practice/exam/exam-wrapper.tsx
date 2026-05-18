@@ -3,15 +3,18 @@
 import { shuffle } from 'lodash'
 import { useState, useEffect, useMemo } from 'react'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
+import useExplain from '@/app/hooks/useExplain'
+
 import ProgressWrapper from '@/app/ui/practice/exam/progress-wrapper'
 import Card from '@/app/ui/practice/exam/card'
 import NavButtons from '@/app/ui/practice/exam/nav-buttons'
 import Review from '@/app/ui/practice/exam/review'
+import Drawer from '@/app/ui/practice/exam/drawer'
+
 import { examMetadata } from '@/app/lib/seed'
 import { ExamWrapperProps } from '@/app/types/components'
 import { ExamUIQuestion, AnswerChoice } from '@/app/types/exam'
-
-import ExplainDebug from '@/app/ui/practice/exam/explain-debug'
+import { task } from '@/app/lib/prompts'
 
 export default function ExamWrapper({
     examCode,
@@ -22,6 +25,8 @@ export default function ExamWrapper({
         ExamUIQuestion[]
     >(() => questions)
     const [timeRemaining, setTimeRemaining] = useState<number>(0)
+    const [isChatOpen, setIsChatOpen] = useState<boolean>(false)
+    const { messages, status, explain, sendMessage, clearThread } = useExplain()
 
     const searchParams = useSearchParams()
     const isReviewMode = searchParams.get('view') === 'review'
@@ -75,6 +80,11 @@ export default function ExamWrapper({
         }
         setTimeRemaining(215999) // display 59:59:59
     }, [examCode])
+
+    useEffect(() => {
+        setIsChatOpen(false)
+        clearThread()
+    }, [currentID, clearThread])
 
     function handleSelect(index: number) {
         setStatefulQuestions((prev) => {
@@ -131,6 +141,14 @@ export default function ExamWrapper({
         replace(`${pathname}? ${params.toString()}`)
     }
 
+    function handleCloseChat() {
+        setIsChatOpen(false)
+    }
+
+    async function handleSendFollowUp(text: string) {
+        await sendMessage({ text })
+    }
+
     return (
         <div>
             {!isReviewMode ? (
@@ -154,7 +172,13 @@ export default function ExamWrapper({
                         onReveal={handleReveal}
                     />
 
-                    <ExplainDebug />
+                    <Drawer
+                        isOpen={isChatOpen}
+                        onClose={handleCloseChat}
+                        messages={messages}
+                        status={status}
+                        onSendFollowUp={handleSendFollowUp}
+                    />
 
                     <NavButtons
                         total={totalQuestions}
