@@ -1,12 +1,13 @@
 import { bedrock } from '@ai-sdk/amazon-bedrock'
-import { streamText, convertToModelMessages } from 'ai'
+import { streamText, generateText, convertToModelMessages } from 'ai'
 
 import { bedrock_models as models } from '@/app/lib/models'
-import { role, outputFormat, systemGuardrail } from '@/app/lib/prompts'
+import { role, task, outputFormat, systemGuardrail } from '@/app/lib/prompts'
 
-import { StreamingResponseProps } from '@/app/types/api'
+import { StreamingResponseProps, EnhancedMessageProps } from '@/app/types/api'
 
-const selectedModel = bedrock(models.fast)
+const responseModel = bedrock(models.dev_main)
+const enhancementModel = bedrock(models.intern)
 
 export async function getStreamingResponse({
     messages,
@@ -18,6 +19,8 @@ export async function getStreamingResponse({
 
 ${role.examTutor}
 
+${task.explainAll}
+
 ${outputFormat.concise} ${outputFormat.markdown}
 
 ${systemGuardrail.noFabricatedCitations} ${systemGuardrail.noFabricatedFacts}
@@ -28,7 +31,7 @@ ${systemGuardrail.noFabricatedCitations} ${systemGuardrail.noFabricatedFacts}
     let firstChunkLogged = false
 
     const response = streamText({
-        model: selectedModel,
+        model: responseModel,
         messages: convertedMessages,
         system: systemPrompt,
         onChunk: () => {
@@ -43,4 +46,22 @@ ${systemGuardrail.noFabricatedCitations} ${systemGuardrail.noFabricatedFacts}
     tPreStream = Date.now() - t0
 
     return response
+}
+
+export async function getEnhancedMessage({ messages }: EnhancedMessageProps) {
+    const convertedMessages = await convertToModelMessages(messages)
+
+    const systemPrompt = `
+
+${role.intern}
+
+    `.trim()
+
+    const response = await generateText({
+        model: enhancementModel,
+        messages: convertedMessages,
+        system: systemPrompt,
+    })
+
+    return response.text
 }
