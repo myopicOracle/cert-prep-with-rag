@@ -32,6 +32,26 @@ export async function fetchQuestionsByExam(
     return data
 }
 
+export async function fetchQuestionsByExamSet(
+    examCode: string,
+    setLetter: string,
+): Promise<DatabaseQuestion[]> {
+    const supabase = createClient()
+    const { data, error } = await supabase
+        .from('questions_full')
+        .select('*')
+        .eq('exam_code', examCode)
+        .eq('set_letter', setLetter)
+
+    if (error) {
+        throw new Error(
+            `Failed to fetch questions for exam ${examCode}, set ${setLetter}`,
+        )
+    }
+
+    return data
+}
+
 export async function fetchQuestionsByDomain(
     examCode: string,
     domainNumber: number,
