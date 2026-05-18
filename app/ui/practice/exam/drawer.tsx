@@ -10,6 +10,7 @@ import {
     TransitionChild,
 } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
+import ReactMarkdown from 'react-markdown'
 import type { DrawerProps } from '@/app/types/components'
 
 export default function Drawer({
@@ -64,12 +65,12 @@ export default function Drawer({
                                 </div>
                             </TransitionChild>
                             <div className="relative flex h-full flex-col overflow-hidden bg-white py-6 shadow-xl">
-                                <div className="px-4 sm:px-6">
+                                <div className="pb-6 px-4 sm:px-6 border-b border-gray-200">
                                     <DialogTitle className="text-base font-semibold text-gray-900">
                                         AI Explanation
                                     </DialogTitle>
                                 </div>
-                                <div className="relative mt-6 flex-1 overflow-y-auto px-4 sm:px-6 space-y-4">
+                                <div className="py-4 relative flex-1 overflow-y-auto px-4 sm:px-6 space-y-4">
                                     {messages.map((message) => (
                                         <div
                                             key={message.id}
@@ -79,19 +80,29 @@ export default function Drawer({
                                                     : 'text-left'
                                             }>
                                             <div
-                                                className={`inline-block max-w-[90%] rounded-lg px-3 py-2 text-sm whitespace-pre-wrap ${
+                                                className={`inline-block max-w-[90%] rounded-lg px-3 py-2 text-sm text-left ${
                                                     message.role === 'user'
                                                         ? 'bg-blue-500 text-white'
                                                         : 'bg-gray-100 text-gray-900'
                                                 }`}>
-                                                {message.parts.map(
-                                                    (part, index) =>
-                                                        part.type === 'text' ? (
-                                                            <span key={index}>
-                                                                {part.text}
-                                                            </span>
-                                                        ) : null,
-                                                )}
+                                                <div
+                                                    className={
+                                                        message.role ===
+                                                        'assistant'
+                                                            ? 'prose prose-sm max-w-none prose-p:my-1'
+                                                            : ''
+                                                    }>
+                                                    {message.parts.map(
+                                                        (part, index) =>
+                                                            part.type ===
+                                                            'text' ? (
+                                                                <ReactMarkdown
+                                                                    key={index}>
+                                                                    {part.text}
+                                                                </ReactMarkdown>
+                                                            ) : null,
+                                                    )}
+                                                </div>
                                             </div>
                                         </div>
                                     ))}
@@ -103,7 +114,7 @@ export default function Drawer({
                                 </div>
                                 <form
                                     onSubmit={handleSubmit}
-                                    className="mt-4 border-t border-gray-200 px-4 sm:px-6 pt-4 flex gap-2">
+                                    className="pt-6 border-t border-gray-200 px-4 sm:px-6 pt-4 flex gap-2">
                                     <input
                                         type="text"
                                         value={input}
