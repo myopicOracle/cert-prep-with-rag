@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { inter } from '@/app/ui/fonts'
+import Header from '@/app/ui/header'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -13,8 +14,12 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en">
-            <body className={`${inter.className} antialiased`}>{children}</body>
+        <html lang="en" className="h-full">
+            <body
+                className={`${inter.className} antialiased h-full flex flex-col`}>
+                <Header />
+                <main className="flex-1">{children}</main>
+            </body>
         </html>
     )
 }
