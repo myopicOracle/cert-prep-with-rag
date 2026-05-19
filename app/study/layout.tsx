@@ -1,4 +1,4 @@
-import SideNav from '@/app/ui/practice/sidenav'
+import SideNav from '@/app/ui/study/sidenav'
 import { Toaster } from 'sonner'
 
 export default function Layout({ children }: { children: React.ReactNode }) {

@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react'
 import { ChatDisplayProps } from '@/app/types/components'
-import ChatMessage from '@/app/ui/practice/study/chat-message'
+import ChatMessage from '@/app/ui/study/chat-message'
 
 export default function ChatDisplay({
     chatHistory,
