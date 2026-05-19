@@ -51,3 +51,12 @@
 - [x] add "Explain All" feature to question card, wire new API route, #49
 - [x] fix untracked exam variants by adding set_letter field and reseeding db, #54
 - [x] add message enhancement step before sending initial explain request, #55
+
+## Planned Improvements
+
+- [x] design brand assets and add to repo, #47
+- [ ] redesign color palette, add accents, add dark/light mode toggle, #41
+- [ ] style sidenav, add header, add footer, add GH CTA to app, #53
+- [ ] create site landing page, exams selector dash, reorg routes, #58
+- [ ] refactor study mode chat UI to use streaming responses, #52
+- [ ] add loading indicator, starter questions, button animation to chat UI, #43
