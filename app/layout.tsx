@@ -22,7 +22,14 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en" className="h-full" data-theme="light">
+        <html lang="en" className="h-full" suppressHydrationWarning>
+            <head>
+                <script dangerouslySetInnerHTML={{ __html:
+                    `document.documentElement.dataset.theme =
+                        localStorage.getItem('theme') ||
+                        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')`
+                }} />
+            </head>
             <body
                 className={`${inter.className} antialiased h-full flex flex-col`}>
                 <Header />

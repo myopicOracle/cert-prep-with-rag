@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 @theme {
     --color-brand-navy:        #081928;
     --color-brand-white:       #FEFEFE;
@@ -9,14 +11,16 @@
     
     --color-paragraph-light:   #111827;
     --color-comment-light:     #1C2942;
+    --color-banner-light:      #FF69B4;
 
     --color-paragraph-dark:    #FFFAF7;
     --color-comment-dark:      #B5AEAD;
+    --color-banner-dark:       #FF69B4;
     
     --color-fix-me:            #FF69B4;
 }
 
-@theme inline {
+@theme {
     --color-page:              var(--color-brand-white);
     --color-header:            var(--color-brand-white);
     --color-footer:            var(--color-fix-me);

@@ -9,14 +9,14 @@ export default function Header() {
                 alt="Brand lockup for Praevisio Atlas"
                 width={240}
                 height={64}
-                className="h-8 w-auto [[data-theme='dark']_&]:hidden"
+                className="h-8 w-auto dark:hidden"
             />
             <Image
                 src="/atlas/lockup-dark.svg"
                 alt="Brand lockup for Praevisio Atlas"
                 width={240}
                 height={64}
-                className="h-8 w-auto hidden [[data-theme='dark']_&]:block"
+                className="h-8 w-auto hidden dark:block"
             />
             <nav className="text-text">About / Study / Practice</nav>
             <div className="flex gap-4 text-text">
