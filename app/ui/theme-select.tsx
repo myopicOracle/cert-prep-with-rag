@@ -9,17 +9,17 @@ function setTheme(theme: 'light' | 'dark') {
 
 export default function ThemeSelect() {
     return (
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 rounded-full bg-button p-1">
             <button
                 type="button"
                 onClick={() => setTheme('light')}
-                className="rounded-sm bg-button px-3 py-2 text-button-text opacity-100 dark:opacity-40">
+                className="rounded-full p-2 text-button-text transition-colors bg-header dark:bg-transparent">
                 <SunIcon className="h-4 w-4" />
             </button>
             <button
                 type="button"
                 onClick={() => setTheme('dark')}
-                className="rounded-sm bg-button px-3 py-2 text-button-text opacity-40 dark:opacity-100">
+                className="rounded-full p-2 text-button-text transition-colors bg-transparent dark:bg-neutral">
                 <MoonIcon className="h-4 w-4" />
             </button>
         </div>
