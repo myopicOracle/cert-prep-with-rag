@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import ThemeSelect from '@/app/ui/theme-select'
 
 export default function Header() {
     return (
@@ -19,7 +20,7 @@ export default function Header() {
             />
             <nav className="text-text">About / Study / Practice</nav>
             <div className="flex gap-4 text-text">
-                <div>Toggle Dark Light</div>
+                <ThemeSelect />
                 <div>Login</div>
             </div>
         </div>

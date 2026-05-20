@@ -16,7 +16,7 @@
     --color-fix-me:            #FF69B4;
 }
 
-@theme {
+@theme inline {
     --color-page:              var(--color-brand-white);
     --color-header:            var(--color-brand-white);
     --color-footer:            var(--color-fix-me);
