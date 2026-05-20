@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { inter } from '@/app/ui/fonts'
 import './globals.css'
 
@@ -8,6 +8,12 @@ import Footer from '@/app/ui/footer'
 export const metadata: Metadata = {
     title: 'Praevisio Atals',
     description: 'Learn AWS and pass certification exams with flying colors.',
+}
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    interactiveWidget: 'resizes-visual',
 }
 
 export default function RootLayout({
