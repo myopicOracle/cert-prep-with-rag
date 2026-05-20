@@ -27,16 +27,20 @@
     --color-sidenav:           var(--color-heading);
     --color-card:              #FFEEDB;
     --color-border:            #FFD6A8;
-    
+
     --color-banner:            #2C3E50;
-    --color-highlight:         var(--color-brand-cyan);
+    --color-assistant:         var(--color-brand-navy);
     --color-overlay:           var(--color-page);
 
     --color-accent-bright:     #7F96FF;
     --color-accent-subtle:     #E3DFFF;
     
+    --color-status-correct:    #D1FAE5;
+    --color-status-wrong:      #FEE2E2;
+    --color-status-neutral:    #F3F4F6;
+    --color-selected:          #FEF3C7;
+
     --color-input:             #D6D6D6;
-    --color-input-disabled:    #ADADAD;
     --color-focus:             var(--color-brand-gold);
 
     --color-button:            var(--color-brand-gold);
@@ -63,14 +67,18 @@
         --color-border:        #154269;
         
         --color-banner:        #FFEEDB;
-        --color-highlight:     var(--color-brand-gold);
+        --color-assistant:     var(--color-brand-gold);
         --color-overlay:       var(--color-page);
 
         --color-accent-bright: #9046CF;
         --color-accent-subtle: #69299f;
         
-        --color-input:         #4f4f4f;
-        --color-input-disabled: #476481;
+        --color-status-correct:    #064E3B;
+        --color-status-wrong:      #7F1D1D;
+        --color-status-neutral:    #374151;
+        --color-selected:          #1E3A4F;
+
+        --color-input:         #476481;
         --color-focus:         var(--color-brand-cyan);
 
         --color-button:        var(--color-brand-cyan);
@@ -84,6 +92,6 @@
     html {
         font-size: clamp(12px, 1.2vw, 16px);
         background-color: var(--color-page);
-        color: var(--color-text);
+        color: var(--color-body);
     }
 }

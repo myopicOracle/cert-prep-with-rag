@@ -41,10 +41,10 @@ export default function Review({
                 {questions.map((question, index) => {
                     const bgColor =
                         question.answeredCorrectly === null
-                            ? 'bg-gray-50'
+                            ? 'bg-status-neutral'
                             : question.answeredCorrectly
-                              ? 'bg-green-50'
-                              : 'bg-red-50'
+                              ? 'bg-status-correct'
+                              : 'bg-status-wrong'
 
                     return (
                         <div key={question.id} className={`flex gap-6 p-4 rounded-xl ${bgColor}`}>
@@ -71,7 +71,7 @@ export default function Review({
                             <div className="flex-none w-24">
                                 <Link
                                     href={`/practice/exam?id=${index + 1}`}
-                                    className="text-blue-600 underline hover:text-blue-800 transition-colors">
+                                    className="text-link underline hover:text-link-hover transition-colors">
                                     Review
                                 </Link>
                             </div>

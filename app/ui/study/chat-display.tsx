@@ -19,7 +19,7 @@ export default function ChatDisplay({
     return (
         <>
             {chatHistory.length === 0 ? (
-                <p className="text-center text-sm text-gray-400 mt-12">
+                <p className="text-center text-sm text-body-muted mt-12">
                     Ask a question get started.
                 </p>
             ) : (

@@ -13,14 +13,14 @@ export default function ChatMessage({
             : 'self-start items-start w-full max-w-[75%] '
     const roleStyle =
         role === 'user'
-            ? 'bg-blue-200 border-blue-500'
-            : 'bg-gray-200 border-gray-500'
+            ? 'bg-button/20 border-button'
+            : 'bg-card border-border'
     const sharedStyle =
         'w-full m-2 px-4 py-2 rounded-lg border shadow-sm prose prose-sm text-[0.8125rem]'
 
     return (
         <div className={`flex flex-col ${roleAlign}`}>
-            <span className="text-xs text-gray-400 mb-1 px-2">{label}</span>
+            <span className="text-xs text-body-muted mb-1 px-2">{label}</span>
             <div className={`${sharedStyle} ${roleStyle}`}>
                 <ReactMarkdown>{content}</ReactMarkdown>
                 {citations && citations.length > 0 && (

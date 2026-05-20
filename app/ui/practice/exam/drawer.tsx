@@ -53,7 +53,7 @@ export default function Drawer({
                                     <button
                                         type="button"
                                         onClick={() => onClose()}
-                                        className="relative rounded-md text-gray-300 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                                        className="relative rounded-md text-body-muted hover:text-button-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus">
                                         <span className="absolute -inset-2.5" />
                                         <span className="sr-only">
                                             Close panel
@@ -65,9 +65,9 @@ export default function Drawer({
                                     </button>
                                 </div>
                             </TransitionChild>
-                            <div className="relative flex h-full flex-col overflow-hidden bg-white py-6 shadow-xl">
-                                <div className="pb-6 px-4 sm:px-6 border-b border-gray-200">
-                                    <DialogTitle className="text-base font-semibold text-gray-900">
+                            <div className="relative flex h-full flex-col overflow-hidden bg-card py-6 shadow-xl">
+                                <div className="pb-6 px-4 sm:px-6 border-b border-border">
+                                    <DialogTitle className="text-base font-semibold text-heading">
                                         AI Explanation
                                     </DialogTitle>
                                 </div>
@@ -83,8 +83,8 @@ export default function Drawer({
                                             <div
                                                 className={`inline-block max-w-[90%] rounded-lg px-3 py-2 text-sm text-left ${
                                                     message.role === 'user'
-                                                        ? 'bg-blue-500 text-white'
-                                                        : 'bg-gray-100 text-gray-900'
+                                                        ? 'bg-button text-button-text'
+                                                        : 'bg-card text-body'
                                                 }`}>
                                                 <div
                                                     className={
@@ -108,14 +108,14 @@ export default function Drawer({
                                         </div>
                                     ))}
                                     {(isEnhancing || status === 'submitted') && (
-                                        <p className="text-sm text-gray-500 italic">
+                                        <p className="text-sm text-body-muted italic">
                                             Thinking…
                                         </p>
                                     )}
                                 </div>
                                 <form
                                     onSubmit={handleSubmit}
-                                    className="pt-6 border-t border-gray-200 px-4 sm:px-6 pt-4 flex gap-2">
+                                    className="pt-6 border-t border-border px-4 sm:px-6 pt-4 flex gap-2">
                                     <input
                                         type="text"
                                         value={input}
@@ -124,14 +124,14 @@ export default function Drawer({
                                         }
                                         placeholder="Ask a follow-up question…"
                                         disabled={isStreaming}
-                                        className="flex-1 rounded border border-gray-300 px-3 py-2 text-sm disabled:bg-gray-100"
+                                        className="flex-1 rounded border border-border px-3 py-2 text-sm disabled:bg-input/50"
                                     />
                                     <button
                                         type="submit"
                                         disabled={
                                             isStreaming || input.trim() === ''
                                         }
-                                        className="rounded bg-blue-500 px-4 py-2 text-sm text-white disabled:opacity-50">
+                                        className="rounded bg-button px-4 py-2 text-sm text-button-text disabled:opacity-50">
                                         Send
                                     </button>
                                 </form>
