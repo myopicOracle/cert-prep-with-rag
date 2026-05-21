@@ -35,7 +35,7 @@ export default function Hero() {
                 </a>
             </div>
             <Image
-                src="/images/hero-backdrop.png"
+                src="/images/hero-main.png"
                 alt="Image showing cloud certification path"
                 width={2048}
                 height={736}
