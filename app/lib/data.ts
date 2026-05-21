@@ -52,6 +52,21 @@ export async function fetchQuestionsByExamSet(
     return data
 }
 
+export async function fetchAvailableExamCodes(): Promise<string[]> {
+    const supabase = createClient()
+    const { data, error } = await supabase
+        .from('questions_full')
+        .select('exam_code')
+        .not('exam_code', 'is', null)
+        .not('set_letter', 'is', null)
+
+    if (error) {
+        throw new Error('Failed to fetch available exam codes.')
+    }
+
+    return Array.from(new Set(data.map((row) => row.exam_code as string)))
+}
+
 export async function fetchSetLettersByExam(
     examCode: string,
 ): Promise<string[]> {

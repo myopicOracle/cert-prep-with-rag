@@ -55,8 +55,8 @@
 ## Planned Improvements
 
 - [x] design brand assets and add to repo, #47
-- [ ] redesign color palette, add accents, add dark/light mode toggle, #41
-- [ ] style sidenav, add header, add footer, add GH CTA to app, #53
-- [ ] create site landing page, exams selector dash, reorg routes, #58
+- [x] redesign color palette, add accents, add dark/light mode toggle, #41
+- [x] style sidenav, add header, add footer, add GH CTA to app, #53
+- [x] create landing page, about page, exams selector dash, reorg routes, #58
 - [ ] refactor study mode chat UI to use streaming responses, #52
 - [ ] add loading indicator, starter questions, button animation to chat UI, #43

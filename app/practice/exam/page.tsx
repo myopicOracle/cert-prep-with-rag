@@ -1,11 +1,19 @@
 import { examMetadata } from '@/app/lib/seed'
+import { fetchAvailableExamCodes } from '@/app/lib/data'
 import SelectorGrid from '@/app/ui/practice/exam/selector-grid'
 
-export default function Page() {
+export default async function Page() {
+    const available = new Set(await fetchAvailableExamCodes())
+
     const items = examMetadata.map((exam) => ({
         title: exam.short_name,
         description: exam.description,
         href: `/practice/exam/${exam.exam_code}`,
+        image: {
+            src: `/badges/${exam.exam_code}.png`,
+            alt: `${exam.full_name} certification badge`,
+        },
+        disabled: !available.has(exam.exam_code),
     }))
 
     return (

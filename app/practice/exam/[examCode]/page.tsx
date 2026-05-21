@@ -21,6 +21,10 @@ export default async function Page({
         title: `Set ${letter.toUpperCase()}`,
         description: `Full-length ${exam.duration}-minute practice exam aligned to ${exam.short_name}.`,
         href: `/practice/exam/${examCode}/${letter}`,
+        image: {
+            src: `/badges/${examCode}.png`,
+            alt: `${exam.full_name} certification badge`,
+        },
     }))
 
     return (
