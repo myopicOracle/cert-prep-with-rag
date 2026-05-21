@@ -5,23 +5,25 @@ import ThemeSelect from '@/app/ui/theme-select'
 export default function Header() {
     return (
         <div className="relative w-full h-[10dvh] bg-header flex items-center justify-between px-1 py-2 md:px-2 py-3">
-            <Image
-                src="/atlas/lockup-light.svg"
-                alt="Brand lockup for Praevisio Atlas"
-                width={240}
-                height={64}
-                className="h-full w-auto dark:hidden"
-            />
-            <Image
-                src="/atlas/lockup-dark.svg"
-                alt="Brand lockup for Praevisio Atlas"
-                width={240}
-                height={64}
-                className="h-full w-auto hidden dark:block"
-            />
+            <Link href="/" className="h-full">
+                <Image
+                    src="/atlas/lockup-light.svg"
+                    alt="Brand lockup for Praevisio Atlas"
+                    width={240}
+                    height={64}
+                    className="h-full w-auto dark:hidden"
+                />
+                <Image
+                    src="/atlas/lockup-dark.svg"
+                    alt="Brand lockup for Praevisio Atlas"
+                    width={240}
+                    height={64}
+                    className="h-full w-auto hidden dark:block"
+                />
+            </Link>
             <nav className="absolute left-1/2 -translate-x-1/2 flex gap-6 md:gap-10 text-body">
                 <Link
-                    href="/"
+                    href="/about"
                     className="text-link text-lg font-semibold transition-colors hover:text-link-hover">
                     About
                 </Link>
