@@ -1,7 +1,6 @@
 export default function CTA() {
     return (
-        <section className="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
-            <div className="relative isolate overflow-hidden bg-card px-6 py-16 sm:rounded-3xl sm:px-16 md:py-24 lg:px-24 lg:py-32 after:pointer-events-none after:absolute after:inset-0 after:inset-ring after:inset-ring-border after:sm:rounded-3xl">
+        <section className="relative isolate overflow-hidden bg-card px-6 py-16 sm:rounded-3xl sm:px-16 md:py-24 lg:px-24 lg:py-32 after:pointer-events-none after:absolute after:inset-0 after:inset-ring after:inset-ring-border after:sm:rounded-3xl">
                 <div className="mx-auto max-w-2xl text-center">
                     <h2 className="text-3xl font-semibold tracking-tight text-balance text-heading sm:text-4xl">
                         Want to contribute?
@@ -23,7 +22,6 @@ export default function CTA() {
                             Email us <span aria-hidden="true">→</span>
                         </a>
                     </div>
-                </div>
             </div>
         </section>
     )
