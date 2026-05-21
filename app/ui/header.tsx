@@ -4,7 +4,7 @@ import ThemeSelect from '@/app/ui/theme-select'
 
 export default function Header() {
     return (
-        <div className="w-full h-[10dvh] bg-header flex items-center justify-between px-1 py-2 md:px-2 py-3">
+        <div className="relative w-full h-[10dvh] bg-header flex items-center justify-between px-1 py-2 md:px-2 py-3">
             <Image
                 src="/atlas/lockup-light.svg"
                 alt="Brand lockup for Praevisio Atlas"
@@ -19,7 +19,7 @@ export default function Header() {
                 height={64}
                 className="h-full w-auto hidden dark:block"
             />
-            <nav className="flex gap-6 md:gap-10 text-body">
+            <nav className="absolute left-1/2 -translate-x-1/2 flex gap-6 md:gap-10 text-body">
                 <Link
                     href="/"
                     className="text-link text-lg font-semibold transition-colors hover:text-link-hover">
@@ -38,7 +38,7 @@ export default function Header() {
             </nav>
             <div className="flex items-stretch self-stretch gap-4 text-body py-3">
                 <ThemeSelect />
-                <button className="h-full rounded-lg bg-button px-3 py-2 text-button-text">
+                <button className="h-full rounded-md bg-button px-4 py-2 text-button-text">
                     Login
                 </button>
             </div>
