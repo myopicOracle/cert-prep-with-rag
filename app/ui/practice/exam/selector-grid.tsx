@@ -29,10 +29,10 @@ export default function SelectorGrid({ items }: { items: SelectorItem[] }) {
                                 />
                             </div>
                         )}
-                        <h2 className="mt-6 text-xl font-semibold text-heading">
+                        <h2 className="mt-6 text-xl font-sora tracking-tight text-heading">
                             {item.title}
                         </h2>
-                        <p className="mt-3 text-sm leading-relaxed text-body-muted">
+                        <p className="mt-3 text-sm font-outfit tracking-wide text-body-muted">
                             {item.description}
                         </p>
                     </>
@@ -44,7 +44,7 @@ export default function SelectorGrid({ items }: { items: SelectorItem[] }) {
                             key={item.href}
                             aria-disabled="true"
                             className="relative cursor-not-allowed rounded-2xl border border-border bg-card p-8">
-                            <span className="absolute top-4 right-4 rounded-full border border-highlight/40 bg-highlight/10 px-3 py-1 text-xs font-semibold text-highlight">
+                            <span className="absolute top-4 right-4 rounded-full border border-highlight/40 bg-highlight/10 px-3 py-1 text-xs font-outfit tracking-wide text-highlight">
                                 Coming Soon
                             </span>
                             <div className="flex flex-col opacity-50">

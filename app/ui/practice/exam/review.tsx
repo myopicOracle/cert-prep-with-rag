@@ -15,7 +15,8 @@ export default function Review({
 
     return (
         <div>
-            <h2 className={`${lusitana.className} text-2xl font-semibold mt-8 mb-2`}>
+            <h2
+                className={`font-sora tracking-tight text-2xl font-semibold mt-8 mb-2`}>
                 Exam Statistics
             </h2>
             <div className="flex justify-between my-6">
@@ -34,7 +35,8 @@ export default function Review({
                     </p>
                 </div>
             </div>
-            <h2 className={`${lusitana.className} text-2xl font-semibold mt-8 mb-2`}>
+            <h2
+                className={`font-sora tracking-tight text-2xl font-semibold mt-8 mb-2`}>
                 Question Review
             </h2>
             <div className="flex flex-col gap-4 my-4">
@@ -47,7 +49,9 @@ export default function Review({
                               : 'bg-status-wrong'
 
                     return (
-                        <div key={question.id} className={`flex gap-6 p-4 rounded-xl ${bgColor}`}>
+                        <div
+                            key={question.id}
+                            className={`flex gap-6 p-4 rounded-xl ${bgColor}`}>
                             <div className="flex-none w-24">
                                 <strong>Question {index + 1}</strong>
                             </div>

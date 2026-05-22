@@ -11,7 +11,9 @@ export default function Page() {
     return (
         <div className="flex flex-col w-full h-full gap-2 sm:gap-4">
             <div className="flex-none">
-                <h1 className={`${lusitana.className} text-2xl`}>Study Mode</h1>
+                <h1 className={`font-sora tracking-tight text-2xl`}>
+                    Study Mode
+                </h1>
             </div>
             <div className="flex-none">
                 <p className="text-sm text-body-muted">

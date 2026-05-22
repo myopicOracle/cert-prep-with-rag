@@ -28,11 +28,11 @@ export default async function Page({
     }))
 
     return (
-        <div className="w-full py-8">
-            <h1 className="mb-2 text-3xl font-bold text-heading">
+        <div className="w-full">
+            <h1 className="mb-2 text-3xl font-sora tracking-tight text-heading">
                 {exam.short_name}
             </h1>
-            <p className="mb-8 text-body-muted">
+            <p className="mb-8 font-outfit tracking-wide text-body-muted">
                 {exam.exam_code} — choose a practice set.
             </p>
             <SelectorGrid items={items} />

@@ -5,15 +5,18 @@ import FlashcardsStats from '@/app/ui/practice/progress/flashcards-stats'
 
 export default async function Page() {
     return (
-        <main>
-            <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+        <div className="w-full">
+            <h1 className="mb-2 text-3xl font-sora tracking-tight text-heading">
                 Track Your Progress
             </h1>
+            <p className="mb-8 font-outfit tracking-wide text-body-muted">
+                Review your performance across exams and flashcards.
+            </p>
             <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                 <ProgressOverview />
                 <ExamStats />
                 <FlashcardsStats />
             </div>
-        </main>
+        </div>
     )
 }
