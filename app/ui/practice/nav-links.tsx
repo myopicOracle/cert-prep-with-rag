@@ -42,12 +42,12 @@ export default function NavLinks() {
                     <Link
                         key={link.name}
                         href={link.href}
-                        className={`flex h-[48px] grow items-center justify-center gap-2 rounded-md p-3 text-lg font-outfit tracking-wide hover:bg-selected hover:text-link md:flex-none md:justify-start md:p-2 md:px-3 ${
+                        className={`flex grow items-center justify-center gap-3 rounded-lg p-3 font-outfit font-semibold tracking-wide transition-colors md:flex-none md:justify-start ${
                             pathname === link.href
                                 ? 'bg-selected text-link'
-                                : 'bg-page'
+                                : 'text-body-muted hover:bg-selected hover:text-link'
                         }`}>
-                        <LinkIcon className="w-6" />
+                        <LinkIcon className="w-6 shrink-0" />
                         <p className="hidden md:block">{link.name}</p>
                     </Link>
                 )

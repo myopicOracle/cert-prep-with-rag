@@ -48,7 +48,7 @@ export default function ChatInput({ isLoading, onSubmit }: ChatInputProps) {
                 <button
                     type="submit"
                     disabled={input.trim() === '' || isLoading}
-                    className="mt-2 rounded-sm text-lg text-button-text font-semibold px-8 py-3 bg-button shadow-md hover:bg-button/80 focus:outline-none cursor-pointer disabled:cursor-not-allowed disabled:opacity-50">
+                    className="mt-2 rounded-sm text-lg text-brand-white font-semibold px-8 py-3 bg-brand-gold shadow-md hover:bg-brand-gold/80 focus:outline-none cursor-pointer disabled:cursor-not-allowed disabled:opacity-50">
                     {isLoading ? 'Noodling...' : 'Ask'}
                 </button>
             </form>

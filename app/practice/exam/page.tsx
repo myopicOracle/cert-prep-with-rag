@@ -18,10 +18,10 @@ export default async function Page() {
 
     return (
         <div className="w-full">
-            <h1 className="mb-2 text-3xl font-sora tracking-tight text-heading">
+            <h1 className="mb-2 text-3xl font-sora tracking-tight text-contrast">
                 Mock Exams
             </h1>
-            <p className="mb-8 font-outfit tracking-wide text-body-muted">
+            <p className="mb-8 font-outfit tracking-wide text-contrast">
                 Choose a certification to view available practice sets.
             </p>
             <SelectorGrid items={items} />

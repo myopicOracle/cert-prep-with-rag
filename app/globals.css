@@ -29,12 +29,14 @@
     --color-subheading:        var(--color-brand-navy);
     --color-body:              #111827;
     --color-body-muted:        #1C2942;
+    --color-contrast:          var(--color-brand-navy);
 
-    --color-page:              var(--color-brand-white);
     --color-header:            var(--color-brand-white);
+    --color-page:              var(--color-brand-white);
+    --color-content:           var(--color-brand-white);
     --color-footer:            #20A4F3;
     
-    --color-sidenav:           var(--color-heading);
+    --color-sidenav:           var(--color-header);
     --color-card:              #FFEEDB;
     --color-border:            #FFD6A8;
 
@@ -49,9 +51,10 @@
     --color-status-correct:    #D1FAE5;
     --color-status-wrong:      #FEE2E2;
     --color-status-neutral:    #F3F4F6;
-    --color-selected:          #FEF3C7;
+    --color-selected:          #E5E5E5;
 
-    --color-input:             #D6D6D6;
+    --color-input:             #E5E5E5;
+    --color-message:           #E5E5E5;
     --color-focus:             var(--color-brand-gold);
 
     --color-button:            var(--color-brand-gold);
@@ -68,12 +71,14 @@
         --color-subheading:    var(--color-brand-gold);
         --color-body:          #FFFAF7;
         --color-body-muted:    #B5AEAD;
+        --color-contrast:      var(--color-brand-navy);
 
-        --color-page:          var(--color-brand-navy);
         --color-header:        var(--color-brand-navy);
+        --color-page:          #F9EBE0;
+        --color-content:       var(--color-brand-navy);
         --color-footer:        #FF3366;
         
-        --color-sidenav:       var(--color-heading);
+        --color-sidenav:       var(--color-header);
         --color-card:          #2C3E50;
         --color-border:        #154269;
         
@@ -85,12 +90,13 @@
         --color-accent-subtle: #69299f;
         --color-accent-contrast: #33FF66;
         
-        --color-status-correct:    #064E3B;
-        --color-status-wrong:      #7F1D1D;
-        --color-status-neutral:    #374151;
-        --color-selected:          #1E3A4F;
+        --color-status-correct: #064E3B;
+        --color-status-wrong:   #7F1D1D;
+        --color-status-neutral: #374151;
+        --color-selected:       #1E3A4F;
 
-        --color-input:         #476481;
+        --color-input:         #2C3E50;
+        --color-message:       #2C3E50;
         --color-focus:         var(--color-brand-cyan);
 
         --color-button:        var(--color-brand-cyan);

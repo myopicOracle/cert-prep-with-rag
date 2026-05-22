@@ -13,10 +13,10 @@ export default function ChatMessage({
             : 'self-start items-start w-full max-w-[75%]'
     const roleStyle =
         role === 'user'
-            ? 'bg-button/20 border-button' //
-            : 'bg-card border-border'
+            ? 'bg-message/80' //
+            : 'bg-message'
     const sharedStyle =
-        'w-full m-2 px-4 py-2 rounded-lg border shadow-sm prose prose-sm text-[0.8125rem]'
+        'w-full m-2 px-4 py-2 rounded-lg shadow-sm prose prose-sm text-[0.8125rem] text-body'
 
     return (
         <div className={`flex flex-col ${roleAlign}`}>

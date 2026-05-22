@@ -6,7 +6,7 @@ import CTA from '@/app/ui/about/cta'
 
 export default function Page() {
     return (
-        <div className="bg-page">
+        <div className="bg-content">
             <div className="mx-auto max-w-3xl px-4 py-12">
                 <div className="py-12 space-y-12">
                     <Overview />
