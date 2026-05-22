@@ -65,7 +65,7 @@
 @layer base {
     [data-theme='dark'] {
         --color-heading:       var(--color-brand-cyan);
-        --color-subheading:    var(--color-brand-white);
+        --color-subheading:    var(--color-brand-gold);
         --color-body:          #FFFAF7;
         --color-body-muted:    #B5AEAD;
 

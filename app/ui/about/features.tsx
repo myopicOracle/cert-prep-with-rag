@@ -1,7 +1,7 @@
 export default function Features() {
     return (
         <section>
-            <h1 className="text-2xl font-bold tracking-tight text-subheading">
+            <h1 className="text-2xl font-sora tracking-tight text-heading">
                 Features
             </h1>
             <p className="mt-4 text-body leading-relaxed">
@@ -13,7 +13,7 @@ export default function Features() {
 
             <div className="mt-8 space-y-8">
                 <div>
-                    <h2 className="text-lg font-semibold text-heading">
+                    <h2 className="text-lg font-sora tracking-tight text-subheading">
                         Study Mode
                     </h2>
                     <p className="mt-2 text-body leading-relaxed">
@@ -29,7 +29,7 @@ export default function Features() {
                 </div>
 
                 <div>
-                    <h2 className="text-lg font-semibold text-heading">
+                    <h2 className="text-lg font-sora tracking-tight text-subheading">
                         Practice Library
                     </h2>
                     <p className="mt-2 text-body leading-relaxed">
@@ -42,7 +42,7 @@ export default function Features() {
                 </div>
 
                 <div>
-                    <h2 className="text-lg font-semibold text-heading">
+                    <h2 className="text-lg font-sora tracking-tight text-subheading">
                         Exam Simulator
                     </h2>
                     <p className="mt-2 text-body leading-relaxed">

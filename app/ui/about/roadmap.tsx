@@ -1,7 +1,7 @@
 export default function Roadmap() {
     return (
         <section>
-            <h1 className="text-2xl font-bold tracking-tight text-subheading">
+            <h1 className="text-2xl font-sora tracking-tight text-heading">
                 Study Roadmap
             </h1>
             <p className="mt-4 text-body leading-relaxed">
@@ -12,7 +12,7 @@ export default function Roadmap() {
 
             <div className="mt-8 space-y-8">
                 <div>
-                    <h2 className="text-lg font-semibold text-heading">
+                    <h2 className="text-lg font-sora tracking-tight text-subheading">
                         1. Build a foundation in Study mode
                     </h2>
                     <p className="mt-2 text-body leading-relaxed">
@@ -27,7 +27,7 @@ export default function Roadmap() {
                 </div>
 
                 <div>
-                    <h2 className="text-lg font-semibold text-heading">
+                    <h2 className="text-lg font-sora tracking-tight text-subheading">
                         2. Reinforce with flashcards
                     </h2>
                     <p className="mt-2 text-body leading-relaxed">
@@ -40,7 +40,7 @@ export default function Roadmap() {
                 </div>
 
                 <div>
-                    <h2 className="text-lg font-semibold text-heading">
+                    <h2 className="text-lg font-sora tracking-tight text-subheading">
                         3. Test yourself with mock exams
                     </h2>
                     <p className="mt-2 text-body leading-relaxed">
@@ -54,7 +54,7 @@ export default function Roadmap() {
                 </div>
 
                 <div>
-                    <h2 className="text-lg font-semibold text-heading">
+                    <h2 className="text-lg font-sora tracking-tight text-subheading">
                         4. Acclimate with the exam simulator
                     </h2>
                     <p className="mt-2 text-body leading-relaxed">

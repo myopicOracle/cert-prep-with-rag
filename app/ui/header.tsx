@@ -21,24 +21,24 @@ export default function Header() {
                     className="h-full w-auto hidden dark:block"
                 />
             </Link>
-            <nav className="absolute left-1/2 -translate-x-1/2 flex gap-6 md:gap-10 text-body">
+            <nav className="absolute left-1/2 -translate-x-1/2 flex gap-6 md:gap-10 text-body font-sora semibold">
                 <Link
                     href="/about"
-                    className="text-link text-lg font-semibold transition-colors hover:text-link-hover">
+                    className="text-link text-lg transition-colors hover:text-link-hover">
                     About
                 </Link>
                 <Link
                     href="/study"
-                    className="text-link text-lg font-semibold transition-colors hover:text-link-hover">
+                    className="text-link text-lg transition-colors hover:text-link-hover">
                     Study
                 </Link>
                 <Link
                     href="/practice"
-                    className="text-link text-lg font-semibold transition-colors hover:text-link-hover">
+                    className="text-link text-lg transition-colors hover:text-link-hover">
                     Practice
                 </Link>
             </nav>
-            <div className="flex items-stretch self-stretch gap-4 text-body py-3">
+            <div className="flex items-stretch self-stretch gap-4 text-body font-outfit tracking-wide py-3">
                 <ThemeSelect />
                 <button className="h-full rounded-md bg-button px-4 py-2 text-button-text">
                     Login

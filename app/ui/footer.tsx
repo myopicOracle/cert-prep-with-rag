@@ -11,7 +11,7 @@ export default function Footer() {
                     height={64}
                     className="h-full w-auto rounded-md"
                 />
-                <div className="text-body opacity-90">
+                <div className="text-body font-outfit tracking-wide opacity-90">
                     Enjoying the app? Consider giving us a{' '}
                     <a
                         href="https://github.com/myopicOracle/cert-prep-with-rag"
@@ -24,8 +24,8 @@ export default function Footer() {
                 </div>
             </div>
             <div className="h-3/5 flex items-center gap-4">
-                <div className="text-body opacity-90">
-                    © 2026 Praevisio Labs.
+                <div className="text-body font-outfit tracking-wide opacity-90">
+                    © 2026 Praevisio Labs. All Rights Reserved.
                 </div>
                 <Image
                     src="/praevisio/slogan.png"
