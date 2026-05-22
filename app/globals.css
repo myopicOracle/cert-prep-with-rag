@@ -4,6 +4,16 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
+    --font-inter:              'Inter', sans-serif;
+    --font-sora:               'Sora', sans-serif;
+    --font-outfit:             'Outfit', sans-serif;
+    --font-lusitana:           'Lusitana', serif;
+    --font-manrope:            'Manrope', sans-serif;
+    --font-jetbrains:          'JetBrains Mono', monospace;
+    --font-ibm:                'IBM Plex Mono', monospace;
+}
+
+@theme {
     --color-brand-navy:        #081928;
     --color-brand-white:       #F5F5F5;
     --color-brand-cyan:        #04FEFD;
@@ -93,6 +103,7 @@
 
     html {
         font-size: clamp(12px, 1.2vw, 16px);
+        font-family: var(--font-inter);
         background-color: var(--color-page);
         color: var(--color-body);
     }
