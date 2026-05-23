@@ -15,8 +15,11 @@ export default function ProgressWrapper({
 
     return (
         <div className="w-full flex flex-col mt-4">
-            <div className="flex justify-between">
-                <Timer timeInSeconds={timeRemaining} setTimeRemaining={setTimeRemaining} />
+            <div className="flex justify-between text-contrast">
+                <Timer
+                    timeInSeconds={timeRemaining}
+                    setTimeRemaining={setTimeRemaining}
+                />
                 <div>
                     Answered: {questionsCompleted} / {totalQuestions}
                 </div>

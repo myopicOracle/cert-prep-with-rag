@@ -90,7 +90,7 @@ export default function Drawer({
                                                     className={
                                                         message.role ===
                                                         'assistant'
-                                                            ? 'prose prose-sm max-w-none prose-p:my-1'
+                                                            ? 'prose prose-sm max-w-none prose-p:my-1 [--tw-prose-body:var(--color-body)] [--tw-prose-headings:var(--color-body)] [--tw-prose-bold:var(--color-body)] [--tw-prose-bullets:var(--color-body)] [--tw-prose-counters:var(--color-body-muted)]'
                                                             : ''
                                                     }>
                                                     {message.parts.map(
@@ -107,7 +107,8 @@ export default function Drawer({
                                             </div>
                                         </div>
                                     ))}
-                                    {(isEnhancing || status === 'submitted') && (
+                                    {(isEnhancing ||
+                                        status === 'submitted') && (
                                         <p className="text-sm text-body-muted italic">
                                             Thinking…
                                         </p>

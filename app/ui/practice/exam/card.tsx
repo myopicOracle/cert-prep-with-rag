@@ -22,7 +22,7 @@ export default function Card({
     return (
         <div className="flex flex-col items-center mt-6 rounded-lg border border-border bg-card p-8 m-12 shadow-sm min-h-64">
             <div className="w-full px-6 py-2">
-                <p className="mt-2 p-4 rounded-sm text-md font-bold text-body-muted bg-accent-subtle">
+                <p className="mt-2 p-4 rounded-sm text-md font-bold bg-button text-button-text">
                     Question {questionID}
                 </p>
             </div>
@@ -65,7 +65,7 @@ export default function Card({
                     <Button
                         name="Explain All Answers"
                         buttonStyle={
-                            'rounded mb-4 px-6 py-3 bg-assistant text-button-text font-semibold hover:bg-assistant/80'
+                            'rounded mb-4 px-6 py-3 bg-assistant text-assistant-text font-semibold hover:bg-assistant/80'
                         }
                         isDisabled={false}
                         onClick={onExplainAll}

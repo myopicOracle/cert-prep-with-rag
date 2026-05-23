@@ -32,7 +32,9 @@ export default async function Page({
 
     return (
         <div className="w-full px-2 md:px-10">
-            <h1 className={`font-sora tracking-tight text-3xl`}>{examCode}</h1>
+            <h1 className={`font-sora tracking-tight text-3xl text-contrast`}>
+                {examCode}
+            </h1>
 
             <ExamWrapper
                 examCode={examCode}

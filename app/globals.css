@@ -31,9 +31,13 @@
     --color-body-muted:        #1C2942;
     --color-contrast:          var(--color-brand-navy);
 
+    --color-accent-bright:     #7F96FF;
+    --color-accent-subtle:     #E3DFFF;
+    --color-accent-contrast:   #F320A4;
+
     --color-header:            var(--color-brand-white);
     --color-page:              var(--color-brand-white);
-    --color-content:           var(--color-brand-white);
+    --color-contra-page:       var(--color-brand-white);
     --color-footer:            #20A4F3;
     
     --color-sidenav:           var(--color-header);
@@ -41,12 +45,9 @@
     --color-border:            #FFD6A8;
 
     --color-banner:            #2C3E50;
-    --color-assistant:         var(--color-brand-navy);
+    --color-assistant:         var(--color-accent-bright);
+    --color-assistant-text:    var(--color-brand-white);
     --color-overlay:           var(--color-page);
-
-    --color-accent-bright:     #7F96FF;
-    --color-accent-subtle:     #E3DFFF;
-    --color-accent-contrast:   #F320A4;
     
     --color-status-correct:    #D1FAE5;
     --color-status-wrong:      #FEE2E2;
@@ -72,10 +73,14 @@
         --color-body:          #FFFAF7;
         --color-body-muted:    #B5AEAD;
         --color-contrast:      var(--color-brand-navy);
+    
+        --color-accent-bright: #9046CF;
+        --color-accent-subtle: #69299f;
+        --color-accent-contrast: #33FF66;
 
         --color-header:        var(--color-brand-navy);
-        --color-page:          #F9EBE0;
-        --color-content:       var(--color-brand-navy);
+        --color-page:          var(--color-brand-navy);
+        --color-contra-page:   #F9EBE0;
         --color-footer:        #FF3366;
         
         --color-sidenav:       var(--color-header);
@@ -83,12 +88,9 @@
         --color-border:        #154269;
         
         --color-banner:        #FFEEDB;
-        --color-assistant:     var(--color-brand-gold);
+        --color-assistant:     var(--color-accent-bright);
+        --color-assistant-text: var(--color-brand-white);
         --color-overlay:       var(--color-page);
-
-        --color-accent-bright: #9046CF;
-        --color-accent-subtle: #69299f;
-        --color-accent-contrast: #33FF66;
         
         --color-status-correct: #064E3B;
         --color-status-wrong:   #7F1D1D;
@@ -112,5 +114,13 @@
         font-family: var(--font-inter);
         background-color: var(--color-page);
         color: var(--color-body);
+    }
+
+    .prose {
+        --tw-prose-body: var(--color-body);
+        --tw-prose-headings: var(--color-body);
+        --tw-prose-bold: var(--color-body);
+        --tw-prose-bullets: var(--color-body);
+        --tw-prose-counters: var(--color-body-muted);
     }
 }
