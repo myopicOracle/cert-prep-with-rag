@@ -10,9 +10,9 @@ export default function Flag({ isFlagged, onFlag }: FlagProps) {
         <div>
             <button onClick={onFlag} className="cursor-pointer">
                 {isFlagged ? (
-                    <FlagIconSolid className="w-6" />
+                    <FlagIconSolid className="size-4 md:size-6" />
                 ) : (
-                    <FlagIconOutline className="w-6" />
+                    <FlagIconOutline className="size-4 md:size-6" />
                 )}
             </button>
         </div>

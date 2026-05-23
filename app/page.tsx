@@ -1,9 +1,9 @@
-// import PraevisioLogo from "";
+import Hero from '@/app/ui/home/hero'
 
 export default function Home() {
     return (
-        <main>
-            <div></div>
-        </main>
+        <div className="h-full">
+            <Hero />
+        </div>
     )
 }

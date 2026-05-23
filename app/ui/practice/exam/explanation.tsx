@@ -9,8 +9,8 @@ export default function Explanation({ children, isCorrect }: ChoiceProps) {
         // prettier-ignore
         <div className={`font-normal rounded-lg p-4 m-2 min-h-16 cursor-pointer transition-colors 
             ${isCorrect 
-                ? 'bg-green-50' 
-                : 'bg-red-50'
+                ? 'bg-status-correct'
+                : 'bg-status-wrong'
             }`}>
             <strong>Explanation</strong>: <em>{children}</em>
         </div>

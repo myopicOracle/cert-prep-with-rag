@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react'
 import { ChatDisplayProps } from '@/app/types/components'
-import ChatMessage from '@/app/ui/practice/study/chat-message'
+import ChatMessage from '@/app/ui/study/chat-message'
 
 export default function ChatDisplay({
     chatHistory,
@@ -19,7 +19,7 @@ export default function ChatDisplay({
     return (
         <>
             {chatHistory.length === 0 ? (
-                <p className="text-center text-sm text-gray-400 mt-12">
+                <p className="text-center text-sm text-body-muted mt-12">
                     Ask a question get started.
                 </p>
             ) : (

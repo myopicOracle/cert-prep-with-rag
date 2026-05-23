@@ -15,7 +15,8 @@ export default function Review({
 
     return (
         <div>
-            <h2 className={`${lusitana.className} text-2xl font-semibold mt-8 mb-2`}>
+            <h2
+                className={`font-sora tracking-tight text-2xl font-semibold mt-8 mb-2`}>
                 Exam Statistics
             </h2>
             <div className="flex justify-between my-6">
@@ -34,20 +35,23 @@ export default function Review({
                     </p>
                 </div>
             </div>
-            <h2 className={`${lusitana.className} text-2xl font-semibold mt-8 mb-2`}>
+            <h2
+                className={`font-sora tracking-tight text-2xl font-semibold mt-8 mb-2`}>
                 Question Review
             </h2>
             <div className="flex flex-col gap-4 my-4">
                 {questions.map((question, index) => {
                     const bgColor =
                         question.answeredCorrectly === null
-                            ? 'bg-gray-50'
+                            ? 'bg-status-neutral'
                             : question.answeredCorrectly
-                              ? 'bg-green-50'
-                              : 'bg-red-50'
+                              ? 'bg-status-correct'
+                              : 'bg-status-wrong'
 
                     return (
-                        <div key={question.id} className={`flex gap-6 p-4 rounded-xl ${bgColor}`}>
+                        <div
+                            key={question.id}
+                            className={`flex gap-6 p-4 rounded-xl ${bgColor}`}>
                             <div className="flex-none w-24">
                                 <strong>Question {index + 1}</strong>
                             </div>
@@ -71,7 +75,7 @@ export default function Review({
                             <div className="flex-none w-24">
                                 <Link
                                     href={`/practice/exam?id=${index + 1}`}
-                                    className="text-blue-600 underline hover:text-blue-800 transition-colors">
+                                    className="text-link underline hover:text-link-hover transition-colors">
                                     Review
                                 </Link>
                             </div>

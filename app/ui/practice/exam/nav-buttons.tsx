@@ -28,21 +28,21 @@ export default function NavButtons({ total, onFinish }: NavButtonsProps) {
         <div className="flex w-full items-center justify-between px-12">
             <Button
                 name="Prev"
-                buttonStyle="rounded-sm text-sm font-semibold px-8 py-3 bg-blue-100 shadow-md hover:bg-blue-300 focus:outline-none"
+                buttonStyle="rounded-sm text-sm font-semibold px-8 py-3 bg-button text-button-text hover:bg-button/80 shadow-md focus:outline-none"
                 onClick={handlePrevCard}
                 isDisabled={current <= 1}
             />
             {current >= total ? (
                 <Button
                     name="Finish"
-                    buttonStyle="rounded-sm text-sm text-white font-semibold px-8 py-3 bg-blue-500 shadow-md hover:text-black hover:bg-blue-200 focus:outline-visible"
+                    buttonStyle="rounded-sm text-sm text-white font-semibold px-8 py-3 bg-button text-button-text hover:bg-button/80 shadow-md focus:outline-visible"
                     onClick={onFinish}
                     isDisabled={false}
                 />
             ) : (
                 <Button
                     name="Next"
-                    buttonStyle="rounded-sm text-sm font-semibold px-8 py-3 bg-blue-100 shadow-md hover:bg-blue-300 focus:outline-none"
+                    buttonStyle="rounded-sm text-sm font-semibold px-8 py-3 bg-button text-button-text hover:bg-button/80 shadow-md focus:outline-none"
                     onClick={handleNextCard}
                     isDisabled={current >= total}
                 />

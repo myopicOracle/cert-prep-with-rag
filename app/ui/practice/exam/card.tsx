@@ -20,9 +20,9 @@ export default function Card({
     const scenario = question.scenario
 
     return (
-        <div className="flex flex-col items-center mt-6 rounded-lg border border-gray-200 bg-white p-8 m-12 shadow-sm min-h-64">
+        <div className="flex flex-col items-center mt-6 rounded-lg border border-border bg-card p-8 m-12 shadow-sm min-h-64">
             <div className="w-full px-6 py-2">
-                <p className="mt-2 p-4 rounded-sm text-md font-bold text-gray-600 bg-blue-100">
+                <p className="mt-2 p-4 rounded-sm text-md font-bold bg-button text-button-text">
                     Question {questionID}
                 </p>
             </div>
@@ -52,7 +52,7 @@ export default function Card({
                     <Button
                         name="Check Answer"
                         buttonStyle={
-                            'rounded mb-4 px-4 py-2 bg-blue-500 text-white disabled:opacity-50'
+                            'rounded mb-4 px-4 py-2 bg-button text-button-text disabled:opacity-50'
                         }
                         isDisabled={selectedAnswer === null}
                         onClick={() => {
@@ -65,7 +65,7 @@ export default function Card({
                     <Button
                         name="Explain All Answers"
                         buttonStyle={
-                            'rounded mb-4 px-6 py-3 bg-purple-500 text-white font-semibold hover:bg-purple-600'
+                            'rounded mb-4 px-6 py-3 bg-assistant text-assistant-text font-semibold hover:bg-assistant/80'
                         }
                         isDisabled={false}
                         onClick={onExplainAll}

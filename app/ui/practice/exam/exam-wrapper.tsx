@@ -205,7 +205,7 @@ export default function ExamWrapper({
                             type="button"
                             onClick={handleExplainAll}
                             aria-label="Explain all answers"
-                            className="fixed z-20 flex bottom-2 right-2 size-10 md:bottom-6 md:right-6 md:size-20 items-center justify-center rounded-full bg-purple-500 text-white shadow-lg transition-colors hover:bg-purple-600 cursor-pointer">
+                            className="fixed z-20 flex bottom-4 right-2 size-10 md:bottom-16 md:right-6 md:size-20 items-center justify-center rounded-full bg-assistant text-assistant-text shadow-lg transition-colors hover:bg-assistant/80 cursor-pointer">
                             <ChatBubbleOvalLeftEllipsisIcon
                                 aria-hidden="true"
                                 className="size-5 md:size-14"

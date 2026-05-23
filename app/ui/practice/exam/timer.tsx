@@ -27,7 +27,7 @@ export default function Timer({ timeInSeconds, setTimeRemaining }: TimerProps) {
     return (
         <div className="flex gap-2">
             <div>
-                <ClockIcon className="w-6" />
+                <ClockIcon className="size-4 md:size-6" />
             </div>
             <div>
                 {pad(hours)}:{pad(minutes)}:{pad(seconds)}
