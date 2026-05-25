@@ -1,0 +1,296 @@
+[
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "API Gateway cache invalidation",
+    "definition": "A mechanism for bypassing the API Gateway response cache by sending a request with the Cache-Control: max-age=0 header, forcing the gateway to fetch a fresh response from the backend."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "API Gateway stage variables",
+    "definition": "Key-value pairs associated with an API Gateway deployment stage that can be referenced in integration URIs, Lambda ARNs, and mapping templates, enabling stage-specific configuration without code changes."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "AWS SAM (Serverless Application Model)",
+    "definition": "An open-source framework that extends CloudFormation with simplified syntax for defining serverless resources (Lambda, API Gateway, DynamoDB). The Transform directive converts SAM templates to CloudFormation before deployment."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "Lambda invocation types",
+    "definition": "Three modes for invoking Lambda: synchronous (waits for response, used by API Gateway), asynchronous (event queued, retried twice on failure), and event source mapping (polls SQS, Kinesis, or DynamoDB Streams)."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "Lambda concurrency formula",
+    "definition": "The formula for calculating Lambda concurrency: (invocations per second) × (average execution duration in seconds). A function receiving 1,000 req/s averaging 1.8s runs at 1,800 concurrent executions."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "Lambda global scope initialization",
+    "definition": "Code placed outside the Lambda handler function (at module level) that runs once during a cold start and is reused for subsequent warm invocations. Used for database connections, SDK clients, and loaded configuration."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "Lambda Layers",
+    "definition": "A Lambda packaging mechanism for sharing common code, libraries, or dependencies across multiple functions. A layer is a ZIP archive stored separately and mounted into the function's execution environment at /opt."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "Lambda Provisioned Concurrency",
+    "definition": "A Lambda feature that pre-initializes a specified number of function instances so they are ready to respond immediately, eliminating cold start latency for latency-sensitive applications."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "Lambda alias weighted routing",
+    "definition": "A Lambda alias configuration that splits invocation traffic between two Lambda function versions by percentage (e.g., 90%/10%), enabling canary deployments and gradual version rollouts without changing the invoking endpoint."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "S3 Multipart Upload",
+    "definition": "An S3 feature that splits large objects into parts that are uploaded in parallel and then assembled by S3, improving upload reliability and throughput. Required for objects larger than 5 GB."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "S3 pre-signed URLs",
+    "definition": "Time-limited URLs that grant temporary access to a specific S3 object for upload or download, signed with the creator's credentials. Allow clients to interact with S3 directly without requiring AWS credentials."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "DynamoDB ExpressionAttributeValues",
+    "definition": "A map of placeholder names to actual values used in DynamoDB condition and filter expressions. Using placeholders rather than inline values prevents injection attacks and handles reserved word conflicts."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "DynamoDB UpdateItem ADD operation (atomic counter)",
+    "definition": "A DynamoDB UpdateItem action that atomically increments or decrements a numeric attribute by a specified amount without needing a read-modify-write cycle, making it safe for concurrent counter updates."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "DynamoDB Global Secondary Index (GSI)",
+    "definition": "An index on a DynamoDB table that uses a different partition key (and optional sort key) than the base table, enabling efficient queries on alternate access patterns. Updated asynchronously with eventual consistency."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "DynamoDB Local Secondary Index (LSI)",
+    "definition": "An index on a DynamoDB table that shares the same partition key as the base table but uses a different sort key, enabling sorting on alternate attributes within a single partition. Must be created at table creation time."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "DynamoDB Streams StreamViewType",
+    "definition": "A configuration for DynamoDB Streams that determines what data is captured: KEYS_ONLY, NEW_IMAGE (new item state), OLD_IMAGE (old item state), or NEW_AND_OLD_IMAGES (both states before and after the change)."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "SQS FIFO queue throughput limits",
+    "definition": "Amazon SQS FIFO queues support up to 300 API calls/second (or 3,000 with batching) and use MessageGroupId to maintain ordering within groups, with exactly-once processing via deduplication IDs."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "SQS Dead Letter Queue (DLQ)",
+    "definition": "A queue that receives messages that could not be processed successfully after a configured number of delivery attempts (maxReceiveCount). Used to isolate failed messages for investigation without blocking the main queue."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "Kinesis Client Library (KCL)",
+    "definition": "A client-side library for consuming Kinesis Data Streams that manages shard assignment, checkpointing, and failover. The maximum number of KCL worker instances should not exceed the total shard count."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "ElastiCache Lazy Loading",
+    "definition": "A caching pattern where data is loaded into the cache only when a cache miss occurs. Results in an initial latency penalty on first access but avoids storing unused data in the cache."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 1,
+    "term": "DynamoDB hot partition",
+    "definition": "A condition where a disproportionate amount of read or write traffic is concentrated on a single DynamoDB partition, causing throttling. Prevented by using high-cardinality partition keys or adding a random suffix for write sharding."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 2,
+    "term": "Amazon Cognito User Pools",
+    "definition": "A user directory service that provides sign-up, sign-in, and MFA for application users. Generates JWT tokens (ID, access, refresh) used for authentication with API Gateway and other services."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 2,
+    "term": "Amazon Cognito Identity Pools",
+    "definition": "A Cognito feature that exchanges authenticated user tokens (from User Pools, social providers, or SAML) for temporary AWS credentials, enabling direct AWS service access (such as S3) with per-user scoped permissions."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 2,
+    "term": "API Gateway Cognito Authorizer",
+    "definition": "An API Gateway authorizer that validates JWT tokens from a Cognito User Pool, allowing only authenticated users to call API endpoints without requiring a custom Lambda authorizer."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 2,
+    "term": "Lambda Authorizer cache TTL",
+    "definition": "A configurable time-to-live on API Gateway Lambda Authorizer responses, determining how long the authorization decision is cached before re-invoking the authorizer Lambda for subsequent requests with the same token."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 2,
+    "term": "Cross-account IAM role assumption",
+    "definition": "A pattern where a principal in one AWS account calls STS AssumeRole to receive temporary credentials for a role in another account, enabling controlled cross-account access without permanent credential sharing."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 2,
+    "term": "Secrets Manager automatic rotation",
+    "definition": "A Secrets Manager feature that automatically rotates secrets (such as database passwords) on a schedule using a Lambda function, updating both the secret value and the target system without application downtime."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 2,
+    "term": "Envelope encryption (KMS GenerateDataKey)",
+    "definition": "An encryption pattern where KMS generates a data key used to encrypt data locally, then encrypts the data key with a KMS CMK. The encrypted data key is stored alongside the data; KMS is only called for key operations."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 2,
+    "term": "S3 server-side encryption types",
+    "definition": "Three S3 encryption options: SSE-S3 (AWS manages keys, AES-256), SSE-KMS (customer controls keys via KMS, with audit trail), and SSE-C (customer provides their own key on each request)."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 2,
+    "term": "CloudFront Viewer Protocol Policy",
+    "definition": "A CloudFront distribution setting that controls how viewers connect to edge locations: HTTP and HTTPS allowed, redirect HTTP to HTTPS, or HTTPS only."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 2,
+    "term": "Systems Manager Parameter Store SecureString",
+    "definition": "A Parameter Store parameter type that stores encrypted values using a KMS key, suitable for passwords, database connection strings, and other sensitive configuration that should not be stored in plaintext."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 2,
+    "term": "VPC Interface Endpoint",
+    "definition": "A VPC endpoint (powered by AWS PrivateLink) that enables private connectivity from a VPC to AWS services such as Secrets Manager, SQS, or SSM without routing traffic through the public internet."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 3,
+    "term": "CodeDeploy deployment configurations (Lambda)",
+    "definition": "Pre-defined deployment strategies for Lambda: Canary (a percentage shifts first, then the rest after a bake period), Linear (incremental percentage over equal intervals), and AllAtOnce (all traffic shifted immediately)."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 3,
+    "term": "CodeDeploy Canary10Percent10Minutes",
+    "definition": "A CodeDeploy Lambda deployment configuration that shifts 10% of traffic to the new version immediately, waits 10 minutes, then shifts the remaining 90%, allowing time for monitoring before full rollout."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 3,
+    "term": ".ebextensions container_commands",
+    "definition": "Elastic Beanstalk configuration directives that execute shell commands during deployment after the application source is extracted but before the application server starts, enabling pre-start database migrations and setup."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 3,
+    "term": "ECS task execution role",
+    "definition": "An IAM role assumed by the ECS control plane (not the task itself) that grants permissions needed to launch a task, including pulling container images from ECR and writing logs to CloudWatch."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 3,
+    "term": "ECS imagedefinitions.json",
+    "definition": "A JSON file used in CodePipeline ECS deployments that specifies the container name and new image URI for an ECS service update, telling CodeDeploy which container image to deploy."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 3,
+    "term": "CodePipeline EventBridge trigger",
+    "definition": "A pattern for automatically starting a CodePipeline execution when a source change event occurs (such as a commit to CodeCommit or a push to S3), replacing polling-based change detection with event-driven triggering."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 3,
+    "term": "CodeBuild VPC and NAT Gateway",
+    "definition": "A CodeBuild configuration that places build environments inside a VPC, requiring a NAT Gateway in a public subnet so builds can download dependencies from the internet while keeping resources private."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 3,
+    "term": "SAM CLI local invoke",
+    "definition": "A CLI command that runs a Lambda function locally in a Docker container that emulates the Lambda execution environment, enabling fast local testing without deploying to AWS."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 3,
+    "term": "ALB weighted target groups for canary deployment",
+    "definition": "An ALB listener rule configuration that distributes traffic between two target groups by percentage weight, enabling gradual blue/green deployments where a small percentage of traffic goes to the new version."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 4,
+    "term": "Amazon RDS Proxy",
+    "definition": "A fully managed database proxy for RDS and Aurora that pools and shares database connections, reducing connection overhead for Lambda functions and applications with many short-lived connections."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 4,
+    "term": "AWS X-Ray distributed tracing",
+    "definition": "A distributed tracing service that collects and maps request traces across microservices, Lambda functions, and AWS services, visualizing the service map and identifying performance bottlenecks and errors."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 4,
+    "term": "X-Ray SDK patching",
+    "definition": "The process of wrapping AWS SDK clients and HTTP clients in application code with the X-Ray SDK so that outgoing calls are automatically traced and included in the X-Ray service map."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 4,
+    "term": "API Gateway IntegrationLatency metric",
+    "definition": "A CloudWatch metric that measures the time between when API Gateway sends a request to the backend (Lambda, HTTP) and receives a response. High values indicate backend slowness, not API Gateway itself."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 4,
+    "term": "API Gateway 504 and 502 errors",
+    "definition": "API Gateway HTTP errors: 504 (Gateway Timeout) occurs when the backend does not respond within 29 seconds; 502 (Bad Gateway) occurs when the backend returns an unparseable or invalid response."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 4,
+    "term": "CloudWatch Evaluation Period and Datapoints to Alarm",
+    "definition": "CloudWatch Alarm settings that control when an alarm transitions to ALARM state. The alarm fires only when a specified number of data points (out of the evaluation period) breach the threshold, reducing false positives from transient spikes."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 4,
+    "term": "ElastiCache TTL (time-to-live)",
+    "definition": "A cache entry expiration setting that automatically removes items from the cache after a specified duration, preventing stale data from being served and managing cache memory usage."
+  },
+  {
+    "exam_code": "DVA-C01",
+    "domain_number": 4,
+    "term": "DynamoDB ScanIndexForward=false",
+    "definition": "A DynamoDB Query parameter that returns results in descending order of the sort key, useful for retrieving the most recent items first (e.g., latest N orders for a customer)."
+  }
+]

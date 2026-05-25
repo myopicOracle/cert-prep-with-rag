@@ -59,5 +59,8 @@
 - [x] style sidenav, add header, add footer, add GH CTA to app, #53
 - [x] create landing page, about page, exams selector dash, reorg routes, #58
 - [x] add visual polish and fix bugs in both practice and study routes, #59
+- [ ] create flashcards of key terms/concepts and migrate to Supabase, #61
+- [ ] complete UI components for flashcards and wire up to db fetch, #62
 - [ ] refactor study mode chat UI to use streaming responses, #52
 - [ ] add loading indicator, starter questions, button animation to chat UI, #43
+- [ ] add mobile responsiveness to app and adjust page layouts, #63

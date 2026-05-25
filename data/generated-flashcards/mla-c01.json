@@ -1,0 +1,302 @@
+[
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 1,
+    "term": "SageMaker Feature Store",
+    "definition": "A centralized repository for storing, retrieving, and sharing ML features. Provides an online store for low-latency real-time inference and an offline store (S3-backed) for model training and batch processing."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 1,
+    "term": "Target encoding (high-cardinality features)",
+    "definition": "A feature engineering technique that replaces each category in a high-cardinality categorical variable with the mean (or other statistic) of the target variable for that category, creating a continuous numeric feature."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 1,
+    "term": "SageMaker Data Wrangler",
+    "definition": "A SageMaker Studio tool for interactive data preparation that supports over 300 built-in transformations including time-based feature extraction, lag features, rolling statistics, and custom PySpark transforms."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 1,
+    "term": "Log transformation",
+    "definition": "A preprocessing technique that applies the logarithm function to a numeric feature, compressing skewed distributions and reducing the influence of extreme outliers in model training."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 1,
+    "term": "Min-max normalization",
+    "definition": "A feature scaling technique that transforms all values of a numeric feature to a [0, 1] range by subtracting the minimum and dividing by the range. Useful for algorithms sensitive to feature magnitude."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 1,
+    "term": "SMOTE (Synthetic Minority Over-sampling Technique)",
+    "definition": "An oversampling technique for handling class imbalance that generates new synthetic minority class samples by interpolating between existing minority samples in feature space, rather than simple duplication."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 1,
+    "term": "Ordinal encoding",
+    "definition": "A feature encoding technique that maps categorical values to integer values based on an ordered relationship (e.g., small=1, medium=2, large=3), suitable for embedding layers in neural networks."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 1,
+    "term": "TF-IDF (Term Frequency-Inverse Document Frequency)",
+    "definition": "A text feature engineering technique that scores each word in a document by how frequently it appears in the document relative to how commonly it appears across all documents, highlighting distinctive terms."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 1,
+    "term": "Mean imputation",
+    "definition": "A missing value strategy that replaces null values with the mean of the non-null values in the same column. Appropriate when data is missing at random (MAR) and the distribution is approximately normal."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 1,
+    "term": "AWS Glue DataBrew",
+    "definition": "A visual data preparation service with over 250 built-in transformations for cleaning, profiling, normalizing, and deduplicating datasets without writing code."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 1,
+    "term": "Stratified split",
+    "definition": "A dataset partitioning technique that maintains the same class proportion (distribution) in each split (train, validation, test) as in the original dataset, preventing imbalanced splits in classification tasks."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 1,
+    "term": "Chronological split (time-series)",
+    "definition": "A dataset splitting strategy for time-series data where earlier records go to training and later records go to validation and test sets, preserving the temporal ordering and preventing future data leakage."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 1,
+    "term": "SageMaker Ground Truth",
+    "definition": "A data labeling service that orchestrates human annotation workflows, supports automated labeling using active learning for eligible task types, and measures inter-annotator agreement for quality control."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 1,
+    "term": "Data leakage (target-derived feature)",
+    "definition": "A training data problem where a feature is derived from or correlated with the target variable in a way that would not be available at prediction time, causing artificially inflated model performance metrics."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 1,
+    "term": "Athena CTAS (Create Table As Select)",
+    "definition": "An Athena SQL statement that creates a new table from a SELECT query result and writes the data to S3 in a specified format and partitioning scheme, useful for filtering and reformatting large datasets."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 2,
+    "term": "XGBoost (Extreme Gradient Boosting)",
+    "definition": "A gradient boosting algorithm for tabular data that builds an ensemble of decision trees sequentially, with each tree correcting the errors of the previous ones. Well-suited for structured classification and regression tasks."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 2,
+    "term": "Factorization Machines (FM)",
+    "definition": "A machine learning algorithm designed for high-dimensional sparse data such as collaborative filtering. It learns pairwise feature interactions efficiently, making it effective for recommendation systems."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 2,
+    "term": "K-means clustering",
+    "definition": "An unsupervised learning algorithm that partitions data into K clusters by minimizing the within-cluster sum of squared distances from each point to its assigned centroid, iterating until convergence."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 2,
+    "term": "Random Cut Forest (RCF)",
+    "definition": "An Amazon SageMaker built-in algorithm for unsupervised anomaly detection that assigns an anomaly score to each data point based on how much it disrupts a random forest of cuts. Higher scores indicate anomalies."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 2,
+    "term": "Early stopping",
+    "definition": "A regularization technique that monitors validation loss during training and stops the training process when performance on the validation set stops improving, preventing overfitting on the training data."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 2,
+    "term": "SageMaker distributed data parallel training",
+    "definition": "A SageMaker training feature that splits large training datasets across multiple GPU instances and aggregates gradients using AllReduce, enabling faster training of models too slow to train on a single instance."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 2,
+    "term": "SageMaker Hyperparameter Optimization (HPO)",
+    "definition": "An automated hyperparameter search service in SageMaker that explores the hyperparameter space using Bayesian optimization or Hyperband, maximizing a specified objective metric across multiple parallel training jobs."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 2,
+    "term": "SageMaker model parallel training",
+    "definition": "A SageMaker training strategy that splits a large model (such as a 7B LLM) across multiple GPU instances when the model is too large to fit in a single device's memory, enabling training of very large models."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 2,
+    "term": "SageMaker Debugger",
+    "definition": "A SageMaker tool that monitors training jobs in real time by capturing tensor values, system metrics (CPU/GPU), and framework metrics, enabling detection of training issues such as vanishing gradients or resource bottlenecks."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 2,
+    "term": "Recall (classification metric)",
+    "definition": "The fraction of actual positive examples that the model correctly identified. Recall = TP / (TP + FN). Prioritized when false negatives are costly, such as in fraud detection or medical diagnosis."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 2,
+    "term": "Residual plot (regression evaluation)",
+    "definition": "A diagnostic visualization for regression models that plots predicted values on the x-axis against prediction errors (residuals) on the y-axis. Patterns in the residuals indicate model bias or heteroscedasticity."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 2,
+    "term": "AUC-ROC",
+    "definition": "The area under the receiver operating characteristic curve, measuring a classifier's ability to discriminate between classes across all decision thresholds. A value of 1.0 is perfect; 0.5 is random."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 2,
+    "term": "SageMaker Clarify (SHAP)",
+    "definition": "A SageMaker capability that generates SHAP (SHapley Additive exPlanations) values to quantify each feature's contribution to individual predictions, supporting model explainability and bias analysis."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 2,
+    "term": "RMSE (Root Mean Squared Error)",
+    "definition": "A regression evaluation metric that is the square root of the average squared prediction errors. It penalizes large errors more heavily than MAE, making it suitable when large prediction errors are especially costly."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 2,
+    "term": "LDA (Latent Dirichlet Allocation)",
+    "definition": "An unsupervised topic modeling algorithm that discovers hidden thematic topics in a collection of documents by modeling each document as a mixture of topics and each topic as a distribution over words."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 3,
+    "term": "SageMaker Serverless Inference",
+    "definition": "A SageMaker hosting option that runs inference on demand without provisioning server capacity. The endpoint scales to zero between requests and back up on demand, with optional provisioned concurrency to eliminate cold starts."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 3,
+    "term": "SageMaker Batch Transform",
+    "definition": "A SageMaker capability for running inference on large offline datasets. Reads input from S3, processes records through the model, and writes predictions back to S3, without requiring a persistent endpoint."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 3,
+    "term": "SageMaker endpoint auto scaling (InvocationsPerInstance)",
+    "definition": "An Application Auto Scaling policy for SageMaker endpoints that adjusts the number of model instances based on the InvocationsPerInstance CloudWatch metric to maintain a target request rate per instance."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 3,
+    "term": "SageMaker multi-model endpoints",
+    "definition": "A SageMaker endpoint configuration that hosts multiple models behind a single endpoint, loading models into memory on demand and evicting least-recently-used models when memory is needed, reducing hosting costs."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 3,
+    "term": "BYOC (Bring Your Own Container)",
+    "definition": "A SageMaker pattern for using a custom Docker container image stored in ECR for training, processing, or inference, allowing use of any ML framework or custom runtime not natively supported by SageMaker."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 3,
+    "term": "SageMaker Neo",
+    "definition": "A SageMaker capability that compiles ML models for deployment on specific hardware targets (edge devices, ARM processors, NVIDIA GPUs), optimizing inference performance and reducing model size for edge deployment."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 3,
+    "term": "SageMaker Pipelines",
+    "definition": "A CI/CD service for ML that defines, automates, and monitors end-to-end ML workflows (data processing → training → evaluation → registration → deployment) as versioned, reusable pipeline DAGs."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 3,
+    "term": "SageMaker Model Registry",
+    "definition": "A centralized catalog for ML model versions that tracks training metadata, evaluation metrics, and deployment history, and supports approval workflows for promoting models from staging to production."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 3,
+    "term": "SageMaker production variants for canary deployment",
+    "definition": "A SageMaker endpoint feature that routes a configurable percentage of inference traffic to a new model version (canary variant) while the majority continues to the stable version, enabling safe model rollouts."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 3,
+    "term": "SageMaker Asynchronous Inference",
+    "definition": "A SageMaker inference mode designed for requests with large payloads (up to 1 GB) or long processing times (up to 15 minutes). Requests are queued in S3 and results are returned asynchronously via SNS notification."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 3,
+    "term": "SageMaker Managed Spot Training",
+    "definition": "A SageMaker training option that uses EC2 Spot Instances for up to 90% cost savings on training jobs. Requires checkpointing to S3 so interrupted jobs can resume from the last checkpoint."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 4,
+    "term": "SageMaker Model Monitor",
+    "definition": "A SageMaker capability that continuously monitors deployed models for data quality drift, model quality degradation, bias drift, and feature attribution drift, sending CloudWatch alerts when thresholds are exceeded."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 4,
+    "term": "SageMaker Data Quality monitoring",
+    "definition": "A SageMaker Model Monitor schedule that compares incoming inference data distributions against a baseline captured from training data, detecting statistical drift in feature inputs."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 4,
+    "term": "SageMaker Model Quality monitoring",
+    "definition": "A SageMaker Model Monitor schedule that compares model predictions against ground truth labels (which may arrive with a delay) to detect degradation in metrics such as accuracy, precision, and recall."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 4,
+    "term": "SageMaker Data Capture",
+    "definition": "A SageMaker endpoint feature that records a sample of inference requests and responses to S3, providing data for offline analysis, model monitoring, and human review workflows."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 4,
+    "term": "SageMaker Studio VPC-only mode",
+    "definition": "A SageMaker Studio configuration that restricts all traffic to a VPC with no direct internet access, requiring VPC Interface Endpoints (PrivateLink) for SageMaker APIs and S3 access. Used to prevent data exfiltration."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 4,
+    "term": "SageMaker network isolation mode",
+    "definition": "A training or processing job configuration that prevents the container from making any outbound network calls during execution, ensuring the job cannot communicate with external services or download data at runtime."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 4,
+    "term": "SageMaker Model Quality monitoring for concept drift",
+    "definition": "The use of SageMaker Model Quality Monitor to detect concept drift, where the relationship between features and labels changes over time in production, causing model accuracy to degrade even if input distributions are stable."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 4,
+    "term": "AWS cost allocation tags (SageMaker)",
+    "definition": "User-defined or AWS-generated tags applied to SageMaker resources (training jobs, endpoints, notebooks) that appear in Cost Explorer reports, enabling cost attribution by team, project, or experiment."
+  },
+  {
+    "exam_code": "MLA-C01",
+    "domain_number": 4,
+    "term": "SageMaker endpoint scheduled auto scaling",
+    "definition": "An Application Auto Scaling scheduled action applied to a SageMaker endpoint that adjusts instance count at specific times (e.g., scale up before business hours, scale down at night) for predictable traffic patterns."
+  }
+]

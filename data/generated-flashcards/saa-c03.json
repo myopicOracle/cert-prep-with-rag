@@ -1,0 +1,512 @@
+[
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "Service Control Policies (SCPs)",
+    "definition": "IAM-like policies applied at the AWS Organizations account or OU level that define the maximum permissions available to all IAM entities in those accounts, regardless of their identity-based policies. Used to enforce guardrails such as region restrictions and prohibited API actions."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "Cross-account IAM role with STS",
+    "definition": "An IAM role in one account with a trust policy allowing a principal in another account to call STS:AssumeRole and receive temporary credentials, enabling controlled cross-account resource access."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "EC2 IAM instance profile",
+    "definition": "A container for an IAM role attached to an EC2 instance, allowing the instance and applications running on it to automatically receive temporary credentials for the associated role without storing access keys."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "IAM Identity Center Permission Sets",
+    "definition": "Collections of IAM policies defined in IAM Identity Center (AWS SSO) that are provisioned as IAM roles into member accounts. Administrators can set maximum session durations and assign Permission Sets to users and groups."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "IAM access key revocation",
+    "definition": "The process of deactivating or deleting a compromised IAM access key pair. Revoking the key is the immediate first response to a leaked credential because it stops unauthorized use before investigating the scope of the breach."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "AWS WAF managed rule groups",
+    "definition": "Pre-built collections of WAF rules maintained by AWS or Managed Rule Group providers that protect against common threats such as SQL injection, XSS, and known bad IPs, applied to CloudFront or ALB distributions."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "ECS task IAM role",
+    "definition": "An IAM role assigned to individual ECS tasks that grants those tasks specific AWS permissions. Separate from the task execution role (used by the control plane), the task role is assumed by the application code running inside the container."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "CloudTrail with CloudWatch metric filter and SNS",
+    "definition": "A monitoring pattern that enables CloudTrail logging, creates a CloudWatch Logs metric filter on specific API calls (such as root account usage), and sends SNS alerts when the metric threshold is breached."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "NAT Gateway",
+    "definition": "A fully managed AWS network address translation gateway that allows instances in a private subnet to initiate outbound internet connections while preventing unsolicited inbound connections from the internet."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "VPC Gateway Endpoint (S3 and DynamoDB)",
+    "definition": "A free VPC endpoint that routes traffic from EC2 instances to S3 or DynamoDB over the AWS private network, eliminating data transfer costs and internet routing for these services without requiring a NAT Gateway."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "AWS Security Hub delegated administrator",
+    "definition": "A configuration that designates a member account as the central Security Hub administrator for an AWS Organization, aggregating findings from all member accounts into one pane of glass."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "SSE-KMS with CMK and CloudTrail audit",
+    "definition": "An S3 encryption configuration using a customer-managed KMS key with automatic annual rotation, providing data-at-rest protection and a full audit trail of all Encrypt and GenerateDataKey API calls via CloudTrail."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "S3 Object Lock Compliance mode",
+    "definition": "An S3 feature that makes objects immutable for a specified retention period. In Compliance mode, no user including the root account can delete or overwrite the object until the retention period expires. Required for WORM compliance."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "Encrypted EBS snapshot cross-account sharing",
+    "definition": "A pattern for sharing encrypted EBS snapshots across accounts that requires updating the KMS key policy in the source account to grant the destination account kms:ReEncrypt, kms:CreateGrant, and kms:DescribeKey permissions."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "Cognito identity pool with IAM policy variable for per-user S3 access",
+    "definition": "A pattern that uses the ${cognito-identity.amazonaws.com:sub} IAM policy variable in an S3 resource ARN to restrict each authenticated user to reading and writing only their own S3 prefix, without custom backend logic."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "aws:MultiFactorAuthPresent IAM condition",
+    "definition": "An IAM condition key that restricts access to sensitive actions (such as deleting S3 buckets or changing security configurations) to only sessions where MFA was used during authentication."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "SCP to prevent CloudTrail disable and delete",
+    "definition": "A Service Control Policy applied at the organization level that denies cloudtrail:DeleteTrail, cloudtrail:StopLogging, and cloudtrail:UpdateTrail actions, preventing member accounts from disabling audit logging."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "AWS Shield Advanced with WAF rate-based rules",
+    "definition": "A layered DDoS defense combining Shield Advanced for volumetric and infrastructure-layer attack mitigation with WAF rate-based rules for application-layer flood protection, both managed through AWS Firewall Manager."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "AWS Network Firewall for domain-based outbound filtering",
+    "definition": "A managed stateful firewall deployed in VPC subnets that can filter outbound traffic by domain name using stateful rule groups, preventing instances from communicating with unauthorized external destinations."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "NAT Gateway Elastic IP for static source IP",
+    "definition": "A pattern where outbound traffic from ECS tasks or EC2 instances routes through a NAT Gateway to get a static, predictable Elastic IP address, allowing external partners to allowlist a fixed IP."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "GuardDuty incident response: isolate first",
+    "definition": "The recommended first response to a GuardDuty finding indicating a compromised EC2 instance is to isolate the instance (modify its security group to block all traffic) before investigating, preventing further lateral movement."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "Lake Formation column and row-level security",
+    "definition": "Lake Formation access control features that restrict which columns and rows specific IAM principals can see when querying data through Athena or Redshift Spectrum, without duplicating the underlying S3 dataset."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "ALB HTTPS listener with ACM certificate",
+    "definition": "An ALB configuration that terminates TLS at the load balancer using a certificate managed by ACM, decrypting client traffic at the ALB before forwarding it to backend instances over HTTP or HTTPS."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 1,
+    "term": "S3 default bucket encryption with SSE-KMS CMK",
+    "definition": "A bucket-level encryption setting that automatically encrypts all new objects uploaded to the bucket using a specified customer-managed KMS key, without requiring uploaders to specify encryption headers."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "SNS-to-SQS fan-out pattern",
+    "definition": "An architecture pattern where a single SNS topic delivers messages to multiple SQS queues simultaneously, enabling parallel processing of the same event by different consumers without tight coupling."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "ElastiCache Redis for session externalization",
+    "definition": "A pattern for storing HTTP session state in ElastiCache Redis instead of on individual EC2 instances, enabling any instance in an Auto Scaling group to serve any user's requests without session affinity (sticky sessions)."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "S3 + SQS buffer for burst protection",
+    "definition": "A decoupling pattern where producers write records to an SQS queue or S3, and consumers (Lambda or EC2 workers) process records at a controlled rate, protecting downstream systems from traffic spikes."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "SQS Dead Letter Queue (DLQ)",
+    "definition": "A separate SQS queue that receives messages that failed processing a configurable number of times (maxReceiveCount), isolating poison-pill messages for inspection without blocking the main queue."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "ElastiCache for Aurora read scaling",
+    "definition": "A pattern that places ElastiCache in front of an Aurora cluster to serve repeated read queries from cache, reducing the RCU load on the database for read-heavy workloads with frequently accessed, infrequently changed data."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "API Gateway throttling (burst and rate limits)",
+    "definition": "API Gateway usage plan limits that set the maximum request rate (requests/second) and burst (token bucket size) per API stage or client, returning HTTP 429 when limits are exceeded to protect backend services."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "RDS Multi-AZ",
+    "definition": "An RDS configuration that maintains a synchronous standby replica in a different Availability Zone. On primary instance failure, RDS automatically fails over to the standby with a 1–2 minute RTO using a DNS endpoint update."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "N+1 capacity model for AZ fault tolerance",
+    "definition": "An EC2 Auto Scaling design pattern that provisions enough extra capacity in the remaining AZs to handle the full load if one AZ fails entirely, ensuring the application continues to serve traffic during an AZ outage."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "Warm Standby DR strategy",
+    "definition": "A disaster recovery approach where a scaled-down but fully functional copy of the production environment runs continuously in the DR region, enabling faster RTO than Pilot Light by eliminating provisioning time."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "Aurora Global Database",
+    "definition": "An Aurora configuration that replicates data across up to five AWS Regions with typical replication lag under one second, providing cross-region read replicas and sub-one-minute failover for disaster recovery (RPO ~5s, RTO ~10 min)."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "Pilot Light DR strategy",
+    "definition": "A disaster recovery approach that keeps only the minimum critical components (database, core infrastructure) running in a DR region at minimal cost, scaling them up quickly when a disaster is declared. Lowest ongoing cost among active DR strategies."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "CloudFront origin groups with S3 Cross-Region Replication",
+    "definition": "A static website DR pattern that configures a CloudFront origin group with a primary S3 bucket and a secondary S3 bucket in another region, with CRR keeping them in sync. CloudFront automatically fails over to the secondary on primary errors."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "Lambda Provisioned Concurrency for latency SLA",
+    "definition": "A Lambda configuration that pre-initializes a fixed number of function instances so they respond immediately without cold start latency, enabling sub-100ms p99 response times for latency-sensitive APIs."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "Kinesis Data Streams for long-term event replay",
+    "definition": "A use case for Kinesis Data Streams where the retention period is extended up to 365 days, allowing consumers to replay the full event history for reprocessing, auditing, or onboarding new consumers."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "SQS queue depth custom metric for Auto Scaling",
+    "definition": "A pattern where a CloudWatch custom metric tracking SQS ApproximateNumberOfMessagesVisible drives an EC2 Auto Scaling target tracking policy, scaling worker instances proportionally to queue backlog depth."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "API Gateway WebSocket API",
+    "definition": "An API Gateway API type that maintains persistent bidirectional WebSocket connections between clients and backends, enabling real-time push communication for applications like chat, live dashboards, and auctions."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "Step Functions Retry (MaxAttempts and BackoffRate)",
+    "definition": "A Step Functions state machine error handling configuration that automatically retries a failed state a specified number of times with an exponential backoff interval between attempts to handle transient failures."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "ALB weighted target groups for canary deployment",
+    "definition": "An ALB listener rule configuration that routes a configurable percentage of traffic (e.g., 5%) to a new application version target group while keeping the majority on the stable version, enabling controlled gradual rollouts."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 2,
+    "term": "DynamoDB Point-in-Time Recovery (PITR)",
+    "definition": "A DynamoDB feature that continuously backs up table data and allows restoring the table to any second within the last 35 days, enabling recovery from accidental writes, deletes, or data corruption."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "S3 lifecycle policy tiers (Standard → Standard-IA → Glacier → expiration)",
+    "definition": "An S3 configuration that automatically transitions objects through storage tiers as they age: S3 Standard for active access, Standard-IA for infrequent access, Glacier for archival, with an expiration rule for automatic deletion."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "S3 Standard-IA (Infrequent Access)",
+    "definition": "An S3 storage class for data accessed less than once per month that costs less per GB than S3 Standard while maintaining millisecond retrieval. Has a minimum storage duration of 30 days and a per-GB retrieval fee."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "S3 Glacier Flexible Retrieval",
+    "definition": "An S3 archive storage class with three retrieval tiers: Expedited (1–5 minutes), Standard (3–5 hours), and Bulk (5–12 hours). Suitable for archives that are occasionally accessed and can tolerate retrieval delays."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "EC2 Spot Instances with Spot Fleet",
+    "definition": "Spare AWS compute capacity available at up to 90% discount over On-Demand pricing. A Spot Fleet or Auto Scaling group configured with multiple instance types and AZs maximizes capacity availability at the lowest cost for fault-tolerant workloads."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "AWS Fargate",
+    "definition": "A serverless compute engine for containers that eliminates the need to provision, manage, or patch EC2 instances. You define CPU and memory per task; AWS handles all underlying infrastructure."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "EC2 cluster placement group",
+    "definition": "A logical placement strategy that packs EC2 instances onto high-bisection-bandwidth hardware within a single AZ, providing the lowest possible network latency and highest throughput for tightly coupled HPC workloads."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "EC2 spread placement group",
+    "definition": "A placement strategy that distributes instances across distinct underlying hardware within an AZ or across AZs, maximizing fault isolation so a single hardware failure affects at most one instance."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "Elastic Fabric Adapter (EFA)",
+    "definition": "A network interface for EC2 instances that provides OS-bypass communication for tightly coupled HPC and ML applications using MPI, achieving network latency comparable to on-premises HPC clusters."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "RDS read replicas",
+    "definition": "Copies of an RDS primary database that are updated asynchronously and serve read traffic, offloading read queries from the primary instance. The application directs read queries to the replica endpoint and writes to the primary."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "DynamoDB Accelerator (DAX)",
+    "definition": "A fully managed, in-memory cache for DynamoDB that is API-compatible with the DynamoDB SDK. Serves repeated item reads from microsecond-latency cache without consuming DynamoDB RCUs, eliminating hot partition pressure from repeated reads."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "Amazon RDS for Oracle",
+    "definition": "A managed RDS offering that runs the actual Oracle Database engine, providing full compatibility with Oracle-specific features including PL/SQL stored procedures, triggers, Oracle packages, and Oracle data types."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "AWS Direct Connect",
+    "definition": "A dedicated physical network connection between an on-premises data center and AWS that bypasses the public internet. Available at 1 Gbps, 10 Gbps, and 100 Gbps, providing consistent low-latency, high-bandwidth connectivity."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "AWS Transit Gateway",
+    "definition": "A regional network hub that connects multiple VPCs and on-premises networks through a single gateway. Each VPC and Direct Connect gateway attaches once; routing is managed centrally. Scales to thousands of attachments."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "Direct Connect private virtual interface (VIF)",
+    "definition": "A Direct Connect connection configuration that routes traffic from an on-premises network directly into a VPC's private IP address space, without traversing the public internet, using a private VIF associated with a Virtual Private Gateway or Direct Connect Gateway."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "Amazon Managed Service for Apache Flink",
+    "definition": "A fully managed service (formerly Kinesis Data Analytics) for running stateful stream processing applications using Apache Flink, supporting windowed aggregations, pattern detection, and sub-minute streaming SQL analytics."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "Amazon Athena",
+    "definition": "A serverless interactive query service that runs SQL directly against data in S3 using the Glue Data Catalog for schema definitions. Charges per TB of data scanned; new S3 data is immediately queryable without loading."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "ElastiCache Redis Sorted Set",
+    "definition": "A Redis data structure that maintains a set of members each assigned a floating-point score, kept in sorted order automatically. The ZREVRANGE command retrieves the top N members by score in O(log N + N) time, the canonical data structure for real-time leaderboards."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "Redshift result caching",
+    "definition": "A Redshift feature that stores query results in memory on the leader node and returns them immediately for identical subsequent queries without re-executing the query, provided the underlying data has not changed."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "Direct Connect gateway shared via AWS RAM",
+    "definition": "A pattern for sharing a single Direct Connect connection across multiple AWS accounts by sharing the Direct Connect gateway via AWS Resource Access Manager, allowing member accounts to attach their VPCs without establishing separate connections."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "AWS PrivateLink endpoint service",
+    "definition": "A mechanism for service providers to expose services to consumers privately by creating an endpoint service backed by a Network Load Balancer. Consumers create VPC Interface Endpoints to connect over the AWS private network, scaling to thousands of consumers without VPC peering."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "VPC Interface Endpoint (AWS PrivateLink)",
+    "definition": "A VPC endpoint that creates an elastic network interface in a subnet with a private IP address, enabling private connectivity to AWS services (SQS, Secrets Manager, SSM, etc.) or PrivateLink endpoint services without internet routing."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "Amazon FSx for Windows File Server",
+    "definition": "A fully managed Windows-native file system that supports SMB protocol, integrates with Microsoft Active Directory for access control, and uses SSD storage for sub-millisecond latency. Purpose-built for Windows workloads."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "Amazon FSx for Lustre",
+    "definition": "A fully managed high-performance parallel file system for Linux-based HPC and ML workloads. Integrates natively with S3 and provides scratch and persistent storage configurations. Does not support SMB or Windows."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "Application Auto Scaling for ECS",
+    "definition": "The service that manages scaling for ECS services (as opposed to EC2 Auto Scaling which manages instance counts). Supports target tracking policies on metrics like ECSServiceAverageCPUUtilization to automatically adjust ECS task count."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 3,
+    "term": "EC2 Auto Scaling warm pool",
+    "definition": "A pool of pre-initialized EC2 instances kept in a stopped or running state attached to an Auto Scaling group. When scale-out is triggered, instances are pulled from the warm pool instead of being launched fresh, enabling sub-60-second scale-out response."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 4,
+    "term": "S3 Glacier Deep Archive",
+    "definition": "The lowest-cost S3 storage class, designed for data retained for 7+ years and rarely accessed. Supports retrieval within 12–48 hours. Significantly less expensive than S3 Glacier Flexible Retrieval."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 4,
+    "term": "S3 Intelligent-Tiering",
+    "definition": "An S3 storage class that automatically moves objects between access tiers (Frequent Access, Infrequent Access, Archive Instant Access) based on actual access patterns, with no retrieval fees. Best for data with unknown or variable access frequency."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 4,
+    "term": "EBS gp3 volume",
+    "definition": "A general-purpose SSD EBS volume type that is up to 20% cheaper per GB than gp2 and allows independent configuration of IOPS (up to 16,000) and throughput (up to 1,000 MiB/s) regardless of volume size, eliminating the need to over-provision size for IOPS."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 4,
+    "term": "S3 IoT data aggregation (reduce PUT request cost)",
+    "definition": "A cost optimization pattern for IoT pipelines that aggregates multiple small device messages into a single larger S3 object before writing, reducing the number of PUT API requests and associated request costs."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 4,
+    "term": "Aurora Serverless v2",
+    "definition": "A serverless Aurora configuration that automatically scales database capacity in Aurora Capacity Units (ACUs) from near-zero during idle periods to hundreds of ACUs under peak load, with per-second billing suitable for intermittent workloads."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 4,
+    "term": "DynamoDB on-demand capacity mode",
+    "definition": "A DynamoDB capacity option that charges per read and write request with no minimum provisioned capacity. Scales automatically to any traffic level, making it ideal for workloads with variable or unpredictable traffic that drops to near-zero during idle periods."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 4,
+    "term": "Amazon Redshift Serverless",
+    "definition": "A serverless Redshift configuration that provisions compute capacity (measured in Redshift Processing Units, RPUs) on demand for query execution, charging only when queries run. Eliminates idle cluster costs for infrequent analytics workloads."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 4,
+    "term": "EMR task nodes on Spot Instances",
+    "definition": "A cost optimization pattern for EMR clusters where master and core nodes (which coordinate and store HDFS data) run on On-Demand instances, while task nodes (which only process data) run on Spot Instances for up to 90% cost savings."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 4,
+    "term": "EventBridge Scheduler for dev instance stop/start",
+    "definition": "A cost optimization pattern that uses EventBridge Scheduler (or AWS Instance Scheduler) to automatically stop development EC2 instances outside business hours and restart them each morning, eliminating roughly 70% of compute hours."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 4,
+    "term": "Compute Savings Plans",
+    "definition": "A flexible commitment-based pricing option offering up to 66% savings over On-Demand pricing that automatically applies to EC2 usage across any instance family, size, OS, tenancy, or region, as well as Fargate and Lambda usage."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 4,
+    "term": "AWS Compute Optimizer",
+    "definition": "A service that uses machine learning to analyze CloudWatch utilization metrics and generate specific rightsizing recommendations for EC2 instances, EBS volumes, Lambda functions, and ECS services, with projected cost savings."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 4,
+    "term": "EFS Infrequent Access (IA) storage class",
+    "definition": "A lower-cost EFS storage tier for files not accessed within a configurable number of days. An EFS lifecycle policy automatically transitions files between the Standard and IA tiers based on access frequency."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 4,
+    "term": "Savings Plans baseline + On-Demand/Spot for spikes",
+    "definition": "An EC2 cost optimization strategy that commits Savings Plans or Reserved Instances to cover the predictable baseline load (highest discount) while using On-Demand or Spot Instances to handle variable or peak capacity."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 4,
+    "term": "RDS stop/start via EventBridge Scheduler",
+    "definition": "A cost optimization pattern for development RDS instances that stops the instance outside business hours (no compute charges while stopped, only storage) and restarts it before business hours, saving approximately 70% of compute costs."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 4,
+    "term": "Cross-AZ data transfer cost (same-AZ is free)",
+    "definition": "AWS charges $0.01/GB in each direction for data transfer between EC2 instances or services in different Availability Zones within the same region. Traffic between resources in the same AZ is free, making same-AZ placement important for high-throughput inter-service communication."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 4,
+    "term": "VPC peering for lowest inter-VPC data transfer cost",
+    "definition": "The most cost-effective way to connect two VPCs in the same region for high-volume traffic. VPC peering has no per-GB processing fee (unlike Transit Gateway at $0.02/GB or PrivateLink), paying only standard EC2 data transfer rates."
+  },
+  {
+    "exam_code": "SAA-C03",
+    "domain_number": 4,
+    "term": "CloudFront cache hit ratio optimization",
+    "definition": "The practice of configuring longer TTLs for cacheable content and minimizing the number of unique cache keys (by not forwarding unnecessary headers or query strings) to maximize the proportion of requests served from edge cache, reducing origin data transfer costs."
+  }
+]
