@@ -1,5 +1,6 @@
 import { type UIMessage } from 'ai'
 import { ExamUIQuestion, AnswerChoice } from './exam'
+import { Flashcard } from './flashcard'
 
 export type Citation = {
     sourceURL: string
@@ -91,4 +92,15 @@ export interface DrawerProps {
     status: 'submitted' | 'streaming' | 'ready' | 'error'
     isEnhancing: boolean
     onSendFollowUp: (text: string) => Promise<void>
+}
+
+export interface FlashcardDeckProps {
+    cards: Flashcard[]
+}
+
+export interface FlashcardCardProps {
+    term: string
+    definition: string
+    isFlipped: boolean
+    onFlip: () => void
 }

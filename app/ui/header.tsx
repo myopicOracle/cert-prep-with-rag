@@ -5,7 +5,7 @@ import ThemeSelect from '@/app/ui/theme-select'
 export default function Header() {
     return (
         <div className="relative w-full h-[10dvh] bg-header flex items-center justify-between px-2 py-2 md:px-4 md:py-3">
-            <Link href="/" className="h-1/2 md:h-full flex-shrink-0">
+            <Link href="/" className="h-1/2 md:h-3/4 flex-shrink-0">
                 <Image
                     src="/atlas/lockup-light.svg"
                     alt="Brand lockup for Cloud Atlas"
@@ -23,15 +23,15 @@ export default function Header() {
                     className="h-full w-auto hidden dark:block"
                 />
             </Link>
-            <nav className="absolute left-1/2 -translate-x-1/2 flex gap-4 md:gap-10 text-body font-sora font-semibold">
+            <nav className="absolute left-1/2 -translate-x-1/2 flex gap-6 md:gap-12 text-body text-md md:text-xl font-sora tracking-tight font-medium">
                 <Link
                     href="/about"
-                    className="text-link text-sm md:text-lg transition-colors hover:text-link-hover">
+                    className="text-link transition-colors hover:text-link-hover">
                     About
                 </Link>
                 <Link
                     href="/learn/exam"
-                    className="text-link text-sm md:text-lg transition-colors hover:text-link-hover">
+                    className="text-link transition-colors hover:text-link-hover">
                     Learn
                 </Link>
             </nav>

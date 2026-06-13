@@ -1,5 +1,6 @@
 import { createClient } from '@/app/utils/supabase/client'
 import { DatabaseQuestion } from '@/app/types/exam'
+import { Flashcard } from '@/app/types/flashcard'
 
 export async function fetchQuestions(): Promise<DatabaseQuestion[]> {
     const supabase = createClient()
@@ -131,4 +132,34 @@ export async function fetchQuestionsByTaskStatement(
     // console.log('Data returned by DB call:', data)
     // console.log('Return type:', typeof data)
     return data
+}
+
+export async function fetchFlashcardsByExam(
+    examCode: string,
+): Promise<Flashcard[]> {
+    const supabase = createClient()
+    const { data, error } = await supabase
+        .from('flashcards')
+        .select('*')
+        .eq('exam_code', examCode)
+
+    if (error) {
+        throw new Error(`Failed to fetch flashcards for exam: ${examCode}`)
+    }
+
+    return data
+}
+
+export async function fetchAvailableFlashcardExamCodes(): Promise<string[]> {
+    const supabase = createClient()
+    const { data, error } = await supabase
+        .from('flashcards')
+        .select('exam_code')
+        .not('exam_code', 'is', null)
+
+    if (error) {
+        throw new Error('Failed to fetch available flashcard exam codes.')
+    }
+
+    return Array.from(new Set(data.map((row) => row.exam_code as string)))
 }
