@@ -8,7 +8,7 @@ export default async function Page() {
     const items = examMetadata.map((exam) => ({
         title: exam.short_name,
         description: exam.description,
-        href: `/practice/exam/${exam.exam_code}`,
+        href: `/learn/exam/${exam.exam_code}`,
         image: {
             src: `/badges/${exam.exam_code}.png`,
             alt: `${exam.full_name} certification badge`,

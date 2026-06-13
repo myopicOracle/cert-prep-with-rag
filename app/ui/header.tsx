@@ -28,14 +28,9 @@ export default function Header() {
                     About
                 </Link>
                 <Link
-                    href="/study"
+                    href="/learn"
                     className="text-link text-lg transition-colors hover:text-link-hover">
-                    Study
-                </Link>
-                <Link
-                    href="/practice"
-                    className="text-link text-lg transition-colors hover:text-link-hover">
-                    Practice
+                    Learn
                 </Link>
             </nav>
             <div className="flex items-stretch self-stretch gap-4 text-body font-outfit tracking-wide py-3">

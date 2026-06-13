@@ -2,6 +2,7 @@
 
 import {
     HomeIcon,
+    ChatBubbleLeftRightIcon,
     ClipboardDocumentIcon,
     BoltIcon,
     ForwardIcon,
@@ -12,22 +13,27 @@ import { usePathname } from 'next/navigation'
 const links = [
     {
         name: 'Progress',
-        href: '/practice',
+        href: '/learn',
         icon: HomeIcon,
     },
     {
+        name: 'Chat',
+        href: '/learn/chat',
+        icon: ChatBubbleLeftRightIcon,
+    },
+    {
         name: 'Mock Exams',
-        href: '/practice/exam',
+        href: '/learn/exam',
         icon: ClipboardDocumentIcon,
     },
     {
         name: 'Flashcards',
-        href: '/practice/flashcards',
+        href: '/learn/flashcards',
         icon: BoltIcon,
     },
     {
         name: 'Speed Run',
-        href: '/practice/speedrun',
+        href: '/learn/speedrun',
         icon: ForwardIcon,
     },
 ]

@@ -74,7 +74,7 @@ export default function Review({
                             </div>
                             <div className="flex-none w-24">
                                 <Link
-                                    href={`/practice/exam?id=${index + 1}`}
+                                    href={`/learn/exam?id=${index + 1}`}
                                     className="text-link underline hover:text-link-hover transition-colors">
                                     Review
                                 </Link>
