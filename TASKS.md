@@ -63,7 +63,7 @@
 - [x] generate quiz-style questions data for Speedrun mode, #64
 - [x] merge study and practice routes, refactor sidenav and layouts, #62
 - [x] update About content copy, add assets, rebrand to Cloud Atlas, #69
-- [ ] enhance mobile responsiveness and app components styling, #63
+- [x] enhance mobile responsiveness and app components styling, #63
 - [ ] run migrations on Flashcards and Speedrun data, #65
 - [ ] add UI and client logic for Flashcards mode, #66
 - [ ] add UI and client logic for Speedrun mode, #67

@@ -1,6 +1,5 @@
 'use client'
 
-import { lusitana } from '@/app/ui/fonts'
 import useChat from '@/app/hooks/useChat'
 import ChatInput from '@/app/ui/learn/chat/chat-input'
 import ChatDisplay from '@/app/ui/learn/chat/chat-display'
@@ -9,27 +8,27 @@ export default function Page() {
     const { chatHistory, isLoading, fetchResponse } = useChat()
 
     return (
-        <div className="flex flex-col w-full h-full gap-2 sm:gap-4">
+        <div className="flex w-full flex-col gap-4">
             <div className="flex-none">
                 <h1
-                    className={`font-sora tracking-tight text-contrast text-2xl`}>
+                    className={`font-sora tracking-tight text-contrast text-3xl`}>
                     Docs Agent
                 </h1>
-            </div>
-            <div className="flex-none">
-                <p className="text-sm text-contrast">
+                <p className="mt-2 font-outfit text-sm tracking-wide text-contrast">
                     Get answers directly from AWS documentation.
                 </p>
             </div>
-            <div className="flex-1 overflow-y-auto flex flex-col max-w-2xl w-full mx-auto rounded-lg border-2 border-border p-2 sm:p-4">
-                <ChatDisplay chatHistory={chatHistory} />
-            </div>
-            <div className="flex-none">
-                <div className="max-w-lg mx-auto border-t border-border mx-4" />
-            </div>
-            <div className="flex-none max-w-2xl w-full mx-auto rounded-lg border-2 border-border p-2 sm:p-4">
-                <ChatInput isLoading={isLoading} onSubmit={fetchResponse} />
-            </div>
+            <section className="mx-auto flex w-full max-w-3xl flex-col overflow-hidden rounded-lg border border-border bg-brand-navy shadow-lg">
+                <div className="h-[55dvh] overflow-y-auto px-3 py-4 sm:px-5 sm:py-6">
+                    <ChatDisplay
+                        chatHistory={chatHistory}
+                        isLoading={isLoading}
+                    />
+                </div>
+                <div className="flex-none border-t border-border/60 bg-brand-navy/95 p-3 sm:p-4">
+                    <ChatInput isLoading={isLoading} onSubmit={fetchResponse} />
+                </div>
+            </section>
         </div>
     )
 }

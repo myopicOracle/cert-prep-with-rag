@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react'
+import { ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline'
 import { ChatDisplayProps } from '@/app/types/components'
 import ChatMessage from '@/app/ui/learn/chat/chat-message'
 
@@ -17,11 +18,15 @@ export default function ChatDisplay({
     }, [chatHistory, isLoading])
 
     return (
-        <>
+        <div className="flex min-h-full flex-col gap-4">
             {chatHistory.length === 0 ? (
-                <p className="text-center text-sm text-body-muted mt-12">
-                    Ask a question get started.
-                </p>
+                <div className="flex flex-1 flex-col items-center justify-center gap-3 text-center text-brand-white/60">
+                    <ChatBubbleLeftRightIcon
+                        aria-hidden="true"
+                        className="h-10 w-10"
+                    />
+                    <p className="text-sm">Ask a question to get started.</p>
+                </div>
             ) : (
                 chatHistory.map((message, index) => {
                     return (
@@ -34,7 +39,12 @@ export default function ChatDisplay({
                     )
                 })
             )}
-            <div ref={scrollRef}></div>
-        </>
+            {isLoading && chatHistory.length > 0 && (
+                <div className="self-start rounded-lg bg-message px-4 py-3 text-sm text-body shadow-sm">
+                    Thinking...
+                </div>
+            )}
+            <div ref={scrollRef} aria-hidden="true"></div>
+        </div>
     )
 }

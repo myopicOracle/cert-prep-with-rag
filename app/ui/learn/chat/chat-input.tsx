@@ -1,14 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import { PaperAirplaneIcon } from '@heroicons/react/24/solid'
 import { ChatInputProps } from '@/app/types/components'
 
 export default function ChatInput({ isLoading, onSubmit }: ChatInputProps) {
     const [input, setInput] = useState('')
 
-    function handleInput(e: any) {
+    function handleInput(e: React.ChangeEvent<HTMLTextAreaElement>) {
         setInput(e.target.value)
-        // console.log('User typed: ', input)
     }
 
     function submitInput() {
@@ -17,7 +17,6 @@ export default function ChatInput({ isLoading, onSubmit }: ChatInputProps) {
             return
         }
         onSubmit(cleanInput)
-        // console.log('Submitted user query: ', cleanInput)
         setInput('')
     }
 
@@ -35,21 +34,34 @@ export default function ChatInput({ isLoading, onSubmit }: ChatInputProps) {
 
     return (
         <>
-            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+            <form
+                className="flex flex-col gap-3 sm:flex-row sm:items-end"
+                onSubmit={handleSubmit}>
+                <label htmlFor="chat-question" className="sr-only">
+                    Ask a question
+                </label>
                 <textarea
+                    id="chat-question"
                     value={input}
                     onChange={handleInput}
                     onKeyDown={handleKeyDown}
                     placeholder="Ask a question about AWS..."
                     disabled={isLoading}
-                    rows={3}
-                    className="w-full rounded-lg border border-border bg-input p-3 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-focus focus:border-transparent"
+                    rows={2}
+                    className="min-h-24 flex-1 resize-none rounded-md border border-border bg-input px-3 py-3 text-sm text-body shadow-inner placeholder:text-body-muted focus:border-transparent focus:outline-none focus:ring-2 focus:ring-focus disabled:opacity-70"
                 />
                 <button
                     type="submit"
+                    aria-label={
+                        isLoading ? 'Waiting for response' : 'Ask question'
+                    }
+                    title={isLoading ? 'Waiting for response' : 'Ask question'}
                     disabled={input.trim() === '' || isLoading}
-                    className="mt-2 rounded-sm text-lg text-brand-white font-semibold px-8 py-3 bg-brand-gold shadow-md hover:bg-brand-gold/80 focus:outline-none cursor-pointer disabled:cursor-not-allowed disabled:opacity-50">
-                    {isLoading ? 'Noodling...' : 'Ask'}
+                    className="inline-flex h-12 shrink-0 cursor-pointer items-center justify-center gap-2 rounded-md bg-button px-5 text-sm font-semibold text-button-text shadow-sm transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-focus focus:ring-offset-2 focus:ring-offset-brand-navy disabled:cursor-not-allowed disabled:opacity-50 sm:w-12 sm:px-0">
+                    <PaperAirplaneIcon aria-hidden="true" className="h-5 w-5" />
+                    <span className="sm:sr-only">
+                        {isLoading ? 'Noodling...' : 'Ask'}
+                    </span>
                 </button>
             </form>
         </>
