@@ -8,14 +8,14 @@ export default function Header() {
             <Link href="/" className="h-full">
                 <Image
                     src="/atlas/lockup-light.svg"
-                    alt="Brand lockup for Praevisio Atlas"
+                    alt="Brand lockup for Cloud Atlas"
                     width={240}
                     height={64}
                     className="h-full w-auto dark:hidden"
                 />
                 <Image
                     src="/atlas/lockup-dark.svg"
-                    alt="Brand lockup for Praevisio Atlas"
+                    alt="Brand lockup for Cloud Atlas"
                     width={240}
                     height={64}
                     className="h-full w-auto hidden dark:block"

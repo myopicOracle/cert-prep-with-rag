@@ -2,9 +2,9 @@
 
 <div id="atlas-logo" align="center">
 
-<img src="./public/atlas/brandmark.svg" alt="Praevisio Atlas Logo" width="60"/>
+<img src="./public/atlas/brandmark.svg" alt="Cloud Atlas Logo" width="60"/>
 
-<h3>Praevisio Atlas</h3>
+<h3>Cloud Atlas</h3>
 </div>
 
 <div id="tagline" align="center">
@@ -17,7 +17,7 @@
 
 ### The Search Problem
 
-AWS documentation is exhaustive — and that's the problem. For someone preparing for certification, the answers are in there, but extracting them efficiently isn't. Generic LLMs help, but they hallucinate or omit citations, leaving you to verify everything they say. Praevisio Atlas grounds every answer in AWS's own documentation, so what you read is traceable back to what AWS actually published.
+AWS documentation is exhaustive — and that's the problem. For someone preparing for certification, the answers are in there, but extracting them efficiently isn't. Generic LLMs help, but they hallucinate or omit citations, leaving you to verify everything they say. Cloud Atlas grounds every answer in AWS's own documentation, so what you read is traceable back to what AWS actually published.
 
 ### What Atlas Does
 

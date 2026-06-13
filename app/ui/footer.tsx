@@ -6,7 +6,7 @@ export default function Footer() {
             <div className="h-3/5 flex items-center gap-2">
                 <Image
                     src="/atlas/brandmark.svg"
-                    alt="Brand logo for Praevisio Atlas"
+                    alt="Brand logo for Cloud Atlas"
                     width={64}
                     height={64}
                     className="h-full w-auto rounded-md"
@@ -14,7 +14,7 @@ export default function Footer() {
                 <div className="text-body font-outfit tracking-wide opacity-90">
                     Enjoying the app? Consider giving us a{' '}
                     <a
-                        href="https://github.com/myopicOracle/cert-prep-with-rag"
+                        href="https://github.com/myopicOracle/cloud-atlas"
                         target="_blank"
                         rel="noreferrer"
                         className="text-accent-contrast font-semibold transition-colors hover:text-link-hover">

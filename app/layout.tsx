@@ -8,7 +8,7 @@ import Header from '@/app/ui/header'
 import Footer from '@/app/ui/footer'
 
 export const metadata: Metadata = {
-    title: 'Praevisio Atlas',
+    title: 'Cloud Atlas',
     description: 'Learn AWS and pass certification exams with flying colors.',
     icons: {
         icon: [
