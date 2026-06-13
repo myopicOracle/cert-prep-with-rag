@@ -15,7 +15,7 @@ export default function Roadmap() {
             <div className="mt-8 space-y-8">
                 <div>
                     <h2 className="text-lg font-sora tracking-tight text-subheading">
-                        1. Chat with Docs
+                        1. Chat with Docs Agent
                     </h2>
                     <p className="mt-2 text-body leading-relaxed">
                         Start here. Chat with an agent grounded in AWS

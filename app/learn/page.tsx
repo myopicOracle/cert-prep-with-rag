@@ -7,7 +7,8 @@ export default async function Page() {
     return (
         <div className="w-full">
             <h1 className="mb-2 text-3xl font-sora tracking-tight text-contrast">
-                Track Your Progress
+                Track Your Progress{' '}
+                <span className="opacity-40">(Coming Soon)</span>
             </h1>
             <p className="mb-8 font-outfit tracking-wide text-contrast">
                 Review your performance across exams and flashcards.

@@ -2,35 +2,41 @@
 
 <div id="atlas-logo" align="center">
 
-<img src="./public/atlas/brandmark.svg" alt="Cloud Atlas Logo" width="60"/>
-
-<h3>Cloud Atlas</h3>
+<img src="./public/atlas/lockup-badge.svg" alt="Cloud Atlas logo" width="300"/>
 </div>
 
 <div id="tagline" align="center">
-<em>Grounded AI for AWS practitioners</em>
+<h3>Grounded AI for Certification Prep</h3>
+</div>
+
+<div id="live-app" align="center">
+<strong>Live app:</strong> <a href="https://atlas.praevisiolabs.com/">atlas.praevisiolabs.com</a>
+</div>
+
+<div id="attribution" align="center">
+<em>by <a href="https://github.com/Praevisio-Labs">Praevisio Labs</a></em>
 </div>
 
 <br>
 
-> **Status:** In active development.
+Preparing for an AWS certification means hours of digging through thousands of pages of AWS documentation. Cloud Atlas keeps that work close to the source: you ask a question in plain language, and the answer comes back with the exact doc passages it drew from, so you can verify it rather than take it on faith. Around that sit the practice tools — mock exams, flashcards, and quick concept quizzes — each aligned to how the real exams are organized.
 
-### The Search Problem
+### What Atlas does
 
-AWS documentation is exhaustive — and that's the problem. For someone preparing for certification, the answers are in there, but extracting them efficiently isn't. Generic LLMs help, but they hallucinate or omit citations, leaving you to verify everything they say. Cloud Atlas grounds every answer in AWS's own documentation, so what you read is traceable back to what AWS actually published.
-
-### What Atlas Does
-
-- **RAG Q&A** — Natural-language questions answered by retrieving relevant chunks from a pgvector store of AWS documentation, then cited inline.
-- **Exam Mode** — Multiple-choice practice for CLF-C02, AIF-C01, MLA-C01 and others, with grounded explanations on reveal.
-- **Study Mode** — Freeform chat with source-chunk citations from the AWS docs.
-- **Progress Dashboard** — Per-domain performance metrics tracked across sessions.
+- **Docs Agent** — Ask AWS questions in natural language and get answers retrieved from a pgvector store of AWS documentation, cited inline so every claim traces back to a source you can open.
+- **Mock Exams** — Full-length, timed practice in an interface modeled on the real test. Each question reveals a written explanation, and a live agent can walk through why every option is right or wrong and stay in the conversation for follow-ups.
+- **Flashcards & Speedrun** — Recall drills and quick single-concept questions for the gaps between longer sessions, mapped to each exam's blueprint. 
+- **Progress Dashboard** — Per-domain breakdowns of how your practice is going.
 
 ### Stack
 
 Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · Supabase (Postgres + pgvector) · AWS Bedrock (Titan Embeddings v2, Claude Haiku) · LangChain · Vercel AI SDK
 
-A comprehensive README will replace this one when the project reaches v1.
+### Want to contribute?
+
+If you want to give back to the project, you can add to the curriculum, open a new feature request, or email us with questions and feedback.
+
+[Contribute](https://github.com/myopicOracle/cloud-atlas/issues) · [Email us](mailto:gary@praevisiolabs.com)
 
 <br>
 

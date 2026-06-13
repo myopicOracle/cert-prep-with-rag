@@ -13,7 +13,7 @@ export default function Page() {
             <div className="flex-none">
                 <h1
                     className={`font-sora tracking-tight text-contrast text-2xl`}>
-                    Study Mode
+                    Docs Agent
                 </h1>
             </div>
             <div className="flex-none">

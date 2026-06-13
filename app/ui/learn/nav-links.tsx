@@ -17,7 +17,7 @@ const links = [
         icon: HomeIcon,
     },
     {
-        name: 'Chat',
+        name: 'Docs Agent',
         href: '/learn/chat',
         icon: ChatBubbleLeftRightIcon,
     },

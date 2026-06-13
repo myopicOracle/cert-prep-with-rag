@@ -6,7 +6,7 @@ export default function ChatMessage({
     content,
     citations,
 }: ChatMessageProps) {
-    const label = role === 'user' ? 'You' : 'Monsieur Atlas'
+    const label = role === 'user' ? 'You' : 'Atlas Agent'
     const roleAlign =
         role === 'user'
             ? 'self-end items-end w-full max-w-[66%]'

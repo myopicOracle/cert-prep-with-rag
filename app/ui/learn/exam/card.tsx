@@ -63,7 +63,7 @@ export default function Card({
                     />
                 ) : (
                     <Button
-                        name="Explain All Answers"
+                        name="AI Explain All"
                         buttonStyle={
                             'rounded mb-4 px-6 py-3 bg-assistant text-assistant-text font-semibold hover:bg-assistant/80'
                         }
