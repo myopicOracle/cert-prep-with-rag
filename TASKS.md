@@ -64,7 +64,7 @@
 - [x] merge study and practice routes, refactor sidenav and layouts, #62
 - [x] update About content copy, add assets, rebrand to Cloud Atlas, #69
 - [x] enhance mobile responsiveness and app components styling, #63
-- [ ] run migrations on Flashcards and Speedrun data, #65
+- [x] run migrations on Flashcards and Speedrun data, #65
 - [ ] add UI and client logic for Flashcards mode, #66
 - [ ] add UI and client logic for Speedrun mode, #67
 
