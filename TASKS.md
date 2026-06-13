@@ -62,13 +62,14 @@
 - [x] generate key terms/concepts data for Flashcards mode, #61
 - [x] generate quiz-style questions data for Speedrun mode, #64
 - [x] merge study and practice routes, refactor sidenav and layouts, #62
-- [ ] enhance mobile responsiveness and adjust page layouts, #63
+- [ ] update About content copy, add assets, rebrand to Cloud Atlas, #69
+- [ ] enhance mobile responsiveness and app components styling, #63
 - [ ] run migrations on Flashcards and Speedrun data, #65
 - [ ] add UI and client logic for Flashcards mode, #66
 - [ ] add UI and client logic for Speedrun mode, #67
-- [ ] add UI and client logic for AWS Glossary page, #68
 
 ## Deferred Enhancements
 
 - [ ] refactor study mode chat UI to use streaming responses, #52
 - [ ] add loading indicator, starter questions, button animation to chat UI, #43
+- [ ] add UI and client logic for AWS Glossary page, #68
