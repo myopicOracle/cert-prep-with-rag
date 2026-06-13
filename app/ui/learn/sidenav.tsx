@@ -4,7 +4,7 @@ import { UserCircleIcon } from '@heroicons/react/24/solid'
 export default function SideNav() {
     return (
         <div className="flex h-full flex-col bg-sidenav">
-            <nav className="flex flex-row gap-1 px-4 md:flex-col md:gap-2">
+            <nav className="flex flex-row gap-1 px-2 md:px-4 md:flex-col md:gap-2">
                 <NavLinks />
             </nav>
             <div className="mt-auto hidden p-4 md:block">
