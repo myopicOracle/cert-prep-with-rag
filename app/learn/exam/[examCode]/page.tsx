@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { examMetadata } from '@/app/lib/seed'
 import { fetchSetLettersByExam } from '@/app/lib/data'
-import SelectorGrid from '@/app/ui/practice/exam/selector-grid'
+import SelectorGrid from '@/app/ui/learn/exam/selector-grid'
 
 export default async function Page({
     params,

@@ -2,8 +2,8 @@
 
 import { lusitana } from '@/app/ui/fonts'
 import useChat from '@/app/hooks/useChat'
-import ChatInput from '@/app/ui/study/chat-input'
-import ChatDisplay from '@/app/ui/study/chat-display'
+import ChatInput from '@/app/ui/learn/chat/chat-input'
+import ChatDisplay from '@/app/ui/learn/chat/chat-display'
 
 export default function Page() {
     const { chatHistory, isLoading, fetchResponse } = useChat()

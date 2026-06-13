@@ -1,4 +1,4 @@
-import NavLinks from '@/app/ui/practice/nav-links'
+import NavLinks from '@/app/ui/learn/nav-links'
 import { UserCircleIcon } from '@heroicons/react/24/solid'
 
 export default function SideNav() {

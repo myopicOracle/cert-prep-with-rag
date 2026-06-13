@@ -1,6 +1,6 @@
-import Timer from '@/app/ui/practice/exam/timer'
-import Flag from '@/app/ui/practice/flag'
-import ProgressBar from '@/app/ui/practice/exam/progress-bar'
+import Timer from '@/app/ui/learn/exam/timer'
+import Flag from '@/app/ui/learn/flag'
+import ProgressBar from '@/app/ui/learn/exam/progress-bar'
 import { ProgressWrapperProps } from '@/app/types/components'
 
 export default function ProgressWrapper({

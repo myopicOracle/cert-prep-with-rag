@@ -1,6 +1,6 @@
 'use client'
 
-import Button from '@/app/ui/practice/button'
+import Button from '@/app/ui/learn/button'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 import { NavButtonsProps } from '@/app/types/components'
 

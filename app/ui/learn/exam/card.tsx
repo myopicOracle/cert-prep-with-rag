@@ -1,9 +1,9 @@
 'use client'
 
-import Scenario from '@/app/ui/practice/exam/scenario'
-import Choice from '@/app/ui/practice/exam/choice'
-import Explanation from '@/app/ui/practice/exam/explanation'
-import Button from '@/app/ui/practice/button'
+import Scenario from '@/app/ui/learn/exam/scenario'
+import Choice from '@/app/ui/learn/exam/choice'
+import Explanation from '@/app/ui/learn/exam/explanation'
+import Button from '@/app/ui/learn/button'
 import { CardProps } from '@/app/types/components'
 
 export default function Card({

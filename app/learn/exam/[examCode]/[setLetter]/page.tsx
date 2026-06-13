@@ -1,5 +1,5 @@
 import { lusitana } from '@/app/ui/fonts'
-import ExamWrapper from '@/app/ui/practice/exam/exam-wrapper'
+import ExamWrapper from '@/app/ui/learn/exam/exam-wrapper'
 import { fetchQuestionsByExamSet } from '@/app/lib/data'
 
 export default async function Page({

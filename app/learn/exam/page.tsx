@@ -1,6 +1,6 @@
 import { examMetadata } from '@/app/lib/seed'
 import { fetchAvailableExamCodes } from '@/app/lib/data'
-import SelectorGrid from '@/app/ui/practice/exam/selector-grid'
+import SelectorGrid from '@/app/ui/learn/exam/selector-grid'
 
 export default async function Page() {
     const available = new Set(await fetchAvailableExamCodes())
