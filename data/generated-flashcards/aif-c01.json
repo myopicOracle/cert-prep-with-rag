@@ -1,0 +1,566 @@
+[
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Supervised learning",
+    "definition": "A machine learning approach where a model is trained on labeled input-output pairs so it can learn to predict outputs for new, unseen inputs."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Unsupervised learning",
+    "definition": "A machine learning approach where a model finds hidden patterns or structures in unlabeled data without predefined output labels."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Reinforcement learning",
+    "definition": "A machine learning paradigm where an agent learns to make decisions by taking actions in an environment and receiving reward or penalty signals based on outcomes."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Regression",
+    "definition": "A supervised learning task where the model predicts a continuous numeric output value, such as price, temperature, or revenue."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Binary classification",
+    "definition": "A supervised learning task where the model assigns each input to one of exactly two categories, such as spam vs. not-spam or fraud vs. legitimate."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Multi-class classification",
+    "definition": "A supervised learning task where the model assigns each input to one of three or more mutually exclusive categories."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Overfitting",
+    "definition": "A condition where a model learns the training data too well, including noise and outliers, causing poor generalization to new data. Indicated by high training accuracy but low validation accuracy."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Underfitting",
+    "definition": "A condition where a model is too simple to capture the underlying patterns in the training data, resulting in poor performance on both training and validation sets."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Bias-variance tradeoff",
+    "definition": "The tension between a model's bias (error from oversimplification) and variance (error from oversensitivity to training data). Reducing one tends to increase the other."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Feature engineering",
+    "definition": "The process of selecting, transforming, or creating input variables (features) from raw data to improve machine learning model performance."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "K-fold cross-validation",
+    "definition": "A model evaluation technique that splits data into K equal folds, trains and evaluates the model K times each using a different fold as the validation set, then averages the results."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "F1 score",
+    "definition": "A classification metric that is the harmonic mean of precision and recall. It balances both metrics and is especially useful when class distribution is imbalanced."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Class imbalance",
+    "definition": "A condition in classification datasets where one class has significantly more samples than others, which can cause a model to be biased toward the majority class. Addressed via oversampling, undersampling, or class-weighted loss."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Data leakage",
+    "definition": "A problem where information from the test or future data inadvertently leaks into the training set, causing artificially high model performance that does not generalize to production."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Feature scaling (normalization)",
+    "definition": "The process of transforming numeric features to a common scale so that no single feature dominates model training due to magnitude differences."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "SageMaker Batch Transform",
+    "definition": "A SageMaker feature for running inference on large datasets offline. It reads input from S3, runs the model, and writes predictions back to S3 without a persistent endpoint."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Transformer architecture",
+    "definition": "A neural network architecture based on self-attention mechanisms that processes sequential data in parallel rather than sequentially. It is the foundation for most modern large language models."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Generative Adversarial Network (GAN)",
+    "definition": "A deep learning architecture with two competing networks: a generator that creates synthetic data and a discriminator that tries to distinguish real from synthetic data. Used for image synthesis and data augmentation."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Encoder-decoder architecture",
+    "definition": "A neural network design where an encoder compresses input into a latent representation and a decoder reconstructs output from that representation. Used for translation, summarization, and image segmentation."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Variational Autoencoder (VAE)",
+    "definition": "A generative model that learns a probabilistic latent space representation of data, enabling it to generate new samples by sampling from that space."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Latent space",
+    "definition": "A compressed, lower-dimensional representation of data learned by a model. Points in the latent space encode the essential features of the input and can be decoded to generate new samples."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Autoregressive language model",
+    "definition": "A language model that generates text one token at a time, conditioning each new token on all previously generated tokens. Used by models like GPT."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Stable Diffusion",
+    "definition": "A latent diffusion model for generating high-quality images from text prompts by iteratively denoising a random latent representation guided by the text description."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Embedding",
+    "definition": "A dense vector representation of a piece of data (text, image, or other) in a continuous vector space where semantically similar items are positioned closer together."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 1,
+    "term": "Multimodal embeddings",
+    "definition": "Embeddings that represent multiple data modalities (text, image, audio) in a shared vector space, enabling cross-modal similarity search and retrieval."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Foundation model",
+    "definition": "A large-scale AI model trained on broad datasets using self-supervised learning that can be adapted to a wide range of downstream tasks through fine-tuning or prompting."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Hallucination (AI)",
+    "definition": "A phenomenon where a generative AI model produces outputs that are factually incorrect, fabricated, or inconsistent with the input, presented with apparent confidence."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Retrieval-Augmented Generation (RAG)",
+    "definition": "A technique that grounds a language model's responses by retrieving relevant documents from a knowledge base at inference time, reducing hallucination and keeping responses current without retraining."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Amazon Bedrock",
+    "definition": "A fully managed AWS service that provides access to foundation models from Amazon and third-party providers via a single API, with tools for customization, RAG, and responsible AI."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Amazon Bedrock Knowledge Bases",
+    "definition": "A Bedrock feature that automates the RAG pipeline by managing document ingestion, chunking, embedding, and vector storage, making it easy to build retrieval-augmented applications."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Amazon Bedrock Agents",
+    "definition": "A Bedrock feature that orchestrates multi-step tasks by enabling foundation models to plan and execute actions by calling APIs and external tools to complete complex user requests."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Training data cutoff",
+    "definition": "The date after which no new data was included when training a foundation model. The model has no knowledge of events or information published after this date."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Fine-tuning",
+    "definition": "The process of further training a pre-trained foundation model on a smaller, domain-specific dataset to adapt its behavior for a specific task or style."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Reinforcement Learning from Human Feedback (RLHF)",
+    "definition": "A fine-tuning technique where human raters rank model outputs and the model is trained using reinforcement learning to produce responses humans prefer, improving alignment and helpfulness."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Zero-shot prompting",
+    "definition": "A prompting technique where the model is given a task description with no examples and expected to perform the task using its pre-trained knowledge."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Few-shot prompting",
+    "definition": "A prompting technique that includes a small number of input-output examples in the prompt to guide the model's response format and reasoning style."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Chain-of-thought prompting",
+    "definition": "A prompting technique that encourages a model to reason step-by-step before producing a final answer, improving accuracy on complex reasoning tasks."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "ReAct prompting",
+    "definition": "A prompting framework that interleaves reasoning steps with action steps, allowing a model to iteratively think and call external tools to solve complex tasks."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Self-consistency prompting",
+    "definition": "A prompting technique that generates multiple independent reasoning chains for the same question and selects the most frequently occurring answer, improving reliability on reasoning tasks."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Persona / role prompting",
+    "definition": "A prompting technique that assigns the model a specific identity or role (e.g., 'You are an expert doctor') to shape the tone, style, and domain of its responses."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Stop sequences",
+    "definition": "Specific strings provided in an inference request that signal the model to stop generating text when it produces them, useful for controlling output length and format."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Instruction tuning",
+    "definition": "A fine-tuning approach where a model is trained on diverse (instruction, response) pairs to make it better at following natural language instructions across a wide range of tasks."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Parameter-Efficient Fine-Tuning (PEFT) / LoRA",
+    "definition": "Fine-tuning techniques that update only a small subset of model parameters (e.g., low-rank adapter matrices) rather than all weights, reducing compute and memory requirements while preserving model quality."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Domain adaptation",
+    "definition": "The process of adapting a model trained on general data to perform better on a specific domain by exposing it to domain-specific text through continued pre-training or fine-tuning."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Amazon Bedrock Provisioned Throughput",
+    "definition": "A Bedrock option that reserves dedicated model capacity for a period of time, providing predictable throughput and lower per-token latency compared to on-demand usage."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Amazon Bedrock custom model import",
+    "definition": "A Bedrock feature that allows customers to import their own fine-tuned or trained model weights into Bedrock for managed inference without managing infrastructure."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Catastrophic forgetting",
+    "definition": "A problem in neural network training where learning new tasks causes the model to lose performance on previously learned tasks, because new gradients overwrite old knowledge."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Tool use / function calling (LLMs)",
+    "definition": "A capability that allows a language model to identify when to call external APIs or functions, generate structured call arguments, and incorporate the results into its response."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Conversation memory",
+    "definition": "A mechanism in conversational AI applications that stores prior turns of a conversation (or a summary of them) and includes them in each prompt so the model maintains context across multiple exchanges."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 2,
+    "term": "Prompt injection",
+    "definition": "A security attack where malicious content in an input causes an AI model to ignore original instructions and follow injected instructions instead, potentially exposing data or causing harmful outputs."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "Amazon Polly",
+    "definition": "An AWS service that converts text to lifelike speech using deep learning, supporting many languages and voices. Used to build applications that talk or to add speech to content."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "Amazon Textract",
+    "definition": "An AWS service that automatically extracts text, handwriting, and structured data (forms and tables) from scanned documents and images using machine learning."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "Amazon Rekognition",
+    "definition": "An AWS service that provides image and video analysis using deep learning, including object detection, facial recognition, text detection, and content moderation."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "Amazon Personalize",
+    "definition": "A fully managed AWS service that provides real-time personalized recommendations using the same machine learning technology as Amazon.com, without requiring ML expertise."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "Amazon Comprehend",
+    "definition": "An NLP service that extracts entities, key phrases, sentiment, syntax, and topics from text, and supports custom classification and entity recognition models."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "Amazon Translate",
+    "definition": "A neural machine translation service that provides fast, high-quality, and affordable language translation between dozens of language pairs."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "Amazon Forecast",
+    "definition": "A fully managed service that uses machine learning to deliver highly accurate time-series forecasts, such as demand forecasting or resource planning."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "Amazon Lex",
+    "definition": "A service for building conversational interfaces using voice and text, powered by the same deep learning technology as Alexa. Used to create chatbots and voice applications."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "Amazon Kendra",
+    "definition": "An enterprise search service powered by machine learning that indexes content from multiple data sources and returns precise, natural language answers rather than a list of links."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "Amazon Comprehend Medical",
+    "definition": "An NLP service that extracts medical information from unstructured clinical text, including conditions, medications, dosages, and medical entities, with HIPAA eligibility."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "Amazon Fraud Detector",
+    "definition": "A fully managed service that uses machine learning to detect online fraud in real time, such as fake account creation or payment fraud, without requiring ML expertise."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "Amazon Augmented AI (A2I)",
+    "definition": "A service that makes it easy to add human review to ML predictions, routing low-confidence predictions to a human workforce for validation before returning a final decision."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "SageMaker Model Monitor",
+    "definition": "A SageMaker capability that continuously monitors deployed ML model endpoints for data quality drift, model quality degradation, bias drift, and feature attribution drift."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "SageMaker Model Registry",
+    "definition": "A centralized repository in SageMaker for cataloging, versioning, and managing ML models, with support for approval workflows and stage transitions from staging to production."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "SageMaker Pipelines",
+    "definition": "A CI/CD service for machine learning that allows teams to build, automate, and manage end-to-end ML workflows including data processing, training, evaluation, and deployment steps."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "SageMaker Experiments",
+    "definition": "A SageMaker capability for organizing, tracking, and comparing ML training runs, including hyperparameters, metrics, and artifacts, to find the best performing model configuration."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "SageMaker Ground Truth",
+    "definition": "A data labeling service that uses a combination of automated labeling and human review to create high-quality training datasets, including support for custom labeling workflows and inter-annotator agreement measurement."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "Hyperparameter tuning (SageMaker)",
+    "definition": "An automated process for searching the hyperparameter space to find the configuration that maximizes model performance. SageMaker HPO supports Bayesian optimization and Hyperband strategies."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "HNSW / Approximate Nearest Neighbor (ANN) algorithms",
+    "definition": "Algorithms for efficient similarity search in high-dimensional vector spaces. HNSW (Hierarchical Navigable Small World) is commonly used in vector databases for fast retrieval in RAG systems."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "Amazon Bedrock Guardrails",
+    "definition": "A Bedrock feature for applying customizable safety and content policies to foundation model inputs and outputs, including topic blocking, sensitive information filtering, and grounding checks."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "Titan Image Generator",
+    "definition": "An Amazon-developed foundation model available through Bedrock that generates high-quality images from text prompts, with support for watermarking generated images for content provenance."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "Counterfactual explanation",
+    "definition": "A model explainability technique that describes what input changes would cause the model to produce a different prediction, helping users understand why a decision was made and what could change it."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "Partial dependence plot (PDP)",
+    "definition": "A model interpretability visualization that shows the marginal effect of one or two features on the model's predicted outcome while averaging out the effects of other features."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 3,
+    "term": "LIME (Local Interpretable Model-agnostic Explanations)",
+    "definition": "A post-hoc model explanation technique that explains individual predictions by fitting a simpler interpretable model locally around the prediction to approximate the complex model's behavior."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 4,
+    "term": "ROUGE",
+    "definition": "A set of metrics for evaluating automatic summarization and machine translation by comparing the overlap of n-grams between generated text and reference text."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 4,
+    "term": "BLEU",
+    "definition": "A metric for evaluating machine translation quality by measuring the precision of n-gram matches between the generated translation and one or more reference translations."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 4,
+    "term": "BERTScore",
+    "definition": "A text evaluation metric that uses contextual embeddings from BERT to compute semantic similarity between generated and reference text, capturing meaning beyond exact word overlap."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 4,
+    "term": "Perplexity",
+    "definition": "A language model evaluation metric that measures how well the model predicts a text sample. Lower perplexity indicates better predictive performance on the held-out data."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 4,
+    "term": "Amazon SageMaker Clarify",
+    "definition": "A SageMaker tool that detects bias in training data and model predictions, and generates SHAP-based feature importance explanations to improve model transparency and fairness."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 4,
+    "term": "Fairness (ML)",
+    "definition": "The property of a machine learning model that its predictions do not systematically disadvantage individuals or groups based on protected attributes such as race, gender, or age."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 4,
+    "term": "Differential privacy",
+    "definition": "A mathematical framework for protecting individual privacy in datasets and model training by adding carefully calibrated noise so that the output cannot be used to infer information about specific individuals."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 4,
+    "term": "Toxicity (AI safety)",
+    "definition": "The presence of harmful, offensive, or abusive content in AI model outputs. Detected and filtered as part of responsible AI practices using content moderation classifiers or safety guardrails."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 4,
+    "term": "Watermarking (AI-generated content)",
+    "definition": "A technique for embedding an imperceptible signal in AI-generated content (text, images) to identify it as machine-generated, supporting content provenance and reducing misinformation."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 4,
+    "term": "SageMaker Model Cards",
+    "definition": "Documentation artifacts in SageMaker that record a model's intended use, training data, evaluation results, and responsible AI considerations to support transparency and governance."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 4,
+    "term": "AWS AI Service Cards",
+    "definition": "AWS-published documentation for each AI service that describes intended use cases, design choices, limitations, responsible AI considerations, and performance characteristics."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 4,
+    "term": "ISO/IEC 42001",
+    "definition": "An international standard for AI management systems that provides requirements and guidance for organizations to demonstrate responsible AI governance, risk management, and continuous improvement."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 5,
+    "term": "AWS Key Management Service (KMS)",
+    "definition": "A managed service for creating and controlling encryption keys used to protect data at rest and in transit across AWS services. Supports CMKs and AWS managed keys."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 5,
+    "term": "AWS CloudTrail",
+    "definition": "A service that records API calls and management actions across an AWS account, providing an audit trail for security analysis, compliance monitoring, and operational troubleshooting."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 5,
+    "term": "AWS Artifact",
+    "definition": "A portal that provides on-demand access to AWS compliance reports, certifications, and agreements (such as SOC, PCI, ISO, and BAA) to support audit and regulatory requirements."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 5,
+    "term": "AWS Audit Manager",
+    "definition": "A service that continuously collects evidence of AWS resource configurations and usage to simplify audit preparation and help demonstrate compliance with frameworks like PCI DSS and HIPAA."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 5,
+    "term": "Amazon Macie",
+    "definition": "A data security service that uses machine learning to discover and protect sensitive data in S3, automatically identifying PII, financial records, and other sensitive content."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 5,
+    "term": "AWS Secrets Manager",
+    "definition": "A service for securely storing, retrieving, and automatically rotating secrets such as database credentials, API keys, and OAuth tokens, with fine-grained IAM access control."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 5,
+    "term": "Data lineage",
+    "definition": "The documented history of data as it moves and transforms through a system, including its origin, how it was processed, and where it was used. Critical for compliance, debugging, and auditing ML pipelines."
+  },
+  {
+    "exam_code": "AIF-C01",
+    "domain_number": 5,
+    "term": "AWS Backup",
+    "definition": "A centralized, fully managed backup service that automates and consolidates backup tasks for AWS resources such as RDS, DynamoDB, EFS, EBS, and S3 across accounts and regions."
+  }
+]

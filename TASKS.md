@@ -59,5 +59,17 @@
 - [x] style sidenav, add header, add footer, add GH CTA to app, #53
 - [x] create landing page, about page, exams selector dash, reorg routes, #58
 - [x] add visual polish and fix bugs in both practice and study routes, #59
+- [x] generate key terms/concepts data for Flashcards mode, #61
+- [x] generate quiz-style questions data for Speedrun mode, #64
+- [x] merge study and practice routes, refactor sidenav and layouts, #62
+- [x] update About content copy, add assets, rebrand to Cloud Atlas, #69
+- [x] enhance mobile responsiveness and app components styling, #63
+- [x] run migrations on Flashcards and Speedrun data, #65
+- [x] add UI and client logic for Flashcards mode, #66
+- [x] add UI and client logic for Speedrun mode, #67
+
+## Deferred Enhancements
+
 - [ ] refactor study mode chat UI to use streaming responses, #52
 - [ ] add loading indicator, starter questions, button animation to chat UI, #43
+- [ ] add UI and client logic for AWS Glossary page, #68

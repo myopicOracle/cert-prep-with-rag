@@ -1,0 +1,272 @@
+[
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 1,
+    "term": "Amazon Kinesis Data Streams",
+    "definition": "A real-time data streaming service that ingests and buffers large volumes of streaming records. Supports replay of up to 7 days of data and multiple consumers reading from the same stream simultaneously."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 1,
+    "term": "Kinesis Enhanced Fan-Out",
+    "definition": "A Kinesis Data Streams feature that provisions a dedicated 2 MB/s throughput pipe per consumer shard, enabling multiple consumers to read from a stream simultaneously without competing for bandwidth."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 1,
+    "term": "AWS Database Migration Service (DMS) with CDC",
+    "definition": "A migration service that supports Change Data Capture (CDC) to continuously replicate ongoing changes from a source database (such as Oracle) to a target after the initial load, minimizing downtime."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 1,
+    "term": "Amazon Data Firehose",
+    "definition": "A fully managed service for delivering streaming data to destinations such as S3, Redshift, OpenSearch, and Splunk. Buffers records for a configurable interval (minimum 60 seconds) before delivery."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 1,
+    "term": "AWS Snowball Edge Storage Optimized",
+    "definition": "A physical data transfer device that ships to customer locations for offline transfer of large datasets (up to 80 TB usable) to AWS when network bandwidth is insufficient or unavailable."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 1,
+    "term": "AWS DataSync",
+    "definition": "A managed data transfer service for automated, scheduled movement of data between on-premises storage (NFS, SMB, HDFS) and AWS storage services, with bandwidth throttling and data integrity verification."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 1,
+    "term": "AWS Glue ETL",
+    "definition": "A serverless managed ETL service that reads data from sources, applies transformation logic written in PySpark or Python, and writes results to targets. Supports DynamicFrames, job bookmarks, and configurable DPUs."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 1,
+    "term": "AWS Glue DataBrew",
+    "definition": "A visual data preparation tool with over 250 built-in transformations for cleaning and normalizing data without writing code. Designed for data analysts who need to profile, clean, and transform data interactively."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 1,
+    "term": "Amazon EMR with Apache Spark",
+    "definition": "A managed big data platform that runs distributed data processing frameworks such as Spark and Hive on scalable clusters, supporting large-scale ETL, machine learning, and interactive analytics."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 1,
+    "term": "AWS Glue DynamicFrame",
+    "definition": "A Glue-specific distributed data abstraction similar to a Spark DataFrame that handles semi-structured data with inconsistent schemas using choice types, and supports schema resolution operations like resolveChoice."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 1,
+    "term": "Glue job bookmarks",
+    "definition": "A Glue feature that tracks which data has already been processed by an ETL job, so that subsequent runs only process new or changed data rather than reprocessing the entire dataset."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 1,
+    "term": "Broadcast join (Spark)",
+    "definition": "A Spark join optimization where a small table is distributed to all worker nodes and joined in memory with partitions of a large table, avoiding a costly shuffle operation."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 2,
+    "term": "Amazon Redshift",
+    "definition": "A fully managed columnar data warehouse that uses MPP (massively parallel processing) to run complex analytical queries across petabytes of data. Supports sort keys, distribution styles, and compression for query optimization."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 2,
+    "term": "Redshift STL/SVL system views",
+    "definition": "Redshift system tables prefixed with STL (system logs) and SVL (system views of logs) that store query execution history, row counts, query plans, and error details for monitoring and debugging."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 2,
+    "term": "Amazon DynamoDB Global Secondary Index (GSI)",
+    "definition": "An index in DynamoDB with a partition key and optional sort key different from the table's primary key. Enables efficient queries on non-key attributes and is maintained asynchronously with eventual consistency."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 2,
+    "term": "DynamoDB pagination (LastEvaluatedKey)",
+    "definition": "A DynamoDB mechanism for paginating large query or scan results. When results exceed the 1 MB response limit, DynamoDB returns a LastEvaluatedKey that the next request uses as ExclusiveStartKey to continue reading."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 2,
+    "term": "DynamoDB global tables",
+    "definition": "A DynamoDB feature that replicates a table across multiple AWS Regions with active-active multi-region writes, providing low-latency access and disaster recovery for globally distributed applications."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 2,
+    "term": "Amazon Timestream",
+    "definition": "A serverless time-series database optimized for storing and querying timestamped data from IoT sensors, application metrics, and operational monitoring at scale with automatic data lifecycle management."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 2,
+    "term": "Amazon Neptune",
+    "definition": "A fully managed graph database service that supports both Property Graph (Gremlin) and RDF (SPARQL) query languages, optimized for highly connected datasets such as social networks and knowledge graphs."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 2,
+    "term": "Amazon Redshift Serverless",
+    "definition": "A serverless configuration of Redshift that automatically provisions and scales data warehouse capacity based on query demand, charging only for compute used during queries without managing clusters."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 2,
+    "term": "Apache Parquet",
+    "definition": "A columnar open-source file format for big data storage that enables efficient column-level reads, predicate pushdown filtering, and compression, significantly reducing I/O and storage costs for analytical workloads."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 2,
+    "term": "Hive-style partitioning",
+    "definition": "A convention for organizing data in S3 using folder paths of the form key=value (e.g., year=2024/month=01/day=15), enabling Athena and Spark to prune partitions during queries for improved performance."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 2,
+    "term": "Small files compaction",
+    "definition": "The practice of combining many small files in S3 into fewer, larger files to reduce the overhead of Spark or Athena query planning and improve query performance and cost."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 2,
+    "term": "MSCK REPAIR TABLE",
+    "definition": "A Hive/Athena command that scans S3 for new Hive-style partitioned directories and adds them to the Glue Data Catalog table metadata so they become queryable by Athena."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 2,
+    "term": "S3 Object Lock",
+    "definition": "An S3 feature that prevents objects from being deleted or overwritten for a defined retention period. Compliance mode prevents even root users from deleting objects; Governance mode allows override with special permissions."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 2,
+    "term": "AWS Glue Data Catalog",
+    "definition": "A centralized metadata repository that stores table definitions, schemas, and partitioning information for data stored in S3 and other sources. Used as the metastore by Athena, EMR, and Redshift Spectrum."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 3,
+    "term": "AWS Step Functions",
+    "definition": "A serverless workflow orchestration service that coordinates multiple AWS services into workflows modeled as state machines, with built-in retry logic, exponential backoff, and error handling."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 3,
+    "term": "Amazon MWAA (Managed Workflows for Apache Airflow)",
+    "definition": "A managed orchestration service for Apache Airflow that allows data engineers to schedule and monitor complex data pipelines using Airflow DAGs without managing Airflow infrastructure."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 3,
+    "term": "Amazon EventBridge",
+    "definition": "A serverless event bus that routes events from AWS services, custom applications, and SaaS tools to targets using event pattern rules. Used to trigger data pipeline workflows on schedule or on event."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 3,
+    "term": "AWS Glue Workflows",
+    "definition": "A Glue orchestration feature for coordinating and monitoring chains of Glue jobs and crawlers, with conditional triggers based on the success or failure of previous steps in the pipeline."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 3,
+    "term": "Amazon Managed Service for Apache Flink",
+    "definition": "A fully managed service for building stateful stream processing applications using Apache Flink. Supports sliding windows, tumbling windows, and stateful operators for real-time analytics over streaming data."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 3,
+    "term": "AWS Glue Data Quality (DQDL)",
+    "definition": "A Glue feature for defining and enforcing data quality rules using the Data Quality Definition Language (DQDL). Rules can be applied during ETL jobs to flag, quarantine, or fail on data quality issues."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 3,
+    "term": "Glue Data Catalog schema versioning",
+    "definition": "A Glue Data Catalog capability that retains historical versions of table schemas, enabling data engineers to track schema evolution and roll back to previous definitions if needed."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 3,
+    "term": "Amazon Athena Federated Query",
+    "definition": "An Athena capability that queries data in external sources (such as DynamoDB, RDS, and on-premises databases) using Lambda-based data source connectors, without requiring data movement to S3."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 4,
+    "term": "AWS Lake Formation",
+    "definition": "A service for building, securing, and managing data lakes on S3. Provides fine-grained column-level, row-level, and cell-level access control to data registered in the Glue Data Catalog."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 4,
+    "term": "Lake Formation column-level security",
+    "definition": "A Lake Formation feature that restricts access to specific columns in a table for different IAM principals, enabling sensitive field protection (such as PII) without duplicating the underlying dataset."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 4,
+    "term": "Lake Formation row-level security",
+    "definition": "A Lake Formation feature that applies data filter policies to restrict which rows a specific IAM principal can see when querying through Athena or Redshift Spectrum."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 4,
+    "term": "SSE-KMS with Customer Managed Key (CMK)",
+    "definition": "Server-side encryption for S3 objects using a customer-managed KMS key. Provides fine-grained access control over key usage, automatic key rotation, and CloudTrail auditing of all encrypt/decrypt operations."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 4,
+    "term": "EMR in-transit encryption (TLS)",
+    "definition": "A configuration that enforces TLS encryption for all data moving between EMR nodes during distributed processing, protecting data in motion across the cluster network."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 4,
+    "term": "Amazon Macie",
+    "definition": "A data security service that uses machine learning to automatically discover, classify, and protect sensitive data (such as PII and financial records) stored in Amazon S3 buckets."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 4,
+    "term": "Tokenization (data security)",
+    "definition": "A data protection technique that replaces sensitive values (such as credit card numbers or SSNs) with non-sensitive placeholder tokens, while a separate secure mapping stores the original values."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 4,
+    "term": "Deterministic encryption",
+    "definition": "An encryption method that always produces the same ciphertext for the same plaintext input under a given key, enabling encrypted data to be joined or compared without decryption."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 4,
+    "term": "GDPR deletion via Glue ETL",
+    "definition": "A pattern for honoring data subject deletion requests in a data lake by using a Glue ETL job to rewrite Parquet files with the target individual's records removed, then overwriting the S3 objects."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 4,
+    "term": "Amazon MSK with Kafka ACLs",
+    "definition": "Amazon Managed Streaming for Apache Kafka configured with Kafka Access Control Lists to restrict which clients can produce to or consume from specific topics, providing fine-grained authorization."
+  },
+  {
+    "exam_code": "DEA-C01",
+    "domain_number": 4,
+    "term": "S3 Glacier Instant Retrieval",
+    "definition": "An S3 archive storage class that provides the lowest cost for long-lived, rarely accessed data while still supporting millisecond retrieval. Suitable for backups and compliance archives that occasionally require immediate access."
+  }
+]

@@ -24,4 +24,4 @@
 
 ## Palette 
 
-![Praevisio Atlas Palette v1](docs/praevisio-atlas-palette-v1-20260520.png)
+![Cloud Atlas Palette v1](docs/praevisio-atlas-palette-v1-20260520.png)

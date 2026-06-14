@@ -29,13 +29,20 @@ export default function Hero() {
                     Begin Your Path
                 </a>
             </div>
-            <Image
-                src="/images/hero-main.png"
-                alt="Image showing cloud certification path"
-                width={2048}
-                height={736}
-                className="w-full h-auto mt-auto"
-            />
+            <div className="relative flex-1 min-h-0 mt-auto w-full">
+                <Image
+                    src="/images/hero-mobile.png"
+                    alt="Image showing cloud certification path"
+                    fill
+                    className="object-cover object-bottom sm:hidden"
+                />
+                <Image
+                    src="/images/hero-main.png"
+                    alt="Image showing cloud certification path"
+                    fill
+                    className="object-cover object-bottom hidden sm:block"
+                />
+            </div>
         </div>
     )
 }

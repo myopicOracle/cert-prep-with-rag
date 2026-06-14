@@ -24,9 +24,9 @@ export async function getChatResponse(messages: any, systemPrompt?: string) {
     const system = systemPrompt ? [{ text: systemPrompt }] : undefined
 
     const command = new ConverseCommand({
-        modelId: models.fast,
-        // modelId: models.general,
-        // modelId: models.pro,
+        // modelId: models.fast,
+        modelId: models.prod_main,
+        // modelId: models.prod_pro,
         messages,
         system,
     })

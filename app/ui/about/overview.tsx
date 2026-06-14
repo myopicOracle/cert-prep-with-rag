@@ -2,14 +2,13 @@ export default function Overview() {
     return (
         <section>
             <h1 className="text-3xl font-sora tracking-tight text-heading">
-                About Praevisio Atlas
+                About Cloud Atlas
             </h1>
             <p className="mt-4 text-body leading-relaxed">
-                Praevisio Atlas is a “what we wish we had while preparing”
-                resource for cloud certifications. It bridges the gap for
-                learners who may not have access to formal training programs but
-                still want a high quality, practical education in cloud
-                technologies.
+                Cloud Atlas is a “what we wish we had while preparing” resource
+                for cloud certifications. It bridges the gap for learners who
+                may not have access to formal training programs but still want a
+                high quality, practical education in cloud technologies.
             </p>
             <p className="mt-4 text-body leading-relaxed">
                 While we currently only support AWS Certifications in order to

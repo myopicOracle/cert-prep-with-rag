@@ -20,7 +20,7 @@ export default function CTA() {
                 </p>
                 <div className="mt-10 flex items-center justify-center gap-x-6">
                     <a
-                        href="https://github.com/myopicOracle/cert-prep-with-rag/issues"
+                        href="https://github.com/myopicOracle/cloud-atlas/issues"
                         className="rounded-md bg-button px-3.5 py-2.5 text-sm font-outfit tracking-wide text-button-text transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus">
                         Contribute
                     </a>

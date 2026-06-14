@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Overview from '@/app/ui/about/overview'
-import Features from '@/app/ui/about/features'
 import Roadmap from '@/app/ui/about/roadmap'
 import CTA from '@/app/ui/about/cta'
 
@@ -17,7 +16,7 @@ export default function Page() {
                         height={2089}
                         className="w-full h-auto mt-auto"
                     />
-                    <Features />
+                    <Roadmap />
                     <Image
                         src="/images/about-roadmap.png"
                         alt="Image showing cloud certification path"
@@ -25,7 +24,6 @@ export default function Page() {
                         height={810}
                         className="w-full h-auto mt-auto"
                     />
-                    <Roadmap />
                 </div>
                 <div className="py-12 space-y-12">
                     <CTA />

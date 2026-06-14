@@ -8,7 +8,7 @@ import Header from '@/app/ui/header'
 import Footer from '@/app/ui/footer'
 
 export const metadata: Metadata = {
-    title: 'Praevisio Atlas',
+    title: 'Cloud Atlas',
     description: 'Learn AWS and pass certification exams with flying colors.',
     icons: {
         icon: [
@@ -42,7 +42,7 @@ export default function RootLayout({
             <body
                 className={`${inter.className} antialiased h-full flex flex-col`}>
                 <Header />
-                <main className="flex-1">{children}</main>
+                <main className="flex-1 min-h-0">{children}</main>
                 <Footer />
                 <Analytics />
             </body>

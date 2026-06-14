@@ -1,0 +1,77 @@
+'use client'
+
+import Scenario from '@/app/ui/learn/exam/scenario'
+import Choice from '@/app/ui/learn/exam/choice'
+import Explanation from '@/app/ui/learn/exam/explanation'
+import Button from '@/app/ui/learn/button'
+import { CardProps } from '@/app/types/components'
+
+export default function Card({
+    id,
+    question,
+    choices,
+    selectedAnswer,
+    onSelect,
+    isRevealed,
+    onReveal,
+    onExplainAll,
+}: CardProps) {
+    const questionID = id
+    const scenario = question.scenario
+
+    return (
+        <div className="flex flex-col items-center mt-6 rounded-lg border border-border bg-card p-8 m-12 shadow-sm min-h-64">
+            <div className="w-full px-6 py-2">
+                <p className="mt-2 p-4 rounded-sm text-md font-bold bg-button text-button-text">
+                    Question {questionID}
+                </p>
+            </div>
+            <div className="mt-4 mb-8 p-4">
+                <Scenario>{scenario}</Scenario>
+                {choices.map((choice, index) => {
+                    return (
+                        <Choice
+                            key={index}
+                            index={index}
+                            selected={selectedAnswer === index}
+                            onSelect={onSelect}>
+                            {choice.answer}
+                            {isRevealed ? (
+                                <Explanation isCorrect={choice.isCorrect}>
+                                    {choice.explanation}
+                                </Explanation>
+                            ) : (
+                                ''
+                            )}
+                        </Choice>
+                    )
+                })}
+            </div>
+            <div>
+                {!isRevealed ? (
+                    <Button
+                        name="Check Answer"
+                        buttonStyle={
+                            'rounded mb-4 px-4 py-2 bg-button text-button-text disabled:opacity-50'
+                        }
+                        isDisabled={selectedAnswer === null}
+                        onClick={() => {
+                            if (selectedAnswer !== null) {
+                                onReveal(choices[selectedAnswer].isCorrect)
+                            }
+                        }}
+                    />
+                ) : (
+                    <Button
+                        name="AI Explain All"
+                        buttonStyle={
+                            'rounded mb-4 px-6 py-3 bg-assistant text-assistant-text font-semibold hover:bg-assistant/80'
+                        }
+                        isDisabled={false}
+                        onClick={onExplainAll}
+                    />
+                )}
+            </div>
+        </div>
+    )
+}
