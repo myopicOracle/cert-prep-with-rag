@@ -65,8 +65,8 @@
 - [x] update About content copy, add assets, rebrand to Cloud Atlas, #69
 - [x] enhance mobile responsiveness and app components styling, #63
 - [x] run migrations on Flashcards and Speedrun data, #65
-- [ ] add UI and client logic for Flashcards mode, #66
-- [ ] add UI and client logic for Speedrun mode, #67
+- [x] add UI and client logic for Flashcards mode, #66
+- [x] add UI and client logic for Speedrun mode, #67
 
 ## Deferred Enhancements
 

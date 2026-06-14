@@ -1,6 +1,7 @@
 import { createClient } from '@/app/utils/supabase/client'
 import { DatabaseQuestion } from '@/app/types/exam'
 import { Flashcard } from '@/app/types/flashcard'
+import { Quiz } from '@/app/types/quiz'
 
 export async function fetchQuestions(): Promise<DatabaseQuestion[]> {
     const supabase = createClient()
@@ -159,6 +160,34 @@ export async function fetchAvailableFlashcardExamCodes(): Promise<string[]> {
 
     if (error) {
         throw new Error('Failed to fetch available flashcard exam codes.')
+    }
+
+    return Array.from(new Set(data.map((row) => row.exam_code as string)))
+}
+
+export async function fetchQuizzesByExam(examCode: string): Promise<Quiz[]> {
+    const supabase = createClient()
+    const { data, error } = await supabase
+        .from('quizzes')
+        .select('*')
+        .eq('exam_code', examCode)
+
+    if (error) {
+        throw new Error(`Failed to fetch quizzes for exam: ${examCode}`)
+    }
+
+    return data
+}
+
+export async function fetchAvailableQuizExamCodes(): Promise<string[]> {
+    const supabase = createClient()
+    const { data, error } = await supabase
+        .from('quizzes')
+        .select('exam_code')
+        .not('exam_code', 'is', null)
+
+    if (error) {
+        throw new Error('Failed to fetch available quiz exam codes.')
     }
 
     return Array.from(new Set(data.map((row) => row.exam_code as string)))

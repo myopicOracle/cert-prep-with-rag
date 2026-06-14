@@ -1,6 +1,7 @@
 import { type UIMessage } from 'ai'
 import { ExamUIQuestion, AnswerChoice } from './exam'
 import { Flashcard } from './flashcard'
+import { Quiz, RoundQuestion } from './quiz'
 
 export type Citation = {
     sourceURL: string
@@ -103,4 +104,36 @@ export interface FlashcardCardProps {
     definition: string
     isFlipped: boolean
     onFlip: () => void
+}
+
+export interface SpeedrunWrapperProps {
+    quizzes: Quiz[]
+}
+
+export interface SpeedrunCardProps {
+    question: RoundQuestion
+    selectedIndex: number | null
+    isAnswered: boolean
+    onSelect: (index: number) => void
+    onNext: () => void
+}
+
+export interface SpeedrunChoiceProps {
+    answer: string
+    index: number
+    isAnswered: boolean
+    isCorrect: boolean
+    isSelected: boolean
+    onSelect: (index: number) => void
+}
+
+export interface CountdownBarProps {
+    secondsLeft: number
+    totalSeconds: number
+}
+
+export interface SpeedrunResultsProps {
+    score: number
+    total: number
+    onRestart: () => void
 }
