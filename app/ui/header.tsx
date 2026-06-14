@@ -5,7 +5,7 @@ import ThemeSelect from '@/app/ui/theme-select'
 export default function Header() {
     return (
         <div className="relative w-full h-[10dvh] bg-header flex items-center justify-between px-2 py-2 md:px-4 md:py-3">
-            <Link href="/" className="h-1/2 md:h-3/4 flex-shrink-0">
+            <Link href="/" className="h-1/3 sm:h-1/2 md:h-3/4 flex-shrink-0">
                 <Image
                     src="/atlas/lockup-light.svg"
                     alt="Brand lockup for Cloud Atlas"
