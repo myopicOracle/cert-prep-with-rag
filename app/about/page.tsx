@@ -17,13 +17,6 @@ export default function Page() {
                         className="w-full h-auto mt-auto"
                     />
                     <Roadmap />
-                    <Image
-                        src="/images/about-roadmap.png"
-                        alt="Image showing cloud certification path"
-                        width={1536}
-                        height={810}
-                        className="w-full h-auto mt-auto"
-                    />
                 </div>
                 <div className="py-12 space-y-12">
                     <CTA />
