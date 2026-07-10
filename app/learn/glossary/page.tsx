@@ -1,8 +1,28 @@
 import { fetchServices } from '@/app/lib/data'
-import { getServiceDisplayName } from '@/app/lib/service-names'
+import {
+    getServiceDisplayName,
+    getServiceSortName,
+} from '@/app/lib/service-names'
+import GlossaryWrapper from '@/app/ui/learn/glossary/glossary-wrapper'
+import { GlossaryItem } from '@/app/types/components'
 
 export default async function Page() {
     const services = await fetchServices()
+
+    const items: GlossaryItem[] = services.map((service) => {
+        const displayName = getServiceDisplayName(service.name)
+
+        return {
+            id: service.id,
+            slug: service.name,
+            displayName: displayName,
+            sortName: getServiceSortName(displayName),
+            overview: service.overview,
+            deepDive: service.deep_dive,
+        }
+    })
+
+    items.sort((a, b) => a.sortName.localeCompare(b.sortName))
 
     return (
         <div className="w-full">
@@ -10,20 +30,9 @@ export default async function Page() {
                 AWS Glossary
             </h1>
             <p className="mb-8 font-outfit tracking-wide text-contrast">
-                Browse {services.length} AWS services, from overview to deep
-                dive.
+                Browse {items.length} AWS services, from overview to deep dive.
             </p>
-
-            {/* Placeholder list — replaced by the full glossary UI in the next step. */}
-            <ul className="space-y-2">
-                {services.map((service) => (
-                    <li
-                        key={service.id}
-                        className="font-outfit tracking-wide text-body-muted">
-                        {getServiceDisplayName(service.name)}
-                    </li>
-                ))}
-            </ul>
+            <GlossaryWrapper items={items} />
         </div>
     )
 }

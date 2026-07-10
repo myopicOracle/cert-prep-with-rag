@@ -189,3 +189,16 @@ export function getServiceDisplayName(slug: string): string {
 
     return slug
 }
+
+// Strips any insignificant prefexies for glossary sorting
+export function getServiceSortName(displayName: string): string {
+    if (displayName.startsWith('Amazon ')) {
+        return displayName.slice('Amazon '.length)
+    }
+
+    if (displayName.startsWith('AWS ')) {
+        return displayName.slice('AWS '.length)
+    }
+
+    return displayName
+}
