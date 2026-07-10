@@ -67,9 +67,9 @@
 - [x] run migrations on Flashcards and Speedrun data, #65
 - [x] add UI and client logic for Flashcards mode, #66
 - [x] add UI and client logic for Speedrun mode, #67
+- [x] add UI and client logic for AWS Glossary page, #68
 
 ## Deferred Enhancements
 
 - [ ] refactor study mode chat UI to use streaming responses, #52
 - [ ] add loading indicator, starter questions, button animation to chat UI, #43
-- [ ] add UI and client logic for AWS Glossary page, #68

@@ -137,3 +137,20 @@ export interface SpeedrunResultsProps {
     total: number
     onRestart: () => void
 }
+
+export interface GlossaryItem {
+    id: string
+    slug: string
+    displayName: string
+    sortName: string
+    overview: string
+    deepDive: string
+}
+
+export interface GlossaryWrapperProps {
+    items: GlossaryItem[]
+}
+
+export interface GlossaryEntryProps {
+    item: GlossaryItem
+}

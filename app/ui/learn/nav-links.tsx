@@ -6,6 +6,7 @@ import {
     ClipboardDocumentIcon,
     BoltIcon,
     ForwardIcon,
+    BookOpenIcon,
 } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -35,6 +36,11 @@ const links = [
         name: 'Speed Run',
         href: '/learn/speedrun',
         icon: ForwardIcon,
+    },
+    {
+        name: 'Glossary',
+        href: '/learn/glossary',
+        icon: BookOpenIcon,
     },
 ]
 
