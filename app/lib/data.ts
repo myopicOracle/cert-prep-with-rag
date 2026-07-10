@@ -2,6 +2,7 @@ import { createClient } from '@/app/utils/supabase/client'
 import { DatabaseQuestion } from '@/app/types/exam'
 import { Flashcard } from '@/app/types/flashcard'
 import { Quiz } from '@/app/types/quiz'
+import { Service } from '@/app/types/service'
 
 export async function fetchQuestions(): Promise<DatabaseQuestion[]> {
     const supabase = createClient()
@@ -163,6 +164,20 @@ export async function fetchAvailableFlashcardExamCodes(): Promise<string[]> {
     }
 
     return Array.from(new Set(data.map((row) => row.exam_code as string)))
+}
+
+export async function fetchServices(): Promise<Service[]> {
+    const supabase = createClient()
+    const { data, error } = await supabase
+        .from('services')
+        .select('*')
+        .order('name', { ascending: true })
+
+    if (error) {
+        throw new Error('Failed to fetch services from database.')
+    }
+
+    return data
 }
 
 export async function fetchQuizzesByExam(examCode: string): Promise<Quiz[]> {
